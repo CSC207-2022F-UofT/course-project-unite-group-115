@@ -1,12 +1,13 @@
 import java.util.List;
 
 public class Group {
-    protected static int numGroups = 0;
-    protected String name;
-    protected List<String> interests;
-    protected final int id;
-    protected List<Users> members;
-    protected boolean random;
+    //ToDo: Remember to think about storing this in database
+    private static int numGroups = 0;
+    private String name;
+    private List<String> interests;
+    private final int id;
+    private List<Users> members;
+    private boolean random;
 
     public Group(String name, List<String> interests, List<Users> members, boolean isRandom) {
         this.name = name;
