@@ -119,5 +119,4 @@ public class GroupTest {
         group.removeMembers(usersRemove);
         assertEquals(2, group.getMembers().size());
     }
-
 }
