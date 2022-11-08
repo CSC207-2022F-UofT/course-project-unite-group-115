@@ -6,10 +6,10 @@ public class Group {
     private String name;
     private List<String> interests;
     private final int id;
-    private List<Users> members;
+    private List<User> members;
     private boolean random;
 
-    public Group(String name, List<String> interests, List<Users> members, boolean isRandom) {
+    public Group(String name, List<String> interests, List<User> members, boolean isRandom) {
         this.name = name;
         this.interests = interests;
         this.members = members;
@@ -48,11 +48,11 @@ public class Group {
         return this.id;
     }
 
-    public List<Users> getMembers() {
+    public List<User> getMembers() {
         return this.members;
     }
 
-    public void addMembers(List<Users> membersToAdd) {
+    public void addMembers(List<User> membersToAdd) {
         for (User member : membersToAdd) {
             if (!(this.members.contains(member))) {
                 this.members.add(member);
@@ -60,9 +60,21 @@ public class Group {
         }
     }
 
-    public void removeMembers(List<Users> membersToRemove) {
+    /**
+     * Remove the Users in membersToRemove from the group, if they are part of the group.
+     * If a User from membersToRemove is not part of the group, do nothing.
+     *
+     * @param membersToRemove list of Users to be removed from the group
+     */
+    public void removeMembers(List<User> membersToRemove) {
         for (User member : membersToRemove) {
-            this.members.remove(member);
+            if (this.members.contains(member)) {
+                this.members.remove(member);
+            }
         }
+    }
+
+    public boolean isRandom() {
+        return this.random;
     }
 }
