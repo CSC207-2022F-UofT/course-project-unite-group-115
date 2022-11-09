@@ -1,11 +1,13 @@
+package entities;
+
 import java.util.List;
 import java.util.UUID;
 
 public class Group {
     private String name;
-    private final List<String> interests;
+    private List<String> interests;
     private final UUID ID;
-    private final List<User> members;
+    private List<User> members;
     private final boolean random;
 
     /**
@@ -92,7 +94,7 @@ public class Group {
     }
 
     /**
-     * Add Users to be members to the group. If the User is already a member, do nothing.
+     * Add Users to be members to the group. If the entities.User is already a member, do nothing.
      *
      * @param membersToAdd Users to be added to the group
      */
@@ -106,7 +108,7 @@ public class Group {
 
     /**
      * Remove the Users in membersToRemove from the group, if they are part of the group.
-     * If a User from membersToRemove is not part of the group, do nothing.
+     * If a entities.User from membersToRemove is not part of the group, do nothing.
      *
      * @param membersToRemove list of Users to be removed from the group
      */

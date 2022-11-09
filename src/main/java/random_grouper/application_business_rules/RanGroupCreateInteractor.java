@@ -45,7 +45,9 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
 
         List<String> membersString = new ArrayList<>();
         membersString.add(requestModel.getGroupCreator());
-        groupRepoAccess.addGroup(groupName, group.getId(), membersString, groupInterests, true);
+        GroupRepoRequestModel repoRequestModel = new GroupRepoRequestModel(groupName, group.getId(),
+                groupInterests, membersString, true);
+        groupRepoAccess.addGroup(repoRequestModel);
 
         LocalDateTime creationTime = LocalDateTime.now();
         RanGroupCreateResponseModel groupCreateResponseModel = new RanGroupCreateResponseModel(group.getName(),

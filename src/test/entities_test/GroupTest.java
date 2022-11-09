@@ -1,3 +1,5 @@
+import entities.Group;
+import entities.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -81,8 +83,8 @@ public class GroupTest {
     public void TestAddMembers() {
         Group group = new Group("test", interests, users, true);
         List<User> usersAdd = new ArrayList<>();
-        usersAdd.add(new User("Joe"));
-        usersAdd.add(new User("Beatrice"));
+        usersAdd.add(new User("Joe", interests));
+        usersAdd.add(new User("Beatrice", interests));
         group.addMembers(usersAdd);
         assertEquals(2, group.getMembers().size());
     }
@@ -91,9 +93,9 @@ public class GroupTest {
     public void TestAddSameMembers() {
         Group group = new Group("test", interests, users, true);
         List<User> usersAdd = new ArrayList<>();
-        User joe = new User("Joe");
+        User joe = new User("Joe", interests);
         usersAdd.add(joe);
-        usersAdd.add(new User("Beatrice"));
+        usersAdd.add(new User("Beatrice", interests));
         usersAdd.add(joe);
         group.addMembers(usersAdd);
         assertEquals(2, group.getMembers().size());
@@ -103,9 +105,9 @@ public class GroupTest {
     public void TestRemoveMembers() {
         Group group = new Group("test", interests, users, true);
         List<User> usersAdd = new ArrayList<>();
-        User joe = new User("Joe");
+        User joe = new User("Joe", interests);
         usersAdd.add(joe);
-        usersAdd.add(new User("Beatrice"));
+        usersAdd.add(new User("Beatrice", interests));
         group.addMembers(usersAdd);
 
         List<User> usersRemove = new ArrayList<>();
@@ -118,12 +120,12 @@ public class GroupTest {
     public void TestRemoveNoMembers() {
         Group group = new Group("test", interests, users, true);
         List<User> usersAdd = new ArrayList<>();
-        usersAdd.add(new User("Joe"));
-        usersAdd.add(new User("Beatrice"));
+        usersAdd.add(new User("Joe", interests));
+        usersAdd.add(new User("Beatrice", interests));
         group.addMembers(usersAdd);
 
         List<User> usersRemove = new ArrayList<>();
-        usersRemove.add(new User("Jake"));
+        usersRemove.add(new User("Jake", interests));
         group.removeMembers(usersRemove);
         assertEquals(2, group.getMembers().size());
     }

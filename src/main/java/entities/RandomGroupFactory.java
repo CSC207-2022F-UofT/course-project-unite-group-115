@@ -1,3 +1,5 @@
+package entities;
+
 import java.util.List;
 
 public class RandomGroupFactory implements GroupFactory {

@@ -5,16 +5,11 @@ import java.util.Map;
 
 public interface GroupRepoInt {
     /**
-     * Add a group to the group repo.
+     * Add the group information from requestModel in the GroupRepo
      *
-     * @param groupName group's name
-     * @param groupID group's ID
-     * @param groupMembers group's members
-     * @param groupInterests group's interests
-     * @param isRandom whether the group is a random group
+     * @param requestModel information about group to save
      */
-    void addGroup(String groupName, String groupID, List<String> groupMembers, List<String> groupInterests,
-                  boolean isRandom);
+    void addGroup(GroupRepoRequestModel requestModel);
 
     /**
      * Remove the group with ID, groupID, from the group repo.
@@ -54,7 +49,7 @@ public interface GroupRepoInt {
      * @param interests list of interests to be added to the group
      * @param groupID group's ID
      */
-    void addInterestsToGroup(List<String> interests, String groupID);
+    void addInterestsToGroup(List<String> newInterests, String groupID);
 
     /**
      * Remove interests from the existing interests of the group with the ID, groupID.
