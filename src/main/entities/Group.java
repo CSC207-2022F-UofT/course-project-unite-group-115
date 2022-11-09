@@ -4,7 +4,7 @@ import java.util.UUID;
 public class Group {
     private String name;
     private final List<String> interests;
-    private final UUID id;
+    private final UUID ID;
     private final List<User> members;
     private final boolean random;
 
@@ -22,7 +22,7 @@ public class Group {
         this.interests = interests;
         this.members = members;
         this.random = isRandom;
-        this.id = UUID.randomUUID();
+        this.ID = UUID.randomUUID();
     }
 
     /**
@@ -39,7 +39,7 @@ public class Group {
         this.interests = interests;
         this.members = members;
         this.random = isRandom;
-        this.id = UUID.fromString(id);
+        this.ID = UUID.fromString(id);
     }
 
     public void setName(String name) {
@@ -84,7 +84,7 @@ public class Group {
     }
 
     public String getId() {
-        return this.id.toString();
+        return this.ID.toString();
     }
 
     public List<User> getMembers() {
