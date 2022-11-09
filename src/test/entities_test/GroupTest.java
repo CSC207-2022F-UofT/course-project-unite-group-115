@@ -4,8 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class GroupTest {
     List<String> interests = new ArrayList<>();
@@ -25,17 +24,14 @@ public class GroupTest {
         assertEquals(3, group.getInterests().size());
         assertEquals(0, group.getMembers().size());
         assertTrue(group.isRandom());
-        assertEquals(0, group.getId());
     }
 
     @Test(timeout = 50)
     public void TestIds() {
         Group group = new Group("test", interests, users, true);
         Group group2 = new Group("test2", interests, users, false);
-        assertEquals(0, group.getId());
-        assertEquals(1, group2.getId());
         Group group3 = new Group("test3", interests, users, false);
-        assertEquals(2, group3.getId());
+        assertNotEquals(group.getId(), group2.getId(), group3.getId());
     }
 
     @Test(timeout = 50)
@@ -87,6 +83,18 @@ public class GroupTest {
         List<User> usersAdd = new ArrayList<>();
         usersAdd.add(new User("Joe"));
         usersAdd.add(new User("Beatrice"));
+        group.addMembers(usersAdd);
+        assertEquals(2, group.getMembers().size());
+    }
+
+    @Test(timeout = 50)
+    public void TestAddSameMembers() {
+        Group group = new Group("test", interests, users, true);
+        List<User> usersAdd = new ArrayList<>();
+        User joe = new User("Joe");
+        usersAdd.add(joe);
+        usersAdd.add(new User("Beatrice"));
+        usersAdd.add(joe);
         group.addMembers(usersAdd);
         assertEquals(2, group.getMembers().size());
     }
