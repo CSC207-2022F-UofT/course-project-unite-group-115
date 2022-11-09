@@ -29,11 +29,12 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
 
         // ToDo: change when can see User class and repo + add check to ensure interests match users interests?
         List<User> members = new ArrayList<>();
-        members.add(new User(requestModel.getGroupCreator(), new ArrayList<>()));
+        User creator = new User(requestModel.getGroupCreator(), new ArrayList<>());
+        members.add(creator);
         for (String interest : groupInterests) {
-            if (!(User.getInterests().contains(interest))) {
-                return RanGroupCreateOutputBoundary.prepareFailView("You have not listed " +
-                        interest.toString() + " as one of your interests.");
+            if (!(creator.getInterests().contains(interest))) {
+                return groupCreateOutputBoundary.prepareFailView("You have not listed " +
+                        interest + " as one of your interests.");
             }
         }
 
@@ -53,6 +54,6 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
         RanGroupCreateResponseModel groupCreateResponseModel = new RanGroupCreateResponseModel(group.getName(),
                 creationTime.toString());
 
-        return RanGroupCreateOutputBoundary.prepareSuccessView(groupCreateResponseModel);
+        return groupCreateOutputBoundary.prepareSuccessView(groupCreateResponseModel);
     }
 }
