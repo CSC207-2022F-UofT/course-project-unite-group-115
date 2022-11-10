@@ -1,7 +1,4 @@
-package random_grouper.frameworks_and_drivers;
-
-import random_grouper.application_business_rules.GroupRepoInt;
-import random_grouper.application_business_rules.GroupRepoRequestModel;
+package database_classes;
 
 import java.io.*;
 import java.util.*;
@@ -119,7 +116,7 @@ public class GroupDataAccess implements GroupRepoInt {
      */
     @Override
     public void addUserToGroup(String userName, String groupID) {
-        List<String> members = groups.get(groupID).getMembers();
+        List<String> members = new ArrayList<>(groups.get(groupID).getMembers());
         members.add(userName);
         groups.get(groupID).setMembers(members);
         this.save();
@@ -133,7 +130,7 @@ public class GroupDataAccess implements GroupRepoInt {
      */
     @Override
     public void removeUserFromGroup(String userName, String groupID) {
-        List<String> members = groups.get(groupID).getMembers();
+        List<String> members = new ArrayList<>(groups.get(groupID).getMembers());
         members.remove(userName);
         groups.get(groupID).setMembers(members);
         this.save();
@@ -147,7 +144,7 @@ public class GroupDataAccess implements GroupRepoInt {
      */
     @Override
     public void addInterestsToGroup(List<String> newInterests, String groupID) {
-        List<String> groupInterests = groups.get(groupID).getInterests();
+        List<String> groupInterests = new ArrayList<>(groups.get(groupID).getInterests());
         for (String newInterest : newInterests) {
             boolean containsInterest = false;
             for (String existingInterest : groupInterests) {
@@ -172,7 +169,7 @@ public class GroupDataAccess implements GroupRepoInt {
      */
     @Override
     public void removeInterestsFromGroup(List<String> interests, String groupID) {
-        List<String> groupInterests = groups.get(groupID).getInterests();
+        List<String> groupInterests = new ArrayList<>(groups.get(groupID).getInterests());
         for (String interestToBeRemoved : interests) {
             groupInterests.remove(interestToBeRemoved);
         }

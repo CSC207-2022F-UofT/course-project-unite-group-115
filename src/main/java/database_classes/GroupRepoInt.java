@@ -1,4 +1,4 @@
-package random_grouper.application_business_rules;
+package database_classes;
 
 import java.util.List;
 import java.util.Map;
@@ -21,7 +21,12 @@ public interface GroupRepoInt {
     /**
      * Return a map of information about the group with ID, groupID. Each key is a String indicating the
      * information provided by the key.
-     * Each map contains the group's name, ID, members, interests and whether it is a random group.
+     * Each map contains the keys (in "") associated with their appropriate values:
+     *      "group name" -> String of the group's name
+     *      "group ID" -> String form of group's ID
+     *      "members" -> List of Strings where each String is a members name
+     *      "interests" -> List of Strings where each String is one of the group's interests
+     *      "random group?" -> boolean value of whether group is a random group
      *
      * @param groupID the ID of a group
      */
@@ -46,7 +51,7 @@ public interface GroupRepoInt {
     /**
      * Add interests to the existing interests of the group with the ID, groupID.
      *
-     * @param interests list of interests to be added to the group
+     * @param newInterests list of interests to be added to the group
      * @param groupID group's ID
      */
     void addInterestsToGroup(List<String> newInterests, String groupID);

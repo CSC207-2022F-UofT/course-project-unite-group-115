@@ -1,7 +1,6 @@
-package random_grouper.application_business_rules;
+package database_classes;
 
 import java.util.List;
-import java.util.UUID;
 
 public class GroupRepoRequestModel {
     private String name;
