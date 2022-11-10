@@ -6,25 +6,25 @@ import java.util.List;
 import java.util.Map;
 
 public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
-    final GroupRepoInt groupRepoAccess;
+    final GroupRepoInt GROUP_REPO_ACCESS;
     final ReqRanGroupOutputBoundary reqRanGroupOutputBoundary;
-    // ToDo: set after discussing with group
+    // ToDo: set max size after discussing with group
     final int MAX_GROUP_SIZE = 8;
 
     public ReqRanGroupInteractor(GroupRepoInt groupRepoAccess, ReqRanGroupOutputBoundary reqRanGroupOutputBoundary) {
-        this.groupRepoAccess = groupRepoAccess;
+        this.GROUP_REPO_ACCESS = groupRepoAccess;
         this.reqRanGroupOutputBoundary = reqRanGroupOutputBoundary;
     }
 
     @Override
     public ReqRanGroupResponseModel requestRanGroup(ReqRanGroupRequestModel requestModel) {
-        List<String> randomGroups = groupRepoAccess.getRandomGroups();
+        List<String> randomGroups = GROUP_REPO_ACCESS.getRandomGroups();
         List<String> usersInterests = requestModel.getUserInterests();
         int maxInterestsCommon = 0;
         String bestRanGroupID = null;
         String bestRanGroupName = null;
         for (String randomGroup : randomGroups) {
-            Map<String, Object> groupInfo = groupRepoAccess.getGroupInfo(randomGroup);
+            Map<String, Object> groupInfo = GROUP_REPO_ACCESS.getGroupInfo(randomGroup);
             if (((List<String>) groupInfo.get("members")).size() >= MAX_GROUP_SIZE) {
                 continue;
                 // Skips iteration when condition is met (i.e. if the current randomGroup is full,
@@ -49,7 +49,7 @@ public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
             return reqRanGroupOutputBoundary.prepareFailView("No appropriate groups were found.");
         }
         else {
-            groupRepoAccess.addUserToGroup(requestModel.getUserName(), bestRanGroupID);
+            GROUP_REPO_ACCESS.addUserToGroup(requestModel.getUserName(), bestRanGroupID);
             // ToDo: add group to user's profile once have access to code
             requestModel.addToUserGroups(bestRanGroupID);
             ReqRanGroupResponseModel responseModel = new ReqRanGroupResponseModel(bestRanGroupID, bestRanGroupName);

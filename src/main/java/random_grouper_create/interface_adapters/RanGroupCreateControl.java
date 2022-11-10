@@ -7,16 +7,17 @@ import random_grouper_create.application_business_rules.RanGroupCreateResponseMo
 import java.util.List;
 
 public class RanGroupCreateControl {
-    final RanGroupCreateInputBoundary userInput;
+    final RanGroupCreateInputBoundary USER_INPUT;
 
     public RanGroupCreateControl(RanGroupCreateInputBoundary userInput) {
-        this.userInput = userInput;
+        this.USER_INPUT = userInput;
     }
 
+    // ToDo: Make return void?
     public RanGroupCreateResponseModel createGroup(String groupName, List<String> interests, String groupCreatorName){
         RanGroupCreateRequestModel requestModel =
                 new RanGroupCreateRequestModel(groupName, interests, groupCreatorName);
 
-        return userInput.createRanGroup(requestModel);
+        return USER_INPUT.createRanGroup(requestModel);
     }
 }

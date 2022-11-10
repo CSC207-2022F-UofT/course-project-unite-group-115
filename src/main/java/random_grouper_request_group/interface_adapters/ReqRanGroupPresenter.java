@@ -15,9 +15,10 @@ public class ReqRanGroupPresenter implements ReqRanGroupOutputBoundary {
 
     @Override
     public ReqRanGroupResponseModel prepareFailView(String errorMessage) {
-        throw new GroupAdditionFailed(errorMessage);
+        throw new GroupAdditionFailure(errorMessage);
     }
 
+    @Override
     public String getSuccessMessage(ReqRanGroupResponseModel group) {
         return group.getSuccessMessage();
     }

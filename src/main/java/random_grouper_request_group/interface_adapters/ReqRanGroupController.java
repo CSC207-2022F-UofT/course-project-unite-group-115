@@ -7,16 +7,16 @@ import random_grouper_request_group.application_business_rules.ReqRanGroupRespon
 import java.util.List;
 
 public class ReqRanGroupController {
-    final ReqRanGroupInputBoundary userInput;
+    final ReqRanGroupInputBoundary USER_INPUT;
 
 
     public ReqRanGroupController(ReqRanGroupInputBoundary userInput) {
-        this.userInput = userInput;
+        this.USER_INPUT = userInput;
     }
 
     public ReqRanGroupResponseModel requestRanGroup(String userName, List<String> userInterests,
                                                     List<String> idsOfCurrentGroups) {
         ReqRanGroupRequestModel requestModel = new ReqRanGroupRequestModel(userName, userInterests, idsOfCurrentGroups);
-        return userInput.requestRanGroup(requestModel);
+        return USER_INPUT.requestRanGroup(requestModel);
     }
 }

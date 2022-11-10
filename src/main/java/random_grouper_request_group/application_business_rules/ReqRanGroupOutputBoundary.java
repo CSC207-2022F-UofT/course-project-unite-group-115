@@ -4,4 +4,6 @@ public interface ReqRanGroupOutputBoundary {
     ReqRanGroupResponseModel prepareSuccessView(ReqRanGroupResponseModel group);
 
     ReqRanGroupResponseModel prepareFailView(String errorMessage);
+
+    String getSuccessMessage (ReqRanGroupResponseModel group);
 }

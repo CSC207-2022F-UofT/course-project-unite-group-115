@@ -16,6 +16,6 @@ public class RanGroupCreatePresenter implements RanGroupCreateOutputBoundary {
 
     @Override
     public RanGroupCreateResponseModel prepareFailView(String errorMessage) {
-        throw new GroupCreationFailed(errorMessage);
+        throw new GroupCreationFailure(errorMessage);
     }
 }

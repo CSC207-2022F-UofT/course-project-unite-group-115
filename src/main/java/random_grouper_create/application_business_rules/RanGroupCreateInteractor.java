@@ -11,17 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
-    final GroupRepoInt groupRepoAccess;
-    final RanGroupCreateOutputBoundary groupCreateOutputBoundary;
-    final RandomGroupFactory groupFactory;
+    final GroupRepoInt GROUP_REPO_ACCESS;
+    final RanGroupCreateOutputBoundary GROUP_CREATE_OUTPUT_BOUNDARY;
+    final RandomGroupFactory GROUP_FACTORY;
     // ToDo: for message storage - final MessageRepoInt messageRepoAccess;
 
     public RanGroupCreateInteractor(GroupRepoInt groupRepoAccess,
                                     RanGroupCreateOutputBoundary groupCreateOutputBoundary,
                                     RandomGroupFactory groupFactory) {
-        this.groupRepoAccess = groupRepoAccess;
-        this.groupCreateOutputBoundary = groupCreateOutputBoundary;
-        this.groupFactory = groupFactory;
+        this.GROUP_REPO_ACCESS = groupRepoAccess;
+        this.GROUP_CREATE_OUTPUT_BOUNDARY = groupCreateOutputBoundary;
+        this.GROUP_FACTORY = groupFactory;
     }
 
     @Override
@@ -35,12 +35,12 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
         members.add(creator);
         for (String interest : groupInterests) {
             if (!(creator.getInterests().contains(interest))) {
-                return groupCreateOutputBoundary.prepareFailView("You have not listed " +
+                return GROUP_CREATE_OUTPUT_BOUNDARY.prepareFailView("You have not listed " +
                         interest + " as one of your interests.");
             }
         }
 
-        Group group = groupFactory.createNewGroup(groupName, groupInterests, members);
+        Group group = GROUP_FACTORY.createNewGroup(groupName, groupInterests, members);
 
         // ToDo: start message storage for group once have access to message class?
 
@@ -50,12 +50,12 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
         membersString.add(requestModel.getGroupCreator());
         GroupRepoRequestModel repoRequestModel = new GroupRepoRequestModel(groupName, group.getId(),
                 groupInterests, membersString, true);
-        groupRepoAccess.addGroup(repoRequestModel);
+        GROUP_REPO_ACCESS.addGroup(repoRequestModel);
 
         LocalDateTime creationTime = LocalDateTime.now();
         RanGroupCreateResponseModel groupCreateResponseModel = new RanGroupCreateResponseModel(group.getName(),
                 creationTime.toString());
 
-        return groupCreateOutputBoundary.prepareSuccessView(groupCreateResponseModel);
+        return GROUP_CREATE_OUTPUT_BOUNDARY.prepareSuccessView(groupCreateResponseModel);
     }
 }

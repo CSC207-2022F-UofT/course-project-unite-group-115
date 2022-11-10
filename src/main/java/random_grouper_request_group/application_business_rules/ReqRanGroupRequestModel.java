@@ -20,6 +20,7 @@ public class ReqRanGroupRequestModel {
         return userGroups;
     }
 
+    // ToDo: Remove if not used
     public void setUserGroups(List<String> userGroups) {
         this.userGroups = userGroups;
     }
@@ -32,6 +33,7 @@ public class ReqRanGroupRequestModel {
         return userInterests;
     }
 
+    // ToDo: Remove if not used
     public void setUserInterests(List<String> userInterests) {
         this.userInterests = userInterests;
     }
@@ -40,6 +42,7 @@ public class ReqRanGroupRequestModel {
         return userName;
     }
 
+    // ToDo: Remove if not used
     public void setUserName(String userName) {
         this.userName = userName;
     }

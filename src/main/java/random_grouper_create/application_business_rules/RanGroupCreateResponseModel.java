@@ -13,24 +13,28 @@ public class RanGroupCreateResponseModel {
         this.createdGroupName = createdGroupName;
         this.creationTime = creationTime;
     }
-
+    // ToDo: Remove if not used
     public RanGroupCreateResponseModel(String failMessage){
         this.success = false;
         this.failMessage = failMessage;
     }
 
+    // ToDo: Remove if not used
     public boolean isSuccess() {
         return success;
     }
 
+    // ToDo: Remove if not used
     public void setSuccess(boolean success) {
         this.success = success;
     }
 
+    // ToDo: Remove if not used
     public String getCreatedGroupName() {
         return createdGroupName;
     }
 
+    // ToDo: Remove if not used
     public void setCreatedGroup(String createdGroupName) {
         this.createdGroupName = createdGroupName;
     }
@@ -43,10 +47,12 @@ public class RanGroupCreateResponseModel {
         this.creationTime = creationTime;
     }
 
+    // ToDo: Remove if not used
     public String getFailMessage() {
         return failMessage;
     }
 
+    // ToDo: Remove if not used
     public void setFailMessage(String failMessage) {
         this.failMessage = failMessage;
     }

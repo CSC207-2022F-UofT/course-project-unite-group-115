@@ -17,6 +17,7 @@ public class RanGroupCreateRequestModel {
         return groupName;
     }
 
+    // ToDo: Remove if not used
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
@@ -33,6 +34,7 @@ public class RanGroupCreateRequestModel {
         return groupCreatorName;
     }
 
+    // ToDo: Remove if not used
     public void setGroupCreator(String groupCreator) {
         this.groupCreatorName = groupCreator;
     }
