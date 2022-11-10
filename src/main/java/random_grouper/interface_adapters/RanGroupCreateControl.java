@@ -13,7 +13,7 @@ public class RanGroupCreateControl {
         this.userInput = userInput;
     }
 
-    RanGroupCreateResponseModel createGroup(String groupName, List<String> interests, String groupCreatorName){
+    public RanGroupCreateResponseModel createGroup(String groupName, List<String> interests, String groupCreatorName){
         RanGroupCreateRequestModel requestModel =
                 new RanGroupCreateRequestModel(groupName, interests, groupCreatorName);
 

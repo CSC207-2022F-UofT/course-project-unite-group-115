@@ -29,7 +29,7 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
 
         // ToDo: change when can see User class and repo + add check to ensure interests match users interests?
         List<User> members = new ArrayList<>();
-        User creator = new User(requestModel.getGroupCreator(), new ArrayList<>());
+        User creator = new User(requestModel.getGroupCreator());
         members.add(creator);
         for (String interest : groupInterests) {
             if (!(creator.getInterests().contains(interest))) {
