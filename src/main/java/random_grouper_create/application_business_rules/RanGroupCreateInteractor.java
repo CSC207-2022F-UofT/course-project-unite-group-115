@@ -1,5 +1,7 @@
-package random_grouper.application_business_rules;
+package random_grouper_create.application_business_rules;
 
+import database_classes.GroupRepoInt;
+import database_classes.GroupRepoRequestModel;
 import entities.Group;
 import entities.RandomGroupFactory;
 import entities.User;
@@ -42,7 +44,7 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
 
         // ToDo: start message storage for group once have access to message class?
 
-        // ToDo: update profile when have access to profile class
+        // ToDo: update profile/user when have access to profile/user class
 
         List<String> membersString = new ArrayList<>();
         membersString.add(requestModel.getGroupCreator());

@@ -1,7 +1,7 @@
-package random_grouper.interface_adapters;
+package random_grouper_create.interface_adapters;
 
-import random_grouper.application_business_rules.RanGroupCreateOutputBoundary;
-import random_grouper.application_business_rules.RanGroupCreateResponseModel;
+import random_grouper_create.application_business_rules.RanGroupCreateOutputBoundary;
+import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

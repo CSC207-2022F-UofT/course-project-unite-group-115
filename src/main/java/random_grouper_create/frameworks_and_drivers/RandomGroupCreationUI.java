@@ -1,7 +1,7 @@
-package random_grouper.frameworks_and_drivers;
+package random_grouper_create.frameworks_and_drivers;
 
 import entities.User;
-import random_grouper.interface_adapters.RanGroupCreateControl;
+import random_grouper_create.interface_adapters.RanGroupCreateControl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +13,7 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
     JTextField groupName = new JTextField(15);
     List userInterestList;
     JTextArea selectedInterests;
+    // ToDo: Change when have user class info
     User loggedInUser;
     String currentSelectedInterestsString = "";
     java.util.List<String> finalSelectedInterests = new ArrayList<>();
@@ -30,7 +31,7 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
 
 
         // ToDo: Edit when have access to user class
-        loggedInUser = new User("Test");
+        loggedInUser = new User("Mark");
         String[] creatorInterests = loggedInUser.getInterests().toArray(new String[0]);
 
         userInterestList = new List(creatorInterests.length, true);

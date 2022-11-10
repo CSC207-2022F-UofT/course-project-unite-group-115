@@ -1,4 +1,4 @@
-package random_grouper.interface_adapters;
+package random_grouper_create.interface_adapters;
 
 public class GroupCreationFailed extends RuntimeException {
     public GroupCreationFailed(String errorMessage) {
