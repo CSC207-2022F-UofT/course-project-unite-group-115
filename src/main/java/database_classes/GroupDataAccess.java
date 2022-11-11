@@ -10,6 +10,15 @@ public class GroupDataAccess implements GroupRepoInt {
 
     private final Map<String, GroupRepoRequestModel> groups = new HashMap<>();
 
+    /**
+     * Opens and reads the GroupDatabase (csv file) and puts the read information into a Map.
+     * Each key is a string representation of a group ID and its corresponding value is a data structure
+     * (<GroupRepoRequestModel>) that contains all the information about the group that was stored in the
+     * GroupDatabase (group name, ID, interests, members and whether it's a random group).
+     *
+     * @param csvFilePath path to csv file that acts as the GroupDatabase
+     * @throws IOException throws exception if there is an error related to reading the file
+     */
     public GroupDataAccess(String csvFilePath) throws IOException {
         csvFile = new File(csvFilePath);
 
@@ -44,6 +53,9 @@ public class GroupDataAccess implements GroupRepoInt {
         }
     }
 
+    /**
+     * Writes all group information from the <groups> instance variable (Map) to the GroupDatabase csv file.
+     */
     private void save() {
         BufferedWriter writer;
         try {
@@ -67,7 +79,7 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     /**
-     * Add the group information from requestModel in the GroupRepo
+     * Add the group information from requestModel into the GroupDatabase file.
      *
      * @param requestModel information about group to save
      */
@@ -78,7 +90,7 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     /**
-     * Remove the group with ID, groupID, from the group repo.
+     * Remove the group with ID, groupID, from the GroupDatabase file.
      *
      * @param groupID group's ID
      */
@@ -91,10 +103,15 @@ public class GroupDataAccess implements GroupRepoInt {
     /**
      * Return a map of information about the group with ID, groupID. Each key is a String indicating the
      * information provided by the key.
-     * Each map contains the keys "group name", "group ID", "members", "interests" and "random group?" associated
-     * with their appropriate values.
+     * Each map contains the following keys and their associated values:
+     *      "group name" -> String of the group's name
+     *      "group ID" -> String form of group's ID
+     *      "members" -> List of Strings where each String is a members name
+     *      "interests" -> List of Strings where each String is one of the group's interests
+     *      "random group?" -> boolean value of whether group is a random group
      *
      * @param groupID the ID of a group
+     * @return returns a Map containing information about the group with ID <groupID>
      */
     @Override
     public Map<String, Object> getGroupInfo(String groupID) {
@@ -109,7 +126,8 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     /**
-     * Add User with name, userName, to the members of the group with the ID, groupID.
+     * Update the GroupDatabase by adding User with name, <userName>, to the members of the group with the ID,
+     * <groupID>.
      *
      * @param userName name of an existing User
      * @param groupID  group's ID
@@ -123,7 +141,8 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     /**
-     * Remove User with name, userName, from the members of the group with the ID, groupID.
+     * Update the GroupDatabase by removing User with name, <userName>, from the members of the group with the ID,
+     * <groupID>.
      *
      * @param userName name of an existing User
      * @param groupID  group's ID
@@ -137,7 +156,8 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     /**
-     * Add interests to the existing interests of the group with the ID, groupID.
+     * Update the GroupDatabase by adding interests, <newInterests>, to the existing interests of the group with the
+     * ID, <groupID>.
      *
      * @param newInterests list of interests to be added to the group
      * @param groupID   group's ID
@@ -162,7 +182,8 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     /**
-     * Remove interests from the existing interests of the group with the ID, groupID.
+     * Update the GroupDatabase by removing <interests> from the existing interests of the group with the ID,
+     * <groupID>.
      *
      * @param interests list of interests to be removed from the group
      * @param groupID   group's ID
@@ -178,7 +199,9 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     /**
-     * Return a list of the group IDs of all the random groups.
+     * Get a list of group IDs matching all the random groups stored in the GroupDatabase.
+     *
+     * @return Returns a List of Strings where each String is the String representation of a random groups ID.
      */
     @Override
     public List<String> getRandomGroups() {

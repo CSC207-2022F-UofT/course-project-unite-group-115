@@ -9,6 +9,7 @@ public interface GroupFactory {
      * @param name the name of the group
      * @param interests the interests each group member must possess
      * @param members the members of the group
+     * @return Returns a new group object
      */
     Group createNewGroup(String name, List<String> interests, List<User> members);
 
@@ -19,6 +20,7 @@ public interface GroupFactory {
      * @param interests the interests each group member must possess
      * @param members the members of the group
      * @param id the group id
+     * @return Returns a new group object
      */
     Group recreateExisitingGroup(String name, List<String> interests, List<User> members, String id);
 }

@@ -24,6 +24,14 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
         this.GROUP_FACTORY = groupFactory;
     }
 
+    /**
+     * Create a new random group and save it to the GroupDatabase. The User that creates the group will be
+     * automatically considered a member.
+     * @param requestModel A data structure containing the new group's name and selected interests, as well as the
+     *                     name of the group's creator
+     * @return Returns a data structure containing the group's name and creation time, if the creation was successful.
+     * Or returns a data structure containing a failure message, if the creation was unsuccessful.
+     */
     @Override
     public RanGroupCreateResponseModel createRanGroup(RanGroupCreateRequestModel requestModel) {
         String groupName = requestModel.getGroupName();

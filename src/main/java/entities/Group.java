@@ -3,6 +3,16 @@ package entities;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * A Group object that defines groups of members that can message each other.
+ * Each Group has a name, a list of interests, a universally unique ID, a list of members that are part of the Group,
+ * and a boolean value indicating how members are added to the Group.
+ *      - The Group's interests determine what users can be added to the Group. All members must possess the interests defined
+ *      by the Group.
+ *      - If the <random> boolean is <true> users are only assigned to the Group when they request to be placed in
+ *      a random group. The users are placed in the Group that has the most interests in common with them.
+ *      - If the <random> boolean is <false>, users are only assigned to the Group by other existing members.
+ */
 public class Group {
     private String name;
     private List<String> interests;
@@ -28,7 +38,7 @@ public class Group {
     }
 
     /**
-     * Recreate an existing group.
+     * Recreate an existing group by entering its previous information.
      *
      * @param name the name of the group
      * @param interests the interests each group member must possess
@@ -54,6 +64,8 @@ public class Group {
 
     /**
      * Return a list of the interests that members must possess to be part of the group.
+     *
+     * @return Returns a List of interests (Strings)
      */
     public List<String> getInterests() {
         return this.interests;
@@ -79,12 +91,22 @@ public class Group {
         }
     }
 
+    /**
+     * Remove interests that group members no longer need to possess to be part of the group.
+     *
+     * @param interests interests that should be removed from the group
+     */
     public void removeInterests(List<String> interests) {
         for (String interest : interests) {
             this.interests.remove(interest);
         }
     }
 
+    /**
+     * Get the group's ID
+     *
+     * @return Returns the String form of the group's ID
+     */
     public String getId() {
         return this.ID.toString();
     }
@@ -108,7 +130,7 @@ public class Group {
 
     /**
      * Remove the Users in membersToRemove from the group, if they are part of the group.
-     * If a entities.User from membersToRemove is not part of the group, do nothing.
+     * If a User from membersToRemove is not part of the group, do nothing.
      *
      * @param membersToRemove list of Users to be removed from the group
      */

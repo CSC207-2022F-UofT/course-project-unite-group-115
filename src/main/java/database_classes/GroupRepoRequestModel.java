@@ -9,6 +9,15 @@ public class GroupRepoRequestModel {
     private List<String> members;
     private final boolean random;
 
+    /**
+     * Create a data structure containing all the information about a group.
+     *
+     * @param name name of the group
+     * @param id String representation of group's ID
+     * @param interests List of the group's interests
+     * @param members List of the group's members' names
+     * @param isRandom boolean indicating whether the group is a random group
+     */
     public GroupRepoRequestModel(String name, String id, List<String> interests, List<String> members,
                                  boolean isRandom) {
         this.name = name;
@@ -22,6 +31,7 @@ public class GroupRepoRequestModel {
         return name;
     }
 
+    // ToDo: remove if not used
     public void setName(String name) {
         this.name = name;
     }
