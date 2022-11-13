@@ -1,0 +1,44 @@
+package user_register.application_business_rules;
+
+import entities.User;
+import entities.UserFactory;
+
+import java.time.LocalDateTime;
+import user_register.interface_adapters.UserRegisterPresenter;
+
+// Use case layer
+
+public class UserRegisterInteractor implements UserRegisterInputBoundary {
+
+    final UserRepoInt userRepoInt;
+    final UserRegisterPresenter userPresenter;
+    final UserFactory userFactory;
+
+    public UserRegisterInteractor(UserRepoInt userRepoInterface, UserRegisterPresenter userRegisterPresenter,
+                                  UserFactory userFactory) {
+        this.userRepoInt = userRepoInterface;
+        this.userPresenter = userRegisterPresenter;
+        this.userFactory = userFactory;
+    }
+
+    @Override
+    public UserRegisterResponseModel create(UserRegisterRequestModel requestModel) {
+        if (userRepoInt.existsByName(requestModel.getName())) {
+            return userPresenter.prepareFailView("User already exists.");
+        } else if (!requestModel.getPassword().equals(requestModel.getRepeatPassword())) {
+            return userPresenter.prepareFailView("Passwords don't match.");
+        }
+
+        User user = userFactory.create(requestModel.getName(), requestModel.getPassword());
+        if (!user.passwordIsValid()) {
+            return userPresenter.prepareFailView("User password must have more than 5 characters.");
+        }
+
+        LocalDateTime now = LocalDateTime.now();
+        UserRepoRequestModel userDsModel = new UserRepoRequestModel(user.getName(), user.getPassword(), now);
+        userRepoInt.save(userDsModel);
+
+        UserRegisterResponseModel accountResponseModel = new UserRegisterResponseModel(user.getName(), now.toString());
+        return userPresenter.prepareSuccessView(accountResponseModel);
+    }
+}
