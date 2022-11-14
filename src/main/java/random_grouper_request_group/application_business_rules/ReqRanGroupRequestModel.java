@@ -9,7 +9,12 @@ public class ReqRanGroupRequestModel {
 
     private String userName;
 
-
+    /**
+     * Creates a data structure that contains the information required for a User to be added to a random group.
+     * @param userName the User's name
+     * @param userInterests the User's interests
+     * @param userGroupsIDs the IDs of the groups the User is already apart of
+     */
     public ReqRanGroupRequestModel(String userName, List<String> userInterests, List<String> userGroupsIDs) {
         this.userName = userName;
         this.userInterests = userInterests;

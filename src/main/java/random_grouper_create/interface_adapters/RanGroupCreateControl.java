@@ -18,7 +18,7 @@ public class RanGroupCreateControl {
     }
 
     /**
-     *
+     * Creates a random group using the information inputted by the user.
      * @param groupName the name of the group
      * @param interests a List of interests for the group
      * @param groupCreatorName the name of the User that created the group

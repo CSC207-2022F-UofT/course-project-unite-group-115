@@ -6,12 +6,21 @@ public class ReqRanGroupResponseModel {
     private String successMessage;
     private String failMessage;
 
+    /**
+     * Creates a data structure that contains information about the group the User was successfully added to
+     * @param addedToGroupID the ID of the group the User was added to
+     * @param addedToGroupName the name of the group the User was added to
+     */
     public ReqRanGroupResponseModel(String addedToGroupID, String addedToGroupName) {
         this.addedToGroupID = addedToGroupID;
         this.addedToGroupName = addedToGroupName;
         this.successMessage = "Success";
     }
 
+    /**
+     * Creates a data structure that contains information about a failure to add the User to a random group
+     * @param errorMessage a String containing a message that explains why the error occurred
+     */
     // ToDo: Remove if not used
     public ReqRanGroupResponseModel(String errorMessage) {
         this.failMessage = errorMessage;
