@@ -1,6 +1,7 @@
 package random_grouper_create.frameworks_and_drivers;
 
 import entities.User;
+import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
 import random_grouper_create.interface_adapters.RanGroupCreateControl;
 
 import javax.swing.*;
@@ -39,7 +40,8 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
             userInterestList.add(interest);
         }
 
-        JLabel existingInterestsLabel = new JLabel("Select the interests group members must have:");
+        JLabel existingInterestsLabel = new JLabel("Select the interests group members must have " +
+                "(press control/command to select multiple interersts):");
         existingInterestsLabel.setLabelFor(userInterestList);
 
         userInterestList.addItemListener(this);
@@ -105,8 +107,10 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
                         finalSelectedInterests.add(interest);
                     }
                 }
-                groupCreateControl.createGroup(groupName.getText(), finalSelectedInterests, loggedInUser.getName());
-                JOptionPane.showMessageDialog(this, String.format("%s created", groupName.getText()));
+                RanGroupCreateResponseModel response = groupCreateControl.createGroup(groupName.getText(),
+                        finalSelectedInterests, loggedInUser.getName());
+                JOptionPane.showMessageDialog(this, String.format("%s created at %s",
+                        groupName.getText(), response.getCreationTime()));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }

@@ -16,7 +16,7 @@ public class GroupRepoRequestModel {
      * @param id String representation of group's ID
      * @param interests List of the group's interests
      * @param members List of the group's members' names
-     * @param isRandom boolean indicating whether the group is a random group
+     * @param isRandom whether the group is a random group (members are added by the software based on interests)
      */
     public GroupRepoRequestModel(String name, String id, List<String> interests, List<String> members,
                                  boolean isRandom) {

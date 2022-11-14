@@ -7,6 +7,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class RanGroupCreatePresenter implements RanGroupCreateOutputBoundary {
+
+    /**
+     * Formats the information stored in the RanGroupCreateResponseModel data structure.
+     * @param response the RanGroupCreateResponseModel returned by the interactor
+     * @return returns a formatted RanGroupCreateResponseModel
+     */
     @Override
     public RanGroupCreateResponseModel prepareSuccessView(RanGroupCreateResponseModel response) {
         LocalDateTime responseTime = LocalDateTime.parse(response.getCreationTime());

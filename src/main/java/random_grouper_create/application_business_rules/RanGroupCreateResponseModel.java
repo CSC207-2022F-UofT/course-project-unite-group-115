@@ -8,11 +8,21 @@ public class RanGroupCreateResponseModel {
     private String creationTime;
     private String failMessage;
 
+    /**
+     * Creates a data structure that contains information about a successful group creation
+     * @param createdGroupName name of the created group
+     * @param creationTime time the group was created
+     */
     public RanGroupCreateResponseModel(String createdGroupName, String creationTime){
         this.success = true;
         this.createdGroupName = createdGroupName;
         this.creationTime = creationTime;
     }
+
+    /**
+     * Creates a data structure that contains information about a failure to create a group
+     * @param failMessage a String containing a message that explains why the error occurred
+     */
     // ToDo: Remove if not used
     public RanGroupCreateResponseModel(String failMessage){
         this.success = false;
