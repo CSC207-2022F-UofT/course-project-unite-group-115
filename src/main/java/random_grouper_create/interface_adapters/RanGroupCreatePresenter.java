@@ -9,7 +9,8 @@ import java.time.format.DateTimeFormatter;
 public class RanGroupCreatePresenter implements RanGroupCreateOutputBoundary {
 
     /**
-     * Formats the information stored in the RanGroupCreateResponseModel data structure.
+     * Formats the information stored in the RanGroupCreateResponseModel data structure when group creation was
+     * succuessful.
      * @param response the RanGroupCreateResponseModel returned by the interactor
      * @return returns a formatted RanGroupCreateResponseModel
      */
@@ -20,6 +21,10 @@ public class RanGroupCreatePresenter implements RanGroupCreateOutputBoundary {
         return response;
     }
 
+    /**
+     * Throws a GroupCreationFailure error.
+     * @param errorMessage a String describing the error that occurred
+     */
     @Override
     public RanGroupCreateResponseModel prepareFailView(String errorMessage) {
         throw new GroupCreationFailure(errorMessage);

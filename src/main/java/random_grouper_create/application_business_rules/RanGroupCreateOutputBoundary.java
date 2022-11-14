@@ -8,5 +8,9 @@ public interface RanGroupCreateOutputBoundary {
      */
     RanGroupCreateResponseModel prepareSuccessView(RanGroupCreateResponseModel response);
 
+    /**
+     * Throws an error that contains an <errorMessage> that describes the error that occurred.
+     * @param errorMessage a String describing the error that occurred.
+     */
     RanGroupCreateResponseModel prepareFailView(String errorMessage);
 }
