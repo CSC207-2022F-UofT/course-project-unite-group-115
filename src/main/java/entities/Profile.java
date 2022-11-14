@@ -68,7 +68,7 @@ public class Profile{
         this.groups.remove(group);
     }
 
-    public ArrayList<User> setFriends() {
+    public ArrayList<User> getFriends() {
         return this.friends;
     }
     public void setFriends(ArrayList<User> friends) {
