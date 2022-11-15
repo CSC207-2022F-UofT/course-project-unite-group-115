@@ -21,14 +21,13 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args){
-        // Random Group Creation Test
-        JFrame application = new JFrame("Random Group Creation Test");
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
-        application.add(screens);
+        // Random Group Creation Window Creation
+        JFrame groupCreationApplication = new JFrame("Random Group Creation Test");
+        CardLayout groupCreationCardLayout = new CardLayout();
+        JPanel groupCreationScreens = new JPanel(groupCreationCardLayout);
+        groupCreationApplication.add(groupCreationScreens);
 
         // Create the parts to plug into the Use Case+Entities
-        // ToDo: Can be changed - created for testing
         GroupRepoInt groupData;
         try {
             groupData = new GroupDataAccess("./groups.csv");
@@ -42,27 +41,26 @@ public class Main {
                 ranGroupCreateOutputBoundary, ranGroupFactory);
         RanGroupCreateControl controller = new RanGroupCreateControl(interactor);
 
-        RandomGroupCreationUI createScreen = new RandomGroupCreationUI(controller);
-        screens.add(createScreen, "welcome");
-        cardLayout.show(screens, "create");
-        application.pack();
-        application.setVisible(true);
+        RandomGroupCreationUI creationScreen = new RandomGroupCreationUI(controller);
+        groupCreationScreens.add(creationScreen, "welcome");
+        groupCreationCardLayout.show(groupCreationScreens, "create");
+        groupCreationApplication.pack();
 
         // Request Random Group Test
-        JFrame application2 = new JFrame("Request Random Group Test");
-        CardLayout cardLayout2 = new CardLayout();
-        JPanel screen2 = new JPanel(cardLayout2);
-        application2.add(screen2);
+        JFrame requestGroupApplication = new JFrame("Request Random Group Test");
+        CardLayout requestGroupCardLayout = new CardLayout();
+        JPanel requestGroupScreens = new JPanel(requestGroupCardLayout);
+        requestGroupApplication.add(requestGroupScreens);
 
         ReqRanGroupOutputBoundary reqRanGroupOutputBoundary = new ReqRanGroupPresenter();
         ReqRanGroupInputBoundary reqRanGroupInteractor = new ReqRanGroupInteractor(groupData,
                 reqRanGroupOutputBoundary);
         ReqRanGroupController reqRanGroupController = new ReqRanGroupController(reqRanGroupInteractor);
 
-        RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController);
-        screen2.add(reqGroupScreen, "welcome");
-        cardLayout2.show(screen2, "request");
-        application2.pack();
-        application2.setVisible(true);
+        RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController,groupCreationApplication);
+        requestGroupScreens.add(reqGroupScreen, "welcome");
+        requestGroupCardLayout.show(requestGroupScreens, "request");
+        requestGroupApplication.pack();
+        requestGroupApplication.setVisible(true);
     }
 }
