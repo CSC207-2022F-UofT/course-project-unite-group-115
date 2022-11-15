@@ -15,11 +15,11 @@ public class RequestRandomGroupUI extends JPanel implements ActionListener {
     JTextArea instructions = new JTextArea("Click below to be added to a random group that best matches with your" +
             " interests!");
 
-    // ToDo: Change when have user class info
-    User loggedInUser;
+    String loggedInUserName;
 
-    public RequestRandomGroupUI(ReqRanGroupController controller) {
+    public RequestRandomGroupUI(ReqRanGroupController controller, String loggedInUserName) {
         this.reqRanGroupController = controller;
+        this.loggedInUserName = loggedInUserName;
 
         JLabel title = new JLabel("Request Random Group");
 
@@ -40,9 +40,6 @@ public class RequestRandomGroupUI extends JPanel implements ActionListener {
         this.add(title);
         this.add(instructions);
         this.add(buttons);
-
-        // ToDo: Edit when have access to user class
-        loggedInUser = new User("Joe");
     }
 
     /**
@@ -57,8 +54,12 @@ public class RequestRandomGroupUI extends JPanel implements ActionListener {
         if (evt.getActionCommand().equals("Request Random Group")) {
             try {
                 ReqRanGroupPresenter presenter = new ReqRanGroupPresenter();
+                // ToDo: Need access to User's interests and groups from profile
+                String[] userInterests = loggedInUser.getInterests().toArray(new String[0]);
+                String[] userGroups = loggedInUser.getGroups();
+
                 String message = presenter.getSuccessMessage(reqRanGroupController.requestRanGroup(
-                        loggedInUser.getName(), loggedInUser.getInterests(), loggedInUser.getGroups()));
+                        loggedInUserName, userInterests, userGroups));
                 JOptionPane.showMessageDialog(this, message);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());

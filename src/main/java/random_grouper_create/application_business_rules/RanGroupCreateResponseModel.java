@@ -2,8 +2,6 @@ package random_grouper_create.application_business_rules;
 
 public class RanGroupCreateResponseModel {
     private boolean success;
-
-    // ToDo: change to GroupID?
     private String createdGroupName;
     private String creationTime;
     private String failMessage;

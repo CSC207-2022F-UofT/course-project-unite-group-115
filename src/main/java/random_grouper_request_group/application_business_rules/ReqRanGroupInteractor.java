@@ -8,12 +8,15 @@ import java.util.Map;
 public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
     final GroupRepoInt GROUP_REPO_ACCESS;
     final ReqRanGroupOutputBoundary reqRanGroupOutputBoundary;
+    final UserRepoInt USER_REPO_ACCESS;
     // ToDo: set max size after discussing with group
     final int MAX_GROUP_SIZE = 8;
 
-    public ReqRanGroupInteractor(GroupRepoInt groupRepoAccess, ReqRanGroupOutputBoundary reqRanGroupOutputBoundary) {
+    public ReqRanGroupInteractor(GroupRepoInt groupRepoAccess, ReqRanGroupOutputBoundary reqRanGroupOutputBoundary,
+                                 UserRepoInt userRepoAccess) {
         this.GROUP_REPO_ACCESS = groupRepoAccess;
         this.reqRanGroupOutputBoundary = reqRanGroupOutputBoundary;
+        this.USER_REPO_ACCESS = userRepoAccess;
     }
 
     @Override
@@ -50,7 +53,8 @@ public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
         }
         else {
             GROUP_REPO_ACCESS.addUserToGroup(requestModel.getUserName(), bestRanGroupID);
-            // ToDo: add group to user's profile once have access to code
+            // ToDo: update when knowing what we are storing as a group in a profile
+            USER_REPO_ACCESS.addGroup(bestRanGroupID);
             requestModel.addToUserGroups(bestRanGroupID);
             ReqRanGroupResponseModel responseModel = new ReqRanGroupResponseModel(bestRanGroupID, bestRanGroupName);
             return  reqRanGroupOutputBoundary.prepareSuccessView(responseModel);

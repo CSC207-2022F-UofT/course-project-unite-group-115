@@ -36,13 +36,21 @@ public class Main {
         catch (IOException e) {
             throw new RuntimeException("Could not create group database file.");
         }
+        UserRepoInt userData;
+        try {
+            userData = new UserDataAccess("./users.csv");
+        } catch (IOException e) {
+            throw new RuntimeException("Could not create file.");
+        }
         RanGroupCreateOutputBoundary ranGroupCreateOutputBoundary = new RanGroupCreatePresenter();
         RandomGroupFactory ranGroupFactory = new RandomGroupFactory();
         RanGroupCreateInputBoundary interactor = new RanGroupCreateInteractor(groupData,
-                ranGroupCreateOutputBoundary, ranGroupFactory);
+                ranGroupCreateOutputBoundary, ranGroupFactory, userData);
         RanGroupCreateControl controller = new RanGroupCreateControl(interactor);
 
-        RandomGroupCreationUI createScreen = new RandomGroupCreationUI(controller);
+        // ToDo: need the logged in User's name
+        String loggedInUser = "";
+        RandomGroupCreationUI createScreen = new RandomGroupCreationUI(controller, loggedInUser);
         screens.add(createScreen, "welcome");
         cardLayout.show(screens, "create");
         application.pack();
@@ -56,10 +64,10 @@ public class Main {
 
         ReqRanGroupOutputBoundary reqRanGroupOutputBoundary = new ReqRanGroupPresenter();
         ReqRanGroupInputBoundary reqRanGroupInteractor = new ReqRanGroupInteractor(groupData,
-                reqRanGroupOutputBoundary);
+                reqRanGroupOutputBoundary, userData);
         ReqRanGroupController reqRanGroupController = new ReqRanGroupController(reqRanGroupInteractor);
 
-        RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController);
+        RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController, loggedInUser);
         screen2.add(reqGroupScreen, "welcome");
         cardLayout2.show(screen2, "request");
         application2.pack();

@@ -13,7 +13,6 @@ public class RanGroupCreateControl {
         this.USER_INPUT = userInput;
     }
 
-    // ToDo: Make return void?
     public RanGroupCreateResponseModel createGroup(String groupName, List<String> interests, String groupCreatorName){
         RanGroupCreateRequestModel requestModel =
                 new RanGroupCreateRequestModel(groupName, interests, groupCreatorName);

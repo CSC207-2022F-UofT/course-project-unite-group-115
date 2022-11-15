@@ -14,14 +14,14 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
     JTextField groupName = new JTextField(15);
     List userInterestList;
     JTextArea selectedInterests;
-    // ToDo: Change when have user class info
-    User loggedInUser;
+    String loggedInUsersName;
     String currentSelectedInterestsString = "";
     java.util.List<String> finalSelectedInterests = new ArrayList<>();
     RanGroupCreateControl groupCreateControl;
 
-    public RandomGroupCreationUI(RanGroupCreateControl controller) {
+    public RandomGroupCreationUI(RanGroupCreateControl controller, String loggedInUsersName) {
         this.groupCreateControl = controller;
+        this.loggedInUsersName = loggedInUsersName;
 
         JLabel title = new JLabel("Random Group Creator");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -31,8 +31,7 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
         groupNameLabel.setHorizontalTextPosition(JLabel.LEFT);
 
 
-        // ToDo: Edit when have access to user class
-        loggedInUser = new User("Mark");
+        // ToDo: Need access to User's interests from profile
         String[] creatorInterests = loggedInUser.getInterests().toArray(new String[0]);
 
         userInterestList = new List(creatorInterests.length, true);
@@ -108,7 +107,7 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
                     }
                 }
                 RanGroupCreateResponseModel response = groupCreateControl.createGroup(groupName.getText(),
-                        finalSelectedInterests, loggedInUser.getName());
+                        finalSelectedInterests, this.loggedInUsersName);
                 JOptionPane.showMessageDialog(this, String.format("%s created at %s",
                         groupName.getText(), response.getCreationTime()));
             } catch (Exception e) {

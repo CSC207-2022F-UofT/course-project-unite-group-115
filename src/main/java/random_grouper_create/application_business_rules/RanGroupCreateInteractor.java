@@ -14,14 +14,16 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
     final GroupRepoInt GROUP_REPO_ACCESS;
     final RanGroupCreateOutputBoundary GROUP_CREATE_OUTPUT_BOUNDARY;
     final RandomGroupFactory GROUP_FACTORY;
+    final UserRepoInt USER_REPO_ACCESS;
     // ToDo: for message storage - final MessageRepoInt messageRepoAccess;
 
     public RanGroupCreateInteractor(GroupRepoInt groupRepoAccess,
                                     RanGroupCreateOutputBoundary groupCreateOutputBoundary,
-                                    RandomGroupFactory groupFactory) {
+                                    RandomGroupFactory groupFactory, UserRepoInt userRepoAccess) {
         this.GROUP_REPO_ACCESS = groupRepoAccess;
         this.GROUP_CREATE_OUTPUT_BOUNDARY = groupCreateOutputBoundary;
         this.GROUP_FACTORY = groupFactory;
+        this.USER_REPO_ACCESS = userRepoAccess;
     }
 
     /**
@@ -37,27 +39,18 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
         String groupName = requestModel.getGroupName();
         List<String> groupInterests = requestModel.getInterests();
 
-        // ToDo: change when can see User class and repo + add check to ensure interests match users interests?
-        List<User> members = new ArrayList<>();
-        User creator = new User(requestModel.getGroupCreator());
-        members.add(creator);
-        for (String interest : groupInterests) {
-            if (!(creator.getInterests().contains(interest))) {
-                return GROUP_CREATE_OUTPUT_BOUNDARY.prepareFailView("You have not listed " +
-                        interest + " as one of your interests.");
-            }
-        }
+        List<String> members = new ArrayList<>();
+        members.add(requestModel.getGroupCreator());
 
         Group group = GROUP_FACTORY.createNewGroup(groupName, groupInterests, members);
 
         // ToDo: start message storage for group once have access to message class?
 
-        // ToDo: update profile/user when have access to profile/user class
+        // ToDo: update when knowing what we are storing as a group in a profile
+        USER_REPO_ACCESS.addGroup(group.getId());
 
-        List<String> membersString = new ArrayList<>();
-        membersString.add(requestModel.getGroupCreator());
         GroupRepoRequestModel repoRequestModel = new GroupRepoRequestModel(groupName, group.getId(),
-                groupInterests, membersString, true);
+                groupInterests, members, true);
         GROUP_REPO_ACCESS.addGroup(repoRequestModel);
 
         LocalDateTime creationTime = LocalDateTime.now();

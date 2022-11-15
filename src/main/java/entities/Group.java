@@ -5,8 +5,8 @@ import java.util.UUID;
 
 /**
  * A Group object that defines groups of members that can message each other.
- * Each Group has a name, a list of interests, a universally unique ID, a list of members that are part of the Group,
- * and a boolean value indicating how members are added to the Group.
+ * Each Group has a name, a list of interests, a universally unique ID, a list of members' names who are part of the
+ * Group, and a boolean value indicating how members are added to the Group.
  *      - The Group's interests determine what users can be added to the Group. All members must possess the interests defined
  *      by the Group.
  *      - If the <random> boolean is <true> users are only assigned to the Group when they request to be placed in
@@ -17,7 +17,7 @@ public class Group {
     private String name;
     private List<String> interests;
     private final UUID ID;
-    private List<User> members;
+    private List<String> members;
     private final boolean random;
 
     /**
@@ -29,7 +29,7 @@ public class Group {
      * @param members the members of the group
      * @param isRandom if the group has random members assigned based on interests
      */
-    public Group(String name, List<String> interests, List<User> members, boolean isRandom) {
+    public Group(String name, List<String> interests, List<String> members, boolean isRandom) {
         this.name = name;
         this.interests = interests;
         this.members = members;
@@ -46,7 +46,7 @@ public class Group {
      * @param isRandom if the group has random members assigned based on interests
      * @param id the group id
      */
-    public Group(String name, List<String> interests, List<User> members, boolean isRandom, String id) {
+    public Group(String name, List<String> interests, List<String> members, boolean isRandom, String id) {
         this.name = name;
         this.interests = interests;
         this.members = members;
@@ -111,7 +111,7 @@ public class Group {
         return this.ID.toString();
     }
 
-    public List<User> getMembers() {
+    public List<String> getMembers() {
         return this.members;
     }
 
@@ -120,8 +120,8 @@ public class Group {
      *
      * @param membersToAdd Users to be added to the group
      */
-    public void addMembers(List<User> membersToAdd) {
-        for (User member : membersToAdd) {
+    public void addMembers(List<String> membersToAdd) {
+        for (String member : membersToAdd) {
             if (!(this.members.contains(member))) {
                 this.members.add(member);
             }
@@ -134,8 +134,8 @@ public class Group {
      *
      * @param membersToRemove list of Users to be removed from the group
      */
-    public void removeMembers(List<User> membersToRemove) {
-        for (User member : membersToRemove) {
+    public void removeMembers(List<String> membersToRemove) {
+        for (String member : membersToRemove) {
             this.members.remove(member);
         }
     }
