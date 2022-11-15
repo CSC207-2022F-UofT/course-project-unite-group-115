@@ -1,6 +1,5 @@
 package random_grouper_create.application_business_rules;
 
-import database_classes.GroupRepoInt;
 import database_classes.GroupRepoRequestModel;
 import entities.Group;
 import entities.RandomGroupFactory;
@@ -11,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
-    final GroupRepoInt GROUP_REPO_ACCESS;
+    final RanGroupCreateDataAccessInt GROUP_REPO_ACCESS;
     final RanGroupCreateOutputBoundary GROUP_CREATE_OUTPUT_BOUNDARY;
     final RandomGroupFactory GROUP_FACTORY;
     // ToDo: for message storage - final MessageRepoInt messageRepoAccess;
 
-    public RanGroupCreateInteractor(GroupRepoInt groupRepoAccess,
+    public RanGroupCreateInteractor(RanGroupCreateDataAccessInt groupRepoAccess,
                                     RanGroupCreateOutputBoundary groupCreateOutputBoundary,
                                     RandomGroupFactory groupFactory) {
         this.GROUP_REPO_ACCESS = groupRepoAccess;

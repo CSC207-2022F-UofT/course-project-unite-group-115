@@ -1,17 +1,16 @@
 package random_grouper_request_group.application_business_rules;
 
-import database_classes.GroupRepoInt;
-
 import java.util.List;
 import java.util.Map;
 
 public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
-    final GroupRepoInt GROUP_REPO_ACCESS;
+    final ReqRanGroupDataAccessInt GROUP_REPO_ACCESS;
     final ReqRanGroupOutputBoundary reqRanGroupOutputBoundary;
     // ToDo: set max size after discussing with group
     final int MAX_GROUP_SIZE = 8;
 
-    public ReqRanGroupInteractor(GroupRepoInt groupRepoAccess, ReqRanGroupOutputBoundary reqRanGroupOutputBoundary) {
+    public ReqRanGroupInteractor(ReqRanGroupDataAccessInt groupRepoAccess,
+                                 ReqRanGroupOutputBoundary reqRanGroupOutputBoundary) {
         this.GROUP_REPO_ACCESS = groupRepoAccess;
         this.reqRanGroupOutputBoundary = reqRanGroupOutputBoundary;
     }

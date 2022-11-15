@@ -1,5 +1,4 @@
 import entities.RandomGroupFactory;
-import database_classes.GroupRepoInt;
 import random_grouper_create.application_business_rules.RanGroupCreateInputBoundary;
 import random_grouper_create.application_business_rules.RanGroupCreateInteractor;
 import random_grouper_create.application_business_rules.RanGroupCreateOutputBoundary;
@@ -29,7 +28,7 @@ public class Main {
 
         // Create the parts to plug into the Use Case+Entities
         // ToDo: Can be changed - created for testing
-        GroupRepoInt groupData;
+        GroupDataAccess groupData;
         try {
             groupData = new GroupDataAccess("./groups.csv");
         }
