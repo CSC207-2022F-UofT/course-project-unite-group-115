@@ -57,5 +57,20 @@ public class LoginScreen extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
+        if (evt.getActionCommand().equals("Log in")) {
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+            JFrame application4 = new LoggedInScreen();
+            application4.pack();
+            application4.setVisible(true);
+        } else if (evt.getActionCommand().equals("Cancel")) {
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+            JFrame application2 = new WelcomeScreen();
+            application2.pack();
+            application2.setVisible(true);
+        }
     }
 }

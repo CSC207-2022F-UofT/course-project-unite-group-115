@@ -21,24 +21,36 @@ public class LoggedInScreen extends JFrame implements ActionListener {
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton logOut = new JButton("Log out");
-        JButton changePassword = new JButton("Change password");
-
-        LabelTextPanel usernameInfo = new LabelTextPanel(
-                new JLabel("Username"), username);
-        username.setEditable(false);
+        JButton profile = new JButton("Profile");
+        JButton chats = new JButton("Chats");
+        JButton friends = new JButton("Friends");
+        JButton groups = new JButton("Groups");
+//        JButton changePassword = new JButton("Change password");
+//
+//        LabelTextPanel usernameInfo = new LabelTextPanel(
+//                new JLabel("Username"), username);
+//        username.setEditable(false);
 
         JPanel buttons = new JPanel();
         buttons.add(logOut);
-        buttons.add(changePassword);
+        buttons.add(profile);
+        buttons.add(chats);
+        buttons.add(friends);
+        buttons.add(groups);
+//        buttons.add(changePassword);
 
         logOut.addActionListener(this);
-        changePassword.addActionListener(this);
+        profile.addActionListener(this);
+        chats.addActionListener(this);
+        friends.addActionListener(this);
+        groups.addActionListener(this);
+//        changePassword.addActionListener(this);
 
         JPanel main = new JPanel();
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
 
         main.add(title);
-        main.add(usernameInfo);
+//        main.add(usernameInfo);
         main.add(buttons);
 
         this.setContentPane(main);
@@ -50,5 +62,13 @@ public class LoggedInScreen extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
+        if (evt.getActionCommand().equals("Log out")) {
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+            JFrame application3 = new LoginScreen();
+            application3.pack();
+            application3.setVisible(true);
+        }
     }
 }

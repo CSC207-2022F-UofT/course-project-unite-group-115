@@ -92,7 +92,7 @@ public class UserDataAccess implements UserRepoInt {
             writer.newLine();
 
             for (UserRepoRequestModel user : accounts.values()) {
-                String line = String.format("%s,%s,%s,null,null,null,null,null,null,null,null,null",
+                String line = String.format("%s,%s,%s,,,,,,,,,",
                         user.getName(), user.getPassword(), user.getCreationTime());
                 writer.write(line);
                 writer.newLine();

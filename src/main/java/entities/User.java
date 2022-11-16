@@ -12,15 +12,15 @@ public class User {
     public User(String userName, String passWord) {
         this.name = userName;
         this.passWord  = passWord;
-        this.profile.setProfileName("");
-        this.profile.setDob(LocalDate.of(2000, 1, 1));
-        this.profile.setDescription("");
-        this.profile.setSocialLinks(new ArrayList<String>());
-        this.profile.setSensitiveWords(new ArrayList<String>());
-        this.profile.setInterests(new ArrayList<String>());
-        this.profile.setGroups(new ArrayList<String>());
-        this.profile.setFriends(new ArrayList<User>());
-        this.profile.setBlockedUsers(new ArrayList<User>());
+//        this.profile.setProfileName("");
+//        this.profile.setDob(LocalDate.of(2000, 1, 1));
+//        this.profile.setDescription("");
+//        this.profile.setSocialLinks(new ArrayList<String>());
+//        this.profile.setSensitiveWords(new ArrayList<String>());
+//        this.profile.setInterests(new ArrayList<String>());
+//        this.profile.setGroups(new ArrayList<String>());
+//        this.profile.setFriends(new ArrayList<User>());
+//        this.profile.setBlockedUsers(new ArrayList<User>());
     }
 
     public boolean passwordIsValid() {

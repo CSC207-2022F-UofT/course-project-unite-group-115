@@ -72,14 +72,22 @@ public class RegisterScreen extends JPanel implements ActionListener {
      */
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
-
-        try {
-            userRegisterController.create(username.getText(),
-                    String.valueOf(password.getPassword()),
-                    String.valueOf(repeatPassword.getPassword()));
-            JOptionPane.showMessageDialog(this, String.format("%s created.", username.getText()));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+        if (evt.getActionCommand().equals("Sign up")) {
+            try {
+                userRegisterController.create(username.getText(),
+                        String.valueOf(password.getPassword()),
+                        String.valueOf(repeatPassword.getPassword()));
+                JOptionPane.showMessageDialog(this, String.format("%s created.", username.getText()));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        } else if (evt.getActionCommand().equals("Cancel")) {
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+            JFrame application2 = new WelcomeScreen();
+            application2.pack();
+            application2.setVisible(true);
         }
     }
 }
