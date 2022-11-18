@@ -3,6 +3,11 @@ package user_register.frameworks_and_drivers;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 // Frameworks/Drivers layer
 
@@ -58,12 +63,47 @@ public class LoginScreen extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
         if (evt.getActionCommand().equals("Log in")) {
-            JComponent component = (JComponent) evt.getSource();
-            Window win = SwingUtilities.getWindowAncestor(component);
-            win.dispose();
-            JFrame application4 = new LoggedInScreen();
-            application4.pack();
-            application4.setVisible(true);
+            try {
+                final Map<String, Integer> headers = new LinkedHashMap<>();
+                headers.put("userName", 0);
+                headers.put("password", 1);
+                headers.put("creationTime", 2);
+                headers.put("profileName", 3);
+                headers.put("dob", 4);
+                headers.put("description", 5);
+                headers.put("socialLinks", 6);
+                headers.put("sensitiveWords", 7);
+                headers.put("interests", 8);
+                headers.put("groups", 9);
+                headers.put("friends", 10);
+                headers.put("blockedUsers", 11);
+
+                BufferedReader reader = new BufferedReader(new FileReader("./src/main/java/databases/users.csv"));
+                reader.readLine(); // skip header
+//                if ((reader.readLine()) == null) {
+//                    JOptionPane.showMessageDialog(this, "No users in Database.");
+//                }
+                String row;
+                while ((row = reader.readLine()) != null) {
+                    String[] col = row.split(",");
+                    if (Objects.equals(String.valueOf(col[headers.get("userName")]), username.getText()) &
+                            Objects.equals(String.valueOf(col[headers.get("password")]), password.getText())) {
+                        JComponent component = (JComponent) evt.getSource();
+                        Window win = SwingUtilities.getWindowAncestor(component);
+                        win.dispose();
+                        JFrame application4 = new LoggedInScreen();
+                        application4.pack();
+                        application4.setVisible(true);
+                        JOptionPane.showMessageDialog(this, String.format("%s Logged In.", username.getText()));
+                    } else {
+//                        throw new RuntimeException("User does not exist");
+                        JOptionPane.showMessageDialog(this, String.format("User %s does not exist OR Incorrect Password", username.getText()));
+                    }
+                }
+                reader.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         } else if (evt.getActionCommand().equals("Cancel")) {
             JComponent component = (JComponent) evt.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);

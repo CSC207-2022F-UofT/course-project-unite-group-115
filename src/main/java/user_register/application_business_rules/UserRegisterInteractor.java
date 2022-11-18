@@ -23,15 +23,16 @@ public class UserRegisterInteractor implements UserRegisterInputBoundary {
 
     @Override
     public UserRegisterResponseModel create(UserRegisterRequestModel requestModel) {
+        User user = userFactory.create(requestModel.getName(), requestModel.getPassword());
+        if (!user.nameIsValid()) {return userPresenter.prepareFailView("User name must not be empty.");}
         if (userRepoInt.existsByName(requestModel.getName())) {
             return userPresenter.prepareFailView("User already exists.");
-        } else if (!requestModel.getPassword().equals(requestModel.getRepeatPassword())) {
-            return userPresenter.prepareFailView("Passwords don't match.");
         }
-
-        User user = userFactory.create(requestModel.getName(), requestModel.getPassword());
         if (!user.passwordIsValid()) {
             return userPresenter.prepareFailView("User password must have more than 5 characters.");
+        }
+        if (!requestModel.getPassword().equals(requestModel.getRepeatPassword())) {
+            return userPresenter.prepareFailView("Passwords don't match.");
         }
 
         LocalDateTime now = LocalDateTime.now();
