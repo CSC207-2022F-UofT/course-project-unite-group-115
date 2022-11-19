@@ -1,0 +1,6 @@
+package screens;
+
+//
+class MessageDataMapper{
+
+}
