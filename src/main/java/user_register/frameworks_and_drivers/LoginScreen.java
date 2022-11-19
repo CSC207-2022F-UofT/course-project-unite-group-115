@@ -10,8 +10,8 @@ import java.util.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 // Frameworks/Drivers layer
-
 public class LoginScreen extends JFrame implements ActionListener {
+    public String userName = "";
     /**
      * The username chosen by the user
      */
@@ -88,6 +88,7 @@ public class LoginScreen extends JFrame implements ActionListener {
                     String[] col = row.split(",");
                     if (Objects.equals(String.valueOf(col[headers.get("userName")]), username.getText()) &
                             Objects.equals(String.valueOf(col[headers.get("password")]), password.getText())) {
+                        userName = username.getText();
                         JComponent component = (JComponent) evt.getSource();
                         Window win = SwingUtilities.getWindowAncestor(component);
                         win.dispose();
@@ -112,5 +113,9 @@ public class LoginScreen extends JFrame implements ActionListener {
             application2.pack();
             application2.setVisible(true);
         }
+    }
+
+    public String getUserName() {
+        return userName;
     }
 }
