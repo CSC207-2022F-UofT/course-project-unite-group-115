@@ -1,11 +1,11 @@
 package reaction_use_case;
 
-public class ReactionCreateResponseModel {
+public class ReactionResponseModel {
     private String reaction;
 
     private int messageID;
 
-    public ReactionCreateResponseModel(String reaction, int messageID){
+    public ReactionResponseModel(String reaction, int messageID){
         this.reaction = reaction;
         this.messageID = messageID;
     }

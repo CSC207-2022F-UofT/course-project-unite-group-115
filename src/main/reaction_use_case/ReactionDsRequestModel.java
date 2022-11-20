@@ -1,12 +1,10 @@
 package reaction_use_case;
 
-import java.time.LocalDateTime;
-
-public class ReactionCreateDsRequestModel {
+public class ReactionDsRequestModel {
     private final String reaction;
 
     private final int messageID;
-    public ReactionCreateDsRequestModel(String reaction, int messageID){
+    public ReactionDsRequestModel(String reaction, int messageID){
         this.reaction = reaction;
         this.messageID = messageID;
     }
