@@ -1,5 +1,7 @@
 package MessageUserCase;
 
+import Databases.MessageDsRequestModel;
+import Databases.MessageRepoInt;
 import Entity.Message;
 import Entity.MessageFactory;
 import interface_adapters.MessagePresenter;
@@ -7,7 +9,7 @@ import interface_adapters.MessagePresenter;
 import java.time.LocalDateTime;
 
 public class MessageInteractor implements MessageInputBoundary {
-    final MessageRepoInt MessageRepoInt;
+    final Databases.MessageRepoInt MessageRepoInt;
     final MessagePresenter MessagePresenter;
     final MessageFactory messageFactory;
 
@@ -25,7 +27,8 @@ public class MessageInteractor implements MessageInputBoundary {
         Message message = MessageFactory.create(requestModel.getContent(), requestModel.getSender(), requestModel.getReceiver());
         LocalDateTime now = LocalDateTime.now();
 
-        MessageDsRequestModel MessageDsModel = new MessageDsRequestModel(message.getContent(), message.getSender(), message.getReceiver(), now);
+        MessageDsRequestModel MessageDsModel =
+                new MessageDsRequestModel(message.getContent(), message.getSender(), message.getReceiver(), message.getID().toString(),now);
         MessageRepoInt.save(MessageDsModel);
 
         MessageResponseModel Messageresponsemodel = new MessageResponseModel(message.getSender(),now.toString()); //?
