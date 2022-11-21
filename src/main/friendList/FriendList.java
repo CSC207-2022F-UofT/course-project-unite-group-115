@@ -88,7 +88,7 @@ public class FriendList {
         The method of adding a friend
         - if you are already friends, print notice
         - else add friend successly
-        tdl:
+        td:
          1. solve how to determine if you can add a friend that blocked you.
          2. if wrong input the user name
          */
