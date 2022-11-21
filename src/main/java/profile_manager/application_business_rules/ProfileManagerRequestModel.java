@@ -4,29 +4,30 @@ import profile_manager.frameworks_and_drivers.LoginScreen;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileManagerRequestModel {
     private String userName;
     private String profileName;
     private LocalDate dob;
     private String description;
-    private ArrayList<String> socialLinks;
-    private ArrayList<String> sensitiveWords;
-    private ArrayList<String> interests;
-    private ArrayList<String> groups;
-    private ArrayList<String> friends;
-    private ArrayList<String> blockedUsers;
+    private List<String> socialLinks;
+    private List<String> sensitiveWords;
+    private List<String> interests;
+    private List<String> groups;
+    private List<String> friends;
+    private List<String> blockedUsers;
 
     public ProfileManagerRequestModel(String userName,
                                       String profileName,
                                       LocalDate dob,
                                       String description,
-                                      ArrayList<String> socialLinks,
-                                      ArrayList<String> sensitiveWords,
-                                      ArrayList<String> interests,
-                                      ArrayList<String> groups,
-                                      ArrayList<String> friends,
-                                      ArrayList<String> blockedUsers) {
+                                      List<String> socialLinks,
+                                      List<String> sensitiveWords,
+                                      List<String> interests,
+                                      List<String> groups,
+                                      List<String> friends,
+                                      List<String> blockedUsers) {
 
         this.userName = userName;
         this.profileName = profileName;
@@ -65,7 +66,7 @@ public class ProfileManagerRequestModel {
         this.description = description;
     }
 
-    public ArrayList<String> getSocialLinks() {
+    public List<String> getSocialLinks() {
         return this.socialLinks;
     }
     public void setSocialLinks(ArrayList<String> socialLinks) {
@@ -78,7 +79,7 @@ public class ProfileManagerRequestModel {
         this.socialLinks.remove(socialLink);
     }
 
-    public ArrayList<String> getSensitiveWords() {
+    public List<String> getSensitiveWords() {
         return this.sensitiveWords;
     }
     public void setSensitiveWords(ArrayList<String> sensitiveWords) {
@@ -91,7 +92,7 @@ public class ProfileManagerRequestModel {
         this.sensitiveWords.remove(sensitiveWord);
     }
 
-    public ArrayList<String> getInterests() {
+    public List<String> getInterests() {
         return this.interests;
     }
     public void setInterests(ArrayList<String> interests) {
@@ -104,7 +105,7 @@ public class ProfileManagerRequestModel {
         this.interests.remove(interest);
     }
 
-    public ArrayList<String> getGroups() {
+    public List<String> getGroups() {
         return this.groups;
     }
     public void setGroups(ArrayList<String> groups) {
@@ -117,7 +118,7 @@ public class ProfileManagerRequestModel {
         this.groups.remove(group);
     }
 
-    public ArrayList<String> getFriends() {
+    public List<String> getFriends() {
         return this.friends;
     }
     public void setFriends(ArrayList<String> friends) {
@@ -130,7 +131,7 @@ public class ProfileManagerRequestModel {
         this.friends.remove(friend);
     }
 
-    public ArrayList<String> getBlockedUsers() {
+    public List<String> getBlockedUsers() {
         return this.blockedUsers;
     }
     public void setBlockedUsers(ArrayList<String> blockedUser) {

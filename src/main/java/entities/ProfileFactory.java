@@ -2,19 +2,21 @@ package entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileFactory{
-    public static Profile create(String profileName,
+    public static Profile create(String userName,
+                                 String profileName,
                                  LocalDate dob,
                                  String description,
-                                 ArrayList<String> socialLinks,
-                                 ArrayList<String> sensitiveWords,
-                                 ArrayList<String> interests,
-                                 ArrayList<String> groups,
-                                 ArrayList<String> friends,
-                                 ArrayList<String> blockedUsers) {
+                                 List<String> socialLinks,
+                                 List<String> sensitiveWords,
+                                 List<String> interests,
+                                 List<String> groups,
+                                 List<String> friends,
+                                 List<String> blockedUsers) {
 
         return new Profile(
-                profileName, dob, description, socialLinks, sensitiveWords, interests, groups, friends, blockedUsers);
+                userName, profileName, dob, description, socialLinks, sensitiveWords, interests, groups, friends, blockedUsers);
     }
 }

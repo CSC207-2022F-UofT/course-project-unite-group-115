@@ -6,6 +6,7 @@ import profile_manager.application_business_rules.ProfileManagerResponseModel;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 // Interface adapters layer
 
@@ -21,12 +22,12 @@ public class ProfileManagerController {
                                               String profileName,
                                               LocalDate dob,
                                               String description,
-                                              ArrayList<String> socialLinks,
-                                              ArrayList<String> sensitiveWords,
-                                              ArrayList<String> interests,
-                                              ArrayList<String> groups,
-                                              ArrayList<String> friends,
-                                              ArrayList<String> blockedUsers) {
+                                              List<String> socialLinks,
+                                              List<String> sensitiveWords,
+                                              List<String> interests,
+                                              List<String> groups,
+                                              List<String> friends,
+                                              List<String> blockedUsers) {
 
         ProfileManagerRequestModel requestModel = new ProfileManagerRequestModel(
                 userName, profileName, dob, description, socialLinks, sensitiveWords, interests, groups, friends, blockedUsers);
