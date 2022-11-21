@@ -4,7 +4,6 @@ import database_classes.GroupRepoInt;
 import database_classes.GroupRepoRequestModel;
 import entities.Group;
 import entities.RandomGroupFactory;
-import entities.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,16 +13,16 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
     final GroupRepoInt GROUP_REPO_ACCESS;
     final RanGroupCreateOutputBoundary GROUP_CREATE_OUTPUT_BOUNDARY;
     final RandomGroupFactory GROUP_FACTORY;
-    final UserRepoInt USER_REPO_ACCESS;
+    final ProfileRepoInt PROFILE_REPO_ACCESS;
     // ToDo: for message storage - final MessageRepoInt messageRepoAccess;
 
     public RanGroupCreateInteractor(GroupRepoInt groupRepoAccess,
                                     RanGroupCreateOutputBoundary groupCreateOutputBoundary,
-                                    RandomGroupFactory groupFactory, UserRepoInt userRepoAccess) {
+                                    RandomGroupFactory groupFactory, ProfileRepoInt profileRepoAccess) {
         this.GROUP_REPO_ACCESS = groupRepoAccess;
         this.GROUP_CREATE_OUTPUT_BOUNDARY = groupCreateOutputBoundary;
         this.GROUP_FACTORY = groupFactory;
-        this.USER_REPO_ACCESS = userRepoAccess;
+        this.PROFILE_REPO_ACCESS = profileRepoAccess;
     }
 
     /**
@@ -47,7 +46,7 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
         // ToDo: start message storage for group once have access to message class?
 
         // ToDo: update when knowing what we are storing as a group in a profile
-        USER_REPO_ACCESS.addGroup(group.getId());
+        PROFILE_REPO_ACCESS.addGroup(group.getId());
 
         GroupRepoRequestModel repoRequestModel = new GroupRepoRequestModel(groupName, group.getId(),
                 groupInterests, members, true);
