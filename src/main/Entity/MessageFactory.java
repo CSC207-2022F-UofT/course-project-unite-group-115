@@ -1,5 +1,6 @@
 package entities;
 import User;
+import get_friends.entities.User;
 
 
 public interface MessageFactory{

@@ -1,4 +1,4 @@
-package entities;
+package get_friends.entities;
 
 import java.util.ArrayList;
 import java.util.List;
