@@ -28,7 +28,6 @@ public class Main {
         application.add(screens);
 
         // Create the parts to plug into the Use Case+Entities
-        // ToDo: Can be changed - created for testing
         GroupRepoInt groupData;
         try {
             groupData = new GroupDataAccess("./groups.csv");
@@ -36,16 +35,16 @@ public class Main {
         catch (IOException e) {
             throw new RuntimeException("Could not create group database file.");
         }
-        UserRepoInt userData;
+        ProfileRepoInt profileData;
         try {
-            userData = new UserDataAccess("./users.csv");
+            profileData = new ProfileManagerDataAccess("./profiles.csv");
         } catch (IOException e) {
             throw new RuntimeException("Could not create file.");
         }
         RanGroupCreateOutputBoundary ranGroupCreateOutputBoundary = new RanGroupCreatePresenter();
         RandomGroupFactory ranGroupFactory = new RandomGroupFactory();
         RanGroupCreateInputBoundary interactor = new RanGroupCreateInteractor(groupData,
-                ranGroupCreateOutputBoundary, ranGroupFactory, userData);
+                ranGroupCreateOutputBoundary, ranGroupFactory, profileData);
         RanGroupCreateControl controller = new RanGroupCreateControl(interactor);
 
         // ToDo: need the logged in User's name
@@ -64,7 +63,7 @@ public class Main {
 
         ReqRanGroupOutputBoundary reqRanGroupOutputBoundary = new ReqRanGroupPresenter();
         ReqRanGroupInputBoundary reqRanGroupInteractor = new ReqRanGroupInteractor(groupData,
-                reqRanGroupOutputBoundary, userData);
+                reqRanGroupOutputBoundary, profileData);
         ReqRanGroupController reqRanGroupController = new ReqRanGroupController(reqRanGroupInteractor);
 
         RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController, loggedInUser);
