@@ -18,9 +18,9 @@ public class database_test {
 
     @Before
     public void setUp() throws Exception {
-        UUID user = UUID.randomUUID();
+        String user = "u";
         UUID message = UUID.randomUUID();
-        UUID report = UUID.randomUUID();
+        String report = "r";
 
         UserMessageModel b = new UserMessageModel(message, user, "makabaka", report);
     }

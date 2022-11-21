@@ -28,9 +28,9 @@ public class UserDataAccess implements GroupRepoInt {
             while ((row = reader.readLine()) != null) {
                 String[] col = row.split(",");
                 UUID messageId = UUID.fromString(col[headers.get("messageId")]);
-                UUID userId = UUID.fromString(String.valueOf(col[headers.get("userId")]));
+                String userId = String.valueOf(col[headers.get("userId")]);
                 String message = String.valueOf(col[headers.get("message")]);
-                UUID reportUserId = UUID.fromString(String.valueOf(col[headers.get("reportUserId")]));
+                String reportUserId = String.valueOf(col[headers.get("reportUserId")]);
                 UserMessageModel userMessage = new UserMessageModel(messageId,userId,message,reportUserId);
                 userMessages.put(String.valueOf(messageId),userMessage);
             }

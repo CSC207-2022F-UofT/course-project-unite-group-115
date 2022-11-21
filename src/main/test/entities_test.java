@@ -15,26 +15,26 @@ public class entities_test {
     
     @Before
     public void setUp() throws Exception {
-        UUID user = UUID.randomUUID();
+        String user = "UUID.randomUUID()";
         ArrayList<String> blocklist = new ArrayList<String>();
         blocklist.add("Volvo");
         blocklist.add("BMW");
-        blocklist.add("Ford");
+        blocklist.add("ford");
         blocklist.add("Mazda");
         ArrayList<String> blacklist = new ArrayList<String>();
 
-        a = new Blocker(blacklist, blocklist);
+        a = new Blocker(user,blacklist, blocklist);
     }
     @Test
     public void testCheckWords() throws IOException {
 
 
 
-        a.blockUser(UUID.randomUUID(),"ford");
+        a.blockUser("UUID.randomUUID()","ford");
 
         assertEquals(1,a.getBlockedUsers().size());
 
-        assertEquals("****",a.blockUser(UUID.randomUUID(),"ford"));
+        assertEquals("****",a.blockUser("UUID.randomUUID()","ford"));
 
     }
 

@@ -9,16 +9,16 @@ import Database.UserDataAccess;
 import Database.GroupRepoInt;
 
 public class Blocker {
-    private final UUID ID;
+    private final String ID;
     private ArrayList<String> blockedUsers;
     private ArrayList<String> sensitiveWords;
 
 
 
-    public Blocker(ArrayList<String> blockedUsers, ArrayList<String> sensitiveWords){
+    public Blocker(String ID,ArrayList<String> blockedUsers, ArrayList<String> sensitiveWords){
         this.blockedUsers =blockedUsers;
         this.sensitiveWords = sensitiveWords;
-        this.ID = UUID.randomUUID();
+        this.ID = ID;
 
     }
     public ArrayList<String> getBlockedUsers() {
@@ -27,7 +27,7 @@ public class Blocker {
     public ArrayList<String> getSensitiveWords() {
         return this.sensitiveWords;
     }
-    public UUID getID() {
+    public String getID() {
         return this.ID;
     }
 
@@ -40,36 +40,40 @@ public class Blocker {
     /*
     add users to blocked list
      */
-    public void addBlockedUsers(UUID id){
+    public void addBlockedUsers(String id){
         if(!getBlockedUsers().contains(id)){
-            this.blockedUsers.add(String.valueOf(id));
+            this.blockedUsers.add(id);
         }
 
     }
 
     /* check sensitive words list in chatting,add user to blacklist and replace sensitive word
      */
-    public  String blockUser(UUID userid,String text){
+    public  String blockUser(String userid,String text){
         String newText = "";
         for(String word : getSensitiveWords()){
             if(text.toLowerCase().contains(word.toLowerCase())){
                 addBlockedUsers(userid);
-                newText = text.replace(word,"*"/*.repeat(word.length())*/);
+                newText = text.replace(word.toLowerCase(),"*".repeat(word.length()));
                 //delete friend (doesn't finish)
-            }
+            } /*else if (text.toLowerCase().contains(word)) {
+                addBlockedUsers(userid);
+                newText = text.replace(word,"*".repeat(word.length()));
+
+            }*/
         }
         return newText;
     }
 
 
-    public void report(UserMessageModel userMessageModel) throws IOException {
+    public String report(UserMessageModel userMessageModel) throws IOException {
         //add two userid and text to databases
         UserDataAccess userDataAccess = new UserDataAccess("");
         UserMessageModel userMessageModels = new UserMessageModel(userMessageModel.getMessageId(),userMessageModel.getUserId(),
                 userMessageModel.getMessage(),userMessageModel.getReportUserId());
         addBlockedUsers(userMessageModel.getUserId());
         userDataAccess.adduserModel(userMessageModel);
-        userMessageModels.toString();
+        return userMessageModels.toString();
 
 
     }

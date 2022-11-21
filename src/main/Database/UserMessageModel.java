@@ -8,13 +8,13 @@ public class UserMessageModel {
 
     private UUID messageId;
 
-    private UUID userId;
+    private String userId;
 
     private String message;
 
-    private UUID reportUserId;
+    private String reportUserId;
 
-    public UserMessageModel(UUID messageId, UUID userId, String message,UUID reportUserId) {
+    public UserMessageModel(UUID messageId, String userId, String message,String reportUserId) {
     }
     
 
@@ -26,11 +26,11 @@ public class UserMessageModel {
         this.messageId = messageId;
     }
 
-    public UUID getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(UUID userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -42,11 +42,11 @@ public class UserMessageModel {
         this.message = message;
     }
 
-    public UUID getReportUserId() {
+    public String getReportUserId() {
         return reportUserId;
     }
 
-    public void setReportUserId(UUID reportUserId) {
+    public void setReportUserId(String reportUserId) {
         this.reportUserId = reportUserId;
     }
 
