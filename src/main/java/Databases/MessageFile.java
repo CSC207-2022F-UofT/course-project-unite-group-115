@@ -96,14 +96,13 @@ public class MessageFile implements MessageRepoInt {
 
     @Override
     public void editMessage(String ID, String content){
-
+        messages.get(ID).setContent(content);
         this.save();
     }
 
-
-
+    //TODO: send message to multiple receiver.
     @Override
-    public void addSender(String ID, String sender){
+    public void addReceiver(String ID, String sender){
 
         this.save();
     }
