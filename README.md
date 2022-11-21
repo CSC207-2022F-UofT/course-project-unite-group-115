@@ -1,5 +1,5 @@
 
-# Feature 1 : User REgistration, Login and Logout
+# Feature 1 : User Registration, Login and Logout
 
 https://user-images.githubusercontent.com/91515318/203126974-ac368e38-eb24-46af-977c-b093c60880fa.mp4
 
