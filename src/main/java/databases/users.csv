@@ -1,2 +1,2 @@
-userName,password,creationTime,profileName,dob,description,socialLinks,sensitiveWords,interests,groups,friends,blockedUsers
-K,abcdef,2022-11-18T02:12:35.326697,null,0000-01-01,null,[],[],[],[],[],[]
+userName,password,creationTime
+Kushagra,abcdef,2022-11-21T12:29:22.511738

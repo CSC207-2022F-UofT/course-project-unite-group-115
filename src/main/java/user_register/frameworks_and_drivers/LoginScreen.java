@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-import static javax.swing.JOptionPane.showMessageDialog;
 
 // Frameworks/Drivers layer
 public class LoginScreen extends JFrame implements ActionListener {
@@ -80,9 +79,6 @@ public class LoginScreen extends JFrame implements ActionListener {
 
                 BufferedReader reader = new BufferedReader(new FileReader("./src/main/java/databases/users.csv"));
                 reader.readLine(); // skip header
-//                if ((reader.readLine()) == null) {
-//                    JOptionPane.showMessageDialog(this, "No users in Database.");
-//                }
                 String row;
                 while ((row = reader.readLine()) != null) {
                     String[] col = row.split(",");
@@ -96,10 +92,10 @@ public class LoginScreen extends JFrame implements ActionListener {
                         application4.pack();
                         application4.setVisible(true);
                         JOptionPane.showMessageDialog(this, String.format("%s Logged In.", username.getText()));
-                    } else {
-//                        throw new RuntimeException("User does not exist");
-                        JOptionPane.showMessageDialog(this, String.format("User %s does not exist OR Incorrect Password", username.getText()));
                     }
+                }
+                if (Objects.equals(userName, "")) {
+                    JOptionPane.showMessageDialog(this, String.format("User %s does not exist OR Incorrect Password", username.getText()));
                 }
                 reader.close();
             } catch (IOException e) {
@@ -113,9 +109,5 @@ public class LoginScreen extends JFrame implements ActionListener {
             application2.pack();
             application2.setVisible(true);
         }
-    }
-
-    public String getUserName() {
-        return userName;
     }
 }
