@@ -4,4 +4,5 @@ public interface ProfileRepoInt {
     boolean existsByName(String identifier);
 
     void save(ProfileRepoRequestModel requestModel);
+    void addGroupToProfile(String userName, String groupId);
 }

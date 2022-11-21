@@ -79,6 +79,9 @@ public class ProfileRepoRequestModel {
     public List<String> getGroups() {
         return this.groups;
     }
+    public void setGroups(List<String> groups) {
+        this.groups = groups;
+    }
 
     public List<String> getFriends() {
         return this.friends;

@@ -114,6 +114,12 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
         }
     }
 
+    public void addGroupToProfile(String userName, String groupId) {
+        List<String> groups = new ArrayList<>(accounts.get(userName).getGroups());
+        groups.add(userName);
+        accounts.get(userName).setGroups(groups);
+        this.save();
+    }
 
     /**
      * Return whether a user exists with username identifier.
