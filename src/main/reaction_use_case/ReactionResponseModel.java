@@ -14,6 +14,8 @@ public class ReactionResponseModel {
         return reaction;
     }
 
+    public void removeReaction() { this.reaction = null; }
+
     public int getMessageID(){
         return messageID;
     }
