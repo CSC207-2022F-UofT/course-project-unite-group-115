@@ -1,11 +1,7 @@
 package Database;
 
-import java.util.UUID;
-
-public class UserMessageModel {
-
-
-
+import java.time.LocalDateTime;
+public class RepoMessageModel {
     private String messageId;
 
     private String userId;
@@ -13,15 +9,16 @@ public class UserMessageModel {
     private String message;
 
     private String reportUserId;
+    private final LocalDateTime time;
 
-    public UserMessageModel(String messageId, String userId, String message,String reportUserId) {
-        this.reportUserId = reportUserId;
+
+    public RepoMessageModel(String messageId, String userId, String message,String reportUserId,LocalDateTime time) {
         this.messageId = messageId;
         this.userId = userId;
         this.message = message;
+        this.reportUserId = reportUserId;
+        this.time = time;
     }
-    
-
     public String getMessageId() {
         return messageId;
     }
@@ -49,13 +46,9 @@ public class UserMessageModel {
     public String getReportUserId() {
         return reportUserId;
     }
-
-    public void setReportUserId(String reportUserId) {
-        this.reportUserId = reportUserId;
+    public LocalDateTime getTime() {
+        return time;
     }
-
-
-
 
 
 }
