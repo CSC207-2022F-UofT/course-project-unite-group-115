@@ -7,17 +7,17 @@ public class MessageDsRequestModel {
 
     private String content;
     private final String sender;
-    private final String receiver;
+    private final String groupID;
 
-    private final String ID;
+    private final String messageID;
     private final LocalDateTime creationTime;
 
 
-    public MessageDsRequestModel(String content, String sender, String receiver, String id, LocalDateTime creationTime) {
+    public MessageDsRequestModel(String content, String sender, String groupID, String messageID, LocalDateTime creationTime) {
         this.content = content;
         this.sender = sender;
-        this.receiver = receiver;
-        this.ID = id;
+        this.groupID = groupID;
+        this.messageID = messageID;
         this.creationTime = creationTime;
     }
 
@@ -33,11 +33,11 @@ public class MessageDsRequestModel {
         return sender;
     }
 
-    public String getReceiver(){
-        return receiver;
+    public String getGroupID(){
+        return groupID;
     }
 
-    public String getID(){return ID;}
+    public String getMessageID(){return messageID;}
     public LocalDateTime getCreationTime() {
         return creationTime;
     }

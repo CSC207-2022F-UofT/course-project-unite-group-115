@@ -24,11 +24,11 @@ public class MessageInteractor implements MessageInputBoundary {
     @Override
     public MessageResponseModel create(MessageRequestModel requestModel) {
 
-        Message message = MessageFactory.create(requestModel.getContent(), requestModel.getSender(), requestModel.getReceiver());
+        Message message = MessageFactory.create(requestModel.getContent(), requestModel.getSender(), requestModel.getGroupID());
         LocalDateTime now = LocalDateTime.now();
 
         MessageDsRequestModel MessageDsModel =
-                new MessageDsRequestModel(message.getContent(), message.getSender(), message.getReceiver(), message.getID().toString(),now);
+                new MessageDsRequestModel(message.getContent(), message.getSender(), message.getGroupID(), message.getID().toString(),now);
         MessageRepoInt.save(MessageDsModel);
 
         MessageResponseModel Messageresponsemodel = new MessageResponseModel(message.getSender(),now.toString()); //?

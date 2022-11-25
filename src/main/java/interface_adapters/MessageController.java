@@ -11,8 +11,8 @@ public class MessageController {
         this.USER_INPUT = userInput;
     }
 
-    MessageResponseModel create(String content, String sender, String receiver){
-        MessageRequestModel requestModel = new MessageRequestModel(content, sender, receiver);
+    public MessageResponseModel create(String content, String sender, String groupID){
+        MessageRequestModel requestModel = new MessageRequestModel(content, sender, groupID);
 
         return USER_INPUT.create(requestModel);
     }

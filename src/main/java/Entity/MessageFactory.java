@@ -2,9 +2,10 @@ package Entity;
 
 
 public class MessageFactory{
-    public static Message create(String content, String sender, String receiver){
-        return new Message(content, sender, receiver);
+    public static Message create(String content, String sender, String groupID) {
+        return new Message(content,sender, groupID);
     }
+
 
 }
 

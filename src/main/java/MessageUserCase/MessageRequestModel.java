@@ -5,15 +5,17 @@ public class MessageRequestModel {
 
     private String content;
     private String sender;
-    private String receiver;
+    private String groupID;
 
 
-    public MessageRequestModel(String content, String sender, String receiver) {
+    public MessageRequestModel(String content, String sender, String groupID) {
         this.content = content;
         this.sender = sender;
-        this.receiver = receiver;
+        this.groupID = groupID;
     }
 
+
+    //TODO: remove unused functions.
     String getContent(){
         return content;
     }
@@ -24,9 +26,9 @@ public class MessageRequestModel {
 
     void setSender(String sender){this.sender = sender;}
 
-    String getReceiver(){return receiver;}
+    String getGroupID(){return groupID;}
 
-    void setReceiver(String receiver){this.receiver = receiver;}
+    void setgroupID(String groupID){this.groupID = groupID;}
 
 
 

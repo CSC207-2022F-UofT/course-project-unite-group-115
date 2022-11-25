@@ -13,7 +13,6 @@ public interface MessageRepoInt {
     void editMessage(String ID, String content);
 
 
-    void addReceiver(String ID, String sender);
 
 
 }
