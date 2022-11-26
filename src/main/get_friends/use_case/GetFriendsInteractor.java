@@ -7,7 +7,7 @@ public class GetFriendsInteractor implements GetFriendsInputBoundary{
     }
 
     @Override
-    public GetFriendsDsResponseModel getFriendsList(GetFriendsRequestModel requestModel) {
+    public GetFriendsDsResponseModel getFriendsList(GetFriendsDsRequestModel requestModel) {
         return(new GetFriendsDsResponseModel(requestModel.getUserProfile().getFriends()));
     }
 }

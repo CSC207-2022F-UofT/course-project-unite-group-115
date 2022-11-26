@@ -1,10 +1,10 @@
 package get_friends.use_case;
 import get_friends.entities.Profile;
 
-public class GetFriendsRequestModel {
+public class GetFriendsDsRequestModel {
     private Profile userProfile;
 
-    public GetFriendsRequestModel(Profile userProfile) {
+    public GetFriendsDsRequestModel(Profile userProfile) {
         this.userProfile = userProfile;
     }
 
