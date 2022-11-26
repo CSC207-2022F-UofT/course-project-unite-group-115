@@ -5,7 +5,7 @@ import java.util.List;
 public class GeneralGroupFactory implements GroupFactory {
 
     @Override
-    public Group createNewGroup(String name,List<String> interests, List<User> members) {
+    public Group createNewGroup(String name, List<String> interests, List<User> members) {
         return new Group(name, interests, members, false);
     }
 
