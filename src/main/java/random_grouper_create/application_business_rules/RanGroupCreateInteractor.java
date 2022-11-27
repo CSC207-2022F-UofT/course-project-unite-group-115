@@ -36,13 +36,16 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
     @Override
     public RanGroupCreateResponseModel createRanGroup(RanGroupCreateRequestModel requestModel) {
         String groupName = requestModel.getGroupName();
+        if(groupName.equals("")){
+            return GROUP_CREATE_OUTPUT_BOUNDARY.prepareFailView("The group's name can't be empty. Please" +
+                    " enter a group name and try again.");
+        }
         List<String> groupInterests = requestModel.getInterests();
 
         List<String> members = new ArrayList<>();
         members.add(requestModel.getGroupCreator());
 
         Group group = GROUP_FACTORY.createNewGroup(groupName, groupInterests, members);
-
 
         PROFILE_REPO_ACCESS.addGroupToProfile(requestModel.getGroupCreator(), group.getId());
 
