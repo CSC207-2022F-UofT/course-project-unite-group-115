@@ -1,6 +1,5 @@
 package interface_adapters;
 
-import entities.Reaction;
 import reaction_use_case.ReactionOutputBoundary;
 import reaction_use_case.ReactionResponseModel;
 

@@ -1,4 +1,4 @@
-package main;
+
 
 import entities.ReactionFactory;
 import interface_adapters.ReactionController;
@@ -37,5 +37,6 @@ public class Main {
         cardLayout.show(screens, "messages");
         application.pack();
         application.setVisible(true);
+        System.out.println("Hello World");
     }
 }

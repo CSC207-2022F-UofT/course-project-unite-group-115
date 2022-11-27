@@ -4,9 +4,10 @@ import interface_adapters.ReactionController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MessageDisplayScreen extends JPanel{
+public class MessageDisplayScreen extends JPanel implements ActionListener{
     ReactionController reactionController;
 
     public MessageDisplayScreen(ReactionController controller){
@@ -21,12 +22,18 @@ public class MessageDisplayScreen extends JPanel{
         buttons.add(refresh);
         buttons.add(react);
 
-        refresh.addActionListener((ActionListener) this);
-        react.addActionListener((ActionListener) this);
+        refresh.addActionListener(this);
+        react.addActionListener( this);
 
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         this.add(title);
         this.add(buttons);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent evt) {
+        System.out.println("Click " + evt.getActionCommand());
     }
 }
