@@ -1,6 +1,7 @@
 package random_grouper_request_group.application_business_rules;
 
-import database_classes.GroupRepoInt;
+import databases.GroupRepoInt;
+import databases.ProfileRepoInt;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,6 @@ public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
     final GroupRepoInt GROUP_REPO_ACCESS;
     final ReqRanGroupOutputBoundary reqRanGroupOutputBoundary;
     final ProfileRepoInt PROFILE_REPO_ACCESS;
-    // ToDo: set max size after discussing with group
     final int MAX_GROUP_SIZE = 8;
 
     public ReqRanGroupInteractor(GroupRepoInt groupRepoAccess, ReqRanGroupOutputBoundary reqRanGroupOutputBoundary,
@@ -22,7 +22,8 @@ public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
     @Override
     public ReqRanGroupResponseModel requestRanGroup(ReqRanGroupRequestModel requestModel) {
         List<String> randomGroups = GROUP_REPO_ACCESS.getRandomGroups();
-        List<String> usersInterests = requestModel.getUserInterests();
+        List<String> usersInterests = PROFILE_REPO_ACCESS.getInterests(requestModel.getUserName());
+        List<String> currentGroups = PROFILE_REPO_ACCESS.getGroups(requestModel.getUserName());
         int maxInterestsCommon = 0;
         String bestRanGroupID = null;
         String bestRanGroupName = null;
@@ -32,7 +33,7 @@ public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
                 continue;
                 // Skips iteration when condition is met (i.e. if the current randomGroup is full,
                 // skip to the next randomGroup
-            } else if (requestModel.getUserGroups().contains(randomGroup)){
+            } else if (currentGroups.contains(randomGroup)){
                 continue;
             }
             int interestsCommon = 0;
@@ -53,9 +54,7 @@ public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
         }
         else {
             GROUP_REPO_ACCESS.addUserToGroup(requestModel.getUserName(), bestRanGroupID);
-            // ToDo: update when knowing what we are storing as a group in a profile
-            PROFILE_REPO_ACCESS.addGroup(bestRanGroupID);
-            requestModel.addToUserGroups(bestRanGroupID);
+            PROFILE_REPO_ACCESS.addGroupToProfile(requestModel.getUserName(), bestRanGroupID);
             ReqRanGroupResponseModel responseModel = new ReqRanGroupResponseModel(bestRanGroupID, bestRanGroupName);
             return  reqRanGroupOutputBoundary.prepareSuccessView(responseModel);
         }

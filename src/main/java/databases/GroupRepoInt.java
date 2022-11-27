@@ -1,4 +1,4 @@
-package database_classes;
+package databases;
 
 import java.util.List;
 import java.util.Map;

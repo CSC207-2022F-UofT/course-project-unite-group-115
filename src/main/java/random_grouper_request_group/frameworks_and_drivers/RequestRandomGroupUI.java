@@ -1,6 +1,5 @@
 package random_grouper_request_group.frameworks_and_drivers;
 
-import entities.User;
 import random_grouper_request_group.interface_adapters.ReqRanGroupController;
 import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
@@ -54,12 +53,8 @@ public class RequestRandomGroupUI extends JPanel implements ActionListener {
         if (evt.getActionCommand().equals("Request Random Group")) {
             try {
                 ReqRanGroupPresenter presenter = new ReqRanGroupPresenter();
-                // ToDo: Need access to User's interests and groups from profile
-                String[] userInterests = loggedInUser.getInterests().toArray(new String[0]);
-                String[] userGroups = loggedInUser.getGroups();
 
-                String message = presenter.getSuccessMessage(reqRanGroupController.requestRanGroup(
-                        loggedInUserName, userInterests, userGroups));
+                String message = presenter.getSuccessMessage(reqRanGroupController.requestRanGroup(loggedInUserName));
                 JOptionPane.showMessageDialog(this, message);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());

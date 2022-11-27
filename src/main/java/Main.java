@@ -1,11 +1,13 @@
+import databases.ProfileManagerDataAccess;
+import databases.ProfileRepoInt;
 import entities.RandomGroupFactory;
-import database_classes.GroupRepoInt;
-import random_grouper_create.application_business_rules.RanGroupCreateInputBoundary;
-import random_grouper_create.application_business_rules.RanGroupCreateInteractor;
-import random_grouper_create.application_business_rules.RanGroupCreateOutputBoundary;
+import databases.GroupRepoInt;
+import random_grouper_create.application_business_rules.*;
 
-import database_classes.GroupDataAccess;
+import databases.GroupDataAccess;
 import random_grouper_create.frameworks_and_drivers.RandomGroupCreationUI;
+import random_grouper_create.interface_adapters.GetUserInterestsController;
+import random_grouper_create.interface_adapters.GetUserInterestsPresenter;
 import random_grouper_create.interface_adapters.RanGroupCreateControl;
 import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
@@ -43,13 +45,20 @@ public class Main {
         }
         RanGroupCreateOutputBoundary ranGroupCreateOutputBoundary = new RanGroupCreatePresenter();
         RandomGroupFactory ranGroupFactory = new RandomGroupFactory();
-        RanGroupCreateInputBoundary interactor = new RanGroupCreateInteractor(groupData,
+        RanGroupCreateInputBoundary groupCreateInteractor = new RanGroupCreateInteractor(groupData,
                 ranGroupCreateOutputBoundary, ranGroupFactory, profileData);
-        RanGroupCreateControl controller = new RanGroupCreateControl(interactor);
+        RanGroupCreateControl groupCreateController = new RanGroupCreateControl(groupCreateInteractor);
+
+        GetUserInterestsOutputBoundary getUserInterestsOutputBoundary = new GetUserInterestsPresenter();
+        GetUserInterestsInteractor getUserInterestsInteractor = new
+                GetUserInterestsInteractor(getUserInterestsOutputBoundary, profileData);
+        GetUserInterestsController getUserInterestsController =
+                new GetUserInterestsController(getUserInterestsInteractor);
 
         // ToDo: need the logged in User's name
-        String loggedInUser = "";
-        RandomGroupCreationUI createScreen = new RandomGroupCreationUI(controller, loggedInUser);
+        String loggedInUser = "Tejas";
+        RandomGroupCreationUI createScreen = new RandomGroupCreationUI(groupCreateController,
+                getUserInterestsController, loggedInUser);
         screens.add(createScreen, "welcome");
         cardLayout.show(screens, "create");
         application.pack();

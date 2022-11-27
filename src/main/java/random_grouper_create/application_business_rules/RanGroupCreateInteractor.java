@@ -1,7 +1,8 @@
 package random_grouper_create.application_business_rules;
 
-import database_classes.GroupRepoInt;
-import database_classes.GroupRepoRequestModel;
+import databases.GroupRepoInt;
+import databases.GroupRepoRequestModel;
+import databases.ProfileRepoInt;
 import entities.Group;
 import entities.RandomGroupFactory;
 
@@ -14,7 +15,6 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
     final RanGroupCreateOutputBoundary GROUP_CREATE_OUTPUT_BOUNDARY;
     final RandomGroupFactory GROUP_FACTORY;
     final ProfileRepoInt PROFILE_REPO_ACCESS;
-    // ToDo: for message storage - final MessageRepoInt messageRepoAccess;
 
     public RanGroupCreateInteractor(GroupRepoInt groupRepoAccess,
                                     RanGroupCreateOutputBoundary groupCreateOutputBoundary,
@@ -43,10 +43,8 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
 
         Group group = GROUP_FACTORY.createNewGroup(groupName, groupInterests, members);
 
-        // ToDo: start message storage for group once have access to message class?
 
-        // ToDo: update when knowing what we are storing as a group in a profile
-        PROFILE_REPO_ACCESS.addGroup(group.getId());
+        PROFILE_REPO_ACCESS.addGroupToProfile(requestModel.getGroupCreator(), group.getId());
 
         GroupRepoRequestModel repoRequestModel = new GroupRepoRequestModel(groupName, group.getId(),
                 groupInterests, members, true);

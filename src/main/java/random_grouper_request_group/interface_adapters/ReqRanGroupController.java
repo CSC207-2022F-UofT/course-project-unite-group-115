@@ -14,9 +14,8 @@ public class ReqRanGroupController {
         this.USER_INPUT = userInput;
     }
 
-    public ReqRanGroupResponseModel requestRanGroup(String userName, List<String> userInterests,
-                                                    List<String> idsOfCurrentGroups) {
-        ReqRanGroupRequestModel requestModel = new ReqRanGroupRequestModel(userName, userInterests, idsOfCurrentGroups);
+    public ReqRanGroupResponseModel requestRanGroup(String userName) {
+        ReqRanGroupRequestModel requestModel = new ReqRanGroupRequestModel(userName);
         return USER_INPUT.requestRanGroup(requestModel);
     }
 }

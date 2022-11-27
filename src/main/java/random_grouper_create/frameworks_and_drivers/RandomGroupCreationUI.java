@@ -1,7 +1,7 @@
 package random_grouper_create.frameworks_and_drivers;
 
-import entities.User;
 import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
+import random_grouper_create.interface_adapters.GetUserInterestsController;
 import random_grouper_create.interface_adapters.RanGroupCreateControl;
 
 import javax.swing.*;
@@ -18,9 +18,12 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
     String currentSelectedInterestsString = "";
     java.util.List<String> finalSelectedInterests = new ArrayList<>();
     RanGroupCreateControl groupCreateControl;
+    GetUserInterestsController getUserInterestsController;
 
-    public RandomGroupCreationUI(RanGroupCreateControl controller, String loggedInUsersName) {
-        this.groupCreateControl = controller;
+    public RandomGroupCreationUI(RanGroupCreateControl groupCreateController, GetUserInterestsController
+            interestsController, String loggedInUsersName) {
+        this.groupCreateControl = groupCreateController;
+        this.getUserInterestsController = interestsController;
         this.loggedInUsersName = loggedInUsersName;
 
         JLabel title = new JLabel("Random Group Creator");
@@ -30,9 +33,8 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
         groupNameLabel.setLabelFor(groupName);
         groupNameLabel.setHorizontalTextPosition(JLabel.LEFT);
 
-
-        // ToDo: Need access to User's interests from profile
-        String[] creatorInterests = loggedInUser.getInterests().toArray(new String[0]);
+        String[] creatorInterests = interestsController.getUserInterests(loggedInUsersName).getInterests().toArray(
+                new String[0]);
 
         userInterestList = new List(creatorInterests.length, true);
         for (String interest : creatorInterests){

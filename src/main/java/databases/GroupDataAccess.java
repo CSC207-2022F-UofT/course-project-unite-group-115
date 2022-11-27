@@ -1,4 +1,4 @@
-package database_classes;
+package databases;
 
 import java.io.*;
 import java.util.*;
