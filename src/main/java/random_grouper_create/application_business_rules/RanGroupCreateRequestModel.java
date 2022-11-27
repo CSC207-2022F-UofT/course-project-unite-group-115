@@ -23,25 +23,12 @@ public class RanGroupCreateRequestModel {
         return groupName;
     }
 
-    // ToDo: Remove if not used
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
-
     public List<String> getInterests() {
         return interests;
-    }
-
-    public void setInterests(List<String> interests) {
-        this.interests = interests;
     }
 
     public String getGroupCreator() {
         return groupCreatorName;
     }
 
-    // ToDo: Remove if not used
-    public void setGroupCreator(String groupCreator) {
-        this.groupCreatorName = groupCreator;
-    }
 }

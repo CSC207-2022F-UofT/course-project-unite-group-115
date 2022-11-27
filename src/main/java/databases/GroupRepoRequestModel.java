@@ -31,11 +31,6 @@ public class GroupRepoRequestModel {
         return name;
     }
 
-    // ToDo: remove if not used
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public List<String> getInterests() {
         return interests;
     }

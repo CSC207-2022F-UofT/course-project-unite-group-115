@@ -55,7 +55,7 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
 
         LocalDateTime creationTime = LocalDateTime.now();
         RanGroupCreateResponseModel groupCreateResponseModel = new RanGroupCreateResponseModel(group.getName(),
-                creationTime.toString());
+                group.getId(), creationTime.toString());
 
         return GROUP_CREATE_OUTPUT_BOUNDARY.prepareSuccessView(groupCreateResponseModel);
     }
