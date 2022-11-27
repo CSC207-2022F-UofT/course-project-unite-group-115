@@ -14,7 +14,6 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
     final GroupRepoInt GROUP_REPO_ACCESS;
     final RanGroupCreateOutputBoundary GROUP_CREATE_OUTPUT_BOUNDARY;
     final RandomGroupFactory GROUP_FACTORY;
-    // ToDo: for message storage - final MessageRepoInt messageRepoAccess;
 
     public RanGroupCreateInteractor(GroupRepoInt groupRepoAccess,
                                     RanGroupCreateOutputBoundary groupCreateOutputBoundary,
@@ -35,6 +34,10 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
     @Override
     public RanGroupCreateResponseModel createRanGroup(RanGroupCreateRequestModel requestModel) {
         String groupName = requestModel.getGroupName();
+        if (groupName.equals("")){
+            return GROUP_CREATE_OUTPUT_BOUNDARY.prepareFailView("The group's name cannot be empty. Enter" +
+                    "a group name and try again.");
+        }
         List<String> groupInterests = requestModel.getInterests();
 
         // ToDo: change when can see User class and repo + add check to ensure interests match users interests?
@@ -49,8 +52,6 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
         }
 
         Group group = GROUP_FACTORY.createNewGroup(groupName, groupInterests, members);
-
-        // ToDo: start message storage for group once have access to message class?
 
         // ToDo: update profile/user when have access to profile/user class
 
