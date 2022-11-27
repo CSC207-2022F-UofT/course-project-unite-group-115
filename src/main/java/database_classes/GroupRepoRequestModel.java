@@ -27,6 +27,9 @@ public class GroupRepoRequestModel {
         this.random = isRandom;
     }
 
+    /**
+     * Returns the name of the group whose information is stored in the GroupRepoRequestModel.
+     */
     public String getName() {
         return name;
     }
@@ -36,6 +39,9 @@ public class GroupRepoRequestModel {
         this.name = name;
     }
 
+    /**
+     * Returns the interests of the group whose information is stored in the GroupRepoRequestModel.
+     */
     public List<String> getInterests() {
         return interests;
     }
@@ -44,14 +50,23 @@ public class GroupRepoRequestModel {
         this.interests = interests;
     }
 
+    /**
+     * Returns the ID of the group whose information is stored in the GroupRepoRequestModel.
+     */
     public String getID() {
         return ID;
     }
 
+    /**
+     * Returns the members of the group whose information is stored in the GroupRepoRequestModel.
+     */
     public List<String> getMembers() {
         return members;
     }
 
+    /**
+     * Replaces the members currently stored in the GroupRepoRequestModel with <members>.
+     */
     public void setMembers(List<String> members) {
         this.members = members;
     }

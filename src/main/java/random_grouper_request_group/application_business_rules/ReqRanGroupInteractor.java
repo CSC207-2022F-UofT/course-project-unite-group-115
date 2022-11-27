@@ -8,7 +8,6 @@ import java.util.Map;
 public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
     final GroupRepoInt GROUP_REPO_ACCESS;
     final ReqRanGroupOutputBoundary reqRanGroupOutputBoundary;
-    // ToDo: set max size after discussing with group
     final int MAX_GROUP_SIZE = 8;
 
     public ReqRanGroupInteractor(GroupRepoInt groupRepoAccess, ReqRanGroupOutputBoundary reqRanGroupOutputBoundary) {

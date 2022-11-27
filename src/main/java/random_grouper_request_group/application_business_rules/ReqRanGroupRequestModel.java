@@ -43,6 +43,9 @@ public class ReqRanGroupRequestModel {
         this.userInterests = userInterests;
     }
 
+    /**
+     * Returns the username of the user who requested to be added to a random group.
+     */
     public String getUserName() {
         return userName;
     }

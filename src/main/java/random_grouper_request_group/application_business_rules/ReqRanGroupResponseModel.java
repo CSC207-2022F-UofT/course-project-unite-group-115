@@ -26,6 +26,9 @@ public class ReqRanGroupResponseModel {
         this.failMessage = errorMessage;
     }
 
+    /**
+     * Returns the group ID of the group that the user was added to.
+     */
     public String getAddedToGroupID() {
         return addedToGroupID;
     }
@@ -35,6 +38,9 @@ public class ReqRanGroupResponseModel {
         this.addedToGroupID = addedToGroupID;
     }
 
+    /**
+     * Returns the group name of the group that the user was added to.
+     */
     public String getAddedToGroupName() {
         return addedToGroupName;
     }
@@ -43,11 +49,16 @@ public class ReqRanGroupResponseModel {
     public void setAddedToGroupName(String addedToGroupName) {
         this.addedToGroupName = addedToGroupName;
     }
-
+    /**
+     * Returns the success message that was created when the user was added to a random group.
+     */
     public String getSuccessMessage() {
         return successMessage;
     }
 
+    /**
+     * Changes the success message that was created when the user was added to a random group.
+     */
     public void setSuccessMessage(String successMessage) {
         this.successMessage = successMessage;
     }

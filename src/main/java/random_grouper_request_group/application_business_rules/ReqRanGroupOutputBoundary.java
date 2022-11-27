@@ -14,5 +14,9 @@ public interface ReqRanGroupOutputBoundary {
      */
     ReqRanGroupResponseModel prepareFailView(String errorMessage);
 
+    /**
+     * Returns the success message corresponding to the creation of a new random group.
+     * @param group the response model created by the interactor
+     */
     String getSuccessMessage (ReqRanGroupResponseModel group);
 }

@@ -26,6 +26,10 @@ public class ReqRanGroupPresenter implements ReqRanGroupOutputBoundary {
         throw new GroupAdditionFailure(errorMessage);
     }
 
+    /**
+     * Returns the success message that was created when the user was added to a random group.
+     * @param group the response model created by the interactor
+     */
     @Override
     public String getSuccessMessage(ReqRanGroupResponseModel group) {
         return group.getSuccessMessage();

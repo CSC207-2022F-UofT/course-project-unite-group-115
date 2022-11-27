@@ -19,6 +19,9 @@ public class RanGroupCreateRequestModel {
         this.groupCreatorName = groupCreatorName;
     }
 
+    /**
+     * Returns the name of the group that is going to be created.
+     */
     public String getGroupName() {
         return groupName;
     }
@@ -28,14 +31,21 @@ public class RanGroupCreateRequestModel {
         this.groupName = groupName;
     }
 
+    /**
+     * Returns the interests of the group that is going to be created.
+     */
     public List<String> getInterests() {
         return interests;
     }
 
+    // ToDo: Remove if not used
     public void setInterests(List<String> interests) {
         this.interests = interests;
     }
 
+    /**
+     * Returns the username of user that requested for the group to be created.
+     */
     public String getGroupCreator() {
         return groupCreatorName;
     }
