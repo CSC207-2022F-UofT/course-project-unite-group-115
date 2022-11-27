@@ -1,4 +1,4 @@
-package entities;
+package general_group.entities;
 
 import java.util.List;
 
