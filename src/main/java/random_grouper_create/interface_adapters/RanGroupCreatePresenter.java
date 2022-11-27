@@ -20,6 +20,10 @@ public class RanGroupCreatePresenter implements RanGroupCreateOutputBoundary {
         return response;
     }
 
+    /**
+     * Gives an error corresponding to the error that occurred when trying to create a new random group.
+     * @param errorMessage the message explaining the error
+     */
     @Override
     public RanGroupCreateResponseModel prepareFailView(String errorMessage) {
         throw new GroupCreationFailure(errorMessage);

@@ -8,5 +8,9 @@ public interface RanGroupCreateOutputBoundary {
      */
     RanGroupCreateResponseModel prepareSuccessView(RanGroupCreateResponseModel response);
 
+    /**
+     * Gives an error corresponding to the error that occurred when trying to create a new random group.
+     * @param errorMessage the message explaining the error
+     */
     RanGroupCreateResponseModel prepareFailView(String errorMessage);
 }
