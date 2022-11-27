@@ -1,13 +1,17 @@
 package get_friends.use_case;
 
-public class GetFriendsInteractor implements GetFriendsInputBoundary{
+import java.util.List;
 
-    public GetFriendsInteractor() {
-        //Empty
+public class GetFriendsInteractor implements GetFriendsInputBoundary{
+    final GetFriendsOutputBoundary friendsOutputBoundary;
+
+    public GetFriendsInteractor(GetFriendsOutputBoundary friendsOutputBoundary) {
+        this.friendsOutputBoundary = friendsOutputBoundary;
     }
 
     @Override
     public GetFriendsDsResponseModel getFriendsList(GetFriendsDsRequestModel requestModel) {
-        return(new GetFriendsDsResponseModel(requestModel.getUserProfile().getFriends()));
+        GetFriendsDsResponseModel friendList = new GetFriendsDsResponseModel(requestModel.getUserProfile().getFriends());
+        return(friendsOutputBoundary.prepareFriendsList(friendList));
     }
 }
