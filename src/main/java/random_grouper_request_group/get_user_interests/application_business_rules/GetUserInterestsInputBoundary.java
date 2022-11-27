@@ -1,4 +1,4 @@
-package random_grouper_create.application_business_rules;
+package random_grouper_request_group.get_user_interests.application_business_rules;
 
 public interface GetUserInterestsInputBoundary {
 

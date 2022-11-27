@@ -1,7 +1,7 @@
 package random_grouper_create.frameworks_and_drivers;
 
 import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
-import random_grouper_create.interface_adapters.GetUserInterestsController;
+import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsController;
 import random_grouper_create.interface_adapters.RanGroupCreateControl;
 
 import javax.swing.*;

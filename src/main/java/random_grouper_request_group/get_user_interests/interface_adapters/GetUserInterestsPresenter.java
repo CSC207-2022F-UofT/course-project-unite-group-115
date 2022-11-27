@@ -1,7 +1,7 @@
-package random_grouper_create.interface_adapters;
+package random_grouper_request_group.get_user_interests.interface_adapters;
 
-import random_grouper_create.application_business_rules.GetUserInterestsOutputBoundary;
-import random_grouper_create.application_business_rules.GetUserInterestsResponseModel;
+import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsOutputBoundary;
+import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsResponseModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
