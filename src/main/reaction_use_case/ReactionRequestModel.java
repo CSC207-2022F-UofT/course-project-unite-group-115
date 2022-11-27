@@ -2,9 +2,9 @@ package reaction_use_case;
 
 public class ReactionRequestModel {
     private String reaction;
-    private int messageID;
+    private String messageID;
 
-    public ReactionRequestModel(String reaction, int messageID){
+    public ReactionRequestModel(String reaction, String messageID){
         this.reaction = reaction;
         this.messageID = messageID;
     }
@@ -13,7 +13,7 @@ public class ReactionRequestModel {
         return this.reaction;
     }
 
-    public int getMessageID(){
+    public String getMessageID(){
         return this.messageID;
     }
 }

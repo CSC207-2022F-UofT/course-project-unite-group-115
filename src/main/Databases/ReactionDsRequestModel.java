@@ -1,15 +1,16 @@
-package reaction_use_case;
+package Databases;
 
 public class ReactionDsRequestModel {
     private final String reaction;
 
-    private final int messageID;
-    public ReactionDsRequestModel(String reaction, int messageID){
+    private final String messageID;
+
+    public ReactionDsRequestModel(String reaction, String messageID){
         this.reaction = reaction;
         this.messageID = messageID;
     }
 
     public String getReaction(){ return this.reaction; }
 
-    public int getMessageID(){ return this.messageID; }
+    public String getMessageID(){ return this.messageID; }
 }

@@ -3,9 +3,9 @@ package entities;
 public class Reaction {
 
     private final String reaction;
-    private final Integer messageID;
+    private final String messageID;
 
-    Reaction(String reaction, Integer messageID){
+    Reaction(String reaction, String messageID){
         this.reaction = reaction;
         this.messageID = messageID;
     }
@@ -14,7 +14,7 @@ public class Reaction {
         return this.reaction;
     }
 
-    public Integer getMessageID() {
+    public String getMessageID() {
         return this.messageID;
     }
 }

@@ -1,20 +1,21 @@
 package reaction_use_case;
 
+import Databases.ReactionDsRequestModel;
 import entities.Reaction;
 import entities.ReactionFactory;
 
 public class ReactionInteractor implements ReactionInputBoundary {
 
-    final MessageDsGateway reactionDsGateway;
+    final ReactionDsGateway reactionDsGateway;
 
-    final ReactionOutputBoundary reactionPresenter;
+    final ReactionOutputBoundary reactionOutputBoundary;
 
     final ReactionFactory reactionFactory;
 
-    public ReactionInteractor(MessageDsGateway reactionDsGateway, ReactionOutputBoundary reactionPresenter,
+    public ReactionInteractor(ReactionDsGateway reactionDsGateway, ReactionOutputBoundary reactionPresenter,
                               ReactionFactory reactionFactory){
         this.reactionDsGateway = reactionDsGateway;
-        this.reactionPresenter = reactionPresenter;
+        this.reactionOutputBoundary = reactionPresenter;
         this.reactionFactory = reactionFactory;
     }
 
@@ -30,7 +31,7 @@ public class ReactionInteractor implements ReactionInputBoundary {
         // Prepare for presenter
         ReactionResponseModel reactionResponseModel = new ReactionResponseModel(reaction.getReaction(),
                 reaction.getMessageID());
-        return reactionPresenter.prepareAdditionView(reactionResponseModel);
+        return reactionOutputBoundary.prepareAdditionView(reactionResponseModel);
     }
 
     @Override
@@ -40,12 +41,12 @@ public class ReactionInteractor implements ReactionInputBoundary {
         ReactionDsRequestModel reactionDsModel = new ReactionDsRequestModel(reaction.getReaction(),
                 reaction.getMessageID());
         // Reaction already exists and needs to be removed
-        reactionDsGateway.removeReaction(reactionDsModel);
+        reactionDsGateway.removeReaction(requestModel.getMessageID());
 
         // Prepare for presenter
         ReactionResponseModel reactionResponseModel = new ReactionResponseModel(reaction.getReaction(),
                 reaction.getMessageID());
-        return reactionPresenter.prepareRemoveView(reactionResponseModel);
+        return reactionOutputBoundary.prepareRemoveView(reactionResponseModel);
     }
 
 }
