@@ -114,58 +114,86 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
         }
     }
 
-    public void addGroupToProfile(String userName, String groupId) {
-        List<String> groups = new ArrayList<>(accounts.get(userName).getGroups());
-        groups.add(userName);
-        accounts.get(userName).setGroups(groups);
+    public void addSocialLinkToProfile(String userName, String socialLink) {
+        List<String> socialLinks = new ArrayList<>(accounts.get(userName).getSocialLinks());
+        socialLinks.add(socialLink);
+        accounts.get(userName).setSocialLinks(socialLinks);
         this.save();
     }
 
-    public void removeGroupFromProfile(String userName, String groupId) {
-        List<String> groups = new ArrayList<>(accounts.get(userName).getGroups());
-        groups.remove(userName);
-        accounts.get(userName).setGroups(groups);
+    public void removeSocialLinkFromProfile(String userName, String socialLink) {
+        List<String> socialLinks = new ArrayList<>(accounts.get(userName).getSocialLinks());
+        socialLinks.remove(socialLink);
+        accounts.get(userName).setSocialLinks(socialLinks);
+        this.save();
+    }
+
+    public void addSensitiveWordsToProfile(String userName, String sensitiveWord) {
+        List<String> sensitiveWords = new ArrayList<>(accounts.get(userName).getSensitiveWords());
+        sensitiveWords.add(sensitiveWord);
+        accounts.get(userName).setSensitiveWords(sensitiveWords);
+        this.save();
+    }
+
+    public void removeSensitiveWordsFromProfile(String userName, String sensitiveWord) {
+        List<String> sensitiveWords = new ArrayList<>(accounts.get(userName).getSensitiveWords());
+        sensitiveWords.remove(sensitiveWord);
+        accounts.get(userName).setSensitiveWords(sensitiveWords);
         this.save();
     }
 
     public void addInterestToProfile(String userName, String interest) {
         List<String> interests = new ArrayList<>(accounts.get(userName).getInterests());
-        interests.add(userName);
+        interests.add(interest);
         accounts.get(userName).setInterests(interests);
         this.save();
     }
 
     public void removeInterestFromProfile(String userName, String interest) {
         List<String> interests = new ArrayList<>(accounts.get(userName).getInterests());
-        interests.remove(userName);
+        interests.remove(interest);
         accounts.get(userName).setInterests(interests);
+        this.save();
+    }
+
+    public void addGroupToProfile(String userName, String groupId) {
+        List<String> groups = new ArrayList<>(accounts.get(userName).getGroups());
+        groups.add(groupId);
+        accounts.get(userName).setGroups(groups);
+        this.save();
+    }
+
+    public void removeGroupFromProfile(String userName, String groupId) {
+        List<String> groups = new ArrayList<>(accounts.get(userName).getGroups());
+        groups.remove(groupId);
+        accounts.get(userName).setGroups(groups);
         this.save();
     }
 
     public void addFriendToProfile(String userName, String friend) {
         List<String> friends = new ArrayList<>(accounts.get(userName).getFriends());
-        friends.add(userName);
+        friends.add(friend);
         accounts.get(userName).setFriends(friends);
         this.save();
     }
 
     public void removeFriendFromProfile(String userName, String friend) {
         List<String> friends = new ArrayList<>(accounts.get(userName).getFriends());
-        friends.remove(userName);
+        friends.remove(friend);
         accounts.get(userName).setFriends(friends);
         this.save();
     }
 
     public void addBlockedUserToProfile(String userName, String blockedUser) {
         List<String> blockedUsers = new ArrayList<>(accounts.get(userName).getBlockedUsers());
-        blockedUsers.add(userName);
+        blockedUsers.add(blockedUser);
         accounts.get(userName).setBlockedUsers(blockedUsers);
         this.save();
     }
 
     public void removeBlockedUserFromProfile(String userName, String blockedUser) {
         List<String> blockedUsers = new ArrayList<>(accounts.get(userName).getBlockedUsers());
-        blockedUsers.remove(userName);
+        blockedUsers.remove(blockedUser);
         accounts.get(userName).setBlockedUsers(blockedUsers);
         this.save();
     }

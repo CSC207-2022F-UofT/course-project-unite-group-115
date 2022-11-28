@@ -26,18 +26,9 @@ public class ProfileManagerInteractor implements ProfileManagerInputBoundary {
 
     @Override
     public ProfileManagerResponseModel create(ProfileManagerRequestModel requestModel) {
-//        String profileName = requestModel.getProfileName();
-//        LocalDate dob = requestModel.getDob();
-//        String description =requestModel.getDescription();
-//        List<String> socialLinks = requestModel.getSocialLinks();
-//        List<String> sensitiveWords = requestModel.getSensitiveWords();
-//        List<String> interests = requestModel.getInterests();
-//        List<String> groups = requestModel.getGroups();
-//        List<String> friends = requestModel.getFriends();
-//        List<String> blockedUsers = requestModel.getBlockedUsers();
+
 
         Profile profile = ProfileFactory.create(
-//                profileName, dob, description, socialLinks, sensitiveWords, interests, groups, friends, blockedUsers
                 requestModel.getUserName(),
                 requestModel.getProfileName(),
                 requestModel.getDob(),
