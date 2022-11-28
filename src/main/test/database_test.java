@@ -1,16 +1,12 @@
 package test;
 import Database.UserMessageModel;
-import java.io.File;
+
 import java.io.IOException;
 import java.util.UUID;
-import java.util.ArrayList;
+
 import Database.UserDataAccess;
-import Database.GroupRepoInt;
 
 import org.junit.*;
-import usecase.Blocker;
-
-import static org.junit.Assert.*;
 
 
 public class database_test {
