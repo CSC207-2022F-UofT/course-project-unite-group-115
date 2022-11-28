@@ -20,7 +20,7 @@ public interface GroupRepoInt {
 
     void removeInterestsfromGroup(List<String> interests, String groupID);
 
-    List<String> getGroups();
+    List<String> getRandomGroups();
 
 
 
