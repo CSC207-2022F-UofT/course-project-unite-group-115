@@ -8,3 +8,5 @@ public class LabelTextPanel extends JPanel {
         this.add(textField);
     }
 }
+
+//TODO: directly import from others' documents.

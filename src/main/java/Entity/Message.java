@@ -1,5 +1,7 @@
 package Entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -9,6 +11,8 @@ public class Message{
     private final String sender;        //Grouper?
     private String groupID;
 
+    private List<String> reaction;
+
 
     private final UUID messageID;
 
@@ -17,6 +21,7 @@ public class Message{
         this.sender = sender;
         this.groupID = groupID;
         this.messageID = UUID.randomUUID();
+        this.reaction = new ArrayList<>();
     }
 
 
@@ -33,6 +38,10 @@ public class Message{
     public UUID getID(){
         return messageID;
     }
+
+    public List<String> getReaction() {return reaction;}
+
+    public void setReaction(String rea){reaction.add(rea);}
 
 
 }

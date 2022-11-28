@@ -2,9 +2,7 @@ package Databases;
 
 import java.io.*;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MessageFile implements MessageRepoInt {
 
@@ -23,7 +21,8 @@ public class MessageFile implements MessageRepoInt {
         headers.put("sender", 1);
         headers.put("groupID", 2);
         headers.put("messageID", 3);
-        headers.put("creation_time", 4);
+        headers.put("reaction", 4);
+        headers.put("creation_time", 5);
 
         if (csvFile.length() == 0) {
             save();
@@ -39,9 +38,13 @@ public class MessageFile implements MessageRepoInt {
                 String sender = String.valueOf(col[headers.get("sender")]);
                 String groupID = String.valueOf(col[headers.get("groupID")]);
                 String messageID = String.valueOf(col[headers.get("messageID")]);
+
+                String reaction = String.valueOf(col[headers.get("reaction")]);
+                List<String> reactions = Arrays.asList(reaction.split(";"));
+
                 String creationTimeText = String.valueOf(col[headers.get("creation_time")]);
                 LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
-                MessageDsRequestModel message = new MessageDsRequestModel(content, sender, groupID, messageID, ldt);
+                MessageDsRequestModel message = new MessageDsRequestModel(content, sender, groupID, messageID, reactions, ldt);
                 messages.put(content, message);
             }
 
@@ -51,6 +54,7 @@ public class MessageFile implements MessageRepoInt {
 
     /**
      * Add requestModel to storage.
+     *
      * @param requestModel the user information to save.
      */
     @Override
@@ -58,6 +62,7 @@ public class MessageFile implements MessageRepoInt {
         messages.put(requestModel.getContent(), requestModel);
         this.save();
     }
+
     private void save() {
         BufferedWriter writer;
         try {
@@ -66,8 +71,8 @@ public class MessageFile implements MessageRepoInt {
             writer.newLine();
 
             for (MessageDsRequestModel message : messages.values()) {
-                String line = String.format("%s,%s,%s,%s,%s",
-                        message.getContent(), message.getSender(), message.getGroupID(),message.getMessageID(),message.getCreationTime());
+                String line = String.format("%s,%s,%s,%s,%s,%s",
+                        message.getContent(), message.getSender(), message.getGroupID(), message.getMessageID(), message.getReaction(),message.getCreationTime());
                 writer.write(line);
                 writer.newLine();
             }
@@ -80,29 +85,42 @@ public class MessageFile implements MessageRepoInt {
     }
 
     @Override
-    public void deleteMessage(String message_id){
+    public void deleteMessage(String message_id) {
         messages.remove(message_id);
         this.save();
     }
 
     @Override
-    public Map<String, Object> getMessageInfo(String MessageID){
+    public Map<String, Object> getMessageInfo(String MessageID) {
         MessageDsRequestModel requestModel = messages.get(MessageID);
         Map<String, Object> result = new HashMap<>();
         result.put("message content", requestModel.getContent());
         result.put("sender", requestModel.getSender());
-        result.put("groupID",requestModel.getGroupID());
+        result.put("groupID", requestModel.getGroupID());
         result.put("messageID", requestModel.getMessageID());
         result.put("creation time", requestModel.getCreationTime());
         return result;
     }
 
     @Override
-    public void editMessage(String ID, String content){
+    public void editMessage(String ID, String content) {
         messages.get(ID).setContent(content);
         this.save();
     }
 
+    @Override
+    public Map<String, Object> getGroupMessageInfo(String GroupID) { //TODO: complete
+        Map<String, Object> result = new HashMap<>();
+        if (csvFile.length() == 0) {
+            return result;
+        } else {
+            MessageDsRequestModel requestModel = messages.get(GroupID);
+
+
+            return result;
+        }
+
+    }
 }
 
 

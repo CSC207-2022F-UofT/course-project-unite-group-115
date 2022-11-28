@@ -1,7 +1,7 @@
 package MessageUserCase;
 
 public class MessageResponseModel {
-    String send;
+    String send;    //what's this used for?
 
     String creationTime;
 

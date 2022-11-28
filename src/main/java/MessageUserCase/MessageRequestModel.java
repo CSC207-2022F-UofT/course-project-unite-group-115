@@ -28,7 +28,7 @@ public class MessageRequestModel {
 
     String getGroupID(){return groupID;}
 
-    void setgroupID(String groupID){this.groupID = groupID;}
+    void setGroupID(String groupID){this.groupID = groupID;}
 
 
 

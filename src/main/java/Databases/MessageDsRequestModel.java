@@ -1,6 +1,8 @@
 package Databases;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MessageDsRequestModel {
@@ -10,16 +12,19 @@ public class MessageDsRequestModel {
     private final String groupID;
 
     private final String messageID;
+    private List<String> reaction;
     private final LocalDateTime creationTime;
 
 
-    public MessageDsRequestModel(String content, String sender, String groupID, String messageID, LocalDateTime creationTime) {
+    public MessageDsRequestModel(String content, String sender, String groupID, String messageID, List<String> reaction, LocalDateTime creationTime) {
         this.content = content;
         this.sender = sender;
         this.groupID = groupID;
         this.messageID = messageID;
+        this.reaction = reaction;;
         this.creationTime = creationTime;
     }
+
 
 
     public String getContent() {
@@ -42,5 +47,6 @@ public class MessageDsRequestModel {
         return creationTime;
     }
 
+    public List<String> getReaction(){return reaction;}
 
 }

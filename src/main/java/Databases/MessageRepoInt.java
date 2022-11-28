@@ -12,7 +12,6 @@ public interface MessageRepoInt {
 
     void editMessage(String ID, String content);
 
-
-
+    Map<String, Object> getGroupMessageInfo(String GroupID);
 
 }

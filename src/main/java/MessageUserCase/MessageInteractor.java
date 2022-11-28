@@ -28,11 +28,13 @@ public class MessageInteractor implements MessageInputBoundary {
         LocalDateTime now = LocalDateTime.now();
 
         MessageDsRequestModel MessageDsModel =
-                new MessageDsRequestModel(message.getContent(), message.getSender(), message.getGroupID(), message.getID().toString(),now);
+                new MessageDsRequestModel(message.getContent(), message.getSender(), message.getGroupID(), message.getID().toString(),message.getReaction(),now);
         MessageRepoInt.save(MessageDsModel);
 
-        MessageResponseModel Messageresponsemodel = new MessageResponseModel(message.getSender(),now.toString()); //?
+        MessageResponseModel Messageresponsemodel = new MessageResponseModel(message.getSender(),now.toString());
         return MessagePresenter.prepareSuccessView(Messageresponsemodel);
+
+        // todo: prepare fail review.
     }
 
 }

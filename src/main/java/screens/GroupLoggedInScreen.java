@@ -24,6 +24,15 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
 
 
         JLabel title = new JLabel(groupName);
+
+//        String welcome1 = String.format("Welcome to group %1$s, %2$s" +
+//                "Click send to type the content you want to send within the group " +
+//                "Click view to check all the messages that other members sent " +
+//                "Click back to return to Group chosen page ",
+//                groupName, loginUserName);
+//
+//        JLabel practise = new JLabel(welcome1);
+
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton send = new JButton("send");
@@ -43,6 +52,7 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));  //?
 
         main.add(title);
+//      main.add(practise);
         main.add(buttons);
         this.setContentPane(main);
         this.pack();
