@@ -138,7 +138,7 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     @Override
-    public List<String> getGroups() {
+    public List<String> getRandomGroups() {
         List<String> randomGroupIDs = new ArrayList<>();
         for (GroupRepoDsRequestModel requestModel : groups.values()) {
             if (requestModel.isRandom()){
