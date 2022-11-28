@@ -121,6 +121,56 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
         this.save();
     }
 
+    public void removeGroupFromProfile(String userName, String groupId) {
+        List<String> groups = new ArrayList<>(accounts.get(userName).getGroups());
+        groups.remove(userName);
+        accounts.get(userName).setGroups(groups);
+        this.save();
+    }
+
+    public void addInterestToProfile(String userName, String interest) {
+        List<String> interests = new ArrayList<>(accounts.get(userName).getInterests());
+        interests.add(userName);
+        accounts.get(userName).setInterests(interests);
+        this.save();
+    }
+
+    public void removeInterestFromProfile(String userName, String interest) {
+        List<String> interests = new ArrayList<>(accounts.get(userName).getInterests());
+        interests.remove(userName);
+        accounts.get(userName).setInterests(interests);
+        this.save();
+    }
+
+    public void addFriendToProfile(String userName, String friend) {
+        List<String> friends = new ArrayList<>(accounts.get(userName).getFriends());
+        friends.add(userName);
+        accounts.get(userName).setFriends(friends);
+        this.save();
+    }
+
+    public void removeFriendFromProfile(String userName, String friend) {
+        List<String> friends = new ArrayList<>(accounts.get(userName).getFriends());
+        friends.remove(userName);
+        accounts.get(userName).setFriends(friends);
+        this.save();
+    }
+
+    public void addBlockedUserToProfile(String userName, String blockedUser) {
+        List<String> blockedUsers = new ArrayList<>(accounts.get(userName).getBlockedUsers());
+        blockedUsers.add(userName);
+        accounts.get(userName).setBlockedUsers(blockedUsers);
+        this.save();
+    }
+
+    public void removeBlockedUserFromProfile(String userName, String blockedUser) {
+        List<String> blockedUsers = new ArrayList<>(accounts.get(userName).getBlockedUsers());
+        blockedUsers.remove(userName);
+        accounts.get(userName).setBlockedUsers(blockedUsers);
+        this.save();
+    }
+
+
     /**
      * Return whether a user exists with username identifier.
      * @param identifier the username to check.
