@@ -1,4 +1,16 @@
 package general_group.interface_adapters;
 
-public class GeneralGroupCreatePresenter {
+import general_group.use_case.GeneralGroupCreateDsResponseModel;
+import general_group.use_case.GeneralGroupOutputBoundary;
+
+public class GeneralGroupCreatePresenter implements GeneralGroupOutputBoundary {
+    @Override
+    public GeneralGroupCreateDsResponseModel prepareSuccessView(GeneralGroupCreateDsResponseModel group) {
+        return null;
+    }
+
+    @Override
+    public GeneralGroupCreateDsResponseModel prepareFailView(String error) {
+        return null;
+    }
 }
