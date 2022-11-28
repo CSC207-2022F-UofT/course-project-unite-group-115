@@ -16,9 +16,9 @@ public interface GroupRepoInt {
 
     void removeUserFromGroup(String user, String groupID);
 
-    void addInterestsToGroup(String interest, String groupID);
+    void addInterestsToGroup(List<String> newInterest, String groupID);
 
-    void removeInterestsfromGroup(String interest, String groupID);
+    void removeInterestsfromGroup(List<String> interests, String groupID);
 
     List<String> getGroups();
 
