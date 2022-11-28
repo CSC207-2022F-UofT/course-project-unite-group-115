@@ -3,18 +3,23 @@ package screens;
 import interface_adapters.ReactionController;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MessageDisplayScreen extends JPanel implements ActionListener{
+public class MessageDisplayScreenButtons extends JPanel implements ActionListener{
     ReactionController reactionController;
 
-    public MessageDisplayScreen(ReactionController controller){
-        this.reactionController = controller;
-        JLabel title = new JLabel("Messages");
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+    JTextField addReactionID = new JTextField(7);
 
+    JTextField removeReactionID = new JTextField(7);
+
+    public MessageDisplayScreenButtons(ReactionController controller){
+        this.reactionController = controller;
+
+        TextPanel addReaction = new TextPanel(
+                new JLabel("Choose ID to add reaction"), addReactionID);
+        TextPanel removeReaction = new TextPanel(
+                new JLabel("Choose ID to remove reaction"), removeReactionID);
         JButton refresh = new JButton("Refresh");
         JButton react = new JButton("React");
 
@@ -27,7 +32,8 @@ public class MessageDisplayScreen extends JPanel implements ActionListener{
 
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
-        this.add(title);
+        this.add(addReaction);
+        this.add(removeReaction);
         this.add(buttons);
 
     }
@@ -35,5 +41,6 @@ public class MessageDisplayScreen extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
+
     }
 }

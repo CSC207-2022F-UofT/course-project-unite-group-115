@@ -7,7 +7,7 @@ import reaction_use_case.ReactionDsGateway;
 import Databases.*;
 import reaction_use_case.ReactionInputBoundary;
 import reaction_use_case.ReactionInteractor;
-import screens.MessageDisplayScreen;
+import screens.MessageDisplayScreenButtons;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,10 +16,12 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args){
-        JFrame application = new JFrame();
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
-        application.add(screens);
+        JFrame frame = new JFrame();
+        frame.setSize(500, 650);
+        frame.setTitle("Messages");
+//        CardLayout cardLayout = new CardLayout();
+//        JPanel screens = new JPanel(cardLayout);
+//        frame.add(screens);
 
         ReactionDsGateway reaction;
         try {
@@ -32,11 +34,10 @@ public class Main {
         ReactionInputBoundary interactor = new ReactionInteractor(reaction, presenter, reactionFactory);
         ReactionController controller = new ReactionController(interactor);
 
-        MessageDisplayScreen messageScreen = new MessageDisplayScreen(controller);
-        screens.add(messageScreen);
-        cardLayout.show(screens, "messages");
-        application.pack();
-        application.setVisible(true);
-        System.out.println("Hello World");
+        MessageDisplayScreenButtons messageScreenButtons = new MessageDisplayScreenButtons(controller);
+        frame.add(messageScreenButtons, BorderLayout.SOUTH);
+//        cardLayout.show(screens, "messages");
+        frame.setVisible(true);
+
     }
 }

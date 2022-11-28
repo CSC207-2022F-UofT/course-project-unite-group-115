@@ -34,7 +34,7 @@ public class ReactionInteractor implements ReactionInputBoundary {
         return reactionOutputBoundary.prepareAdditionView(reactionResponseModel);
     }
 
-    @Override
+//    @Override
     public ReactionResponseModel removeReaction(ReactionRequestModel requestModel){
         // Create new entity and database request model
         Reaction reaction = reactionFactory.create(requestModel.getReaction(), requestModel.getMessageID());
