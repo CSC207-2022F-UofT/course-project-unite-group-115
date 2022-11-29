@@ -7,7 +7,7 @@ import reaction_use_case.ReactionDsGateway;
 import Databases.*;
 import reaction_use_case.ReactionInputBoundary;
 import reaction_use_case.ReactionInteractor;
-import screens.MessageDisplayScreenButtons;
+import screens.MessageDisplayScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args){
         JFrame frame = new JFrame();
-        frame.setSize(500, 650);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setTitle("Messages");
 //        CardLayout cardLayout = new CardLayout();
 //        JPanel screens = new JPanel(cardLayout);
@@ -34,8 +34,9 @@ public class Main {
         ReactionInputBoundary interactor = new ReactionInteractor(reaction, presenter, reactionFactory);
         ReactionController controller = new ReactionController(interactor);
 
-        MessageDisplayScreenButtons messageScreenButtons = new MessageDisplayScreenButtons(controller);
-        frame.add(messageScreenButtons, BorderLayout.SOUTH);
+        MessageDisplayScreen messageScreenButtons = new MessageDisplayScreen(controller);
+        frame.add(messageScreenButtons, BorderLayout.CENTER);
+        frame.pack();
 //        cardLayout.show(screens, "messages");
         frame.setVisible(true);
 
