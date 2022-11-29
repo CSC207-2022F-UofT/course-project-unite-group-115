@@ -14,6 +14,8 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
     final GeneralGroupCreateOutputBoundary genGroupOutputBoundary;
     final GroupFactory genGroupFactory;
 
+    final int maxNumberOfFriends = 7;
+
     public GeneralGroupCreateInteractor(GroupRepoInt genGroupRepoAccess, GeneralGroupCreateOutputBoundary genGroupOutputBoundary,
                                         GroupFactory genGroupFactory) {
         this.genGroupRepoAccess = genGroupRepoAccess;
@@ -33,7 +35,7 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
         } else if (friendsToAdd.isEmpty()) {
             return genGroupOutputBoundary.prepareFailView("You can't create a group by yourself. Select" +
                     "at most 7 friends and try again");
-        } else if (friendsToAdd.size() > 7) {
+        } else if (friendsToAdd.size() > maxNumberOfFriends) {
             return genGroupOutputBoundary.prepareFailView("You can't add more than 7 friends into a group." +
                     "Select at most 7 friends and try again.");
         }
