@@ -23,6 +23,10 @@ public class GeneralGroupCreateDsResponseModel {
         return groupName;
     }
 
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
     public String getGroupID() {
         return groupID;
     }

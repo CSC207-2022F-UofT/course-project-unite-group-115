@@ -1,6 +1,6 @@
 package general_group.use_case;
 
-public interface GeneralGroupOutputBoundary {
+public interface GeneralGroupCreateOutputBoundary {
 
     GeneralGroupCreateDsResponseModel prepareSuccessView(GeneralGroupCreateDsResponseModel group);
 

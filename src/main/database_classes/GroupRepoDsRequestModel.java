@@ -1,5 +1,7 @@
 package database_classes;
 
+import general_group.entities.User;
+
 import java.util.List;
 
 public class GroupRepoDsRequestModel {
