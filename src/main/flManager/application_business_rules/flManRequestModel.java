@@ -7,8 +7,9 @@ public class flManRequestModel {
     private List<String> friends;
     private int value;
 
-    public flManRequestModel(String owner){
+    public flManRequestModel(String owner, List<String> friends){
         this.owner = owner;
+        this.friends = friends;
     }
 
     public String getOwner() {
@@ -43,13 +44,16 @@ public class flManRequestModel {
         this.friends.remove(user);
     }
 
-    public static String viewFri(String owner){
-        flManRequestModel fl = new flManRequestModel(owner);
+    /*
+    public static String viewFri(String owner, List<String> friends){
+        flManRequestModel fl = new flManRequestModel(owner, friends);
         return fl.friends.toString();
     }
 
-    public void implement(String owner, int value, String user){
-        flManRequestModel fl = new flManRequestModel(owner);
+     */
+
+    public void implement(String owner, int value, String user, List<String> friends){
+        flManRequestModel fl = new flManRequestModel(owner, friends);
         if (value == 0){
             fl.delFri(user);
         } else if (value == 1) {

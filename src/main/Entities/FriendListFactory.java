@@ -1,7 +1,9 @@
 package Entities;
 
+import java.util.List;
+
 public class FriendListFactory {
-    public static FriendList create(String owner) {
-        return new FriendList(owner);
+    public static FriendList create(String owner, List<String> friends) {
+        return new FriendList(owner, friends);
     }
 }

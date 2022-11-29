@@ -7,8 +7,9 @@ public class FriendList {
     //    private int totalFri = 0;
     private List<String> friends;
 
-    public FriendList(String owner){
+    public FriendList(String owner, List<String> friends){
         this.owner = owner;
+        this.friends = friends;
     }
 
     public String getOwner() {
@@ -42,5 +43,9 @@ public class FriendList {
     public void delFri(String user){
         this.friends.remove(user);
     }
+
+//    public static String viewFri(String owner, List<String> friends){
+//        return friends.toString();
+//    }
 
 }
