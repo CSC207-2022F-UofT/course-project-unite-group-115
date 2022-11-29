@@ -32,5 +32,4 @@ public class flManUseCaseInteractor implements flManInputBoundary{
                 friendList.getOwner(), friendList.getFriends());
         return flManPresenter.prepareSuccessView(friRespMod);
     }
-
 }
