@@ -1,11 +1,12 @@
-package usecase;
+package entities;
 
-import Database.UserDataAccess;
-import Database.UserMessageModel;
+import Database.ProfileManagerDataAccess;
+import Database.ProfileRepoInt;
+import get_user_sensitiveWordList.application_business_rules.GetUserInteractor;
+import get_user_sensitiveWordList.application_business_rules.GetUserListResponseModel;
+import get_user_sensitiveWordList.interface_adapters.GetUserSenListController;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.time.LocalDate;
+import java.util.List;
 
 public class Blocker {
     private String messageId;
@@ -16,11 +17,13 @@ public class Blocker {
 
     private String reportUserId;
 
+
     public Blocker(String messageId, String userId, String message,String reportUserId) {
         this.messageId = messageId;
         this.userId = userId;
         this.message = message;
         this.reportUserId = reportUserId;
+
     }
 
 
@@ -87,30 +90,6 @@ public class Blocker {
         }
 
     }*/
-
-    /* check sensitive words list in chatting,add user to blacklist and replace sensitive word
-
-    public  String blockUser(String userid,String text){
-        String newText = "";
-        for(String word : getSensitiveWords()){
-            if(text.toLowerCase().contains(word.toLowerCase())){
-                addBlockedUsers(userid);
-                newText = text.replace(word.toLowerCase(),"*".repeat(word.length()));
-                //delete friend (doesn't finish)
-            } /*else if (text.toLowerCase().contains(word)) {
-                addBlockedUsers(userid);
-                newText = text.replace(word,"*".repeat(word.length()));
-
-            }
-        }
-        return newText;
-    }
-    */
-
-
-
-
-
 
 
 }

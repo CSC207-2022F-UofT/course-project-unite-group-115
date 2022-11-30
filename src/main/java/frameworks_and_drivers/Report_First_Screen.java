@@ -3,14 +3,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
-import Database.InputBoundary;
-import Database.UserDataAccess;
-import Database.UserReporterInteractor;
+import java.util.List;
+
+import Database.*;
 import Interface.UserReporterController;
-import Database.GroupRepoInt;
 import Interface.UserReporterPresenter;
-import usecase.UserFactory;
-import usecase.*;
+import entities.UserFactory;
 
 public class Report_First_Screen extends JFrame implements ActionListener {
     public Report_First_Screen() {
@@ -19,7 +17,7 @@ public class Report_First_Screen extends JFrame implements ActionListener {
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton report = new JButton("Report User");
-        JButton block = new JButton("Block User");
+        JButton block = new JButton("Back");
 
         JPanel buttons = new JPanel();
         buttons.add(report);
@@ -54,12 +52,13 @@ public class Report_First_Screen extends JFrame implements ActionListener {
 
             GroupRepoInt user;
             try {
-                user = new UserDataAccess("/Users/aurora/IdeaProjects/untitled folder/src/main/java.report.csv");
+                user = new UserDataAccess("java.report.csv");
             } catch (IOException e) {
                 throw new RuntimeException("Could not create file.");
             }
             UserReporterPresenter presenter = new UserReporterPresenter();
             UserFactory userFactory = new UserFactory();
+
             InputBoundary interactor = new UserReporterInteractor(
                     user, presenter, userFactory);
             UserReporterController userReporterController = new UserReporterController(
@@ -73,10 +72,18 @@ public class Report_First_Screen extends JFrame implements ActionListener {
             cardLayout.show(screens, "register");
             application.pack();
             application.setVisible(true);
+        }else if (evt.getActionCommand().equals("Back")) {
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+            JFrame application2 = new LoggedinScreen("");
+            application2.pack();
+            application2.setVisible(true);
         }
     }
 
 //         Create the parts to plug into the Use Case+Entities engine
+    ///Users/aurora/IdeaProjects/untitled folder/src/main/java/main_Databases/java.report.csv"
 
 
         }
