@@ -93,17 +93,17 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     @Override
-    public void addUserToGroup(String user, String groupID) {
+    public void addUserToGroup(String userName, String groupID) {
         List<String> members = new ArrayList<>(groups.get(groupID).getMembers());
-        members.add(user);
+        members.add(userName);
         groups.get(groupID).setMembers(members);
         this.save();
     }
 
     @Override
-    public void removeUserFromGroup(String user, String groupID) {
+    public void removeUserFromGroup(String userName, String groupID) {
         List<String> members = new ArrayList<>(groups.get(groupID).getMembers());
-        members.remove(user);
+        members.remove(userName);
         groups.get(groupID).setMembers(members);
         this.save();
     }

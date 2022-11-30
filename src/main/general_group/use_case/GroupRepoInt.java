@@ -12,9 +12,9 @@ public interface GroupRepoInt {
 
     Map<String, Object> getGroupData(String groupID);
 
-    void addUserToGroup(String user, String groupID);
+    void addUserToGroup(String userName, String groupID);
 
-    void removeUserFromGroup(String user, String groupID);
+    void removeUserFromGroup(String userName, String groupID);
 
     void addInterestsToGroup(List<String> newInterest, String groupID);
 
