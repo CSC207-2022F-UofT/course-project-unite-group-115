@@ -19,11 +19,22 @@ public class UserDataAccess implements GroupRepoInt {
     public UserDataAccess(String csvFilePath) throws IOException {
         csvFile = new File(csvFilePath);
 
-        headers.put("messageId", 0);
-        headers.put("userId", 1);
-        headers.put("message", 2);
-        headers.put("reportUserId",3);
-        headers.put("creationTime", 4);
+        headers.put("MessageId",0);
+        headers.put("ReportedUserId",1);
+        headers.put("Message", 2);
+        headers.put("ReportUserId",3);
+        headers.put("CreationTime",4);
+        headers.put("Reflection by Admin",5);
+
+        /*headers.put("UserId", 1);
+
+        headers.put("Message", 2);
+
+        headers.put("ReportUserId",3);
+
+        headers.put("CreationTime",4);
+
+        headers.put("Reflection by Admin",5);*/
 
 
         if (csvFile.length() == 0) {
@@ -35,15 +46,15 @@ public class UserDataAccess implements GroupRepoInt {
             String row;
             while ((row = reader.readLine()) != null) {
                 String[] col = row.split(",");
-                String messageId = String.valueOf(col[headers.get("messageId")]);
-                String userId = String.valueOf(col[headers.get("userId")]);
-                String message = String.valueOf(col[headers.get("message")]);
-                String reportUserId = String.valueOf(col[headers.get("reportUserId")]);
-                String TimeText = String.valueOf(col[headers.get("creationTime")]);
+                String messageId = String.valueOf(col[headers.get("MessageId")]);
+                String userId = String.valueOf(col[headers.get("ReportedUserId")]);
+                String message = String.valueOf(col[headers.get("Message")]);
+                String reportUserId = String.valueOf(col[headers.get("ReportUserId")]);
+                String TimeText = String.valueOf(col[headers.get("CreationTime")]);
                 LocalDateTime ldt = LocalDateTime.parse(TimeText);
 
                 RepoMessageModel userMessage = new RepoMessageModel(messageId,userId,message,reportUserId,ldt);
-                userMessages.put(reportUserId,userMessage);
+                userMessages.put(messageId,userMessage);
             }
 
             reader.close();
@@ -78,7 +89,7 @@ public class UserDataAccess implements GroupRepoInt {
 
     @Override
     public void adduserModel(RepoMessageModel userMessageModel) {
-        userMessages.put(userMessageModel.getReportUserId(), userMessageModel);
+        userMessages.put(userMessageModel.getMessageId(), userMessageModel);
         this.save();
 
     }

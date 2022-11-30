@@ -1,22 +1,24 @@
 package Database;
 import Interface.UserReporterPresenter;
-import usecase.Blocker;
-import usecase.UserFactory;
+import entities.Blocker;
+import entities.UserFactory;
 
 import java.time.LocalDateTime;
-import java.time.LocalDate;
+import java.util.List;
 
 public class UserReporterInteractor implements InputBoundary {
 
     final GroupRepoInt userRepoInt;
     final UserReporterPresenter userPresenter;
     final UserFactory userFactory;
+    //final ProfileRepoInt PROFILE_REPO_ACCESS;
 
     public UserReporterInteractor(GroupRepoInt userRepoInterface, UserReporterPresenter userReportPresenter,
                                   UserFactory userFactory) {
         this.userRepoInt = userRepoInterface;
         this.userPresenter = userReportPresenter;
         this.userFactory = userFactory;
+        //this.PROFILE_REPO_ACCESS = profileRepoAccess;
     }
 
 
@@ -44,7 +46,8 @@ public class UserReporterInteractor implements InputBoundary {
                 , user.getReportUserId(), now);
         userRepoInt.adduserModel(userDsModel);
 
-        UserMessageResponseModel accountResponseModel = new UserMessageResponseModel(user.getReportUserId(), now.toString());
+        UserMessageResponseModel accountResponseModel = new UserMessageResponseModel(user.getMessageId(), now.toString());
         return userPresenter.prepareSuccessView(accountResponseModel);
     }
+
 }

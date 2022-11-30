@@ -17,7 +17,7 @@ public class User_Report_Screen extends JPanel implements ActionListener{
 
     JTextField reportedUsername = new JTextField(15);
 
-    JTextField reportUsername = new JTextField(15);
+    JTextField yourUsername = new JTextField(15);
     JTextField message = new JTextField(15);
     JTextField messageID = new JTextField(15);
     UserReporterController userReporterController;
@@ -32,14 +32,17 @@ public class User_Report_Screen extends JPanel implements ActionListener{
         JLabel title = new JLabel("User Report Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        LabelTextPanel usernameInfo = new LabelTextPanel(
-                new JLabel("Report Username"), reportUsername);
-        LabelTextPanel reportedUsernameInfo = new LabelTextPanel(
-                new JLabel("Reported Username"), reportedUsername);
+
+
         LabelTextPanel messageIDInfo = new LabelTextPanel(
                 new JLabel("Message ID"), messageID);
+        LabelTextPanel reportedUsernameInfo = new LabelTextPanel(
+                new JLabel("Reported Username"), reportedUsername);
+        LabelTextPanel usernameInfo = new LabelTextPanel(
+                new JLabel("Your Username"), yourUsername);
         LabelTextPanel messageInfo = new LabelTextPanel(
                 new JLabel("Reported Message"), message);
+
 
 
         JButton submit = new JButton("Submit");
@@ -72,8 +75,8 @@ public class User_Report_Screen extends JPanel implements ActionListener{
                 userReporterController.create(messageID.getText(),
                         reportedUsername.getText(),
                         message.getText(),
-                        reportUsername.getText());
-                JOptionPane.showMessageDialog(this, String.format("%s Report Success.", reportUsername.getText()));
+                        yourUsername.getText());
+                JOptionPane.showMessageDialog(this, String.format("%s Report Success.", yourUsername.getText()));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
