@@ -16,7 +16,8 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
 
     final int maxNumberOfFriends = 7;
 
-    public GeneralGroupCreateInteractor(GroupRepoInt genGroupRepoAccess, GeneralGroupCreateOutputBoundary genGroupOutputBoundary,
+    public GeneralGroupCreateInteractor(GroupRepoInt genGroupRepoAccess,
+                                        GeneralGroupCreateOutputBoundary genGroupOutputBoundary,
                                         GroupFactory genGroupFactory) {
         this.genGroupRepoAccess = genGroupRepoAccess;
         this.genGroupOutputBoundary = genGroupOutputBoundary;
