@@ -1,12 +1,10 @@
 package test;
-import Database.UserMessageModel;
 import org.junit.Before;
 import org.junit.Test;
 import usecase.Blocker;
 import java.io.IOException;
 import java.util.UUID;
 import java.util.ArrayList;
-import Database.UserDataAccess;
 
 import static org.junit.Assert.assertEquals;
 
