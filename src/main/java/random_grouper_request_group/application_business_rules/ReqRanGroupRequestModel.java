@@ -11,9 +11,4 @@ public class ReqRanGroupRequestModel {
     public String getUserName() {
         return userName;
     }
-
-    // ToDo: Remove if not used
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 }

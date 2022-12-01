@@ -12,7 +12,6 @@ public class ReqRanGroupResponseModel {
         this.successMessage = "Success";
     }
 
-    // ToDo: Remove if not used
     public ReqRanGroupResponseModel(String errorMessage) {
         this.failMessage = errorMessage;
     }
@@ -21,18 +20,8 @@ public class ReqRanGroupResponseModel {
         return addedToGroupID;
     }
 
-    // ToDo: Remove if not used
-    public void setAddedToGroupID(String addedToGroupID) {
-        this.addedToGroupID = addedToGroupID;
-    }
-
     public String getAddedToGroupName() {
         return addedToGroupName;
-    }
-
-    // ToDo: Remove if not used
-    public void setAddedToGroupName(String addedToGroupName) {
-        this.addedToGroupName = addedToGroupName;
     }
 
     public String getSuccessMessage() {
@@ -43,13 +32,7 @@ public class ReqRanGroupResponseModel {
         this.successMessage = successMessage;
     }
 
-    // ToDo: Remove if not used
     public String getFailMessage() {
         return failMessage;
-    }
-
-    // ToDo: Remove if not used
-    public void setFailMessage(String failMessage) {
-        this.failMessage = failMessage;
     }
 }
