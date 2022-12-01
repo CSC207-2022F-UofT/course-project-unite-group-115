@@ -7,4 +7,6 @@ public interface GetUserInterestsOutputBoundary {
      * @return returns a formatted GetUserInterestsReponseModel
      */
     GetUserInterestsResponseModel prepareSuccessView(GetUserInterestsResponseModel response);
+
+    GetUserInterestsResponseModel prepareFailView(GetUserInterestsResponseModel reponse);
 }

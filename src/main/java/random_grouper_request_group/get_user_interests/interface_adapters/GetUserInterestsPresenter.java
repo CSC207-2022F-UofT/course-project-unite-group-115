@@ -21,4 +21,9 @@ public class GetUserInterestsPresenter implements GetUserInterestsOutputBoundary
         response.setInterests(interests);
         return response;
     }
+
+    @Override
+    public GetUserInterestsResponseModel prepareFailView(GetUserInterestsResponseModel response) {
+        return response;
+    }
 }
