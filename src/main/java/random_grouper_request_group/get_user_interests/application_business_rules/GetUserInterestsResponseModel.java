@@ -4,9 +4,14 @@ import java.util.List;
 
 public class GetUserInterestsResponseModel {
     private List<String> interests;
+    private String failMessage;
 
     public GetUserInterestsResponseModel(List<String> interests){
         this.interests = interests;
+    }
+
+    public GetUserInterestsResponseModel(String errorMessage) {
+        this.failMessage = errorMessage;
     }
 
     /**
@@ -21,5 +26,12 @@ public class GetUserInterestsResponseModel {
      */
     public void setInterests(List<String> interests) {
         this.interests = interests;
+    }
+
+    /**
+     * Returns a message explaining why the use case failed to get the user's interests.
+     */
+    public String getFailMessage() {
+        return failMessage;
     }
 }

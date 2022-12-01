@@ -23,7 +23,7 @@ public class GetUserInterestsPresenter implements GetUserInterestsOutputBoundary
     }
 
     @Override
-    public GetUserInterestsResponseModel prepareFailView(GetUserInterestsResponseModel response) {
-        return response;
+    public GetUserInterestsResponseModel prepareFailView(String error) {
+        throw new GetUserInterestsFailure(error);
     }
 }

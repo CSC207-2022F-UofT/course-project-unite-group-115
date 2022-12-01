@@ -8,5 +8,5 @@ public interface GetUserInterestsOutputBoundary {
      */
     GetUserInterestsResponseModel prepareSuccessView(GetUserInterestsResponseModel response);
 
-    GetUserInterestsResponseModel prepareFailView(GetUserInterestsResponseModel reponse);
+    GetUserInterestsResponseModel prepareFailView(String error);
 }
