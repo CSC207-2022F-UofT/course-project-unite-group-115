@@ -14,8 +14,9 @@ public class AddingFriendsScreen extends JPanel implements ActionListener {
 
     JComboBox<String> cmbFriendList;
     Profile creatorProfile;
-    List<String> allFriendsChosen;
+    List<String> allFriendsChosen = new ArrayList<>();
     GetFriendsController getFriendsController;
+    String friendChosen;
     public AddingFriendsScreen(GetFriendsController controller, List<String> allFriendsChosen) {
         this.getFriendsController = controller;
         this.allFriendsChosen = allFriendsChosen;
@@ -27,7 +28,7 @@ public class AddingFriendsScreen extends JPanel implements ActionListener {
         friendList.add("C");
         creatorProfile = new Profile("AA", friendList);
         GetFriendsDsResponseModel response = getFriendsController.getFriendsList(creatorProfile);
-        List<String> friendsList = new ArrayList<String>(response.getFriendList());
+        List<String> friendsList = new ArrayList<>(response.getFriendList());
 
         JLabel title = new JLabel("Friend's list", SwingConstants.CENTER);
 
@@ -36,31 +37,34 @@ public class AddingFriendsScreen extends JPanel implements ActionListener {
         for(int i = 0; i < allFriends.length; i++) {
             allFriends[i] = friendsList.get(i);
         }
+
         cmbFriendList = new JComboBox<>(allFriends);
-        JButton add = new JButton("Add");
+        JButton addFriend = new JButton("Add");
 
         JPanel bottomButtons = new JPanel();
-        bottomButtons.add(add);
+        bottomButtons.add(addFriend);
 
-        add.addActionListener(this);
         cmbFriendList.addActionListener(this);
+        addFriend.addActionListener(this);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
-        this.add(add);
+        this.add(addFriend);
         this.add(cmbFriendList);
     }
     @Override
     public void actionPerformed(ActionEvent evt) {
+
         if(evt.getSource() == cmbFriendList) {
-            String friendChosen = (String)cmbFriendList.getSelectedItem();
+            friendChosen = (String)cmbFriendList.getSelectedItem();
+        }
 
-            if(evt.getActionCommand().equals("Add") && !(allFriendsChosen.contains(friendChosen))) {
-                allFriendsChosen.add(friendChosen);
-
-
-
+        if(evt.getActionCommand().equals("Add")) {
+            allFriendsChosen.add(friendChosen);
+            JOptionPane.showMessageDialog(this, "Friend has been added.");
+            for (String friend:allFriendsChosen) {
+                System.out.println(friend);
             }
         }
     }

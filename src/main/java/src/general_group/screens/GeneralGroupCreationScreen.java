@@ -19,7 +19,7 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
     JButton getFriends = new JButton("Choose friends");
     List<User> friendsChosen;
     Profile creatorProfile;
-    List<String> friendsChosenString;
+    List<String> friendsChosenString = new ArrayList<>();
     GeneralGroupCreateController genGroupCreateController;
     GetFriendsController getFriendsController;
 
@@ -37,6 +37,7 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
         LabelButtonPanel getFriendsButton = new LabelButtonPanel(
                 new JLabel("Select the friends you wish to create a custom group with (At most 7 friends):"), getFriends);
 
+        //For testing purposes only
         List<String> friendList = new ArrayList<>();
         friendList.add("a");
         friendList.add("b");
@@ -80,24 +81,17 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
             }
 
         } else if (evt.getActionCommand().equals("Choose friends")){
- //           if (friendsChosenString.size() == 7) {
-  //              try {
-    //                throw new Exception();
-      //          } catch (Exception e) {
-        //            JOptionPane.showMessageDialog(this, e.getMessage());
-          //      }
-      //      }
+
             JFrame friendsApp = new JFrame("Choose a friend.");
-            friendsApp.setSize(200, 200);
+            friendsApp.setSize(300, 100);
             CardLayout cardLayout = new CardLayout();
             JPanel screens = new JPanel(cardLayout);
-            friendsApp.add(screens);
+            friendsApp.add(screens, BorderLayout.CENTER);
 
             AddingFriendsScreen addingFriendsScreen = new AddingFriendsScreen(getFriendsController, friendsChosenString);
 
             screens.add(addingFriendsScreen, "Welcome!");
             cardLayout.show(screens, "create");
-            friendsApp.pack();
             friendsApp.setVisible(true);
         }
 

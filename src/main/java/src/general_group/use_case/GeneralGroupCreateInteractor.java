@@ -7,7 +7,9 @@ import general_group.entities.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoundary{
     final GroupRepoInt genGroupRepoAccess;
@@ -27,8 +29,10 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
     @Override
     public GeneralGroupCreateDsResponseModel create(GeneralGroupCreateDsRequestModel requestModel) {
         String groupName = requestModel.getGroupName();
-        List<User> friendsToAdd = requestModel.getFriendsToAdd();
+        List<User> friendsToAdd = new ArrayList<>(requestModel.getFriendsToAdd());
         List<String> interests = new ArrayList<>();
+
+        Set<User> duplicateChecker = new HashSet<>(friendsToAdd);
 
         if (groupName.equals("")) {
             return genGroupOutputBoundary.prepareFailView("The group's name cannot be empty. Enter " +
@@ -36,9 +40,17 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
         } else if (friendsToAdd.isEmpty()) {
             return genGroupOutputBoundary.prepareFailView("You can't create a group by yourself. Select " +
                     "at most 7 friends and try again");
-        } else if (friendsToAdd.size() > maxNumberOfFriends) {
+        } else if (friendsToAdd.size() >= maxNumberOfFriends) {
             return genGroupOutputBoundary.prepareFailView("You can't add more than 7 friends into a group. " +
                     "Select at most 7 friends and try again.");
+        } else if (friendsToAdd.contains(null)) {
+            friendsToAdd.clear();
+            return genGroupOutputBoundary.prepareFailView("You can't have null as a friend to add into the group. "
+            + "Select at most 7 friends and try again.");
+        } else if (friendsToAdd.size() > duplicateChecker.size()) {
+            friendsToAdd.clear();
+            return genGroupOutputBoundary.prepareFailView("You can't add the same person more mora than once to a" +
+                    "group. " + "Select at most 7 different friends and try again.");
         }
 
         User groupCreator = new User(requestModel.getGroupCreatorName());
