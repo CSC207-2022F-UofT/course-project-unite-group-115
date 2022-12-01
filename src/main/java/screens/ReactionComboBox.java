@@ -1,39 +1,46 @@
 package screens;
 
 import java.awt.*;
+import java.util.Objects;
 import javax.swing.*;
 
-public class ReactionComboBox extends JPanel {
+public class ReactionComboBox extends JPanel{
     ImageIcon[] images;
-    String[] reactions = {"heart", "smile", "cry"};
-    public ReactionComboBox(){
-        super (new BorderLayout());
+    String[] reactions;
 
+    JComboBox<Integer> reactionBox;
+    public ReactionComboBox(String[] react){
+        super (new BorderLayout());
+        this.reactions = react;
         // Load the reaction images and create an array of indexes
         images = new ImageIcon[reactions.length];
         Integer[] intArray = new Integer[reactions.length];
         for (int i = 0; i < reactions.length; i++) {
             intArray[i] = i;
-            images[i] = createImageIcon("src/main/java/screens/" + reactions[i] + ".png");
+            images[i] = createImageIcon("src/main/java/images/" + reactions[i] + ".png");
             if (images[i] != null) {
                 images[i].setDescription(reactions[i]);
             }
         }
 
         //Create the combo box.
-        JComboBox<Integer> reactions = new JComboBox<>(intArray);
+//        JComboBox<Integer>
+        reactionBox = new JComboBox<>(intArray);
         ComboBoxRenderer renderer= new ComboBoxRenderer();
         renderer.setPreferredSize(new Dimension(100, 70));
-        reactions.setRenderer(renderer);
-        reactions.setMaximumRowCount(3);
+        reactionBox.setRenderer(renderer);
+        reactionBox.setMaximumRowCount(3);
 
         //Lay out the demo.
-        add(reactions, BorderLayout.PAGE_START);
+        add(reactionBox, BorderLayout.PAGE_START);
         setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
     }
+
+    public String getSelected(){
+        return Objects.requireNonNull(this.reactionBox.getSelectedItem()).toString();
+    }
+
     protected static ImageIcon createImageIcon(String path) {
-//        java.net.URL imgURL = ReactionComboBox.class.getResource(path);
-//        System.out.println(imgURL);
         if (path != null) {
             return new ImageIcon(path);
         } else {
@@ -41,9 +48,8 @@ public class ReactionComboBox extends JPanel {
             return null;
         }
     }
-    class ComboBoxRenderer extends JLabel
-            implements ListCellRenderer {
-        private Font uhOhFont;
+    class ComboBoxRenderer extends JLabel implements ListCellRenderer<Object> {
+        private Font exceptionFont;
 
         public ComboBoxRenderer() {
             setOpaque(true);
@@ -56,9 +62,10 @@ public class ReactionComboBox extends JPanel {
          * to the selected value and returns the label, set up
          * to display the text and image.
          */
+
         @Override
         public Component getListCellRendererComponent(
-                JList list,
+                JList<?> list,
                 Object value,
                 int index,
                 boolean isSelected,
@@ -83,7 +90,7 @@ public class ReactionComboBox extends JPanel {
                 setText(react);
                 setFont(list.getFont());
             } else {
-                setUhOhText(react + " (no image available)",
+                setExceptionText(react + " (no image available)",
                         list.getFont());
             }
 
@@ -91,12 +98,12 @@ public class ReactionComboBox extends JPanel {
         }
 
         //Set the font and text when no image was found.
-        protected void setUhOhText(String uhOhText, Font normalFont) {
-            if (uhOhFont == null) { //lazily create this font
-                uhOhFont = normalFont.deriveFont(Font.ITALIC);
+        protected void setExceptionText(String exceptionText, Font normalFont) {
+            if (exceptionFont == null) {
+                exceptionFont = normalFont.deriveFont(Font.ITALIC);
             }
-            setFont(uhOhFont);
-            setText(uhOhText);
+            setFont(exceptionFont);
+            setText(exceptionText);
         }
     }
 

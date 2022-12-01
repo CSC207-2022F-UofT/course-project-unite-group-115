@@ -9,9 +9,15 @@ public class ReactionController {
 
     public ReactionController(ReactionInputBoundary reactionInput){ this.reactionInput = reactionInput; }
 
-    ReactionResponseModel create(String reaction, String messageID) {
+    public ReactionResponseModel addReaction(String reaction, String messageID) {
         ReactionRequestModel requestModel = new ReactionRequestModel(reaction, messageID);
 
         return reactionInput.createReaction(requestModel);
+    }
+
+    public ReactionResponseModel removeReaction(String reaction, String messageID) {
+        ReactionRequestModel requestModel = new ReactionRequestModel(reaction, messageID);
+
+        return reactionInput.removeReaction(requestModel);
     }
 }

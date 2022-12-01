@@ -3,7 +3,6 @@
 import entities.ReactionFactory;
 import interface_adapters.ReactionController;
 import interface_adapters.ReactionPresenter;
-import reaction_use_case.ReactionDsGateway;
 import Databases.*;
 import reaction_use_case.ReactionInputBoundary;
 import reaction_use_case.ReactionInteractor;
@@ -12,6 +11,9 @@ import screens.MessageDisplayScreen;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main {
@@ -23,16 +25,25 @@ public class Main {
 //        JPanel screens = new JPanel(cardLayout);
 //        frame.add(screens);
 
-        ReactionDsGateway reaction;
+        MessageRepoInt message;
         try {
-            reaction = new ReactionFile("./reactions.csv");
+            message = new MessageFile("./messages.csv");
         } catch (IOException e){
             throw new RuntimeException("Could not create file");
         }
         ReactionPresenter presenter = new ReactionPresenter();
         ReactionFactory reactionFactory = new ReactionFactory();
-        ReactionInputBoundary interactor = new ReactionInteractor(reaction, presenter, reactionFactory);
+        ReactionInputBoundary interactor = new ReactionInteractor(message, presenter, reactionFactory);
         ReactionController controller = new ReactionController(interactor);
+
+//         Test reactions by adding a message manually
+        List<String> emptyList = new ArrayList<String>();
+        LocalDateTime now = LocalDateTime.now();
+        MessageDsRequestModel request = new MessageDsRequestModel("bye","Michael","475",
+                "124", emptyList, now);
+        message.save(request);
+
+
 
         MessageDisplayScreen messageScreenButtons = new MessageDisplayScreen(controller);
         frame.add(messageScreenButtons, BorderLayout.CENTER);

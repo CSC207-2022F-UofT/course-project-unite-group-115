@@ -1,8 +1,8 @@
 package reaction_use_case;
 
 public class ReactionRequestModel {
-    private String reaction;
-    private String messageID;
+    private final String reaction;
+    private final String messageID;
 
     public ReactionRequestModel(String reaction, String messageID){
         this.reaction = reaction;

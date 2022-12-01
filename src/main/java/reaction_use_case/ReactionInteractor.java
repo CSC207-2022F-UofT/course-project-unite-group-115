@@ -1,52 +1,59 @@
 package reaction_use_case;
 
-import Databases.ReactionDsRequestModel;
-import entities.Reaction;
+import Databases.MessageRepoInt;
 import entities.ReactionFactory;
 
 public class ReactionInteractor implements ReactionInputBoundary {
 
-    final ReactionDsGateway reactionDsGateway;
+    final MessageRepoInt messageRepoInt;
 
     final ReactionOutputBoundary reactionOutputBoundary;
 
     final ReactionFactory reactionFactory;
 
-    public ReactionInteractor(ReactionDsGateway reactionDsGateway, ReactionOutputBoundary reactionPresenter,
+    public ReactionInteractor(MessageRepoInt messageRepoInt, ReactionOutputBoundary reactionPresenter,
                               ReactionFactory reactionFactory){
-        this.reactionDsGateway = reactionDsGateway;
+        this.messageRepoInt = messageRepoInt;
         this.reactionOutputBoundary = reactionPresenter;
         this.reactionFactory = reactionFactory;
     }
 
     @Override
     public ReactionResponseModel createReaction(ReactionRequestModel requestModel){
-        // Create new reaction to store in database
-        Reaction reaction = reactionFactory.create(requestModel.getReaction(), requestModel.getMessageID());
-        ReactionDsRequestModel reactionDsModel = new ReactionDsRequestModel(reaction.getReaction(),
-                reaction.getMessageID());
-        // Store reaction in database
-        reactionDsGateway.addReaction(reactionDsModel);
+        /* Check if either the messageID does not correspond to a message
+         * or the reaction already exists on the message
+         */
+        if (messageRepoInt.messageNotExist(requestModel.getMessageID())){
+            return reactionOutputBoundary.prepareFailView("Message with ID: " +
+                    requestModel.getMessageID() + " does not exist.");
+        } else if (messageRepoInt.reactionExists(requestModel.getReaction(), requestModel.getMessageID())){
+            return reactionOutputBoundary.prepareFailView("Reaction already exists on message: " +
+                    requestModel.getMessageID());
+        }
 
+
+        messageRepoInt.addReaction(requestModel.getReaction(), requestModel.getMessageID());
         // Prepare for presenter
-        ReactionResponseModel reactionResponseModel = new ReactionResponseModel(reaction.getReaction(),
-                reaction.getMessageID());
-        return reactionOutputBoundary.prepareAdditionView(reactionResponseModel);
+        ReactionResponseModel reactionResponseModel = new ReactionResponseModel(requestModel.getReaction(),
+                requestModel.getMessageID());
+        return reactionOutputBoundary.prepareSuccessView(reactionResponseModel);
     }
 
-//    @Override
+    @Override
     public ReactionResponseModel removeReaction(ReactionRequestModel requestModel){
-        // Create new entity and database request model
-        Reaction reaction = reactionFactory.create(requestModel.getReaction(), requestModel.getMessageID());
-        ReactionDsRequestModel reactionDsModel = new ReactionDsRequestModel(reaction.getReaction(),
-                reaction.getMessageID());
-        // Reaction already exists and needs to be removed
-        reactionDsGateway.removeReaction(requestModel.getMessageID());
+        if (messageRepoInt.messageNotExist(requestModel.getMessageID())) {
+            return reactionOutputBoundary.prepareFailView("Message with ID: " +
+                    requestModel.getMessageID() + " does not exist.");
+        } else if (!messageRepoInt.reactionExists(requestModel.getReaction(), requestModel.getMessageID())) {
+            return reactionOutputBoundary.prepareFailView("Reaction does not exists on message: " +
+                    requestModel.getMessageID());
+        }
 
+        messageRepoInt.removeReaction(requestModel.getReaction(), requestModel.getMessageID());
         // Prepare for presenter
-        ReactionResponseModel reactionResponseModel = new ReactionResponseModel(reaction.getReaction(),
-                reaction.getMessageID());
-        return reactionOutputBoundary.prepareRemoveView(reactionResponseModel);
+        ReactionResponseModel reactionResponseModel = new ReactionResponseModel(requestModel.getReaction(),
+                requestModel.getMessageID());
+        return reactionOutputBoundary.prepareSuccessView(reactionResponseModel);
     }
 
 }
