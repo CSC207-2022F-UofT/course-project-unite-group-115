@@ -22,12 +22,12 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args){
         // Random Group Creation Window Creation
-        JFrame groupCreationApplication = new JFrame("Random Group Creation Test");
+        JFrame groupCreationApplication = new JFrame("Random Group Creation");
         CardLayout groupCreationCardLayout = new CardLayout();
         JPanel groupCreationScreens = new JPanel(groupCreationCardLayout);
         groupCreationApplication.add(groupCreationScreens);
 
-        // Create the parts to plug into the Use Case+Entities
+        // Parts for Random Group Creation Use Case
         GroupRepoInt groupData;
         try {
             groupData = new GroupDataAccess("./groups.csv");
@@ -35,29 +35,33 @@ public class Main {
         catch (IOException e) {
             throw new RuntimeException("Could not create group database file.");
         }
+
         RanGroupCreateOutputBoundary ranGroupCreateOutputBoundary = new RanGroupCreatePresenter();
         RandomGroupFactory ranGroupFactory = new RandomGroupFactory();
         RanGroupCreateInputBoundary interactor = new RanGroupCreateInteractor(groupData,
                 ranGroupCreateOutputBoundary, ranGroupFactory);
         RanGroupCreateControl controller = new RanGroupCreateControl(interactor);
 
+        // Create Random Group Creation Screen
         RandomGroupCreationUI creationScreen = new RandomGroupCreationUI(controller);
         groupCreationScreens.add(creationScreen, "welcome");
         groupCreationCardLayout.show(groupCreationScreens, "create");
         groupCreationApplication.pack();
 
-        // Request Random Group Test
-        JFrame requestGroupApplication = new JFrame("Request Random Group Test");
+        // Create Request Random Group Window
+        JFrame requestGroupApplication = new JFrame("Request Random Group");
         CardLayout requestGroupCardLayout = new CardLayout();
         JPanel requestGroupScreens = new JPanel(requestGroupCardLayout);
         requestGroupApplication.add(requestGroupScreens);
 
+        // Create parts for Request Random Group Use Case
         ReqRanGroupOutputBoundary reqRanGroupOutputBoundary = new ReqRanGroupPresenter();
         ReqRanGroupInputBoundary reqRanGroupInteractor = new ReqRanGroupInteractor(groupData,
                 reqRanGroupOutputBoundary);
         ReqRanGroupController reqRanGroupController = new ReqRanGroupController(reqRanGroupInteractor);
 
-        RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController,groupCreationApplication);
+        // Create and Display Request Random Group Screen
+        RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController, groupCreationApplication);
         requestGroupScreens.add(reqGroupScreen, "welcome");
         requestGroupCardLayout.show(requestGroupScreens, "request");
         requestGroupApplication.pack();
