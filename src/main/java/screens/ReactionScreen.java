@@ -58,11 +58,9 @@ public class ReactionScreen extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent evt){
-
         System.out.println("Click " + evt.getActionCommand());
         int selectedReaction = Integer.parseInt(newContentPane.getSelected());
         if (evt.getActionCommand().equals("Add Reaction")){
-            System.out.println(reactions[selectedReaction] + ID.getText());
             try {
                 reactionController.addReaction(reactions[selectedReaction], ID.getText());
                 JOptionPane.showMessageDialog(this,

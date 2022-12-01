@@ -1,4 +1,4 @@
-package Databases;
+package databases;
 
 import java.util.List;
 

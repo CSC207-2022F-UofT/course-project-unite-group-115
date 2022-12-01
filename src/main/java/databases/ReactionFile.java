@@ -1,4 +1,4 @@
-package Databases;
+package databases;
 
 import reaction_use_case.ReactionDsGateway;
 

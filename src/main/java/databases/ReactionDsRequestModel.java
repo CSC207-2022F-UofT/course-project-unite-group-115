@@ -1,4 +1,4 @@
-package Databases;
+package databases;
 
 public class ReactionDsRequestModel {
     private final String reaction;

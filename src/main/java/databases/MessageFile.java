@@ -1,4 +1,4 @@
-package Databases;
+package databases;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -39,7 +39,9 @@ public class MessageFile implements MessageRepoInt{
                 String messageID = String.valueOf(col[headers.get("messageID")]);
 
                 String reaction = String.valueOf(col[headers.get("reaction")]);
-                List<String> reactions = Arrays.asList(reaction.split(";"));
+
+                reaction = reaction.substring(1, reaction.length() - 1);
+                List<String> reactions = new ArrayList<String>(Arrays.asList(reaction.split(" ")));
 
                 String creationTimeText = String.valueOf(col[headers.get("creation_time")]);
                 LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
@@ -74,8 +76,7 @@ public class MessageFile implements MessageRepoInt{
                 String line = String.format("%s,%s,%s,%s,%s,%s",
                         message.getContent(), message.getSender(), message.getGroupID(),
                         message.getMessageID(), message.getReaction(),message.getCreationTime());
-                //TODO
-                System.out.println(line);
+
                 writer.write(line);
                 writer.newLine();
             }
@@ -118,15 +119,12 @@ public class MessageFile implements MessageRepoInt{
             return result;
         } else {
             MessageDsRequestModel requestModel = messages.get(GroupID);
-
-
             return result;
         }
 
     }
 
     public boolean messageNotExist(String messageID){
-        System.out.println(!messages.containsKey(messageID));
         return !messages.containsKey(messageID);
     }
 
@@ -136,7 +134,6 @@ public class MessageFile implements MessageRepoInt{
     }
 
     public void removeReaction(String reaction, String messageID){
-
         messages.get(messageID).removeReaction(reaction);
         this.save();
     }

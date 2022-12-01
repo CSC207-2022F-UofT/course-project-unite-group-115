@@ -3,7 +3,7 @@
 import entities.ReactionFactory;
 import interface_adapters.ReactionController;
 import interface_adapters.ReactionPresenter;
-import Databases.*;
+import databases.*;
 import reaction_use_case.ReactionInputBoundary;
 import reaction_use_case.ReactionInteractor;
 import screens.MessageDisplayScreen;
@@ -11,9 +11,6 @@ import screens.MessageDisplayScreen;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Main {
@@ -37,11 +34,11 @@ public class Main {
         ReactionController controller = new ReactionController(interactor);
 
 //         Test reactions by adding a message manually
-        List<String> emptyList = new ArrayList<String>();
-        LocalDateTime now = LocalDateTime.now();
-        MessageDsRequestModel request = new MessageDsRequestModel("bye","Michael","475",
-                "124", emptyList, now);
-        message.save(request);
+//        List<String> emptyList = new ArrayList<String>();
+//        LocalDateTime now = LocalDateTime.now();
+//        MessageDsRequestModel request = new MessageDsRequestModel("bye","Michael","475",
+//                "2", emptyList, now);
+//        message.save(request);
 
 
 

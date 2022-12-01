@@ -1,6 +1,6 @@
 package reaction_use_case;
 
-import Databases.MessageRepoInt;
+import databases.MessageRepoInt;
 import entities.ReactionFactory;
 
 public class ReactionInteractor implements ReactionInputBoundary {
@@ -30,7 +30,6 @@ public class ReactionInteractor implements ReactionInputBoundary {
             return reactionOutputBoundary.prepareFailView("Reaction already exists on message: " +
                     requestModel.getMessageID());
         }
-
 
         messageRepoInt.addReaction(requestModel.getReaction(), requestModel.getMessageID());
         // Prepare for presenter

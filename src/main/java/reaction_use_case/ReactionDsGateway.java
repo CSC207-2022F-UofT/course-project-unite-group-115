@@ -1,6 +1,6 @@
 package reaction_use_case;
 
-import Databases.ReactionDsRequestModel;
+import databases.ReactionDsRequestModel;
 
 public interface ReactionDsGateway {
 

@@ -1,8 +1,7 @@
-package Databases;
+package databases;
 
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,12 +15,13 @@ public class MessageDsRequestModel {
     private final LocalDateTime creationTime;
 
 
-    public MessageDsRequestModel(String content, String sender, String groupID, String messageID, List<String> reaction, LocalDateTime creationTime) {
+    public MessageDsRequestModel(String content, String sender, String groupID,
+                                 String messageID, List<String> reaction, LocalDateTime creationTime) {
         this.content = content;
         this.sender = sender;
         this.groupID = groupID;
         this.messageID = messageID;
-        this.reaction = reaction;;
+        this.reaction = reaction;
         this.creationTime = creationTime;
     }
 
@@ -53,17 +53,14 @@ public class MessageDsRequestModel {
         return reactionString;
     }
     public void addReaction(String reaction){
-        String reactionString = this.reaction.toString();
-        reactionString = reactionString.replace(",", "");
-        System.out.println(reactionString);
         this.reaction.add(reaction);
     }
 
     public void removeReaction(String reaction){
         for (int i = 0; i < this.reaction.size();i++) {
             if (Objects.equals(this.reaction.get(i), reaction)){
-                String temp = this.reaction.remove(i);
-                return;
+                this.reaction.remove(i);
+                break;
             }
         }
     }
