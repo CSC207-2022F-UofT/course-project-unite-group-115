@@ -354,4 +354,81 @@ public class ReqRanGroupInteractorTest {
         } catch (GroupAdditionFailure e) {
         }
     }
+
+    @Test
+    public void testInBestGroup() {
+        GroupRepoInt groupDatabase = new InMemoryGroupData();
+        ProfileRepoInt profileDatabase = new InMemoryProfileData();
+        List<String> emptyList = new ArrayList<>();
+        List<String> userGroups = new ArrayList<>();
+        userGroups.add("test2");
+        profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
+                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+        groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
+        groupDatabase.addGroup(new GroupRepoRequestModel("YES", "added", interests3, members, true));
+        groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "test2", interests, members, true));
+
+        // This creates an anonymous implementing class for the Output Boundary.
+        ReqRanGroupPresenter presenter = new ReqRanGroupPresenter() {
+            @Override
+            public ReqRanGroupResponseModel prepareSuccessView(ReqRanGroupResponseModel responseModel) {
+                assertEquals("added", responseModel.getAddedToGroupID());
+                assertEquals("YES", responseModel.getAddedToGroupName());
+
+                Map<String, Object> groupFromDatabase = groupDatabase.getGroupInfo(responseModel.getAddedToGroupID());
+                assertTrue(((List<String>) groupFromDatabase.get("members")).contains("Danielle"));
+                assertEquals(3, ((List<String>) groupFromDatabase.get("members")).size());
+
+                Map<String, Object> groupFromDatabase2 = groupDatabase.getGroupInfo("test");
+                assertFalse(((List<String>) groupFromDatabase2.get("members")).contains("Danielle"));
+
+                Map<String, Object> groupFromDatabase3 = groupDatabase.getGroupInfo("test2");
+                assertFalse(((List<String>) groupFromDatabase3.get("members")).contains("Danielle"));
+
+                List<String> currentMembers = new ArrayList<>(members);
+                currentMembers.add("Danielle");
+                assertEquals(currentMembers, groupFromDatabase.get("members"));
+
+                assertTrue(profileDatabase.getGroups("Danielle").contains("added"));
+
+                return null;
+            }
+
+            @Override
+            public ReqRanGroupResponseModel prepareFailView(String error) {
+                fail("Use case failure is unexpected.");
+                return null;
+            }
+        };
+
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+
+        ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
+
+        interactor.requestRanGroup(inputData);
+    }
+
+    @Test
+    public void testInMatchingGroup() {
+        GroupRepoInt groupDatabase = new InMemoryGroupData();
+        ProfileRepoInt profileDatabase = new InMemoryProfileData();
+        List<String> emptyList = new ArrayList<>();
+        List<String> userGroups = new ArrayList<>();
+        userGroups.add("test2");
+        profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
+                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+        groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
+        groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "test2", interests, members, true));
+
+        // This creates an anonymous implementing class for the Output Boundary.
+        ReqRanGroupPresenter presenter = new ReqRanGroupPresenter();
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+        ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
+
+        try {
+            interactor.requestRanGroup(inputData);
+            fail("Exception not thrown due to only matching group being full.");
+        } catch (GroupAdditionFailure e) {
+        }
+    }
 }
