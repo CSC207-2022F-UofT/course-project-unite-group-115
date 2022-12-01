@@ -60,6 +60,8 @@ public class RanGroupCreateInteractorTest {
                 assertEquals(true, groupFromDatabase.get("random group?"));
 
                 assertTrue(groupDatabase.getRandomGroups().contains(responseModel.getCreatedGroupID()));
+
+                assertTrue(profileDatabase.getGroups("Danielle").contains(responseModel.getCreatedGroupID()));
                 return null;
             }
 
@@ -97,6 +99,28 @@ public class RanGroupCreateInteractorTest {
         try {
             interactor.createRanGroup(inputData);
             fail("Exception not thrown due to empty string as the group name.");
+        } catch (GroupCreationFailure e) {
+        }
+    }
+
+    @Test
+    public void testCreateFailNoInterests() {
+        GroupRepoInt groupDatabase = new InMemoryGroupData();
+        ProfileRepoInt profileDatabase = new InMemoryProfileData();
+
+        RanGroupCreatePresenter presenter = new RanGroupCreatePresenter();
+
+        RandomGroupFactory groupFactory = new RandomGroupFactory();
+        RanGroupCreateInputBoundary interactor = new RanGroupCreateInteractor(groupDatabase, presenter, groupFactory,
+                profileDatabase);
+
+        List<String> empty = new ArrayList<>();
+        RanGroupCreateRequestModel inputData = new RanGroupCreateRequestModel(
+                "", empty, "Danielle");
+
+        try {
+            interactor.createRanGroup(inputData);
+            fail("Exception not thrown due to no selection of interests.");
         } catch (GroupCreationFailure e) {
         }
     }
