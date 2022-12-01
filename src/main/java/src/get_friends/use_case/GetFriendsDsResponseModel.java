@@ -17,8 +17,4 @@ public class GetFriendsDsResponseModel {
         return friendList;
     }
 
-
-
-
-
 }

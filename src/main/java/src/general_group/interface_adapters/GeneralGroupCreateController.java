@@ -14,7 +14,7 @@ public class GeneralGroupCreateController {
         this.inputBoundary = inputBoundary;
     }
 
-    GeneralGroupCreateDsResponseModel create(String groupName, List<User> friendsToAdd, String groupCreatorName) {
+    public GeneralGroupCreateDsResponseModel create(String groupName, List<User> friendsToAdd, String groupCreatorName) {
         GeneralGroupCreateDsRequestModel requestModel = new GeneralGroupCreateDsRequestModel(groupName, friendsToAdd,
                 groupCreatorName);
 

@@ -38,6 +38,14 @@ public class Profile{
         this.blockedUsers = blockedUsers;
     }
 
+    /**
+     * Testing purpose
+     */
+    public Profile(String userName, List<String> friends) {
+        this.userName = userName;
+        this.friends = friends;
+    }
+
     public String getUserName() {
         return this.userName;
     }

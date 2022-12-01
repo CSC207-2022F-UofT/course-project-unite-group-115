@@ -12,7 +12,7 @@ public class GetFriendsController {
         this.userInput = userInput;
     }
 
-    GetFriendsDsResponseModel getFriendsList(Profile userProfile) {
+    public GetFriendsDsResponseModel getFriendsList(Profile userProfile) {
         GetFriendsDsRequestModel requestModel = new GetFriendsDsRequestModel(userProfile);
 
         return userInput.getFriendsList(requestModel);

@@ -6,6 +6,10 @@ import general_group.screens.GeneralGroupCreationScreen;
 import general_group.use_case.GeneralGroupCreateInteractor;
 import general_group.use_case.GeneralGroupCreateOutputBoundary;
 import general_group.use_case.GroupRepoInt;
+import get_friends.interface_adapters.GetFriendsController;
+import get_friends.interface_adapters.GetFriendsPresenter;
+import get_friends.use_case.GetFriendsInteractor;
+import get_friends.use_case.GetFriendsOutputBoundary;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
 
         JFrame application = new JFrame("General group build test");
-        application.setSize(900, 900);
+        application.setSize(200, 200);
         application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         CardLayout cardLayout = new CardLayout();
         JPanel screens = new JPanel(cardLayout);
@@ -30,13 +34,18 @@ public class Main {
             throw new RuntimeException("Could not create group database file.");
         }
 
-        GeneralGroupCreateOutputBoundary outputBoundary = new GeneralGroupCreatePresenter();
+        GeneralGroupCreateOutputBoundary genGroupOutputBoundary = new GeneralGroupCreatePresenter();
         GeneralGroupFactory groupFactory = new GeneralGroupFactory();
-        GeneralGroupCreateInteractor interactor = new GeneralGroupCreateInteractor(groupData, outputBoundary,
+        GeneralGroupCreateInteractor genGroupInteractor = new GeneralGroupCreateInteractor(groupData, genGroupOutputBoundary,
                 groupFactory);
-        GeneralGroupCreateController controller = new GeneralGroupCreateController(interactor);
+        GeneralGroupCreateController genGroupController = new GeneralGroupCreateController(genGroupInteractor);
 
-        GeneralGroupCreationScreen generalGroupCreationScreen = new GeneralGroupCreationScreen(controller);
+        GetFriendsOutputBoundary friendsOutputBoundary = new GetFriendsPresenter();
+        GetFriendsInteractor friendsInteractor = new GetFriendsInteractor(friendsOutputBoundary);
+        GetFriendsController friendsController = new GetFriendsController(friendsInteractor);
+
+        GeneralGroupCreationScreen generalGroupCreationScreen = new GeneralGroupCreationScreen(genGroupController,
+                friendsController);
         screens.add(generalGroupCreationScreen, "Welcome!");
         cardLayout.show(screens, "create");
         application.pack();

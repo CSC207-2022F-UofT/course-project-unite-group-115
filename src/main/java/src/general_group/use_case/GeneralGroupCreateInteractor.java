@@ -31,13 +31,13 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
         List<String> interests = new ArrayList<>();
 
         if (groupName.equals("")) {
-            return genGroupOutputBoundary.prepareFailView("The group's name cannot be empty. Enter" +
+            return genGroupOutputBoundary.prepareFailView("The group's name cannot be empty. Enter " +
                     "a group name and try again.");
         } else if (friendsToAdd.isEmpty()) {
-            return genGroupOutputBoundary.prepareFailView("You can't create a group by yourself. Select" +
+            return genGroupOutputBoundary.prepareFailView("You can't create a group by yourself. Select " +
                     "at most 7 friends and try again");
         } else if (friendsToAdd.size() > maxNumberOfFriends) {
-            return genGroupOutputBoundary.prepareFailView("You can't add more than 7 friends into a group." +
+            return genGroupOutputBoundary.prepareFailView("You can't add more than 7 friends into a group. " +
                     "Select at most 7 friends and try again.");
         }
 
