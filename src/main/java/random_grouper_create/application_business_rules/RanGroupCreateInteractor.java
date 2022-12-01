@@ -41,6 +41,10 @@ public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
                     " enter a group name and try again.");
         }
         List<String> groupInterests = requestModel.getInterests();
+        if(groupInterests.isEmpty()){
+            return GROUP_CREATE_OUTPUT_BOUNDARY.prepareFailView("A group must have at least one interest." +
+                    " Please select an interest from the list and try again.");
+        }
 
         List<String> members = new ArrayList<>();
         members.add(requestModel.getGroupCreator());
