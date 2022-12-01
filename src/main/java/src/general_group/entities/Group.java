@@ -101,7 +101,7 @@ public class Group {
     }
 
     /**
-     * Add Users to be members to the group. If the general_group.entities.User is already a member, do nothing.
+     * Add Users to be members to the group. If the entities.general_group.User is already a member, do nothing.
      *
      * @param membersToAdd Users to be added to the group
      */

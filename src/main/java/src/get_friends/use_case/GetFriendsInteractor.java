@@ -1,7 +1,5 @@
 package get_friends.use_case;
 
-import java.util.List;
-
 public class GetFriendsInteractor implements GetFriendsInputBoundary{
     final GetFriendsOutputBoundary friendsOutputBoundary;
 

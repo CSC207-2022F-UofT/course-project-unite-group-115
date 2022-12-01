@@ -11,10 +11,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
 
         JFrame application = new JFrame("General group build test");
+        application.setSize(900, 900);
+        application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         CardLayout cardLayout = new CardLayout();
         JPanel screens = new JPanel(cardLayout);
         application.add(screens);
