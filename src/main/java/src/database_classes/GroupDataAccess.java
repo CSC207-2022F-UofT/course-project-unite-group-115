@@ -128,7 +128,7 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     @Override
-    public void removeInterestsfromGroup(List<String> interests, String groupID) {
+    public void removeInterestsFromGroup(List<String> interests, String groupID) {
         List<String> groupInterests = new ArrayList<>(groups.get(groupID).getInterests());
         for (String interestToBeRemoved : interests) {
             groupInterests.remove(interestToBeRemoved);

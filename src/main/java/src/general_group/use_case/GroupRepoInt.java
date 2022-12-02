@@ -18,7 +18,7 @@ public interface GroupRepoInt {
 
     void addInterestsToGroup(List<String> newInterest, String groupID);
 
-    void removeInterestsfromGroup(List<String> interests, String groupID);
+    void removeInterestsFromGroup(List<String> interests, String groupID);
 
     List<String> getRandomGroups();
 
