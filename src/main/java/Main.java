@@ -31,7 +31,7 @@ public class Main {
         // ToDo: Can be changed - created for testing
         GroupRepoInt groupData;
         try {
-            groupData = new GroupDataAccess("./groups.csv");
+            groupData = new GroupDataAccess("./src/main/java/databases/groups.csv");
         }
         catch (IOException e) {
             throw new RuntimeException("Could not create group database file.");
