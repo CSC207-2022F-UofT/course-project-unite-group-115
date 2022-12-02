@@ -1,13 +1,13 @@
-import databases.ProfileManagerDataAccess;
-import databases.ProfileRepoInt;
+import database_classes.ProfileManagerDataAccess;
+import database_classes.ProfileRepoInt;
 import entities.RandomGroupFactory;
-import databases.GroupRepoInt;
+import database_classes.GroupRepoInt;
 import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsInteractor;
 import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsOutputBoundary;
 import random_grouper_create.application_business_rules.*;
 
-import databases.GroupDataAccess;
-import random_grouper_create.frameworks_and_drivers.RandomGroupCreationUI;
+import database_classes.GroupDataAccess;
+import screens.RandomGroupCreationUI;
 import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsController;
 import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsPresenter;
 import random_grouper_create.interface_adapters.RanGroupCreateControl;
@@ -15,7 +15,7 @@ import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
 import random_grouper_request_group.application_business_rules.ReqRanGroupOutputBoundary;
-import random_grouper_request_group.frameworks_and_drivers.RequestRandomGroupUI;
+import screens.RequestRandomGroupUI;
 import random_grouper_request_group.interface_adapters.ReqRanGroupController;
 import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
@@ -34,14 +34,14 @@ public class Main {
         // Create the parts to plug into the Use Case+Entities
         GroupRepoInt groupData;
         try {
-            groupData = new GroupDataAccess("./groups.csv");
+            groupData = new GroupDataAccess("./src/main/java/databases/groups.csv");
         }
         catch (IOException e) {
             throw new RuntimeException("Could not create group database file.");
         }
         ProfileRepoInt profileData;
         try {
-            profileData = new ProfileManagerDataAccess("./profiles.csv");
+            profileData = new ProfileManagerDataAccess("./src/main/java/databases/profiles.csv");
         } catch (IOException e) {
             throw new RuntimeException("Could not create file.");
         }

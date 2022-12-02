@@ -1,4 +1,4 @@
-package databases;
+package database_classes;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

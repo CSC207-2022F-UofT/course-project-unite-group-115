@@ -1,4 +1,4 @@
-package random_grouper_request_group.frameworks_and_drivers;
+package screens;
 
 import random_grouper_request_group.interface_adapters.ReqRanGroupController;
 import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;

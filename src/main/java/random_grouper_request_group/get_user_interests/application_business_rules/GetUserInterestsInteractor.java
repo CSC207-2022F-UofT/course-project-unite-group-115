@@ -1,6 +1,6 @@
 package random_grouper_request_group.get_user_interests.application_business_rules;
 
-import databases.ProfileRepoInt;
+import database_classes.ProfileRepoInt;
 
 import java.util.List;
 
