@@ -19,6 +19,13 @@ public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
         this.PROFILE_REPO_ACCESS = profileRepoAccess;
     }
 
+    /**
+     * Try to add User to a random group. The User will be added to the random group that has the most interests in
+     * common with them. If no existing random groups have any interests in common with the User, the User will not
+     * be added to a group.
+     * @param requestModel the information required to attempt to add the User to a random group
+     * @return the result of trying to add the User to a random group
+     */
     @Override
     public ReqRanGroupResponseModel requestRanGroup(ReqRanGroupRequestModel requestModel) {
         List<String> randomGroups = GROUP_REPO_ACCESS.getRandomGroups();

@@ -20,6 +20,10 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
     RanGroupCreateControl groupCreateControl;
     GetUserInterestsController getUserInterestsController;
 
+    /**
+     * Creates the window that enables the creation of a new random group.
+     * @param controller the object that controls the creation of a new group
+     */
     public RandomGroupCreationUI(RanGroupCreateControl groupCreateController, GetUserInterestsController
             interestsController, String loggedInUsersName) {
         this.groupCreateControl = groupCreateController;
@@ -76,7 +80,7 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
     }
 
     /**
-     * Invoked when an item has been selected or deselected by the user.
+     * Invoked when an interest has been selected or deselected by the user.
      * The code written for this method performs the operations
      * that need to occur when an item is selected (or deselected).
      *

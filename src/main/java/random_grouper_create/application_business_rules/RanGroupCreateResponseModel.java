@@ -30,10 +30,16 @@ public class RanGroupCreateResponseModel {
         return createdGroupID;
     }
 
+    /**
+     * Returns the time that the new group was reportedly created.
+     */
     public String getCreationTime() {
         return creationTime;
     }
 
+    /**
+     * Changes the time that the new group was reportedly created.
+     */
     public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }

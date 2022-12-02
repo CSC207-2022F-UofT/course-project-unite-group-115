@@ -17,6 +17,11 @@ public class RequestRandomGroupUI extends JPanel implements ActionListener {
 
     String loggedInUserName;
 
+    /**
+     * Creates a window that allows a User to request to be added to a random group with the most interests in common
+     * with them
+     * @param controller the object that controls the attempt to add a User to a random group
+     */
     public RequestRandomGroupUI(ReqRanGroupController controller, JFrame createRanGroupScreen, String loggedInUserName) {
         this.reqRanGroupController = controller;
         this.createRanGroupScreen = createRanGroupScreen;
