@@ -1,4 +1,4 @@
-package messgae_use_case;
+package use_case_message_view;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ public class ViewMessageResponseModel {
     }
 
 
-    public List<String> getSend(){return presented;}
+    public List<String> getPresented(){return presented;}
 
-    public void setSend(String send){this.presented = presented;}
+    public void setPresented(String send){this.presented = presented;}
 
 }
