@@ -25,6 +25,7 @@ public class LoggedInScreen extends JFrame implements ActionListener {
         JButton chats = new JButton("Chats");
         JButton friends = new JButton("Friends");
         JButton groups = new JButton("Groups");
+        JButton report = new JButton("Report");
 //        JButton changePassword = new JButton("Change password");
 //
 //        LabelTextPanel usernameInfo = new LabelTextPanel(
@@ -37,6 +38,7 @@ public class LoggedInScreen extends JFrame implements ActionListener {
         buttons.add(chats);
         buttons.add(friends);
         buttons.add(groups);
+        buttons.add(report);
 //        buttons.add(changePassword);
 
         logOut.addActionListener(this);
@@ -44,6 +46,7 @@ public class LoggedInScreen extends JFrame implements ActionListener {
         chats.addActionListener(this);
         friends.addActionListener(this);
         groups.addActionListener(this);
+        report.addActionListener(this);
 //        changePassword.addActionListener(this);
 
         JPanel main = new JPanel();
