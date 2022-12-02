@@ -1,6 +1,6 @@
 package random_grouper_request_group;
 
-import databases_classes.*;
+import database_classes.*;
 import org.junit.Before;
 import org.junit.Test;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;

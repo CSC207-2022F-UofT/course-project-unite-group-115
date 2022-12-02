@@ -1,5 +1,5 @@
 package random_grouper_create;
-import databases_classes.*;
+import database_classes.*;
 import entities.RandomGroupFactory;
 import org.junit.Before;
 import org.junit.Test;

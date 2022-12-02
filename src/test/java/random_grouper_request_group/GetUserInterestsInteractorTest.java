@@ -1,8 +1,8 @@
 package random_grouper_request_group;
 
-import databases_classes.InMemoryProfileData;
-import databases_classes.ProfileRepoInt;
-import databases_classes.ProfileRepoRequestModel;
+import database_classes.InMemoryProfileData;
+import database_classes.ProfileRepoInt;
+import database_classes.ProfileRepoRequestModel;
 import org.junit.Before;
 import org.junit.Test;
 import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsInteractor;

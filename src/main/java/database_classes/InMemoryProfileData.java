@@ -1,4 +1,4 @@
-package databases_classes;
+package database_classes;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,7 +1,6 @@
 package random_grouper_request_group.application_business_rules;
 
-import databases_classes.GroupRepoInt;
-import databases_classes.ProfileRepoInt;
+import database_classes.ProfileRepoInt;
 
 import java.util.List;
 import java.util.Map;

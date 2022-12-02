@@ -1,4 +1,4 @@
-package databases_classes;
+package database_classes;
 
 import random_grouper_create.application_business_rules.RanGroupCreateDataAccessInt;
 import random_grouper_request_group.application_business_rules.ReqRanGroupDataAccessInt;

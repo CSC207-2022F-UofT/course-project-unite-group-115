@@ -1,7 +1,6 @@
 package random_grouper_create.application_business_rules;
 
-
-import databases_classes.GroupRepoRequestModel;
+import database_classes.GroupRepoRequestModel;
 
 public interface RanGroupCreateDataAccessInt {
     /**
