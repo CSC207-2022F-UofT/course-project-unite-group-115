@@ -14,7 +14,7 @@ public class AddingFriendsScreen extends JPanel implements ActionListener {
 
     JComboBox<String> cmbFriendList;
     Profile creatorProfile;
-    List<String> allFriendsChosen = new ArrayList<>();
+    List<String> allFriendsChosen;
     GetFriendsController getFriendsController;
     String friendChosen;
     public AddingFriendsScreen(GetFriendsController controller, List<String> allFriendsChosen) {
@@ -59,7 +59,6 @@ public class AddingFriendsScreen extends JPanel implements ActionListener {
         if(evt.getSource() == cmbFriendList) {
             friendChosen = (String)cmbFriendList.getSelectedItem();
         }
-
         if(evt.getActionCommand().equals("Add")) {
             allFriendsChosen.add(friendChosen);
             JOptionPane.showMessageDialog(this, "Friend has been added.");

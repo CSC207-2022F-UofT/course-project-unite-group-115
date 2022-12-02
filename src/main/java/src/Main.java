@@ -36,8 +36,8 @@ public class Main {
 
         GeneralGroupCreateOutputBoundary genGroupOutputBoundary = new GeneralGroupCreatePresenter();
         GeneralGroupFactory groupFactory = new GeneralGroupFactory();
-        GeneralGroupCreateInteractor genGroupInteractor = new GeneralGroupCreateInteractor(groupData, genGroupOutputBoundary,
-                groupFactory);
+        GeneralGroupCreateInteractor genGroupInteractor = new GeneralGroupCreateInteractor(groupData,
+                genGroupOutputBoundary, groupFactory);
         GeneralGroupCreateController genGroupController = new GeneralGroupCreateController(genGroupInteractor);
 
         GetFriendsOutputBoundary friendsOutputBoundary = new GetFriendsPresenter();

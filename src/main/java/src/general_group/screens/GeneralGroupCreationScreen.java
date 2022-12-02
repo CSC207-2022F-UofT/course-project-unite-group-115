@@ -17,7 +17,7 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
 
     JTextField groupName = new JTextField(20);
     JButton getFriends = new JButton("Choose friends");
-    List<User> friendsChosen;
+    List<User> friendsChosen = new ArrayList<>();
     Profile creatorProfile;
     List<String> friendsChosenString = new ArrayList<>();
     GeneralGroupCreateController genGroupCreateController;

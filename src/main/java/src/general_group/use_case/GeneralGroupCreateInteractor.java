@@ -33,7 +33,6 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
         List<String> interests = new ArrayList<>();
 
         Set<User> duplicateChecker = new HashSet<>(friendsToAdd);
-
         if (groupName.equals("")) {
             return genGroupOutputBoundary.prepareFailView("The group's name cannot be empty. Enter " +
                     "a group name and try again.");
