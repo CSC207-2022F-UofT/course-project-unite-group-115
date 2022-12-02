@@ -1,12 +1,16 @@
-package screens;
+package screens_message;
 
-import Databases.MessageFile;
-import Databases.MessageRepoInt;
-import Entity.MessageFactory;
-import MessageUserCase.MessageInputBoundary;
-import MessageUserCase.MessageInteractor;
-import interface_adapters.MessageController;
-import interface_adapters.MessagePresenter;
+import databases_message.MessageFile;
+import databases_message.MessageRepoInt;
+import entity_message.MessageFactory;
+import interface_adapters_message.ViewMessageController;
+import interface_adapters_message.ViewMessagePresenter;
+import use_case_message_send.MessageInputBoundary;
+import use_case_message_send.MessageInteractor;
+import interface_adapters_message.MessageController;
+import interface_adapters_message.MessagePresenter;
+import use_case_message_view.ViewMessageInputBoundary;
+import use_case_message_view.ViewMessageInteractor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,15 +19,15 @@ import java.io.IOException;
 
 public class GroupLoggedInScreen extends JFrame implements ActionListener {
 
-    String GroupName;  //TODO: reach group ID and username by connect to the group class
+    String GroupID;  //TODO: reach group ID and username by connect to the group class
     String loginUserName;
 
-    public GroupLoggedInScreen(String groupName, String loginUserName) {
-        this.GroupName = groupName;
+    public GroupLoggedInScreen(String groupId, String loginUserName) {
+        this.GroupID = groupId;
         this.loginUserName = loginUserName;
 
 
-        JLabel title = new JLabel(groupName);
+        JLabel title = new JLabel(groupId);
 
 //        String welcome1 = String.format("Welcome to group %1$s, %2$s" +
 //                "Click send to type the content you want to send within the group " +
@@ -74,7 +78,7 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
             //plug in message entity
             MessageRepoInt message;
             try {
-                message = new MessageFile("./src/main/java/Databases/messages.csv");
+                message = new MessageFile("./src/main/java/databases_message/messages.csv");
             } catch (IOException e) {
                 throw new RuntimeException("Could not create file.");
             }
@@ -85,22 +89,35 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
             MessageController MessageController = new MessageController(interactor);
 
             //build GUI
-            JFrame applicationMessage = new MessageScreen(GroupName, loginUserName, MessageController);
+            JFrame applicationMessage = new MessageScreen(GroupID, loginUserName, MessageController);
             applicationMessage.pack();
             applicationMessage.setVisible(true);
 
         }
-        //TODO: finish
-//        if (evt.getActionCommand().equals("view")) {
-//
-//
-//        } else if (evt.getActionCommand().equals("back")) {
-//            JComponent component = (JComponent) evt.getSource();
-//            Window win = SwingUtilities.getWindowAncestor(component);
-//            win.dispose();
-//            JFrame applicationback = new GroupScreen();
-//            applicationback.pack();
-//            applicationback.setVisible(true);
-//        }
+
+        if (evt.getActionCommand().equals("view")) {
+            MessageRepoInt message;
+            try {
+                message = new MessageFile("./messages.csv");
+            } catch (IOException e){
+                throw new RuntimeException("Could not create file");
+            }
+            ViewMessagePresenter presenter = new ViewMessagePresenter();
+            ViewMessageInputBoundary interactor = new ViewMessageInteractor(message, presenter);
+            ViewMessageController ViewMessageController = new ViewMessageController(interactor);
+
+
+
+            //todo: complete
+
+
+        } else if (evt.getActionCommand().equals("back")) {
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+            JFrame applicationback = new GroupScreen();
+            applicationback.pack();
+            applicationback.setVisible(true);
+        }
     }
 }

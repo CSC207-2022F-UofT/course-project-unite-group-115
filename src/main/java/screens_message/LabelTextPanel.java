@@ -1,4 +1,4 @@
-package screens;
+package screens_message;
 
 import javax.swing.*;
 

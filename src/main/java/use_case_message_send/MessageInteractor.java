@@ -1,15 +1,15 @@
-package MessageUserCase;
+package use_case_message_send;
 
-import Databases.MessageDsRequestModel;
-import Databases.MessageRepoInt;
-import Entity.Message;
-import Entity.MessageFactory;
-import interface_adapters.MessagePresenter;
+import databases_message.MessageDsRequestModel;
+import databases_message.MessageRepoInt;
+import entity_message.Message;
+import entity_message.MessageFactory;
+import interface_adapters_message.MessagePresenter;
 
 import java.time.LocalDateTime;
 
 public class MessageInteractor implements MessageInputBoundary {
-    final Databases.MessageRepoInt MessageRepoInt;
+    final databases_message.MessageRepoInt MessageRepoInt;
     final MessagePresenter MessagePresenter;
     final MessageFactory messageFactory;
 
@@ -34,7 +34,7 @@ public class MessageInteractor implements MessageInputBoundary {
         MessageResponseModel Messageresponsemodel = new MessageResponseModel(message.getSender(),now.toString());
         return MessagePresenter.prepareSuccessView(Messageresponsemodel);
 
-        // todo: prepare fail review.
+        //todo: prepare fail review.
     }
 
 }

@@ -1,7 +1,7 @@
-package interface_adapters;
+package interface_adapters_message;
 
-import MessageUserCase.MessageOutputBoundary;
-import MessageUserCase.MessageResponseModel;
+import use_case_message_send.MessageOutputBoundary;
+import use_case_message_send.MessageResponseModel;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

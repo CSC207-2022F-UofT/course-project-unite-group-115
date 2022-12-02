@@ -1,8 +1,8 @@
-package interface_adapters;
+package interface_adapters_message;
 
-import MessageUserCase.MessageInputBoundary;
-import MessageUserCase.MessageRequestModel;
-import MessageUserCase.MessageResponseModel;
+import use_case_message_send.MessageInputBoundary;
+import use_case_message_send.MessageRequestModel;
+import use_case_message_send.MessageResponseModel;
 
 public class MessageController {
     final MessageInputBoundary USER_INPUT;

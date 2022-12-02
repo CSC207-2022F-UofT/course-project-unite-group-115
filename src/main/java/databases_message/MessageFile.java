@@ -1,4 +1,4 @@
-package Databases;
+package databases_message;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -13,7 +13,6 @@ public class MessageFile implements MessageRepoInt {
     private Map<String, MessageDsRequestModel> messages = new HashMap<>();
 
 
-    //TODO: redo the file
     public MessageFile(String csvPath) throws IOException {
         csvFile = new File(csvPath);
 
@@ -45,7 +44,7 @@ public class MessageFile implements MessageRepoInt {
                 String creationTimeText = String.valueOf(col[headers.get("creation_time")]);
                 LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
                 MessageDsRequestModel message = new MessageDsRequestModel(content, sender, groupID, messageID, reactions, ldt);
-                messages.put(content, message);
+                messages.put(messageID, message);
             }
 
             reader.close();
@@ -59,7 +58,7 @@ public class MessageFile implements MessageRepoInt {
      */
     @Override
     public void save(MessageDsRequestModel requestModel) {
-        messages.put(requestModel.getContent(), requestModel);
+        messages.put(requestModel.getMessageID(), requestModel);
         this.save();
     }
 
@@ -72,7 +71,7 @@ public class MessageFile implements MessageRepoInt {
 
             for (MessageDsRequestModel message : messages.values()) {
                 String line = String.format("%s,%s,%s,%s,%s,%s",
-                        message.getContent(), message.getSender(), message.getGroupID(), message.getMessageID(), message.getReaction(),message.getCreationTime());
+                        message.getContent(), message.getSender(), message.getGroupID(), message.getMessageID(), message.getReaction(), message.getCreationTime());
                 writer.write(line);
                 writer.newLine();
             }
@@ -108,19 +107,21 @@ public class MessageFile implements MessageRepoInt {
         this.save();
     }
 
+
     @Override
-    public Map<String, Object> getGroupMessageInfo(String GroupID) { //TODO: complete
-        Map<String, Object> result = new HashMap<>();
-        if (csvFile.length() == 0) {
-            return result;
-        } else {
-            MessageDsRequestModel requestModel = messages.get(GroupID);
-
-
-            return result;
+    public List<String> getGroupMessageInfo(String GroupID) {
+        List<String> allMessages = new ArrayList<String>();
+        for (String key : messages.keySet()) {
+            if (messages.get(key).getGroupID() == GroupID) {
+                MessageDsRequestModel model = messages.get(key);
+                String messageFormat = model.getSender() + ": " + model.getContent() + " (" +
+                        model.getMessageID() + ")" + "Reactions: " + model.getReaction();
+                allMessages.add(messageFormat);
+            }
         }
-
+        return allMessages;
     }
+
 }
 
 

@@ -1,4 +1,4 @@
-package Entity;
+package entity_message;
 
 import java.util.ArrayList;
 import java.util.List;

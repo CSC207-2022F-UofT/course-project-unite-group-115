@@ -1,4 +1,4 @@
-package MessageUserCase;
+package use_case_message_send;
 
 
 public class MessageRequestModel {

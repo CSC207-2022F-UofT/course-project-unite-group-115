@@ -1,14 +1,12 @@
-package screens;
+package screens_message;
 
-import interface_adapters.MessageController;
+import interface_adapters_message.MessageController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 import java.awt.event.ActionEvent;
-import java.time.LocalDate;
-import java.util.Arrays;
 
 
 public class MessageScreen extends JFrame implements ActionListener {
@@ -25,13 +23,16 @@ public class MessageScreen extends JFrame implements ActionListener {
         LabelTextPanel content = new LabelTextPanel(new JLabel("content"), messagecontent);
 
         JButton send = new JButton("Send");
+        JButton back = new JButton("back");
         JPanel buttons = new JPanel();
         buttons.add(send);
+        buttons.add(back);
 
         send.addActionListener(this);
         //todo: set layout?
         JPanel main = new JPanel();
         main.add(send);
+        main.add(back);
         main.add(content);
         this.setContentPane(main);
         this.pack();
@@ -47,6 +48,13 @@ public class MessageScreen extends JFrame implements ActionListener {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
+        }else if (evt.getActionCommand().equals("back")) {
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+            JFrame applicationback = new GroupLoggedInScreen(groupName,loginUserName);
+            applicationback.pack();
+            applicationback.setVisible(true);
         }
 
     }

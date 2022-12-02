@@ -1,4 +1,4 @@
-package Entity;
+package entity_message;
 
 
 public class MessageFactory{
