@@ -1,13 +1,13 @@
+import databases_classes.ProfileManagerDataAccess;
+import databases_classes.ProfileRepoInt;
 import entities.RandomGroupFactory;
 import databases_classes.GroupRepoInt;
 import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsInteractor;
 import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsOutputBoundary;
 import random_grouper_create.application_business_rules.*;
 
-import database_classes.GroupDataAccess;
 import screens.RandomGroupCreationUI;
 import databases_classes.GroupDataAccess;
-import screens.RandomGroupCreationUI;
 import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsController;
 import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsPresenter;
 import random_grouper_create.interface_adapters.RanGroupCreateControl;
@@ -60,7 +60,8 @@ public class Main {
         // Create Random Group Creation Screen
         // ToDo: need the logged in User's name
         String loggedInUser = "Tejas";
-        RandomGroupCreationUI creationScreen = new RandomGroupCreationUI(groupCreateController, getUserInterestsController, loggedInUser);
+        RandomGroupCreationUI creationScreen = new RandomGroupCreationUI(groupCreateController,
+                getUserInterestsController, loggedInUser);
         groupCreationScreens.add(creationScreen, "welcome");
         groupCreationCardLayout.show(groupCreationScreens, "create");
         groupCreationApplication.pack();
@@ -78,7 +79,8 @@ public class Main {
         ReqRanGroupController reqRanGroupController = new ReqRanGroupController(reqRanGroupInteractor);
 
         // Create and Display Request Random Group Screen
-        RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController, groupCreationApplication);
+        RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController, groupCreationApplication,
+                loggedInUser);
         requestGroupScreens.add(reqGroupScreen, "welcome");
         requestGroupCardLayout.show(requestGroupScreens, "request");
         requestGroupApplication.pack();
