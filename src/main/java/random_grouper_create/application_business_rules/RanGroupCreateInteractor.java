@@ -1,9 +1,7 @@
 package random_grouper_create.application_business_rules;
 
-import databases_classes.GroupRepoInt;
 import databases_classes.GroupRepoRequestModel;
 import databases_classes.ProfileRepoInt;
-import database_classes.GroupRepoRequestModel;
 import entities.Group;
 import entities.RandomGroupFactory;
 

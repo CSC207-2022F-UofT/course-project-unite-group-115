@@ -3,10 +3,7 @@ import databases_classes.*;
 import entities.RandomGroupFactory;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_create.application_business_rules.RanGroupCreateInputBoundary;
-import random_grouper_create.application_business_rules.RanGroupCreateInteractor;
-import random_grouper_create.application_business_rules.RanGroupCreateRequestModel;
-import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
+import random_grouper_create.application_business_rules.*;
 import random_grouper_create.interface_adapters.GroupCreationFailure;
 import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
 
@@ -34,7 +31,7 @@ public class RanGroupCreateInteractorTest {
 
     @Test
     public void testBasicCreate() {
-        GroupRepoInt groupDatabase = new InMemoryGroupData();
+        InMemoryGroupData groupDatabase = new InMemoryGroupData();
         ProfileRepoInt profileDatabase = new InMemoryProfileData();
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();

@@ -12,9 +12,7 @@ public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
     final ProfileRepoInt PROFILE_REPO_ACCESS;
     final int MAX_GROUP_SIZE = 8;
 
-    public ReqRanGroupInteractor(ReqRanGroupDataAccessInt groupRepoAccess,
-                                 ReqRanGroupOutputBoundary reqRanGroupOutputBoundary) {
-    public ReqRanGroupInteractor(GroupRepoInt groupRepoAccess, ReqRanGroupOutputBoundary reqRanGroupOutputBoundary,
+    public ReqRanGroupInteractor(ReqRanGroupDataAccessInt groupRepoAccess, ReqRanGroupOutputBoundary reqRanGroupOutputBoundary,
                                  ProfileRepoInt profileRepoAccess) {
         this.GROUP_REPO_ACCESS = groupRepoAccess;
         this.reqRanGroupOutputBoundary = reqRanGroupOutputBoundary;
