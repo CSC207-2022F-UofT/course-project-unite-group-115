@@ -25,7 +25,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class Main {
+public class RandomGroupMain {
     public static void main(String[] args){
         // Random Group Creation Window Creation
         JFrame groupCreationApplication = new JFrame("Random Group Creation");
