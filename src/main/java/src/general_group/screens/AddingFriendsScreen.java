@@ -63,9 +63,6 @@ public class AddingFriendsScreen extends JPanel implements ActionListener {
         if(evt.getActionCommand().equals("Add")) {
             allFriendsChosen.add(friendChosen);
             JOptionPane.showMessageDialog(this, "Friend has been added.");
-            for (String friend:allFriendsChosen) {
-                System.out.println(friend);
-            }
         }
     }
 }
