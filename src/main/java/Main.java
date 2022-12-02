@@ -1,11 +1,11 @@
-import databases_classes.ProfileManagerDataAccess;
-import databases_classes.ProfileRepoInt;
 import entities.RandomGroupFactory;
 import databases_classes.GroupRepoInt;
 import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsInteractor;
 import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsOutputBoundary;
 import random_grouper_create.application_business_rules.*;
 
+import database_classes.GroupDataAccess;
+import screens.RandomGroupCreationUI;
 import databases_classes.GroupDataAccess;
 import screens.RandomGroupCreationUI;
 import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsController;
@@ -25,13 +25,13 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args){
-        // Random Group Creation Test
-        JFrame application = new JFrame("Random Group Creation Test");
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
-        application.add(screens);
+        // Random Group Creation Window Creation
+        JFrame groupCreationApplication = new JFrame("Random Group Creation");
+        CardLayout groupCreationCardLayout = new CardLayout();
+        JPanel groupCreationScreens = new JPanel(groupCreationCardLayout);
+        groupCreationApplication.add(groupCreationScreens);
 
-        // Create the parts to plug into the Use Case+Entities
+        // Parts for Random Group Creation Use Case
         GroupRepoInt groupData;
         try {
             groupData = new GroupDataAccess("./src/main/java/databases/groups.csv");
@@ -57,30 +57,31 @@ public class Main {
         GetUserInterestsController getUserInterestsController =
                 new GetUserInterestsController(getUserInterestsInteractor);
 
+        // Create Random Group Creation Screen
         // ToDo: need the logged in User's name
         String loggedInUser = "Tejas";
-        RandomGroupCreationUI createScreen = new RandomGroupCreationUI(groupCreateController,
-                getUserInterestsController, loggedInUser);
-        screens.add(createScreen, "welcome");
-        cardLayout.show(screens, "create");
-        application.pack();
-        application.setVisible(true);
+        RandomGroupCreationUI creationScreen = new RandomGroupCreationUI(groupCreateController, getUserInterestsController, loggedInUser);
+        groupCreationScreens.add(creationScreen, "welcome");
+        groupCreationCardLayout.show(groupCreationScreens, "create");
+        groupCreationApplication.pack();
 
-        // Request Random Group Test
-        JFrame application2 = new JFrame("Request Random Group Test");
-        CardLayout cardLayout2 = new CardLayout();
-        JPanel screen2 = new JPanel(cardLayout2);
-        application2.add(screen2);
+        // Create Request Random Group Window
+        JFrame requestGroupApplication = new JFrame("Request Random Group");
+        CardLayout requestGroupCardLayout = new CardLayout();
+        JPanel requestGroupScreens = new JPanel(requestGroupCardLayout);
+        requestGroupApplication.add(requestGroupScreens);
 
+        // Create parts for Request Random Group Use Case
         ReqRanGroupOutputBoundary reqRanGroupOutputBoundary = new ReqRanGroupPresenter();
         ReqRanGroupInputBoundary reqRanGroupInteractor = new ReqRanGroupInteractor(groupData,
                 reqRanGroupOutputBoundary, profileData);
         ReqRanGroupController reqRanGroupController = new ReqRanGroupController(reqRanGroupInteractor);
 
-        RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController, loggedInUser);
-        screen2.add(reqGroupScreen, "welcome");
-        cardLayout2.show(screen2, "request");
-        application2.pack();
-        application2.setVisible(true);
+        // Create and Display Request Random Group Screen
+        RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController, groupCreationApplication);
+        requestGroupScreens.add(reqGroupScreen, "welcome");
+        requestGroupCardLayout.show(requestGroupScreens, "request");
+        requestGroupApplication.pack();
+        requestGroupApplication.setVisible(true);
     }
 }

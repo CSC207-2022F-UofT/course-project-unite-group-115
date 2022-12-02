@@ -10,14 +10,16 @@ import java.awt.event.ActionListener;
 
 public class RequestRandomGroupUI extends JPanel implements ActionListener {
     ReqRanGroupController reqRanGroupController;
+    JFrame createRanGroupScreen;
 
     JTextArea instructions = new JTextArea("Click below to be added to a random group that best matches with your" +
             " interests!");
 
     String loggedInUserName;
 
-    public RequestRandomGroupUI(ReqRanGroupController controller, String loggedInUserName) {
+    public RequestRandomGroupUI(ReqRanGroupController controller, JFrame createRanGroupScreen, String loggedInUserName) {
         this.reqRanGroupController = controller;
+        this.createRanGroupScreen = createRanGroupScreen;
         this.loggedInUserName = loggedInUserName;
 
         JLabel title = new JLabel("Request Random Group");
@@ -25,13 +27,16 @@ public class RequestRandomGroupUI extends JPanel implements ActionListener {
         instructions.setEditable(false);
 
         JButton addToGroup = new JButton("Request Random Group");
+        JButton createRandomGroup = new JButton("Create Random Group");
         JButton cancel = new JButton("Cancel");
 
         JPanel buttons = new JPanel();
         buttons.add(addToGroup);
+        buttons.add(createRandomGroup);
         buttons.add(cancel);
 
         addToGroup.addActionListener(this);
+        createRandomGroup.addActionListener(this);
         cancel.addActionListener(this);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -57,9 +62,14 @@ public class RequestRandomGroupUI extends JPanel implements ActionListener {
                 String message = presenter.getSuccessMessage(reqRanGroupController.requestRanGroup(loggedInUserName));
                 JOptionPane.showMessageDialog(this, message);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage());
+                JOptionPane.showMessageDialog(this, e.getMessage() + " To create a random" +
+                        " group based on your interests click the 'Create Random Group' button in the previous " +
+                        "window!");
         }
-    } else if (evt.getActionCommand().equals("Cancel")) {
+        } else if (evt.getActionCommand().equals("Create Random Group")) {
+            createRanGroupScreen.setVisible(true);
+        }
+        else if (evt.getActionCommand().equals("Cancel")) {
             JComponent component = (JComponent) evt.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
