@@ -1,4 +1,4 @@
-package random_grouper_create.frameworks_and_drivers;
+package screens;
 
 import entities.User;
 import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
