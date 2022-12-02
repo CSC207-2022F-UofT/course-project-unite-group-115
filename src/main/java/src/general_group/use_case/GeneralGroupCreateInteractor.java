@@ -45,11 +45,11 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
                     "Select at most 7 friends and try again.");
         } else if (friendsToAdd.contains(null)) {
             friendsToAdd.clear();
-            return genGroupOutputBoundary.prepareFailView("You can't have null as a friend to add into the group. "
-            + "Select at most 7 friends and try again.");
+            return genGroupOutputBoundary.prepareFailView("You can't add null into a group. Select at most 7 "
+            + "friends and try again.");
         } else if (friendsToAdd.size() > duplicateChecker.size()) {
             friendsToAdd.clear();
-            return genGroupOutputBoundary.prepareFailView("You can't add the same person more mora than once to a" +
+            return genGroupOutputBoundary.prepareFailView("You can't add the same person more than once to a" +
                     "group. " + "Select at most 7 different friends and try again.");
         }
 
@@ -65,6 +65,8 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
         GroupRepoDsRequestModel repoDsRequestModel = new GroupRepoDsRequestModel(groupName, interests, newGroup.getId(),
                 membersNames, false);
         genGroupRepoAccess.addGroup(repoDsRequestModel);
+
+
 
         LocalDateTime now = LocalDateTime.now();
         GeneralGroupCreateDsResponseModel responseModel = new GeneralGroupCreateDsResponseModel(now.toString(),
