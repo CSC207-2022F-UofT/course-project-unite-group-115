@@ -1,5 +1,6 @@
 package databases;
 
+import java.util.List;
 import java.util.Map;
 
 public interface MessageRepoInt {
@@ -11,7 +12,7 @@ public interface MessageRepoInt {
 
     void editMessage(String ID, String content);
 
-    Map<String, Object> getGroupMessageInfo(String GroupID);
+    List<String> getGroupMessageInfo(String GroupID);
 
     boolean messageNotExist(String messageID);
 

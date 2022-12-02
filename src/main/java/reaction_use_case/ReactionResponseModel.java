@@ -3,7 +3,7 @@ package reaction_use_case;
 public class ReactionResponseModel {
     private String reaction;
 
-    private String messageID;
+    private final String messageID;
 
     public ReactionResponseModel(String reaction, String messageID){
         this.reaction = reaction;

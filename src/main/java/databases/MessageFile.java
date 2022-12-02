@@ -77,6 +77,7 @@ public class MessageFile implements MessageRepoInt{
                         message.getContent(), message.getSender(), message.getGroupID(),
                         message.getMessageID(), message.getReaction(),message.getCreationTime());
 
+                System.out.println(line);
                 writer.write(line);
                 writer.newLine();
             }
@@ -112,17 +113,6 @@ public class MessageFile implements MessageRepoInt{
         this.save();
     }
 
-    @Override
-    public Map<String, Object> getGroupMessageInfo(String GroupID) { //TODO: complete
-        Map<String, Object> result = new HashMap<>();
-        if (csvFile.length() == 0) {
-            return result;
-        } else {
-            MessageDsRequestModel requestModel = messages.get(GroupID);
-            return result;
-        }
-
-    }
 
     public boolean messageNotExist(String messageID){
         return !messages.containsKey(messageID);
@@ -140,5 +130,19 @@ public class MessageFile implements MessageRepoInt{
 
     public boolean reactionExists(String reaction, String messageID){
         return messages.get(messageID).checkReactionExists(reaction);
+    }
+
+    @Override
+    public List<String> getGroupMessageInfo(String GroupID){
+        List<String> allMessages = new ArrayList<String>();
+        for(String key : messages.keySet()){
+            if (messages.get(key).getGroupID() == GroupID){
+                MessageDsRequestModel model = messages.get(key);
+                String messageFormat = model.getSender() + ": " + model.getContent() + " (" +
+                        model.getMessageID() + ")" + "Reactions: " + model.getReaction();
+                allMessages.add(messageFormat);
+            }
+        }
+        return allMessages;
     }
 }

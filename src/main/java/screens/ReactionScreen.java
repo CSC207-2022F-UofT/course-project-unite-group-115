@@ -1,6 +1,8 @@
 package screens;
 
 import interface_adapters.ReactionController;
+import reaction_use_case.ReactionResponseModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -62,7 +64,7 @@ public class ReactionScreen extends JFrame implements ActionListener {
         int selectedReaction = Integer.parseInt(newContentPane.getSelected());
         if (evt.getActionCommand().equals("Add Reaction")){
             try {
-                reactionController.addReaction(reactions[selectedReaction], ID.getText());
+                ReactionResponseModel i = reactionController.addReaction(reactions[selectedReaction], ID.getText());
                 JOptionPane.showMessageDialog(this,
                         String.format("%s added", reactions[selectedReaction]));
             } catch (Exception e) {

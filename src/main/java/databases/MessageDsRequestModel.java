@@ -26,7 +26,6 @@ public class MessageDsRequestModel {
     }
 
 
-
     public String getContent() {
         return content;
     }
