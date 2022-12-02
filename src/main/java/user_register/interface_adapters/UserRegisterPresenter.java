@@ -1,8 +1,8 @@
 package user_register.interface_adapters;
 
+import screens.UserCreationFailed;
 import user_register.application_business_rules.UserRegisterOutputBoundary;
 import user_register.application_business_rules.UserRegisterResponseModel;
-import user_register.frameworks_and_drivers.UserCreationFailed;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

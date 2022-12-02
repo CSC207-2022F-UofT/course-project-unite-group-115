@@ -1,5 +1,7 @@
 package user_register.application_business_rules;
 
+import database_classes.UserRepoInt;
+import database_classes.UserRepoRequestModel;
 import entities.User;
 import entities.UserFactory;
 

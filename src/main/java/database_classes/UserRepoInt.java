@@ -1,4 +1,4 @@
-package user_register.application_business_rules;
+package database_classes;
 
 public interface UserRepoInt {
     boolean existsByName(String identifier);

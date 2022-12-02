@@ -1,4 +1,4 @@
-package user_register.frameworks_and_drivers;
+package screens;
 
 public class UserCreationFailed extends RuntimeException {
     public UserCreationFailed(String error) {

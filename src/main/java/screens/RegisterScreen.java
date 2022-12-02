@@ -1,4 +1,4 @@
-package user_register.frameworks_and_drivers;
+package screens;
 
 import user_register.interface_adapters.UserRegisterController;
 

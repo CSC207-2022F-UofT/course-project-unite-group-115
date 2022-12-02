@@ -1,14 +1,15 @@
-package user_register.frameworks_and_drivers;
+package screens;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
+import database_classes.UserDataAccess;
 import user_register.application_business_rules.UserRegisterInputBoundary;
 import user_register.interface_adapters.UserRegisterController;
 import user_register.interface_adapters.UserRegisterPresenter;
-import user_register.application_business_rules.UserRepoInt;
+import database_classes.UserRepoInt;
 import user_register.application_business_rules.UserRegisterInteractor;
 import entities.*;
 

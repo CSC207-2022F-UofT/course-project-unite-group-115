@@ -1,4 +1,4 @@
-import user_register.frameworks_and_drivers.*;
+import screens.*;
 import javax.swing.*;
 
 public class Main {

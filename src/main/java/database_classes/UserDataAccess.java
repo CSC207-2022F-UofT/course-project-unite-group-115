@@ -1,11 +1,8 @@
-package user_register.frameworks_and_drivers;
+package database_classes;
 
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
-
-import user_register.application_business_rules.UserRepoInt;
-import user_register.application_business_rules.UserRepoRequestModel;
 
 
 public class UserDataAccess implements UserRepoInt {
@@ -74,42 +71,6 @@ public class UserDataAccess implements UserRepoInt {
             throw new RuntimeException(e);
         }
     }
-
-//    public List<String> getGroups(String username) {
-//        List<String> listOfGroupIds = new ArrayList<String>();
-//        try{
-//            final Map<String, Integer> headers = new LinkedHashMap<>();
-//            headers.put("userName", 0);
-//            headers.put("password", 1);
-//            headers.put("creationTime", 2);
-//            headers.put("profileName", 3);
-//            headers.put("dob", 4);
-//            headers.put("description", 5);
-//            headers.put("socialLinks", 6);
-//            headers.put("sensitiveWords", 7);
-//            headers.put("interests", 8);
-//            headers.put("groups", 9);
-//            headers.put("friends", 10);
-//            headers.put("blockedUsers", 11);
-//
-//            BufferedReader reader = new BufferedReader(new FileReader("./src/main/java/databases/users.csv"));
-//            reader.readLine(); // skip header
-//            String row;
-//
-//            while ((row = reader.readLine()) != null) {
-//                String[] col = row.split(",");
-//                if (Objects.equals(String.valueOf(col[headers.get("userName")]), username)) {
-//                    String groups = String.valueOf(col[headers.get("groups")]);
-//                    List<String> groupsList = Arrays.asList(groups.split(";"));
-//                    listOfGroupIds = groupsList;
-//                }
-//            }
-//            reader.close();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return listOfGroupIds;
-//    }
 
     /**
      * Return whether a user exists with username identifier.
