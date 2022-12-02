@@ -1,4 +1,7 @@
-package databases;
+package databases_classes;
+
+import databases_classes.GroupRepoInt;
+import databases_classes.GroupRepoRequestModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package random_grouper_create.frameworks_and_drivers;
+package screens;
 
 import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
 import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsController;

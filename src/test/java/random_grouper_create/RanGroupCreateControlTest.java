@@ -1,13 +1,12 @@
 package random_grouper_create;
 
-import databases.*;
+import databases_classes.*;
 import entities.RandomGroupFactory;
 import org.junit.Before;
 import org.junit.Test;
 import random_grouper_create.application_business_rules.RanGroupCreateInputBoundary;
 import random_grouper_create.application_business_rules.RanGroupCreateInteractor;
 import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
-import random_grouper_create.interface_adapters.GroupCreationFailure;
 import random_grouper_create.interface_adapters.RanGroupCreateControl;
 import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
 

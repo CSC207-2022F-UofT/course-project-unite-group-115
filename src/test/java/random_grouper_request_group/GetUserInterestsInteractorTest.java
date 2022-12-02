@@ -1,25 +1,20 @@
 package random_grouper_request_group;
 
-import databases.*;
+import databases_classes.InMemoryProfileData;
+import databases_classes.ProfileRepoInt;
+import databases_classes.ProfileRepoRequestModel;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
-import random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
-import random_grouper_request_group.application_business_rules.ReqRanGroupRequestModel;
-import random_grouper_request_group.application_business_rules.ReqRanGroupResponseModel;
 import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsInteractor;
 import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsRequestModel;
 import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsResponseModel;
 import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsFailure;
 import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsPresenter;
-import random_grouper_request_group.interface_adapters.GroupAdditionFailure;
-import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.fail;

@@ -1,9 +1,8 @@
 package random_grouper_request_group;
 
-import databases.*;
+import databases_classes.*;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_create.interface_adapters.GroupCreationFailure;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
 import random_grouper_request_group.application_business_rules.ReqRanGroupRequestModel;
