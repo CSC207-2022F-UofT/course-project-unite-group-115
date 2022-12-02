@@ -5,13 +5,13 @@ import random_grouper_create.application_business_rules.RanGroupCreateInteractor
 import random_grouper_create.application_business_rules.RanGroupCreateOutputBoundary;
 
 import database_classes.GroupDataAccess;
-import random_grouper_create.frameworks_and_drivers.RandomGroupCreationUI;
+import screens.RandomGroupCreationUI;
 import random_grouper_create.interface_adapters.RanGroupCreateControl;
 import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
 import random_grouper_request_group.application_business_rules.ReqRanGroupOutputBoundary;
-import random_grouper_request_group.frameworks_and_drivers.RequestRandomGroupUI;
+import screens.RequestRandomGroupUI;
 import random_grouper_request_group.interface_adapters.ReqRanGroupController;
 import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
@@ -31,7 +31,7 @@ public class Main {
         // ToDo: Can be changed - created for testing
         GroupRepoInt groupData;
         try {
-            groupData = new GroupDataAccess("./groups.csv");
+            groupData = new GroupDataAccess("./src/main/java/databases/groups.csv");
         }
         catch (IOException e) {
             throw new RuntimeException("Could not create group database file.");
