@@ -23,7 +23,6 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
     GeneralGroupCreateController genGroupCreateController;
     GetFriendsController getFriendsController;
 
-
     public GeneralGroupCreationScreen(GeneralGroupCreateController genGroupCreateController,
                                       GetFriendsController friendsController) {
         this.genGroupCreateController = genGroupCreateController;

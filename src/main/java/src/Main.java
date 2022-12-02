@@ -28,7 +28,7 @@ public class Main {
         // Create the parts to plug into the Use Case+Entities
         GroupRepoInt groupData;
         try {
-            groupData = new GroupDataAccess("./groups.csv");
+            groupData = new GroupDataAccess("./src/main/java/src/database_classes/groups.csv");
         }
         catch (IOException e) {
             throw new RuntimeException("Could not create group database file.");
