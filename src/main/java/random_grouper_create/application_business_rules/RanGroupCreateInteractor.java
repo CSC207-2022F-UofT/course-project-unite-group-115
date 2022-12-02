@@ -3,6 +3,7 @@ package random_grouper_create.application_business_rules;
 import databases_classes.GroupRepoInt;
 import databases_classes.GroupRepoRequestModel;
 import databases_classes.ProfileRepoInt;
+import database_classes.GroupRepoRequestModel;
 import entities.Group;
 import entities.RandomGroupFactory;
 
@@ -11,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RanGroupCreateInteractor implements RanGroupCreateInputBoundary {
-    final GroupRepoInt GROUP_REPO_ACCESS;
+    final RanGroupCreateDataAccessInt GROUP_REPO_ACCESS;
     final RanGroupCreateOutputBoundary GROUP_CREATE_OUTPUT_BOUNDARY;
     final RandomGroupFactory GROUP_FACTORY;
     final ProfileRepoInt PROFILE_REPO_ACCESS;
 
-    public RanGroupCreateInteractor(GroupRepoInt groupRepoAccess,
+    public RanGroupCreateInteractor(RanGroupCreateDataAccessInt groupRepoAccess,
                                     RanGroupCreateOutputBoundary groupCreateOutputBoundary,
                                     RandomGroupFactory groupFactory, ProfileRepoInt profileRepoAccess) {
         this.GROUP_REPO_ACCESS = groupRepoAccess;

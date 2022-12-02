@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 public class ReqRanGroupInteractor implements ReqRanGroupInputBoundary {
-    final GroupRepoInt GROUP_REPO_ACCESS;
+    final ReqRanGroupDataAccessInt GROUP_REPO_ACCESS;
     final ReqRanGroupOutputBoundary reqRanGroupOutputBoundary;
     final ProfileRepoInt PROFILE_REPO_ACCESS;
     final int MAX_GROUP_SIZE = 8;
 
+    public ReqRanGroupInteractor(ReqRanGroupDataAccessInt groupRepoAccess,
+                                 ReqRanGroupOutputBoundary reqRanGroupOutputBoundary) {
     public ReqRanGroupInteractor(GroupRepoInt groupRepoAccess, ReqRanGroupOutputBoundary reqRanGroupOutputBoundary,
                                  ProfileRepoInt profileRepoAccess) {
         this.GROUP_REPO_ACCESS = groupRepoAccess;
