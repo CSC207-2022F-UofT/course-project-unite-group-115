@@ -30,7 +30,7 @@ public class Main {
         // Create the parts to plug into the Use Case+Entities
         GroupRepoInt groupData;
         try {
-            groupData = new GroupDataAccess("./src/main/java/src/database_classes/groups.csv");
+            groupData = new GroupDataAccess("./src/main/java/database_classes/groups.csv");
         }
         catch (IOException e) {
             throw new RuntimeException("Could not create group database file.");
@@ -38,7 +38,7 @@ public class Main {
 
         ProfileRepoInt profileData;
         try {
-            profileData = new ProfileManagerDataAccess("./src/main/java/src/database_classes/profiles.csv");
+            profileData = new ProfileManagerDataAccess("./src/main/java/database_classes/profiles.csv");
         } catch (IOException e) {
             throw new RuntimeException("Could not create file.");
         }
