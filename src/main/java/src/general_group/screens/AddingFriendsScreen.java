@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AddingFriendsScreen extends JPanel implements ActionListener {
 
-    JComboBox<String> cmbFriendList;
+    JComboBox<String> cmbFriendList = new JComboBox<>();
     Profile creatorProfile;
     List<String> allFriendsChosen;
     GetFriendsController getFriendsController;
@@ -26,6 +26,11 @@ public class AddingFriendsScreen extends JPanel implements ActionListener {
         friendList.add("a");
         friendList.add("b");
         friendList.add("C");
+        friendList.add("d");
+        friendList.add("g");
+        friendList.add("h");
+        friendList.add("k");
+        friendList.add("l");
         creatorProfile = new Profile("AA", friendList);
         GetFriendsDsResponseModel response = getFriendsController.getFriendsList(creatorProfile);
         List<String> friendsList = new ArrayList<>(response.getFriendList());

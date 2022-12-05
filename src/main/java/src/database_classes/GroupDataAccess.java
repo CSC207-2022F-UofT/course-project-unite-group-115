@@ -66,12 +66,10 @@ public class GroupDataAccess implements GroupRepoInt {
         }
     }
 
-
     @Override
     public void addGroup(GroupRepoDsRequestModel requestModel) {
         groups.put(requestModel.getID(), requestModel);
         this.save();
-
     }
 
     @Override

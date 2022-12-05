@@ -40,17 +40,15 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
         } else if (friendsToAdd.isEmpty()) {
             return genGroupOutputBoundary.prepareFailView("You can't create a group by yourself. Select " +
                     "at most 7 friends and try again");
+        } else if (friendsToAdd.contains(null)) {
+            return genGroupOutputBoundary.prepareFailView("Make sure to click on a friend before adding them, " +
+                    "please select at most 7 friends and try again.");
+        } else if (friendsToAdd.size() > duplicateChecker.size()) {
+            return genGroupOutputBoundary.prepareFailView("You can't add the same person more than once to a" +
+                    "group. " + "Select at most 7 different friends and try again.");
         } else if (friendsToAdd.size() >= maxNumberOfFriends) {
             return genGroupOutputBoundary.prepareFailView("You can't add more than 7 friends into a group. " +
                     "Select at most 7 friends and try again.");
-        } else if (friendsToAdd.contains(null)) {
-            friendsToAdd.clear();
-            return genGroupOutputBoundary.prepareFailView("You can't add null into a group. Select at most 7 "
-            + "friends and try again.");
-        } else if (friendsToAdd.size() > duplicateChecker.size()) {
-            friendsToAdd.clear();
-            return genGroupOutputBoundary.prepareFailView("You can't add the same person more than once to a" +
-                    "group. " + "Select at most 7 different friends and try again.");
         }
 
         String groupCreatorName = requestModel.getGroupCreatorName();

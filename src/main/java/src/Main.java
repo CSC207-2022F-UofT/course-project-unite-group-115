@@ -38,7 +38,7 @@ public class Main {
 
         ProfileRepoInt profileData;
         try {
-            profileData = new ProfileManagerDataAccess("./src/main/java/databases/profiles.csv");
+            profileData = new ProfileManagerDataAccess("./src/main/java/src/database_classes/profiles.csv");
         } catch (IOException e) {
             throw new RuntimeException("Could not create file.");
         }
