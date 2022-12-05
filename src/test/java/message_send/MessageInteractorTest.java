@@ -36,7 +36,7 @@ class MessageInteractorTest {
         // properly.)
 
         MessageRepoInt message;
-        message = new MessageDataAccess("./src/main/java/databases_message/messagestestfile.csv");
+        message = new MessageDataAccess("./src/main/java/database_classes/messagestestfile.csv");
 
         // This creates an anonymous implementing class for the Output Boundary.
         MessagePresenter presenter = new MessagePresenter() {
