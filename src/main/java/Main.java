@@ -67,6 +67,7 @@ public class Main {
         GetFriendsInteractor friendsInteractor = new GetFriendsInteractor(friendsOutputBoundary);
         GetFriendsController friendsController = new GetFriendsController(friendsInteractor);
 
+        //In the final version, the test profile must be the group creator's profile
         GeneralGroupCreationScreen generalGroupCreationScreen = new GeneralGroupCreationScreen(genGroupController,
                 friendsController, testProfile);
         screens.add(generalGroupCreationScreen, "Welcome!");
