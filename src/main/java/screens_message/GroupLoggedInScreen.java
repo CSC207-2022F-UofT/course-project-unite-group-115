@@ -20,11 +20,11 @@ import java.io.IOException;
 public class GroupLoggedInScreen extends JFrame implements ActionListener {
 
     String GroupID;  //TODO: reach group ID and Messagename by connect to the group class
-    String loginMessageName;
+    String loginUserName;
 
-    public GroupLoggedInScreen(String groupId, String loginMessageName) {
+    public GroupLoggedInScreen(String groupId, String loginUserName) {
         this.GroupID = groupId;
-        this.loginMessageName = loginMessageName;
+        this.loginUserName = loginUserName;
 
 
         JLabel title = new JLabel(groupId);
@@ -60,6 +60,7 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
         main.add(buttons);
         this.setContentPane(main);
         this.pack();
+
     }
 
     public void actionPerformed(ActionEvent evt) {
@@ -89,40 +90,35 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
             MessageController MessageController = new MessageController(interactor);
 
             //build GUI
-            JFrame applicationMessage = new MessageScreen(GroupID, loginMessageName, MessageController);
+            JFrame applicationMessage = new MessageScreen(GroupID, loginUserName, MessageController);
             applicationMessage.pack();
             applicationMessage.setVisible(true);
 
-        }
-
-        else if (evt.getActionCommand().equals("view")) {
+        } else if (evt.getActionCommand().equals("view")) {
             MessageRepoInt message;
             try {
-                message = new MessageFile("./messages.csv");
+                message = new MessageFile("./src/main/java/databases_message/messages.csv");
             } catch (IOException e) {
                 throw new RuntimeException("Could not create file");
             }
             ViewMessagePresenter presenter = new ViewMessagePresenter();
             ViewMessageInputBoundary interactor = new ViewMessageInteractor(message, presenter);
             ViewMessageController ViewMessageController = new ViewMessageController(interactor);//may not needed
-            System.out.println("a");
+            ViewMessageController.create(GroupID);
+
+            String messages = " " + String.format(ViewMessageController.create(GroupID).getPresented());
+            messages = messages.replace("[","").replace("]","");
+            messages = messages.replace(","," "); //this is an interesting feature called comma killer
+            JOptionPane.showMessageDialog(this, messages);
+
+
+        } else if (evt.getActionCommand().equals("back")) {
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+            JFrame applicationback = new GroupScreen();  //todo: add parameter
+            applicationback.pack();
+            applicationback.setVisible(true);
         }
-
-//            presenter.prepareFailView(interactor).getPresented();
-
-
-
-
-            //todo: complete
-
-
-        }
-//        else if (evt.getActionCommand().equals("back")) {
-//            JComponent component = (JComponent) evt.getSource();
-//            Window win = SwingUtilities.getWindowAncestor(component);
-//            win.dispose();
-//            JFrame applicationback = new GroupScreen();
-//            applicationback.pack();
-//            applicationback.setVisible(true);
-//        }
     }
+}

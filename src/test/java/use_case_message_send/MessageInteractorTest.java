@@ -12,9 +12,6 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MessageInteractorTest {
-    String content = "content";
-    String sender = "sender";
-    String groupID = "GroupId";
     @Before
     public void setUp(){
 

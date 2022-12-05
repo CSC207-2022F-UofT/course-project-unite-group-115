@@ -5,14 +5,14 @@ import use_case_message_view.*;
 import java.io.IOException;
 
 public class ViewMessageController {
-    final ViewMessageInputBoundary Message_INPUT; //group_id
+    static ViewMessageInputBoundary ViewMessage_INPUT = null; //group_id
 
-    public ViewMessageController(ViewMessageInputBoundary MessageInput) {
-        this.Message_INPUT = MessageInput;
+    public ViewMessageController(ViewMessageInputBoundary viewMessageInput) {
+        this.ViewMessage_INPUT = viewMessageInput;
     }
 
-    public ViewMessageResponseModel create(String groupID) throws IOException {  //may not need input
+    public static ViewMessageResponseModel create(String groupID) {  //may not need input
         ViewMessageRequestModel requestModel = new ViewMessageRequestModel(groupID);
-        return Message_INPUT.create(requestModel);
+        return ViewMessage_INPUT.create(requestModel);
     }
 }

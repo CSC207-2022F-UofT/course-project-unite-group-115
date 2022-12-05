@@ -110,17 +110,17 @@ public class MessageFile implements MessageRepoInt {
 
 
     @Override
-    public List<String> getGroupMessageInfo(String GroupID) {
+    public String getGroupMessageInfo(String GroupID) {
         List<String> allMessages = new ArrayList<String>();
         for (String key : messages.keySet()) {
-            if (messages.get(key).getGroupID() == GroupID) {
+            if (Objects.equals(messages.get(key).getGroupID(), GroupID)) {
                 MessageDsRequestModel model = messages.get(key);
                 String messageFormat = model.getSender() + ": " + model.getContent() + " (" +
-                        model.getMessageID() + ")" + "Reactions: " + model.getReaction();
+                        model.getMessageID() + ")" + "Reactions: " + model.getReaction() + "\n";
                 allMessages.add(messageFormat);
             }
         }
-        return allMessages;
+        return allMessages.toString();
     }
 
 }
