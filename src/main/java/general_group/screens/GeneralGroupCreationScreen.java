@@ -22,9 +22,10 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
     GetFriendsController getFriendsController;
 
     public GeneralGroupCreationScreen(GeneralGroupCreateController genGroupCreateController,
-                                      GetFriendsController friendsController) {
+                                      GetFriendsController friendsController, Profile creatorProfile) {
         this.genGroupCreateController = genGroupCreateController;
         this.getFriendsController = friendsController;
+        this.creatorProfile = creatorProfile;
 
 
         JLabel title = new JLabel("Custom group", SwingConstants.CENTER);
@@ -33,13 +34,6 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
                 new JLabel("Enter the name of your group:"), groupName);
         LabelButtonPanel getFriendsButton = new LabelButtonPanel(
                 new JLabel("Select the friends you wish to create a custom group with (At most 7 friends):"), getFriends);
-
-        //For testing purposes only
-        List<String> friendList = new ArrayList<>();
-        friendList.add("a");
-        friendList.add("b");
-        friendList.add("C");
-        creatorProfile = new Profile("AA", friendList);
 
         JButton cancel = new JButton("Cancel");
         JButton enter = new JButton("Create group");
@@ -64,7 +58,9 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
     @Override
     public void actionPerformed(ActionEvent evt) {
         if (evt.getActionCommand().equals("Cancel")) {
-            System.exit(0);
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
         }
         else if (evt.getActionCommand().equals("Create group")) {
             try {
@@ -74,7 +70,6 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
                         groupName.getText(), response.getCreationTime()));
 
             } catch (Exception e) {
-                System.out.println(e.getClass().getName());
                 JOptionPane.showMessageDialog(this, e.getMessage());
                 friendsChosen.clear();
             }
@@ -87,7 +82,8 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
             JPanel screens = new JPanel(cardLayout);
             friendsApp.add(screens, BorderLayout.CENTER);
 
-            AddingFriendsScreen addingFriendsScreen = new AddingFriendsScreen(getFriendsController, friendsChosen);
+            AddingFriendsScreen addingFriendsScreen = new AddingFriendsScreen(getFriendsController, friendsChosen,
+                    creatorProfile);
 
             screens.add(addingFriendsScreen, "Welcome!");
             cardLayout.show(screens, "create");

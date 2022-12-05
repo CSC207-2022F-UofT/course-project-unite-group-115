@@ -45,42 +45,6 @@ public class GenGroupUnitTest {
     }
 
     @Test(timeout = 50)
-    public void testAddInterests() {
-        Group group = new Group("test", interests, members, false);
-        List<String> newInterests = new ArrayList<>();
-        newInterests.add("heavy metal");
-        group.addInterests(newInterests);
-        assertEquals(4, group.getInterests().size());
-    }
-
-    @Test(timeout = 50)
-    public void testAddSameInterests() {
-        Group group = new Group("test", interests, members, false);
-        List<String> newInterests = new ArrayList<>();
-        newInterests.add("chocolate");
-        group.addInterests(newInterests);
-        assertEquals(3, group.getInterests().size());
-    }
-
-    @Test(timeout = 50)
-    public void testRemoveInterests() {
-        Group group = new Group("test", interests, members, false);
-        List<String> interestsRemove = new ArrayList<>();
-        interestsRemove.add("chocolate");
-        group.removeInterests(interestsRemove);
-        assertEquals(2, group.getInterests().size());
-    }
-
-    @Test(timeout = 50)
-    public void testRemoveNoInterests() {
-        Group group = new Group("test", interests, members, false);
-        List<String> interestsRemove = new ArrayList<>();
-        interestsRemove.add("rain");
-        group.removeInterests(interestsRemove);
-        assertEquals(3, group.getInterests().size());
-    }
-
-    @Test(timeout = 50)
     public void testAddMembers() {
         Group group = new Group("test", interests, members, false);
         List<String> usersAdd = new ArrayList<>();

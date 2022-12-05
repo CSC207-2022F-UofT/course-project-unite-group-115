@@ -40,7 +40,6 @@ public class ProfileRepoRequestModel {
         this.groups = groups;
         this.friends = friends;
         this.blockedUsers = blockedUsers;
-
         this.creationTime = creationTime;
     }
 

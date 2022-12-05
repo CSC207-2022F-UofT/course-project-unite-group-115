@@ -1,5 +1,6 @@
 package general_group.screens;
 
+import get_friends.entities.ProfileFactory;
 import get_friends.entities.Profile;
 import get_friends.interface_adapters.GetFriendsController;
 import get_friends.use_case.GetFriendsDsResponseModel;
@@ -7,6 +8,7 @@ import get_friends.use_case.GetFriendsDsResponseModel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,24 +16,14 @@ public class AddingFriendsScreen extends JPanel implements ActionListener {
 
     JComboBox<String> cmbFriendList = new JComboBox<>();
     Profile creatorProfile;
-    List<String> allFriendsChosen;
+    List<String> friendsChosen;
     GetFriendsController getFriendsController;
     String friendChosen;
-    public AddingFriendsScreen(GetFriendsController controller, List<String> allFriendsChosen) {
+    public AddingFriendsScreen(GetFriendsController controller, List<String> friendsChosen, Profile creatorProfile) {
         this.getFriendsController = controller;
-        this.allFriendsChosen = allFriendsChosen;
+        this.friendsChosen = friendsChosen;
+        this.creatorProfile = creatorProfile;
 
-        //Testing with a random profile, must change later on
-        List<String> friendList = new ArrayList<>();
-        friendList.add("a");
-        friendList.add("b");
-        friendList.add("C");
-        friendList.add("d");
-        friendList.add("g");
-        friendList.add("h");
-        friendList.add("k");
-        friendList.add("l");
-        creatorProfile = new Profile("AA", friendList);
         GetFriendsDsResponseModel response = getFriendsController.getFriendsList(creatorProfile);
         List<String> friendsList = new ArrayList<>(response.getFriendList());
 
@@ -65,7 +57,7 @@ public class AddingFriendsScreen extends JPanel implements ActionListener {
             friendChosen = (String)cmbFriendList.getSelectedItem();
         }
         if(evt.getActionCommand().equals("Add")) {
-            allFriendsChosen.add(friendChosen);
+            friendsChosen.add(friendChosen);
             JOptionPane.showMessageDialog(this, "Friend has been added.");
         }
     }
