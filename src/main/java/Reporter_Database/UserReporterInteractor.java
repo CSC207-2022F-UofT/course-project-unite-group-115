@@ -11,7 +11,7 @@ public class UserReporterInteractor implements InputBoundary {
     final GroupRepoInt userRepoInt;
     final UserReporterPresenter userPresenter;
     final UserFactory userFactory;
-    //final ProfileRepoInt PROFILE_REPO_ACCESS;
+
 
     public UserReporterInteractor(GroupRepoInt userRepoInterface, UserReporterPresenter userReportPresenter,
                                   UserFactory userFactory) {

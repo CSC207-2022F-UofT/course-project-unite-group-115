@@ -1,0 +1,10 @@
+package add_blocked_Users.application_business_rules;
+
+import get_user_sensitiveWordList.application_business_rules.GetUserListRequestModel;
+import get_user_sensitiveWordList.application_business_rules.GetUserListResponseModel;
+
+public interface AddblockedUserInputBoundary {
+
+     AddBlockedUserResponseModel AddBlockedUser(AddBlockedUserRequestModel requestModel);
+
+}
