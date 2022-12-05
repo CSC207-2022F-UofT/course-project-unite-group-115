@@ -1,4 +1,4 @@
-package Database;
+package Reporter_Database;
 
 public interface OutputBoundary {
     UserMessageResponseModel prepareSuccessView(UserMessageResponseModel user);

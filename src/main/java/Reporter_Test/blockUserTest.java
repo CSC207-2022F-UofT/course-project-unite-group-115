@@ -1,22 +1,11 @@
-package Test;
+package Reporter_Test;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
-import Database.*;
-import Interface.UserReporterPresenter;
-import add_blocked_Users.Interface.BlockedPresenter;
-import add_blocked_Users.application_business_rules.AddBlockedUserRequestModel;
-import add_blocked_Users.application_business_rules.AddBlockedUserResponseModel;
-import add_blocked_Users.application_business_rules.AddblockedUserInputBoundary;
-import add_blocked_Users.application_business_rules.blockedUserInteractor;
-import entities.ProfileFactory;
-import entities.UserFactory;
+import Reporter_Database.*;
 import org.junit.Before;
 import org.junit.Test;
 public class blockUserTest {

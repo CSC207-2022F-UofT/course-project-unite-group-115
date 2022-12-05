@@ -1,6 +1,5 @@
-package Database;
+package Reporter_Database;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -11,9 +11,12 @@ import java.util.List;
 public class BlockedPresenter implements AddBlockedUserOutputBoundary {
     @Override
     public AddBlockedUserResponseModel prepareSuccessView(AddBlockedUserResponseModel response) {
-        List<String> list = new ArrayList<>(response.getBlockedList());
+        /*List<String> list = new ArrayList<>(response.getBlockedList());
         Collections.sort(list);
         response.setBlockedList(list);
+        return response;*/
+        String blockList = response.getBlockedList();
+        response.setBlockedList(blockList);
         return response;
     }
     @Override

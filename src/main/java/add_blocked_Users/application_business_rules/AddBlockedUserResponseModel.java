@@ -3,10 +3,10 @@ package add_blocked_Users.application_business_rules;
 import java.util.List;
 
 public class AddBlockedUserResponseModel {
-    private List<String> blockedList;
+    private String blockedList;
 
 
-    public AddBlockedUserResponseModel(List<String> list){
+    public AddBlockedUserResponseModel(String list){
         this.blockedList = list;
 
     }
@@ -16,14 +16,14 @@ public class AddBlockedUserResponseModel {
     /**
      * Return the user's interests.
      */
-    public List<String> getBlockedList() {
+    public String getBlockedList() {
         return blockedList;
     }
 
     /**
      * Change the stored interests to <interests>.
      */
-    public void setBlockedList(List<String> list) {
+    public void setBlockedList(String list) {
         this.blockedList = list;
     }
 

@@ -1,4 +1,4 @@
-package Database;
+package Reporter_Database;
 
 public class UserMessageResponseModel {
     String report;

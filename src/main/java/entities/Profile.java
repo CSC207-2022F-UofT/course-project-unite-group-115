@@ -14,7 +14,7 @@ public class Profile {
     private List<String> interests;
     private List<String> groups;
     private List<String> friends;
-    private List<String> blockedUsers;
+    private String blockedUsers;
 
     public Profile(String userName,
                    String profileName,
@@ -25,7 +25,7 @@ public class Profile {
                    List<String> interests,
                    List<String> groups,
                    List<String> friends,
-                   List<String> blockedUsers) {
+                   String blockedUsers) {
 
         this.userName = userName;
         this.profileName = profileName;
@@ -46,6 +46,7 @@ public class Profile {
     public String getProfileName() {
         return this.profileName;
     }
+
     public void setProfileName(String profileName) {
         this.profileName = profileName;
     }
@@ -53,6 +54,7 @@ public class Profile {
     public LocalDate getDob() {
         return this.dob;
     }
+
     public void setDob(LocalDate dob) {
         this.dob = dob;
     }
@@ -60,6 +62,7 @@ public class Profile {
     public String getDescription() {
         return this.description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -67,12 +70,15 @@ public class Profile {
     public List<String> getSocialLinks() {
         return this.socialLinks;
     }
+
     public void setSocialLinks(ArrayList<String> socialLinks) {
         this.socialLinks = socialLinks;
     }
+
     public void addSocialLinks(String socialLink) {
         this.socialLinks.add(socialLink);
     }
+
     public void removeSocialLinks(String socialLink) {
         this.socialLinks.remove(socialLink);
     }
@@ -80,12 +86,15 @@ public class Profile {
     public List<String> getSensitiveWords() {
         return this.sensitiveWords;
     }
+
     public void setSensitiveWords(ArrayList<String> sensitiveWords) {
         this.sensitiveWords = sensitiveWords;
     }
+
     public void addSensitiveWords(String sensitiveWord) {
         this.sensitiveWords.add(sensitiveWord);
     }
+
     public void removeSensitiveWords(String sensitiveWord) {
         this.sensitiveWords.remove(sensitiveWord);
     }
@@ -93,12 +102,15 @@ public class Profile {
     public List<String> getInterests() {
         return this.interests;
     }
+
     public void setInterests(ArrayList<String> interests) {
         this.interests = interests;
     }
+
     public void addInterests(String interest) {
         this.interests.add(interest);
     }
+
     public void removeInterests(String interest) {
         this.interests.remove(interest);
     }
@@ -106,12 +118,15 @@ public class Profile {
     public List<String> getGroups() {
         return this.groups;
     }
+
     public void setGroups(ArrayList<String> groups) {
         this.groups = groups;
     }
+
     public void addGroup(String group) {
         this.groups.add(group);
     }
+
     public void removeGroup(String group) {
         this.groups.remove(group);
     }
@@ -119,27 +134,24 @@ public class Profile {
     public List<String> getFriends() {
         return this.friends;
     }
+
     public void setFriends(ArrayList<String> friends) {
         this.friends = friends;
     }
+
     public void addFriend(String friend) {
         this.friends.add(friend);
     }
+
     public void removeFriend(String friend) {
         this.friends.remove(friend);
     }
 
-    public List<String> getBlockedUsers() {
+    public String getBlockedUsers() {
         return this.blockedUsers;
     }
-    public void setBlockedUsers(ArrayList<String> blockedUser) {
+
+    public void setBlockedUsers(String blockedUser) {
         this.blockedUsers = blockedUser;
     }
-    public void addBlockedUser(String blockedUser) {
-        this.blockedUsers.add(blockedUser);
-    }
-    public void removeBlockedUser(String blockedUser) {
-        this.blockedUsers.remove(blockedUser);
-    }
-
 }

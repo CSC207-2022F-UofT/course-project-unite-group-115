@@ -1,6 +1,6 @@
-package Test;
+package Reporter_Test;
 
-import Database.*;
+import Reporter_Database.*;
 import Interface.UserReporterPresenter;
 import entities.UserFactory;
 import get_user_sensitiveWordList.application_business_rules.GetUserInteractor;

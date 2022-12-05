@@ -1,12 +1,7 @@
 package add_blocked_Users.application_business_rules;
 
-import Database.ProfileRepoInt;
+import Reporter_Database.ProfileRepoInt;
 import add_blocked_Users.Interface.Failure;
-import get_user_sensitiveWordList.application_business_rules.GetUserListRequestModel;
-import get_user_sensitiveWordList.application_business_rules.GetUserListResponseModel;
-import get_user_sensitiveWordList.application_business_rules.GetUserSensitiveListOutputBoundary;
-
-import java.util.List;
 
 public class blockedUserInteractor implements AddblockedUserInputBoundary{
     final AddBlockedUserOutputBoundary GET_List_OUTPUT_BOUNDARY;
@@ -28,8 +23,8 @@ public class blockedUserInteractor implements AddblockedUserInputBoundary{
     public  AddBlockedUserResponseModel AddBlockedUser(AddBlockedUserRequestModel requestModel) {
         if (PROFILE_REPO_ACCESS.existsByName(requestModel.getUsername())) {
             PROFILE_REPO_ACCESS.addBlockedUserToProfile(requestModel.getUsername(), requestModel.getBlockedName());
-            List<String> list = PROFILE_REPO_ACCESS.getBlockedUser(requestModel.getUsername());
-            return new AddBlockedUserResponseModel(list);
+            String blockList = PROFILE_REPO_ACCESS.getBlockedUser(requestModel.getUsername());
+            return new AddBlockedUserResponseModel(blockList);
         } else {
             throw new Failure("User not found.");
         }

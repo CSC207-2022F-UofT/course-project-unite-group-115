@@ -1,11 +1,9 @@
-package Database;
+package Reporter_Database;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
-import Database.ProfileRepoInt;
-import Database.ProfileRepoRequestModel;
 
 public class ProfileManagerDataAccess implements ProfileRepoInt {
     private final File csvFile;

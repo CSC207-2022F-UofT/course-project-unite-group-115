@@ -1,10 +1,9 @@
-package Database;
+package Reporter_Database;
 import Interface.UserReporterPresenter;
 import entities.Blocker;
 import entities.UserFactory;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class UserReporterInteractor implements InputBoundary {
 

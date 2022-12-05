@@ -1,4 +1,4 @@
-package Database;
+package Reporter_Database;
 
 import java.util.HashMap;
 import java.util.Map;

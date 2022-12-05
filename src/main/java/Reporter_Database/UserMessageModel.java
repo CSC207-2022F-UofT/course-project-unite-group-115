@@ -1,6 +1,4 @@
-package Database;
-
-import java.util.UUID;
+package Reporter_Database;
 
 public class UserMessageModel {
 

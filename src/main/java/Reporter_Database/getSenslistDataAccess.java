@@ -1,4 +1,4 @@
-package Database;
+package Reporter_Database;
 
 import add_blocked_Users.Interface.BlockedController;
 import add_blocked_Users.Interface.BlockedPresenter;
@@ -10,9 +10,6 @@ import get_user_sensitiveWordList.interface_adapters.GetUserSenListController;
 import get_user_sensitiveWordList.interface_adapters.GetUserSenListPresenter;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class getSenslistDataAccess {

@@ -13,7 +13,7 @@ public class ProfileFactory{
                                  List<String> interests,
                                  List<String> groups,
                                  List<String> friends,
-                                 List<String> blockedUsers) {
+                                 String blockedUsers) {
 
         return new Profile(
                 userName, profileName, dob, description, socialLinks, sensitiveWords, interests, groups, friends,
