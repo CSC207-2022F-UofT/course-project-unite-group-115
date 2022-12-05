@@ -4,10 +4,10 @@ import database_classes.ProfileRepoInt;
 import entities.GeneralGroupFactory;
 import general_group.interface_adapters.GeneralGroupCreateController;
 import general_group.interface_adapters.GeneralGroupCreatePresenter;
+import general_group.use_case.GeneralGroupRepoInt;
 import screens.GeneralGroupCreationScreen;
 import general_group.use_case.GeneralGroupCreateInteractor;
 import general_group.use_case.GeneralGroupCreateOutputBoundary;
-import general_group.use_case.GroupRepoInt;
 import entities.Profile;
 import entities.ProfileFactory;
 import get_friends.get_friends.interface_adapters.GetFriendsController;
@@ -33,7 +33,7 @@ public class GeneralGroupCreationMain {
         application.add(screens);
 
         // Create the parts to plug into the Use Case+Entities
-        GroupRepoInt groupData;
+        GeneralGroupRepoInt groupData;
         try {
             groupData = new GroupDataAccess("./src/main/java/database_classes/groups.csv");
         }

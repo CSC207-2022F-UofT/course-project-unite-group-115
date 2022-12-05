@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.Set;
 
 public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoundary{
-    final GroupRepoInt genGroupRepoAccess;
+    final GeneralGroupRepoInt genGroupRepoAccess;
     final GeneralGroupCreateOutputBoundary genGroupOutputBoundary;
     final GeneralGroupFactory genGroupFactory;
     final ProfileRepoInt profileRepoAccess;
     final int maxNumberOfFriends = 8;
 
-    public GeneralGroupCreateInteractor(GroupRepoInt genGroupRepoAccess,
+    public GeneralGroupCreateInteractor(GeneralGroupRepoInt genGroupRepoAccess,
                                         GeneralGroupCreateOutputBoundary genGroupOutputBoundary,
                                         GeneralGroupFactory genGroupFactory, ProfileRepoInt profileRepoAccess) {
         this.genGroupRepoAccess = genGroupRepoAccess;

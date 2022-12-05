@@ -1,8 +1,5 @@
 package entities;
 
-import entities.Group;
-import entities.GroupFactory;
-
 import java.util.List;
 
 public class GeneralGroupFactory implements GroupFactory {

@@ -5,7 +5,7 @@ import database_classes.GroupRepoRequestModel;
 import java.util.List;
 import java.util.Map;
 
-public interface GroupRepoInt {
+public interface GeneralGroupRepoInt {
     /**
      * Adds the group information from the requestModel into the group file
      * @param requestModel Information about the group

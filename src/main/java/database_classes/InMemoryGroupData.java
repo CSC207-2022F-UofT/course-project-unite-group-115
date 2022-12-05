@@ -1,12 +1,15 @@
 package database_classes;
-import general_group.use_case.GroupRepoInt;
+import database_classes.GroupRepoInt;
+import general_group.use_case.GeneralGroupRepoInt;
+import random_grouper_create.application_business_rules.RanGroupCreateDataAccessInt;
+import random_grouper_request_group.application_business_rules.ReqRanGroupDataAccessInt;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InMemoryGroupData implements GroupRepoInt {
+public class InMemoryGroupData implements GroupRepoInt, RanGroupCreateDataAccessInt, ReqRanGroupDataAccessInt, GeneralGroupRepoInt {
     final private Map<String, GroupRepoRequestModel> groups = new HashMap<>();
 
     /**

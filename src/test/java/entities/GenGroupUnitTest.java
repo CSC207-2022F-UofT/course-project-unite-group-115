@@ -1,6 +1,6 @@
 package entities;
 
-import general_group.entities.Group;
+import entities.Group;
 import org.junit.Before;
 import org.junit.Test;
 

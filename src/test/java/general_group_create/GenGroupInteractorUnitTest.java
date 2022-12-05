@@ -82,7 +82,7 @@ public class GenGroupInteractorUnitTest {
 
     @Test
     public void testCreateFailEmptyString() {
-        GroupRepoInt groupDatabase = new InMemoryGroupData();
+        GeneralGroupRepoInt groupDatabase = new InMemoryGroupData();
         ProfileRepoInt profileDatabase = new InMemoryProfileData();
 
         GeneralGroupCreatePresenter presenter = new GeneralGroupCreatePresenter();
@@ -103,7 +103,7 @@ public class GenGroupInteractorUnitTest {
 
     @Test
     public void testCreateFailEmptyFriendList() {
-        GroupRepoInt groupDatabase = new InMemoryGroupData();
+        GeneralGroupRepoInt groupDatabase = new InMemoryGroupData();
         ProfileRepoInt profileDatabase = new InMemoryProfileData();
 
         GeneralGroupCreatePresenter presenter = new GeneralGroupCreatePresenter();
@@ -126,7 +126,7 @@ public class GenGroupInteractorUnitTest {
 
     @Test
     public void testCreateFailTooManyFriends() {
-        GroupRepoInt groupDatabase = new InMemoryGroupData();
+        GeneralGroupRepoInt groupDatabase = new InMemoryGroupData();
         ProfileRepoInt profileDatabase = new InMemoryProfileData();
 
         GeneralGroupCreatePresenter presenter = new GeneralGroupCreatePresenter();
@@ -150,7 +150,7 @@ public class GenGroupInteractorUnitTest {
 
     @Test
     public void testCreateFailDuplicateMembers() {
-        GroupRepoInt groupDatabase = new InMemoryGroupData();
+        GeneralGroupRepoInt groupDatabase = new InMemoryGroupData();
         ProfileRepoInt profileDatabase = new InMemoryProfileData();
 
         GeneralGroupCreatePresenter presenter = new GeneralGroupCreatePresenter();
