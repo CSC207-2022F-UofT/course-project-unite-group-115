@@ -35,7 +35,7 @@ public class GeneralGroupCreationMain {
         // Create the parts to plug into the Use Case+Entities
         GeneralGroupRepoInt groupData;
         try {
-            groupData = new GroupDataAccess("./src/main/java/database_classes/groups.csv");
+            groupData = new GroupDataAccess("./src/main/java/databases/groups.csv");
         }
         catch (IOException e) {
             throw new RuntimeException("Could not create group database file.");
@@ -43,7 +43,7 @@ public class GeneralGroupCreationMain {
 
         ProfileRepoInt profileData;
         try {
-            profileData = new ProfileManagerDataAccess("./src/main/java/database_classes/profiles.csv");
+            profileData = new ProfileManagerDataAccess("./src/main/java/databases/profiles.csv");
         } catch (IOException e) {
             throw new RuntimeException("Could not create file.");
         }
