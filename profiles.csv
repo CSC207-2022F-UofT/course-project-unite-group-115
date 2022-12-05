@@ -1,4 +1,2 @@
-userName,profileName,dob,description,socialLinks,sensitiveWords,interests,groups,friends,blockedUsers,creationTime
-tejasraghuvanshi,TejasR,2000-01-01,Hi!,[tejas@facebook.com],[alpha;beta],[cats],[1;24],[Kushagra],[],2022-11-21T12:29:22.511738
-Alpha,jj,2000-01-01,Hi!,[tejas@facebook.com],[],[cats],[1;24],[Kushagra],[],2022-11-21T12:29:22.511738
-Beta,jj,2000-01-01,Hi!,[tejas@facebook.com],[],[cats],[1;24],[Kushagra],[],2022-11-21T12:29:22.511738
+userName,profileName,dob,description,socialLinks,sensitiveWords,interests,groups,friends,blockedUsers
+Aurora,,2001-01-01,Hello,[],[busy,r,t],[],[],[],[]
