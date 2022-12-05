@@ -29,6 +29,7 @@ class ViewMessageInteractorTest {
                 assertEquals(("[paul: hello (1)Reactions: [[]]\n" +
                         "]").replace(","," "), response.getPresented());
                 return null;
+
             }
 
             @Override
