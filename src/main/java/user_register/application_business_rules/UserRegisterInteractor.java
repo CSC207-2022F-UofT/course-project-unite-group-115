@@ -16,6 +16,12 @@ public class UserRegisterInteractor implements UserRegisterInputBoundary {
     final UserRegisterPresenter userPresenter;
     final UserFactory userFactory;
 
+    /**
+     * Constructor for UserRegisterInteractor class.
+     * @param userRepoInterface the repository interface the interactor will interact with
+     * @param userRegisterPresenter the presenter interactor will interact with
+     * @param userFactory the factory interactor will interact with
+     */
     public UserRegisterInteractor(UserRepoInt userRepoInterface, UserRegisterPresenter userRegisterPresenter,
                                   UserFactory userFactory) {
         this.userRepoInt = userRepoInterface;
@@ -23,6 +29,12 @@ public class UserRegisterInteractor implements UserRegisterInputBoundary {
         this.userFactory = userFactory;
     }
 
+    /**
+     * Create a new User and save it to the User Database.
+     * @param requestModel A data structure containing the information required to create a new user.
+     * @return Returns a data structure containing the user's username and creation time, if the creation was successful.
+     * Or returns a data structure containing a failure message, if the creation was unsuccessful.
+     */
     @Override
     public UserRegisterResponseModel create(UserRegisterRequestModel requestModel) {
         User user = userFactory.create(requestModel.getName(), requestModel.getPassword());
