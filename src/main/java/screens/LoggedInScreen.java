@@ -96,7 +96,7 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             application3.setVisible(true);
         }
         else if (evt.getActionCommand().equals("Groups")){
-            GroupDataAccess groupData;
+            GroupRepoInt groupData;
             try {
                 groupData = new GroupDataAccess("./src/main/java/databases/groups.csv");
             }
