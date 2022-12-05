@@ -1,6 +1,6 @@
 package main;
 
-import screens_message.GroupLoggedInScreen;
+import screens.GroupLoggedInScreen;
 
 import javax.swing.*;
 

@@ -1,0 +1,5 @@
+content,sender,groupID,messageID,reaction,creation_time
+hello,paul,Group ID,e77cd0c8-167a-4293-98eb-e48d79f0e59b,[[]],2022-12-05T17:45:50.665201
+hello2,mike,Group ID,2b684d2a-c84c-478b-9e6e-d6c53dc862d5,[[[]]],2022-12-04T03:01:54.459599
+hello,pauljunior,Group ID,c0a9f356-65bd-41d7-a029-5514fa440c42,[[[]]],2022-12-04T03:01:43.689466
+test,DefaultUser,Group ID,05094e86-4a7b-4666-9e89-83234242411f,[],2022-12-05T18:20:38.237010
