@@ -6,6 +6,12 @@ public class GeneralGroupCreateDsResponseModel {
     private String groupName;
     private boolean success;
 
+    /**
+     * Data structure of a group that has been successfully made.
+     * @param creationTime The time the group was created
+     * @param groupID The ID of the group, unique to the group
+     * @param groupName The name of the group
+     */
     public GeneralGroupCreateDsResponseModel(String creationTime, String groupID, String groupName) {
         this.success = true;
         this.creationTime = creationTime;

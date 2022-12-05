@@ -13,7 +13,14 @@ public class Group {
     private List<String> members;
     private final boolean random;
 
-
+    /**
+     * Creating a new group by entering the name, interests, members, and if it is random or not. The id
+     * is new and created
+     * @param name name of the group
+     * @param interests interests the group possesses
+     * @param members members of the group
+     * @param random if members have to be added based on interest or not
+     */
     public Group(String name, List<String> interests, List<String> members, boolean random) {
         this.name = name;
         this.interests = interests;
@@ -39,10 +46,18 @@ public class Group {
         this.ID = UUID.fromString(id);
     }
 
+    /**
+     * Sets the new name of the group
+     * @param name The new name of the group that is going to be set
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Returns the name of the group
+     * @return The name of the group
+     */
     public String getName() {
         return this.name;
     }
@@ -96,6 +111,10 @@ public class Group {
         return this.ID.toString();
     }
 
+    /**
+     * Get the group's members
+     * @return The list of members of the group
+     */
     public List<String> getMembers() {
         return this.members;
     }

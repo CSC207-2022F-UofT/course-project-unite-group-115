@@ -7,6 +7,12 @@ public class GeneralGroupCreateDsRequestModel {
     private List<String> friendsToAdd;
     private String groupCreatorName;
 
+    /**
+     * Creates a data structure containing the information needed to create a new general group
+     * @param groupName Name of the group
+     * @param friendsToAdd The friends the user wishes to add to the group
+     * @param groupCreatorName Name of the group creator
+     */
     public GeneralGroupCreateDsRequestModel(String groupName, List<String> friendsToAdd, String groupCreatorName) {
         this.groupName = groupName;
         this.friendsToAdd = friendsToAdd;

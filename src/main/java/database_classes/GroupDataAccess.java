@@ -10,6 +10,15 @@ public class GroupDataAccess implements GroupRepoInt {
     private final Map<String, Integer> headers = new LinkedHashMap<>();
     private final Map<String, GroupRepoDsRequestModel> groups = new LinkedHashMap<>();
 
+    /**
+     * Opens and reads the GroupDatabase (csv file) and puts the read information into a Map.
+     * Each key is a string representation of a group ID and its corresponding value is a data structure
+     * (<GroupRepoRequestModel>) that contains all the information about the group that was stored in the
+     * GroupDatabase (group name, ID, interests, members and whether it's a random group).
+     *
+     * @param csvFilePath path to csv file that acts as the GroupDatabase
+     * @throws IOException throws exception if there is an error related to reading the file
+     */
     public GroupDataAccess (String csvFilePath) throws IOException {
         this.csvFile = new File(csvFilePath);
 
@@ -44,6 +53,9 @@ public class GroupDataAccess implements GroupRepoInt {
         }
     }
 
+    /**
+     * Writes all group information from the <groups> instance variable (Map) to the GroupDatabase csv file.
+     */
     private void save() {
         BufferedWriter writer;
         try {
