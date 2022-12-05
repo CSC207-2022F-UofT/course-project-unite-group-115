@@ -79,7 +79,7 @@ public class GroupDataAccess implements GroupRepoInt {
     }
 
     @Override
-    public Map<String, Object> getGroupData(String groupID) {
+    public Map<String, Object> getGroupInfo(String groupID) {
         GroupRepoDsRequestModel repoDsRequestModel = groups.get(groupID);
         Map<String, Object> result = new HashMap<>();
         result.put("group name", repoDsRequestModel.getName());
@@ -105,6 +105,7 @@ public class GroupDataAccess implements GroupRepoInt {
         groups.get(groupID).setMembers(members);
         this.save();
     }
+
 
 
 }

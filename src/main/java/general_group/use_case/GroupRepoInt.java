@@ -2,7 +2,6 @@ package general_group.use_case;
 
 import database_classes.GroupRepoDsRequestModel;
 import java.util.Map;
-import java.util.List;
 
 public interface GroupRepoInt {
 
@@ -10,7 +9,7 @@ public interface GroupRepoInt {
 
     void removeGroup(String groupID);
 
-    Map<String, Object> getGroupData(String groupID);
+    Map<String, Object> getGroupInfo(String groupID);
 
     void addUserToGroup(String userName, String groupID);
 

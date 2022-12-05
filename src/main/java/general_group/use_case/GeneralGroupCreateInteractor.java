@@ -16,7 +16,7 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
     final GeneralGroupCreateOutputBoundary genGroupOutputBoundary;
     final GroupFactory genGroupFactory;
     final ProfileRepoInt profileRepoAccess;
-    final int maxNumberOfFriends = 7;
+    final int maxNumberOfFriends = 8;
 
     public GeneralGroupCreateInteractor(GroupRepoInt genGroupRepoAccess,
                                         GeneralGroupCreateOutputBoundary genGroupOutputBoundary,
@@ -30,32 +30,33 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
     @Override
     public GeneralGroupCreateDsResponseModel create(GeneralGroupCreateDsRequestModel requestModel) {
         String groupName = requestModel.getGroupName();
-        List<String> friendsToAdd = new ArrayList<>(requestModel.getFriendsToAdd());
+        List<String> membersToAdd = new ArrayList<>(requestModel.getFriendsToAdd());
         List<String> interests = new ArrayList<>();
 
-        Set<String> duplicateChecker = new HashSet<>(friendsToAdd);
+        String groupCreatorName = requestModel.getGroupCreatorName();
+        membersToAdd.add(groupCreatorName);
+
+        Set<String> duplicateChecker = new HashSet<>(membersToAdd);
         if (groupName.equals("")) {
             return genGroupOutputBoundary.prepareFailView("The group's name cannot be empty. Enter " +
                     "a group name and try again.");
-        } else if (friendsToAdd.isEmpty()) {
+        } else if (membersToAdd.size() == 1) {
             return genGroupOutputBoundary.prepareFailView("You can't create a group by yourself. Select " +
-                    "at most 7 friends and try again");
-        } else if (friendsToAdd.contains(null)) {
+                    "at most 7 friends and try again.");
+        } else if (membersToAdd.contains(null)) {
             return genGroupOutputBoundary.prepareFailView("Make sure to click on a friend before adding them, " +
                     "please select at most 7 friends and try again.");
-        } else if (friendsToAdd.size() > duplicateChecker.size()) {
+        } else if (membersToAdd.size() > duplicateChecker.size()) {
             return genGroupOutputBoundary.prepareFailView("You can't add the same person more than once to a" +
                     "group. " + "Select at most 7 different friends and try again.");
-        } else if (friendsToAdd.size() >= maxNumberOfFriends) {
+        } else if (membersToAdd.size() > maxNumberOfFriends) {
             return genGroupOutputBoundary.prepareFailView("You can't add more than 7 friends into a group. " +
                     "Select at most 7 friends and try again.");
         }
 
-        String groupCreatorName = requestModel.getGroupCreatorName();
-        List<String> membersNames = new ArrayList<>(friendsToAdd);
-        membersNames.add(groupCreatorName);
+        List<String> membersNames = new ArrayList<>(membersToAdd);
 
-        Group newGroup = genGroupFactory.createNewGroup(groupName, interests, friendsToAdd);
+        Group newGroup = genGroupFactory.createNewGroup(groupName, interests, membersToAdd);
 
         profileRepoAccess.addGroupToProfile(requestModel.getGroupCreatorName(), newGroup.getId());
 
