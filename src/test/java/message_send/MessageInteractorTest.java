@@ -1,15 +1,15 @@
-package message_sebd;
+package message_send;
 
 import database_classes.MessageDataAccess;
 import database_classes.MessageRepoInt;
 import enties.MessageFactory;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import message_sebd.application_business_rule.MessageInputBoundary;
-import message_sebd.application_business_rule.MessageInteractor;
-import message_sebd.application_business_rule.MessageRequestModel;
-import message_sebd.application_business_rule.MessageResponseModel;
-import message_sebd.interface_adaptor.MessagePresenter;
+import message_send.application_business_rule.MessageInputBoundary;
+import message_send.application_business_rule.MessageInteractor;
+import message_send.application_business_rule.MessageRequestModel;
+import message_send.application_business_rule.MessageResponseModel;
+import message_send.interface_adaptor.MessagePresenter;
 
 import java.io.IOException;
 

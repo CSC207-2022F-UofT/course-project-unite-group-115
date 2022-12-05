@@ -1,7 +1,7 @@
-package message_sebd.interface_adaptor;
+package message_send.interface_adaptor;
 
-import message_sebd.application_business_rule.MessageOutputBoundary;
-import message_sebd.application_business_rule.MessageResponseModel;
+import message_send.application_business_rule.MessageOutputBoundary;
+import message_send.application_business_rule.MessageResponseModel;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

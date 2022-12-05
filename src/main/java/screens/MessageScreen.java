@@ -1,6 +1,6 @@
 package screens;
 
-import message_sebd.interface_adaptor.MessageController;
+import message_send.interface_adaptor.MessageController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +20,7 @@ public class MessageScreen extends JFrame implements ActionListener {
         this.groupName = groupName;
         this.loginUserName = loginUserName;
 
-        LabelTextPanel content = new LabelTextPanel(new JLabel("content"), messagecontent);
+        LabelTextPanel2 content = new LabelTextPanel2(new JLabel("content"), messagecontent);
 
         JButton send = new JButton("Send");
         JButton back = new JButton("back");

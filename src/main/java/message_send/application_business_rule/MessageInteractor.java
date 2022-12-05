@@ -1,16 +1,16 @@
-package message_sebd.application_business_rule;
+package message_send.application_business_rule;
 
 import database_classes.MessageRepoRequestModel;
 import database_classes.MessageRepoInt;
 import enties.Message;
 import enties.MessageFactory;
-import message_sebd.interface_adaptor.MessagePresenter;
+import message_send.interface_adaptor.MessagePresenter;
 
 import java.time.LocalDateTime;
 
 public class MessageInteractor implements MessageInputBoundary {
     final database_classes.MessageRepoInt MessageRepoInt;
-    final message_sebd.interface_adaptor.MessagePresenter MessagePresenter;
+    final message_send.interface_adaptor.MessagePresenter MessagePresenter;
     final MessageFactory messageFactory;
 
     public MessageInteractor(MessageRepoInt MessageRepoInt, MessagePresenter MessagePresenter,

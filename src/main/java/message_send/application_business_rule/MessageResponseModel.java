@@ -1,4 +1,4 @@
-package message_sebd.application_business_rule;
+package message_send.application_business_rule;
 
 public class MessageResponseModel {
     String send;    //what's this used for?

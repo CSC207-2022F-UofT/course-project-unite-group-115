@@ -5,10 +5,10 @@ import database_classes.MessageRepoInt;
 import enties.MessageFactory;
 import message_view.interface_adaptor.ViewMessageController;
 import message_view.interface_adaptor.ViewMessagePresenter;
-import message_sebd.application_business_rule.MessageInputBoundary;
-import message_sebd.application_business_rule.MessageInteractor;
-import message_sebd.interface_adaptor.MessageController;
-import message_sebd.interface_adaptor.MessagePresenter;
+import message_send.application_business_rule.MessageInputBoundary;
+import message_send.application_business_rule.MessageInteractor;
+import message_send.interface_adaptor.MessageController;
+import message_send.interface_adaptor.MessagePresenter;
 import message_view.application_business_rule.ViewMessageInputBoundary;
 import message_view.application_business_rule.ViewMessageInteractor;
 

@@ -1,8 +1,8 @@
-package message_sebd.interface_adaptor;
+package message_send.interface_adaptor;
 
-import message_sebd.application_business_rule.MessageInputBoundary;
-import message_sebd.application_business_rule.MessageRequestModel;
-import message_sebd.application_business_rule.MessageResponseModel;
+import message_send.application_business_rule.MessageInputBoundary;
+import message_send.application_business_rule.MessageRequestModel;
+import message_send.application_business_rule.MessageResponseModel;
 
 public class MessageController {
     final MessageInputBoundary Message_INPUT;
