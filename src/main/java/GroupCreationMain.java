@@ -22,7 +22,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class GroupCreationMain {
     public static void main(String[] args) {
 
         JFrame application = new JFrame("General group build test");
