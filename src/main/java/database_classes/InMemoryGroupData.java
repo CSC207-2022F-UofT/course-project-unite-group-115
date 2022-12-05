@@ -84,4 +84,60 @@ public class InMemoryGroupData implements GroupRepoInt {
         groups.get(groupID).setMembers(members);
     }
 
+    /**
+     * Update the GroupDatabase by adding interests, <newInterests>, to the existing interests of the group with the
+     * ID, <groupID>.
+     *
+     * @param newInterests list of interests to be added to the group
+     * @param groupID      group's ID
+     */
+    @Override
+    public void addInterestsToGroup(List<String> newInterests, String groupID) {
+        List<String> groupInterests = new ArrayList<>(groups.get(groupID).getInterests());
+        for (String newInterest : newInterests) {
+            boolean containsInterest = false;
+            for (String existingInterest : groupInterests) {
+                if (existingInterest.equals(newInterest)) {
+                    containsInterest = true;
+                    break;
+                }
+            }
+            if (!containsInterest) {
+                groupInterests.add(newInterest);
+            }
+        }
+        groups.get(groupID).setInterests(groupInterests);
+    }
+
+    /**
+     * Update the GroupDatabase by removing <interests> from the existing interests of the group with the ID,
+     * <groupID>.
+     *
+     * @param interests list of interests to be removed from the group
+     * @param groupID   group's ID
+     */
+    @Override
+    public void removeInterestsFromGroup(List<String> interests, String groupID) {
+        List<String> groupInterests = new ArrayList<>(groups.get(groupID).getInterests());
+        for (String interestToBeRemoved : interests) {
+            groupInterests.remove(interestToBeRemoved);
+        }
+        groups.get(groupID).setInterests(groupInterests);
+    }
+
+    /**
+     * Get a list of group IDs matching all the random groups stored in the GroupDatabase.
+     *
+     * @return Returns a List of Strings where each String is the String representation of a random groups ID.
+     */
+    @Override
+    public List<String> getRandomGroups() {
+        List<String> randomGroupIDs = new ArrayList<>();
+        for (GroupRepoDsRequestModel requestModel : groups.values()) {
+            if (requestModel.isRandom()){
+                randomGroupIDs.add(requestModel.getID());
+            }
+        }
+        return randomGroupIDs;
+    }
 }
