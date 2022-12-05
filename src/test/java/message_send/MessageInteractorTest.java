@@ -3,7 +3,6 @@ package message_send;
 import database_classes.MessageDataAccess;
 import database_classes.MessageRepoInt;
 import enties.MessageFactory;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import message_send.application_business_rule.MessageInputBoundary;
 import message_send.application_business_rule.MessageInteractor;
@@ -16,10 +15,6 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MessageInteractorTest {
-    @Before
-    public void setUp(){
-
-    }
 
     @Test
     public void create() throws IOException {
