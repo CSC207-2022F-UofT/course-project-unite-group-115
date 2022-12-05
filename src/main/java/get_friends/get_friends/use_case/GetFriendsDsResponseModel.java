@@ -1,4 +1,4 @@
-package get_friends.use_case;
+package get_friends.get_friends.use_case;
 import java.util.List;
 import java.util.ArrayList;
 

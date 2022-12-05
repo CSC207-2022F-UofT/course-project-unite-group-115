@@ -1,4 +1,4 @@
-package get_friends.use_case;
+package get_friends.get_friends.use_case;
 
 public class GetFriendsInteractor implements GetFriendsInputBoundary{
     final GetFriendsOutputBoundary friendsOutputBoundary;

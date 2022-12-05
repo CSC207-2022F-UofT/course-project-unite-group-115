@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class InMemoryGroupData implements GroupRepoInt {
-    final private Map<String, GroupRepoDsRequestModel> groups = new HashMap<>();
+    final private Map<String, GroupRepoRequestModel> groups = new HashMap<>();
 
     /**
      * Add the group information from requestModel into the GroupDatabase file.
@@ -15,7 +15,7 @@ public class InMemoryGroupData implements GroupRepoInt {
      * @param requestModel information about group to save
      */
     @Override
-    public void addGroup(GroupRepoDsRequestModel requestModel) {
+    public void addGroup(GroupRepoRequestModel requestModel) {
         groups.put(requestModel.getID(), requestModel);
     }
 
@@ -46,7 +46,7 @@ public class InMemoryGroupData implements GroupRepoInt {
      */
     @Override
     public Map<String, Object> getGroupInfo(String groupID) {
-        GroupRepoDsRequestModel requestModel = groups.get(groupID);
+        GroupRepoRequestModel requestModel = groups.get(groupID);
         Map<String, Object> result = new HashMap<>();
         result.put("group name", requestModel.getName());
         result.put("group ID", requestModel.getID());
@@ -133,7 +133,7 @@ public class InMemoryGroupData implements GroupRepoInt {
     @Override
     public List<String> getRandomGroups() {
         List<String> randomGroupIDs = new ArrayList<>();
-        for (GroupRepoDsRequestModel requestModel : groups.values()) {
+        for (GroupRepoRequestModel requestModel : groups.values()) {
             if (requestModel.isRandom()){
                 randomGroupIDs.add(requestModel.getID());
             }

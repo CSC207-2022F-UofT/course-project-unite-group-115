@@ -7,12 +7,12 @@ import random_grouper_request_group.application_business_rules.ReqRanGroupDataAc
 import java.io.*;
 import java.util.*;
 
-public class GroupDataAccess implements GroupRepoInt {
+public class GroupDataAccess implements GroupRepoInt, RanGroupCreateDataAccessInt, ReqRanGroupDataAccessInt {
     private final File csvFile;
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
 
-    private final Map<String, GroupRepoDsRequestModel> groups = new HashMap<>();
+    private final Map<String, GroupRepoRequestModel> groups = new HashMap<>();
 
     /**
      * Opens and reads the GroupDatabase (csv file) and puts the read information into a Map.
@@ -48,7 +48,7 @@ public class GroupDataAccess implements GroupRepoInt {
                 String interests = String.valueOf(col[headers.get("interests")]);
                 List<String> interestsList = Arrays.asList(interests.split(";"));
                 String isRandom = String.valueOf(col[headers.get("is random group?")]);
-                GroupRepoDsRequestModel group = new GroupRepoDsRequestModel(groupName, interestsList, groupID,
+                GroupRepoRequestModel group = new GroupRepoRequestModel(groupName, groupID, interestsList,
                         membersList, isRandom.equals("true"));
                 groups.put(groupID, group);
             }
@@ -67,7 +67,7 @@ public class GroupDataAccess implements GroupRepoInt {
             writer.write(String.join(",", headers.keySet()));
             writer.newLine();
 
-            for (GroupRepoDsRequestModel group : groups.values()) {
+            for (GroupRepoRequestModel group : groups.values()) {
                 String line = String.format("%s,%s,%s,%s,%s", group.getName(), group.getID(), String.join(";",
                         group.getMembers()), String.join(";", group.getInterests()), group.isRandom());
                 writer.write(line);
@@ -88,10 +88,11 @@ public class GroupDataAccess implements GroupRepoInt {
      * @param requestModel information about group to save
      */
     @Override
-    public void addGroup(GroupRepoDsRequestModel requestModel){
+    public void addGroup(GroupRepoRequestModel requestModel){
         groups.put(requestModel.getID(), requestModel);
         this.save();
     }
+
 
     /**
      * Remove the group with ID, groupID, from the GroupDatabase file.
@@ -119,7 +120,7 @@ public class GroupDataAccess implements GroupRepoInt {
      */
     @Override
     public Map<String, Object> getGroupInfo(String groupID) {
-        GroupRepoDsRequestModel requestModel = groups.get(groupID);
+        GroupRepoRequestModel requestModel = groups.get(groupID);
         Map<String, Object> result = new HashMap<>();
         result.put("group name", requestModel.getName());
         result.put("group ID", requestModel.getID());
@@ -205,11 +206,12 @@ public class GroupDataAccess implements GroupRepoInt {
     @Override
     public List<String> getRandomGroups() {
         List<String> randomGroupIDs = new ArrayList<>();
-        for (GroupRepoDsRequestModel requestModel : groups.values()) {
+        for (GroupRepoRequestModel requestModel : groups.values()) {
             if (requestModel.isRandom()){
                 randomGroupIDs.add(requestModel.getID());
             }
         }
         return randomGroupIDs;
     }
+
 }

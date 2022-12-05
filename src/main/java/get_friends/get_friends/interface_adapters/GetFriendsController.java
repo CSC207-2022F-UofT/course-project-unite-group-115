@@ -1,9 +1,9 @@
-package get_friends.interface_adapters;
+package get_friends.get_friends.interface_adapters;
 
-import get_friends.entities.Profile;
-import get_friends.use_case.GetFriendsInputBoundary;
-import get_friends.use_case.GetFriendsDsRequestModel;
-import get_friends.use_case.GetFriendsDsResponseModel;
+import entities.Profile;
+import get_friends.get_friends.use_case.GetFriendsInputBoundary;
+import get_friends.get_friends.use_case.GetFriendsDsRequestModel;
+import get_friends.get_friends.use_case.GetFriendsDsResponseModel;
 
 public class GetFriendsController {
     final GetFriendsInputBoundary userInput;

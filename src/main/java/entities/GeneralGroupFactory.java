@@ -1,4 +1,7 @@
-package general_group.entities;
+package entities;
+
+import entities.Group;
+import entities.GroupFactory;
 
 import java.util.List;
 
@@ -11,9 +14,10 @@ public class GeneralGroupFactory implements GroupFactory {
      * @return a new GeneralGroup
      */
     @Override
-    public Group createNewGroup(String name,List<String> interests, List<String> members) {
+    public Group createNewGroup(String name, List<String> interests, List<String> members) {
         return new Group(name, interests, members, false);
     }
+
 
     /**
      * Recreates a new GeneralGroup that was created before

@@ -1,9 +1,9 @@
-package general_group.screens;
+package screens;
 
 import general_group.interface_adapters.GeneralGroupCreateController;
 import general_group.use_case.GeneralGroupCreateDsResponseModel;
-import get_friends.entities.Profile;
-import get_friends.interface_adapters.GetFriendsController;
+import entities.Profile;
+import get_friends.get_friends.interface_adapters.GetFriendsController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -82,10 +82,10 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
             JPanel screens = new JPanel(cardLayout);
             friendsApp.add(screens, BorderLayout.CENTER);
 
-            AddingFriendsScreen addingFriendsScreen = new AddingFriendsScreen(getFriendsController, friendsChosen,
+            AddingFriendsToGroupScreen addingFriendsToGroupScreen = new AddingFriendsToGroupScreen(getFriendsController, friendsChosen,
                     creatorProfile);
 
-            screens.add(addingFriendsScreen, "Welcome!");
+            screens.add(addingFriendsToGroupScreen, "Welcome!");
             cardLayout.show(screens, "create");
             friendsApp.setVisible(true);
         }

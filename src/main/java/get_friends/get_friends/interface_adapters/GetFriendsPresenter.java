@@ -1,7 +1,7 @@
-package get_friends.interface_adapters;
+package get_friends.get_friends.interface_adapters;
 
-import get_friends.use_case.GetFriendsDsResponseModel;
-import get_friends.use_case.GetFriendsOutputBoundary;
+import get_friends.get_friends.use_case.GetFriendsDsResponseModel;
+import get_friends.get_friends.use_case.GetFriendsOutputBoundary;
 
 public class GetFriendsPresenter implements GetFriendsOutputBoundary {
     /**

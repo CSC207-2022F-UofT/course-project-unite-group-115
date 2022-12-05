@@ -1,9 +1,9 @@
 package general_group.use_case;
 
-import database_classes.GroupRepoDsRequestModel;
+import database_classes.GroupRepoRequestModel;
 import database_classes.ProfileRepoInt;
-import general_group.entities.Group;
-import general_group.entities.GroupFactory;
+import entities.GeneralGroupFactory;
+import entities.Group;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,13 +14,13 @@ import java.util.Set;
 public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoundary{
     final GroupRepoInt genGroupRepoAccess;
     final GeneralGroupCreateOutputBoundary genGroupOutputBoundary;
-    final GroupFactory genGroupFactory;
+    final GeneralGroupFactory genGroupFactory;
     final ProfileRepoInt profileRepoAccess;
     final int maxNumberOfFriends = 8;
 
     public GeneralGroupCreateInteractor(GroupRepoInt genGroupRepoAccess,
                                         GeneralGroupCreateOutputBoundary genGroupOutputBoundary,
-                                        GroupFactory genGroupFactory, ProfileRepoInt profileRepoAccess) {
+                                        GeneralGroupFactory genGroupFactory, ProfileRepoInt profileRepoAccess) {
         this.genGroupRepoAccess = genGroupRepoAccess;
         this.genGroupOutputBoundary = genGroupOutputBoundary;
         this.genGroupFactory = genGroupFactory;
@@ -68,14 +68,14 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
         profileRepoAccess.addGroupToProfile(requestModel.getGroupCreatorName(), newGroup.getId());
 
 
-        GroupRepoDsRequestModel repoDsRequestModel = new GroupRepoDsRequestModel(groupName, interests, newGroup.getId(),
+        GroupRepoRequestModel repoRequestModel = new GroupRepoRequestModel(groupName, newGroup.getId(), interests,
                 membersNames, false);
-        genGroupRepoAccess.addGroup(repoDsRequestModel);
+        genGroupRepoAccess.addGroup(repoRequestModel);
 
 
         LocalDateTime now = LocalDateTime.now();
         GeneralGroupCreateDsResponseModel responseModel = new GeneralGroupCreateDsResponseModel(now.toString(),
-                repoDsRequestModel.getID(), groupName);
+                repoRequestModel.getID(), groupName);
         return genGroupOutputBoundary.prepareSuccessView(responseModel);
     }
 }

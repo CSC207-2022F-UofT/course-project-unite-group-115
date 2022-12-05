@@ -10,6 +10,7 @@ import random_grouper_create.application_business_rules.RanGroupCreateInteractor
 import random_grouper_create.application_business_rules.RanGroupCreateOutputBoundary;
 import random_grouper_create.interface_adapters.RanGroupCreateControl;
 import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
+import random_grouper_request_group.application_business_rules.ReqRanGroupDataAccessInt;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
 import random_grouper_request_group.application_business_rules.ReqRanGroupOutputBoundary;
@@ -95,7 +96,7 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             application3.setVisible(true);
         }
         else if (evt.getActionCommand().equals("Groups")){
-            GroupRepoInt groupData;
+            GroupDataAccess groupData;
             try {
                 groupData = new GroupDataAccess("./src/main/java/databases/groups.csv");
             }

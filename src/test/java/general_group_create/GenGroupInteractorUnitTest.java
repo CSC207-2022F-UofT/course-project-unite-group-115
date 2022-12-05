@@ -4,7 +4,7 @@ import database_classes.InMemoryGroupData;
 import database_classes.InMemoryProfileData;
 import database_classes.ProfileRepoInt;
 import database_classes.ProfileRepoRequestModel;
-import general_group.entities.GeneralGroupFactory;
+import entities.GeneralGroupFactory;
 import general_group.interface_adapters.GenGroupCreationFailed;
 import general_group.interface_adapters.GeneralGroupCreatePresenter;
 import general_group.use_case.*;

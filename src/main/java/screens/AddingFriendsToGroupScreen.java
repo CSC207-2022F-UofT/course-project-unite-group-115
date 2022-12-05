@@ -1,25 +1,23 @@
-package general_group.screens;
+package screens;
 
-import get_friends.entities.ProfileFactory;
-import get_friends.entities.Profile;
-import get_friends.interface_adapters.GetFriendsController;
-import get_friends.use_case.GetFriendsDsResponseModel;
+import entities.Profile;
+import get_friends.get_friends.interface_adapters.GetFriendsController;
+import get_friends.get_friends.use_case.GetFriendsDsResponseModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddingFriendsScreen extends JPanel implements ActionListener {
+public class AddingFriendsToGroupScreen extends JPanel implements ActionListener {
 
     JComboBox<String> cmbFriendList = new JComboBox<>();
     Profile creatorProfile;
     List<String> friendsChosen;
     GetFriendsController getFriendsController;
     String friendChosen;
-    public AddingFriendsScreen(GetFriendsController controller, List<String> friendsChosen, Profile creatorProfile) {
+    public AddingFriendsToGroupScreen(GetFriendsController controller, List<String> friendsChosen, Profile creatorProfile) {
         this.getFriendsController = controller;
         this.friendsChosen = friendsChosen;
         this.creatorProfile = creatorProfile;

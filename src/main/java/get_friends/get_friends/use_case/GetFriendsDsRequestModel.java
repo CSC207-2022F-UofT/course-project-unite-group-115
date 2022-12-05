@@ -1,5 +1,5 @@
-package get_friends.use_case;
-import get_friends.entities.Profile;
+package get_friends.get_friends.use_case;
+import entities.Profile;
 
 public class GetFriendsDsRequestModel {
     private Profile userProfile;
