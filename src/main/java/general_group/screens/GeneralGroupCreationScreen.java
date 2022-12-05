@@ -74,7 +74,7 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
                         groupName.getText(), response.getCreationTime()));
 
             } catch (Exception e) {
-                System.out.println("Something");
+                System.out.println(e.getClass().getName());
                 JOptionPane.showMessageDialog(this, e.getMessage());
                 friendsChosen.clear();
             }
