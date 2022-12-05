@@ -1,6 +1,5 @@
 package general_group.screens;
 
-import general_group.entities.User;
 import general_group.interface_adapters.GeneralGroupCreateController;
 import general_group.use_case.GeneralGroupCreateDsResponseModel;
 import get_friends.entities.Profile;
@@ -17,7 +16,7 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
 
     JTextField groupName = new JTextField(20);
     JButton getFriends = new JButton("Choose friends");
-    List<User> friendsChosen = new ArrayList<>();
+    List<String> friendsChosen = new ArrayList<>();
     Profile creatorProfile;
     List<String> friendsChosenString = new ArrayList<>();
     GeneralGroupCreateController genGroupCreateController;

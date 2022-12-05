@@ -1,15 +1,13 @@
 package general_group.use_case;
 
-import general_group.entities.User;
-
 import java.util.List;
 
 public class GeneralGroupCreateDsRequestModel {
     private String groupName;
-    private List<User> friendsToAdd;
+    private List<String> friendsToAdd;
     private String groupCreatorName;
 
-    public GeneralGroupCreateDsRequestModel(String groupName, List<User> friendsToAdd, String groupCreatorName) {
+    public GeneralGroupCreateDsRequestModel(String groupName, List<String> friendsToAdd, String groupCreatorName) {
         this.groupName = groupName;
         this.friendsToAdd = friendsToAdd;
         this.groupCreatorName = groupCreatorName;
@@ -23,11 +21,11 @@ public class GeneralGroupCreateDsRequestModel {
         return groupName;
     }
 
-    public List<User> getFriendsToAdd() {
+    public List<String> getFriendsToAdd() {
         return friendsToAdd;
     }
 
-    public void setFriendsToAdd(List<User> friendsToAdd) {
+    public void setFriendsToAdd(List<String> friendsToAdd) {
         this.friendsToAdd = friendsToAdd;
     }
 

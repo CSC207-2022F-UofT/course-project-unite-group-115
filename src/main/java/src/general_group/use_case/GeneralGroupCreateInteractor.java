@@ -1,9 +1,9 @@
 package general_group.use_case;
 
 import database_classes.GroupRepoDsRequestModel;
+import database_classes.ProfileRepoInt;
 import general_group.entities.Group;
 import general_group.entities.GroupFactory;
-import general_group.entities.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,24 +15,25 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
     final GroupRepoInt genGroupRepoAccess;
     final GeneralGroupCreateOutputBoundary genGroupOutputBoundary;
     final GroupFactory genGroupFactory;
-
+    final ProfileRepoInt profileRepoAccess;
     final int maxNumberOfFriends = 7;
 
     public GeneralGroupCreateInteractor(GroupRepoInt genGroupRepoAccess,
                                         GeneralGroupCreateOutputBoundary genGroupOutputBoundary,
-                                        GroupFactory genGroupFactory) {
+                                        GroupFactory genGroupFactory, ProfileRepoInt profileRepoAccess) {
         this.genGroupRepoAccess = genGroupRepoAccess;
         this.genGroupOutputBoundary = genGroupOutputBoundary;
         this.genGroupFactory = genGroupFactory;
+        this.profileRepoAccess = profileRepoAccess;
     }
 
     @Override
     public GeneralGroupCreateDsResponseModel create(GeneralGroupCreateDsRequestModel requestModel) {
         String groupName = requestModel.getGroupName();
-        List<User> friendsToAdd = new ArrayList<>(requestModel.getFriendsToAdd());
+        List<String> friendsToAdd = new ArrayList<>(requestModel.getFriendsToAdd());
         List<String> interests = new ArrayList<>();
 
-        Set<User> duplicateChecker = new HashSet<>(friendsToAdd);
+        Set<String> duplicateChecker = new HashSet<>(friendsToAdd);
         if (groupName.equals("")) {
             return genGroupOutputBoundary.prepareFailView("The group's name cannot be empty. Enter " +
                     "a group name and try again.");
@@ -52,19 +53,18 @@ public class GeneralGroupCreateInteractor implements GeneralGroupCreateInputBoun
                     "group. " + "Select at most 7 different friends and try again.");
         }
 
-        User groupCreator = new User(requestModel.getGroupCreatorName());
-        List<String> membersNames = new ArrayList<>();
-
-        for(User user : friendsToAdd) {
-            membersNames.add(user.getName());
-        }
-        membersNames.add(groupCreator.getName());
+        String groupCreatorName = requestModel.getGroupCreatorName();
+        List<String> membersNames = new ArrayList<>(friendsToAdd);
+        membersNames.add(groupCreatorName);
 
         Group newGroup = genGroupFactory.createNewGroup(groupName, interests, friendsToAdd);
+
+        profileRepoAccess.addGroupToProfile(requestModel.getGroupCreatorName(), newGroup.getId());
+
+
         GroupRepoDsRequestModel repoDsRequestModel = new GroupRepoDsRequestModel(groupName, interests, newGroup.getId(),
                 membersNames, false);
         genGroupRepoAccess.addGroup(repoDsRequestModel);
-
 
 
         LocalDateTime now = LocalDateTime.now();

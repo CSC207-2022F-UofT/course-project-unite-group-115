@@ -10,11 +10,11 @@ public class Group {
     private String name;
     private List<String> interests;
     private final UUID ID;
-    private List<User> members;
+    private List<String> members;
     private final boolean random;
 
 
-    public Group(String name, List<String> interests, List<User> members, boolean random) {
+    public Group(String name, List<String> interests, List<String> members, boolean random) {
         this.name = name;
         this.interests = interests;
         this.members = members;
@@ -31,7 +31,7 @@ public class Group {
      * @param isRandom if members have to be added based on interest or not
      * @param id the id of the group that is being recreated
      */
-    public Group(String name, List<String> interests, List<User> members, boolean isRandom, String id) {
+    public Group(String name, List<String> interests, List<String> members, boolean isRandom, String id) {
         this.name = name;
         this.interests = interests;
         this.members = members;
@@ -96,7 +96,7 @@ public class Group {
         return this.ID.toString();
     }
 
-    public List<User> getMembers() {
+    public List<String> getMembers() {
         return this.members;
     }
 
@@ -105,8 +105,8 @@ public class Group {
      *
      * @param membersToAdd Users to be added to the group
      */
-    public void addMembers(List<User> membersToAdd) {
-        for (User member : membersToAdd) {
+    public void addMembers(List<String> membersToAdd) {
+        for (String member : membersToAdd) {
             if (!(this.members.contains(member))) {
                 this.members.add(member);
             }
@@ -119,8 +119,8 @@ public class Group {
      *
      * @param membersToRemove list of Users to be removed from the group
      */
-    public void removeMembers(List<User> membersToRemove) {
-        for (User member : membersToRemove) {
+    public void removeMembers(List<String> membersToRemove) {
+        for (String member : membersToRemove) {
             this.members.remove(member);
         }
     }

@@ -1,4 +1,6 @@
 import database_classes.GroupDataAccess;
+import database_classes.ProfileManagerDataAccess;
+import database_classes.ProfileRepoInt;
 import general_group.entities.GeneralGroupFactory;
 import general_group.interface_adapters.GeneralGroupCreateController;
 import general_group.interface_adapters.GeneralGroupCreatePresenter;
@@ -34,10 +36,17 @@ public class Main {
             throw new RuntimeException("Could not create group database file.");
         }
 
+        ProfileRepoInt profileData;
+        try {
+            profileData = new ProfileManagerDataAccess("./src/main/java/databases/profiles.csv");
+        } catch (IOException e) {
+            throw new RuntimeException("Could not create file.");
+        }
+
         GeneralGroupCreateOutputBoundary genGroupOutputBoundary = new GeneralGroupCreatePresenter();
         GeneralGroupFactory groupFactory = new GeneralGroupFactory();
         GeneralGroupCreateInteractor genGroupInteractor = new GeneralGroupCreateInteractor(groupData,
-                genGroupOutputBoundary, groupFactory);
+                genGroupOutputBoundary, groupFactory, profileData);
         GeneralGroupCreateController genGroupController = new GeneralGroupCreateController(genGroupInteractor);
 
         GetFriendsOutputBoundary friendsOutputBoundary = new GetFriendsPresenter();

@@ -1,6 +1,5 @@
 package general_group.interface_adapters;
 
-import general_group.entities.User;
 import general_group.use_case.GeneralGroupCreateDsRequestModel;
 import general_group.use_case.GeneralGroupCreateDsResponseModel;
 import general_group.use_case.GeneralGroupCreateInputBoundary;
@@ -14,7 +13,7 @@ public class GeneralGroupCreateController {
         this.inputBoundary = inputBoundary;
     }
 
-    public GeneralGroupCreateDsResponseModel create(String groupName, List<User> friendsToAdd, String groupCreatorName) {
+    public GeneralGroupCreateDsResponseModel create(String groupName, List<String> friendsToAdd, String groupCreatorName) {
         GeneralGroupCreateDsRequestModel requestModel = new GeneralGroupCreateDsRequestModel(groupName, friendsToAdd,
                 groupCreatorName);
 

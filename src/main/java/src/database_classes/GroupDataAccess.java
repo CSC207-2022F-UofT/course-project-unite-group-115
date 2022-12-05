@@ -108,43 +108,5 @@ public class GroupDataAccess implements GroupRepoInt {
         this.save();
     }
 
-    @Override
-    public void addInterestsToGroup(List<String> newInterests, String groupID) {
-        List<String> groupInterests = new ArrayList<>(groups.get(groupID).getInterests());
-        for (String newInterest : newInterests) {
-            boolean containsInterest = false;
-            for (String existingInterest : groupInterests) {
-                if (existingInterest.equals(newInterest)) {
-                    containsInterest = true;
-                    break;
-                }
-            }
-            if (!containsInterest) {
-                groupInterests.add(newInterest);
-            }
-        }
-        groups.get(groupID).setInterests(groupInterests);
-        this.save();
-    }
 
-    @Override
-    public void removeInterestsFromGroup(List<String> interests, String groupID) {
-        List<String> groupInterests = new ArrayList<>(groups.get(groupID).getInterests());
-        for (String interestToBeRemoved : interests) {
-            groupInterests.remove(interestToBeRemoved);
-        }
-        groups.get(groupID).setInterests(groupInterests);
-        this.save();
-    }
-
-    @Override
-    public List<String> getRandomGroups() {
-        List<String> randomGroupIDs = new ArrayList<>();
-        for (GroupRepoDsRequestModel requestModel : groups.values()) {
-            if (requestModel.isRandom()){
-                randomGroupIDs.add(requestModel.getID());
-            }
-        }
-        return randomGroupIDs;
-    }
 }
