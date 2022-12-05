@@ -34,7 +34,7 @@ public class UserRepoRequestModel {
 
     /**
      * Sets the password of the User whose information is stored in the UserRepoRequestModel.
-     * @param password the new password to be set for the User's acoount.
+     * @param password the new password to be set for the User's account.
      */
     public void setPassword(String password) {
         this.password = password;
