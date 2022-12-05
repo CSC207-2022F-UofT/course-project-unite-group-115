@@ -7,6 +7,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * UI class which contains the frame that the messages will be displayed on.
+ * Pass inputs onto the MessageDisplayScreen so the buttons in the panel can
+ * send information to the controller
+ * @author  Hansel Jia
+ */
 public class MessageDisplayScreen extends JPanel implements ActionListener{
     ReactionController reactionController;
 

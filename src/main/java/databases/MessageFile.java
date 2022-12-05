@@ -41,7 +41,7 @@ public class MessageFile implements MessageRepoInt{
                 String reaction = String.valueOf(col[headers.get("reaction")]);
 
                 reaction = reaction.substring(1, reaction.length() - 1);
-                List<String> reactions = new ArrayList<String>(Arrays.asList(reaction.split(" ")));
+                List<String> reactions = new ArrayList<>(Arrays.asList(reaction.split(" ")));
 
                 String creationTimeText = String.valueOf(col[headers.get("creation_time")]);
                 LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
@@ -77,7 +77,6 @@ public class MessageFile implements MessageRepoInt{
                         message.getContent(), message.getSender(), message.getGroupID(),
                         message.getMessageID(), message.getReaction(),message.getCreationTime());
 
-                System.out.println(line);
                 writer.write(line);
                 writer.newLine();
             }
@@ -134,9 +133,9 @@ public class MessageFile implements MessageRepoInt{
 
     @Override
     public List<String> getGroupMessageInfo(String GroupID){
-        List<String> allMessages = new ArrayList<String>();
+        List<String> allMessages = new ArrayList<>();
         for(String key : messages.keySet()){
-            if (messages.get(key).getGroupID() == GroupID){
+            if (Objects.equals(messages.get(key).getGroupID(), GroupID)){
                 MessageDsRequestModel model = messages.get(key);
                 String messageFormat = model.getSender() + ": " + model.getContent() + " (" +
                         model.getMessageID() + ")" + "Reactions: " + model.getReaction();

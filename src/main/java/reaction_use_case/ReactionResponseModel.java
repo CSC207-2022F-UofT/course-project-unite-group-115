@@ -1,7 +1,13 @@
 package reaction_use_case;
 
+/**
+ * ReactionResponseModel is a data structure passed from the interactor to the presenter.
+ * It contains information about the reaction and the message it is associated with.
+ *
+ * @author  Hansel Jia
+ */
 public class ReactionResponseModel {
-    private String reaction;
+    private final String reaction;
 
     private final String messageID;
 
@@ -10,12 +16,18 @@ public class ReactionResponseModel {
         this.messageID = messageID;
     }
 
+    /**
+     * This method is used to get the reaction from the request model.
+     * @return String The string contains the reaction type (heart, smile, cry)
+     */
     public String getReaction() {
         return reaction;
     }
 
-    public void removeReaction() { this.reaction = null; }
-
+    /**
+     * This method is used to get the messageID from the request model.
+     * @return String The string contains the messageID associated with the reaction.
+     */
     public String getMessageID(){
         return messageID;
     }
