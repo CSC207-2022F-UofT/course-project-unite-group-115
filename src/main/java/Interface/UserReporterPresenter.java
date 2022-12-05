@@ -1,7 +1,7 @@
 package Interface;
 
-import Database.OutputBoundary;
-import Database.UserMessageResponseModel;
+import Reporter_Database.OutputBoundary;
+import Reporter_Database.UserMessageResponseModel;
 import frameworks_and_drivers.Failed;
 
 import java.time.LocalDateTime;

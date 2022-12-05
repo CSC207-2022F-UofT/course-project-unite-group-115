@@ -1,13 +1,5 @@
 package entities;
 
-import Database.ProfileManagerDataAccess;
-import Database.ProfileRepoInt;
-import get_user_sensitiveWordList.application_business_rules.GetUserInteractor;
-import get_user_sensitiveWordList.application_business_rules.GetUserListResponseModel;
-import get_user_sensitiveWordList.interface_adapters.GetUserSenListController;
-
-import java.util.List;
-
 public class Blocker {
     private String messageId;
 

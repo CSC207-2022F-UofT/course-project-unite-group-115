@@ -3,9 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
-import java.util.List;
 
-import Database.*;
+import Reporter_Database.*;
 import Interface.UserReporterController;
 import Interface.UserReporterPresenter;
 import entities.UserFactory;

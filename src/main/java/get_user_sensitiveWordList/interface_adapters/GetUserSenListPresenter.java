@@ -14,5 +14,9 @@ public class GetUserSenListPresenter implements GetUserSensitiveListOutputBounda
         response.setSensList(list);
         return response;
     }
+    @Override
+    public GetUserListResponseModel prepareFailView(String error) {
+        throw new GetSenListFailure(error);
+    }
 
 }

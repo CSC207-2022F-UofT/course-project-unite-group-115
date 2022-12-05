@@ -15,5 +15,6 @@ public class GetUserSenListController {
         GetUserListRequestModel requestModel = new GetUserListRequestModel(username);
         return USER_INPUT.getUserSensWordList(requestModel);
 
-    }}
+    }
+}
 

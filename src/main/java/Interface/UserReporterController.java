@@ -1,9 +1,8 @@
 package Interface;
 
-import Database.GroupRepoInt;
-import Database.UserMessageModel;
-import Database.InputBoundary;
-import Database.UserMessageResponseModel;
+import Reporter_Database.UserMessageModel;
+import Reporter_Database.InputBoundary;
+import Reporter_Database.UserMessageResponseModel;
 
 public class UserReporterController {
     final InputBoundary userInput;

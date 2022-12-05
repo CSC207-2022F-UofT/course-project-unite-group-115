@@ -1,6 +1,7 @@
 package get_user_sensitiveWordList.application_business_rules;
 
-import Database.ProfileRepoInt;
+import Reporter_Database.ProfileRepoInt;
+import get_user_sensitiveWordList.interface_adapters.GetSenListFailure;
 
 import java.util.List;
 
@@ -22,7 +23,11 @@ public class GetUserInteractor implements GetUserSensitiveListInputBoundary{
      */
     @Override
     public GetUserListResponseModel getUserSensWordList(GetUserListRequestModel requestModel) {
-        List<String> SensList = PROFILE_REPO_ACCESS.getSensitiveWords(requestModel.getUsername());
-        return new GetUserListResponseModel(SensList);
-    }
-}
+        if (PROFILE_REPO_ACCESS.existsByName(requestModel.getUsername())) {
+            List<String> SensList = PROFILE_REPO_ACCESS.getSensitiveWords(requestModel.getUsername());
+            return new GetUserListResponseModel(SensList);
+    }else {
+            throw new GetSenListFailure("User not found.");
+        }
+
+}}
