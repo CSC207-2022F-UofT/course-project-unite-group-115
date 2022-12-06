@@ -40,6 +40,4 @@ public interface GroupRepoInt extends RanGroupCreateDataAccessInt, ReqRanGroupDa
      */
     void removeInterestsFromGroup(List<String> interests, String groupID);
 
-
-
 }

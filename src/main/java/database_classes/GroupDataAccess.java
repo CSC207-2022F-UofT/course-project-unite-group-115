@@ -1,12 +1,13 @@
 package database_classes;
 
+import general_group.use_case.GeneralGroupRepoInt;
 import random_grouper_create.application_business_rules.RanGroupCreateDataAccessInt;
 import random_grouper_request_group.application_business_rules.ReqRanGroupDataAccessInt;
 
 import java.io.*;
 import java.util.*;
 
-public class GroupDataAccess implements GroupRepoInt, RanGroupCreateDataAccessInt, ReqRanGroupDataAccessInt {
+public class GroupDataAccess implements GroupRepoInt, RanGroupCreateDataAccessInt, ReqRanGroupDataAccessInt, GeneralGroupRepoInt {
     private final File csvFile;
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -22,8 +23,8 @@ public class GroupDataAccess implements GroupRepoInt, RanGroupCreateDataAccessIn
      * @param csvFilePath path to csv file that acts as the GroupDatabase
      * @throws IOException throws exception if there is an error related to reading the file
      */
-    public GroupDataAccess(String csvFilePath) throws IOException {
-        csvFile = new File(csvFilePath);
+    public GroupDataAccess (String csvFilePath) throws IOException {
+        this.csvFile = new File(csvFilePath);
 
         headers.put("group name", 0);
         headers.put("group ID", 1);
@@ -92,6 +93,7 @@ public class GroupDataAccess implements GroupRepoInt, RanGroupCreateDataAccessIn
         this.save();
     }
 
+
     /**
      * Remove the group with ID, groupID, from the GroupDatabase file.
      *
@@ -143,13 +145,6 @@ public class GroupDataAccess implements GroupRepoInt, RanGroupCreateDataAccessIn
         this.save();
     }
 
-    /**
-     * Update the GroupDatabase by removing User with name, <userName>, from the members of the group with the ID,
-     * <groupID>.
-     *
-     * @param userName name of an existing User
-     * @param groupID  group's ID
-     */
     @Override
     public void removeUserFromGroup(String userName, String groupID) {
         List<String> members = new ArrayList<>(groups.get(groupID).getMembers());
@@ -157,6 +152,8 @@ public class GroupDataAccess implements GroupRepoInt, RanGroupCreateDataAccessIn
         groups.get(groupID).setMembers(members);
         this.save();
     }
+
+
 
     /**
      * Update the GroupDatabase by adding interests, <newInterests>, to the existing interests of the group with the
@@ -216,4 +213,5 @@ public class GroupDataAccess implements GroupRepoInt, RanGroupCreateDataAccessIn
         }
         return randomGroupIDs;
     }
+
 }

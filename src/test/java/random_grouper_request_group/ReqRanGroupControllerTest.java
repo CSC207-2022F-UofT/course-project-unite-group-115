@@ -37,7 +37,7 @@ public class ReqRanGroupControllerTest {
 
     @Test
     public void testBasicRequest() {
-        GroupRepoInt groupDatabase = new InMemoryGroupData();
+        GroupRepoInt groupDatabase = (GroupRepoInt) new InMemoryGroupData();
         ProfileRepoInt profileDatabase = new InMemoryProfileData();
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();

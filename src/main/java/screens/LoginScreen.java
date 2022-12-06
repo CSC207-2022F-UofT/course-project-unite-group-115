@@ -10,7 +10,11 @@ import java.util.*;
 
 // Frameworks/Drivers layer
 public class LoginScreen extends JFrame implements ActionListener {
+    /**
+     * A temporary holder for the inputted username
+     */
     public String userName = "";
+
     /**
      * The username chosen by the user
      */
@@ -22,7 +26,7 @@ public class LoginScreen extends JFrame implements ActionListener {
 
 
     /**
-     * A window with a title and a JButton.
+     * A window with a options for a user to login by providing account credentials (username and password).
      */
     public LoginScreen() {
 

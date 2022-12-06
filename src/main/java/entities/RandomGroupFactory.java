@@ -26,7 +26,7 @@ public class RandomGroupFactory implements GroupFactory {
      * @return Returns a new group object
      */
     @Override
-    public Group recreateExisitingGroup(String name, List<String> interests, List<String> members, String id) {
+    public Group recreateExistingGroup(String name, List<String> interests, List<String> members, String id) {
         return new Group(name, interests, members, true, id);
     }
 }

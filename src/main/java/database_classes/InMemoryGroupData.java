@@ -1,11 +1,15 @@
 package database_classes;
+import database_classes.GroupRepoInt;
+import general_group.use_case.GeneralGroupRepoInt;
+import random_grouper_create.application_business_rules.RanGroupCreateDataAccessInt;
+import random_grouper_request_group.application_business_rules.ReqRanGroupDataAccessInt;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InMemoryGroupData implements GroupRepoInt {
+public class InMemoryGroupData implements GroupRepoInt, RanGroupCreateDataAccessInt, ReqRanGroupDataAccessInt, GeneralGroupRepoInt {
     final private Map<String, GroupRepoRequestModel> groups = new HashMap<>();
 
     /**
@@ -18,6 +22,7 @@ public class InMemoryGroupData implements GroupRepoInt {
         groups.put(requestModel.getID(), requestModel);
     }
 
+
     /**
      * Remove the group with ID, groupID, from the GroupDatabase file.
      *
@@ -27,6 +32,7 @@ public class InMemoryGroupData implements GroupRepoInt {
     public void removeGroup(String groupID) {
         groups.remove(groupID);
     }
+
 
     /**
      * Return a map of information about the group with ID, groupID. Each key is a String indicating the
