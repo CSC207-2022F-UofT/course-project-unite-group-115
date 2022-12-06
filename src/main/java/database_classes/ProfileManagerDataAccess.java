@@ -111,7 +111,7 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
                         String.join(";", profile.getInterests()),
                         String.join(";", profile.getGroups()),
                         String.join(";", profile.getFriends()),
-                        String.join(";", profile.getBlockedUsers()),
+                        profile.getBlockedUsers(),
                         profile.getCreationTime());
                 writer.write(line);
                 writer.newLine();
