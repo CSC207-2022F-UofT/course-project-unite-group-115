@@ -183,7 +183,8 @@ public class GroupScreen extends JFrame implements ActionListener {
         }
         for (String label : allGroupButtons.keySet()){
             if (evt.getActionCommand().equals(label)) {
-                // ToDo: add message UI
+                List<String> nameAndId = new ArrayList<>(this.allGroupButtons.get(label));
+                GroupLoggedInScreen groupLoggedInScreen = new GroupLoggedInScreen(nameAndId.get(1), loggedInUser);
             }
         }
     }
