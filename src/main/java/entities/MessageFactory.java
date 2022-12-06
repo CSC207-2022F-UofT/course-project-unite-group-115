@@ -1,4 +1,4 @@
-package enties;
+package entities;
 
 
 public class MessageFactory{

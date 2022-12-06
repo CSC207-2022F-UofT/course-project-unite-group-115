@@ -2,8 +2,8 @@ package message_send.application_business_rule;
 
 import database_classes.MessageRepoRequestModel;
 import database_classes.MessageRepoInt;
-import enties.Message;
-import enties.MessageFactory;
+import entities.Message;
+import entities.MessageFactory;
 import message_send.interface_adaptor.MessagePresenter;
 
 import java.time.LocalDateTime;

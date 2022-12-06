@@ -2,7 +2,7 @@ package screens;
 
 import database_classes.MessageDataAccess;
 import database_classes.MessageRepoInt;
-import enties.MessageFactory;
+import entities.MessageFactory;
 import message_view.interface_adaptor.ViewMessageController;
 import message_view.interface_adaptor.ViewMessagePresenter;
 import message_send.application_business_rule.MessageInputBoundary;
