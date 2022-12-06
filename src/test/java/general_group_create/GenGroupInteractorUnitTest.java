@@ -37,7 +37,7 @@ public class GenGroupInteractorUnitTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDataBase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
 
         GeneralGroupCreatePresenter presenter = new GeneralGroupCreatePresenter() {
             @Override

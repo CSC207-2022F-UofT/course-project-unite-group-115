@@ -40,7 +40,7 @@ public class GetGroupsInteractorTest {
         ProfileRepoInt profileDatabase = new InMemoryProfileData();
         List<String> emptyList = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, emptyList, groups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, emptyList, groups, emptyList, "", LocalDateTime.now()));
 
         GroupRepoInt groupDatabase = new InMemoryGroupData();
         GroupRepoRequestModel group1 = new GroupRepoRequestModel("blue", "1", emptyList, members, true);
@@ -82,7 +82,7 @@ public class GetGroupsInteractorTest {
         ProfileRepoInt profileDatabase = new InMemoryProfileData();
         List<String> emptyList = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, emptyList, groups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, emptyList, groups, emptyList, "", LocalDateTime.now()));
 
         GroupRepoInt groupDatabase = new InMemoryGroupData();
         GroupRepoRequestModel group1 = new GroupRepoRequestModel("blue", "1", emptyList, members, true);

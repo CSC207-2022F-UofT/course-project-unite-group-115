@@ -14,7 +14,7 @@ public class ProfileRepoRequestModel {
     private List<String> interests;
     private List<String> groups;
     private List<String> friends;
-    private List<String> blockedUsers;
+    private String blockedUsers;
 
     private final LocalDateTime creationTime;
 
@@ -27,7 +27,7 @@ public class ProfileRepoRequestModel {
                                    List<String> interests,
                                    List<String> groups,
                                    List<String> friends,
-                                   List<String> blockedUsers,
+                                   String blockedUsers,
                                    LocalDateTime creationTime) {
 
         this.userName = userName;
@@ -82,7 +82,7 @@ public class ProfileRepoRequestModel {
         return this.friends;
     }
 
-    public List<String> getBlockedUsers() {
+    public String getBlockedUsers() {
         return this.blockedUsers;
     }
 

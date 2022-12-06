@@ -56,7 +56,7 @@ public class GetUserInterestsInteractorTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
 
         // This creates an anonymous implementing class for the Output Boundary.
         GetUserInterestsPresenter presenter = new GetUserInterestsPresenter() {
@@ -86,7 +86,7 @@ public class GetUserInterestsInteractorTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
 
         // This creates an anonymous implementing class for the Output Boundary.
         GetUserInterestsPresenter presenter = new GetUserInterestsPresenter();

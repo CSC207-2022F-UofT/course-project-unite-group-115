@@ -17,31 +17,31 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
-public class GroupLoggedInScreen extends JFrame implements ActionListener {
+public class GroupLoggedInScreen extends JPanel implements ActionListener {
 
-    String GroupID;  //TODO: reach group ID and Messagename by connect to the group class
+    String GroupID;
     String loginUserName;
+    String groupName;
 
-    public GroupLoggedInScreen(String groupId, String loginUserName) {
+    public GroupLoggedInScreen(String groupId, String loginUserName, String groupName) {
         this.GroupID = groupId;
         this.loginUserName = loginUserName;
+        this.groupName = groupName;
 
 
-        JLabel title = new JLabel(groupId);
+        String welcome = String.format("Welcome to group %1$s! " +
+                "Click send to type the content you want to send within the group. " +
+                "Click view to check all the messages that other members sent. " +
+                "Click back to return to Group selection page. ",
+                groupName);
 
-//        String welcome1 = String.format("Welcome to group %1$s, %2$s" +
-//                "Click send to type the content you want to send within the group " +
-//                "Click view to check all the messages that other members sent " +
-//                "Click back to return to Group chosen page ",
-//                groupName, loginMessageName);
-//
-//        JLabel practise = new JLabel(welcome1);
+        JLabel title = new JLabel(welcome);
 
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        title.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JButton send = new JButton("send");
         JButton view = new JButton("view");
-        JButton back = new JButton("back");   //TODO:return to previous page
+        JButton back = new JButton("back");
 
         JPanel buttons = new JPanel();
         buttons.add(send);
@@ -52,25 +52,17 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
         view.addActionListener(this);
         back.addActionListener(this);
 
-        JPanel main = new JPanel();
-        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));  //?
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        main.add(title);
-//      main.add(practise);
-        main.add(buttons);
-        this.setContentPane(main);
-        this.pack();
-
+        this.add(title);
+        this.add(buttons);
     }
 
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
         if (evt.getActionCommand().equals("send")) {
-            JComponent component = (JComponent) evt.getSource();
-
-
             // open the group window
-            JFrame application = new JFrame("Group Name");  // TODO: CHANGE TO group name INPUT
+            JFrame application = new JFrame(groupName);
             CardLayout cardLayout = new CardLayout();
             JPanel screens = new JPanel(cardLayout);
             application.add(screens);
@@ -119,9 +111,6 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
             JComponent component = (JComponent) evt.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
-            JFrame applicationback = new GroupScreen(log);  //todo: add parameter
-            applicationback.pack();
-            applicationback.setVisible(true);
         }
     }
 }

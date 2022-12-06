@@ -53,7 +53,7 @@ public class ReqRanGroupInteractorTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("YES", "added", interests, members, true));
 
@@ -100,7 +100,7 @@ public class ReqRanGroupInteractorTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("YES", "added", interests, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "test2", interests2, members, true));
@@ -152,7 +152,7 @@ public class ReqRanGroupInteractorTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("YES", "added", interests, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "test2", interests3, members, true));
@@ -206,7 +206,7 @@ public class ReqRanGroupInteractorTest {
         List<String> addedInterests = new ArrayList<>(interests);
         addedInterests.add("soul music");
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("YES", "added", addedInterests, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "test2", interests2, members, true));
@@ -258,7 +258,7 @@ public class ReqRanGroupInteractorTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "full", interests, membersFull, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO3", "test2", interests2, members, true));
@@ -282,7 +282,7 @@ public class ReqRanGroupInteractorTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "full", interests, membersFull, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("YES", "added", interests3, members, true));
@@ -334,7 +334,7 @@ public class ReqRanGroupInteractorTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "test2", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO3", "test3", interests2, members, true));
@@ -359,7 +359,7 @@ public class ReqRanGroupInteractorTest {
         List<String> userGroups = new ArrayList<>();
         userGroups.add("test2");
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("YES", "added", interests3, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "test2", interests, members, true));
@@ -412,7 +412,7 @@ public class ReqRanGroupInteractorTest {
         List<String> userGroups = new ArrayList<>();
         userGroups.add("test2");
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "test2", interests, members, true));
 

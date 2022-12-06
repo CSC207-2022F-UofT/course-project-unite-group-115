@@ -42,7 +42,7 @@ public class ReqRanGroupControllerTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList, emptyList, LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("YES", "added", interests, members, true));
 

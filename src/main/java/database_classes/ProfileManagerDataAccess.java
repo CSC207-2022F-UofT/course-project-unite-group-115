@@ -68,16 +68,13 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
                     friendsList = new ArrayList<>();}
 
                 String blockedUsers = String.valueOf(col[headers.get("blockedUsers")]);
-                List<String> blockedUsersList = Arrays.asList(blockedUsers.split(";"));
-                if (blockedUsers.equals("")){
-                    blockedUsersList = new ArrayList<>();}
 
                 String creationTimeText = String.valueOf(col[headers.get("creationTime")]);
                 LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
 
                 ProfileRepoRequestModel user = new ProfileRepoRequestModel(
                         userName, profileName, dob, description, socialLinksList, sensitiveWordsList, interestsList,
-                        groupsList, friendsList, blockedUsersList , ldt);
+                        groupsList, friendsList, blockedUsers, ldt);
                 accounts.put(userName, user);
             }
             reader.close();

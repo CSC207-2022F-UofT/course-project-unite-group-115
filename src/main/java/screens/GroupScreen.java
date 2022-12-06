@@ -42,7 +42,9 @@ import java.util.Map;
 
 public class GroupScreen extends JFrame implements ActionListener {
     Map<String, String> userGroups;
-    Map<String, List<String>> allGroupButtons;
+    JComboBox<String> groupList = new JComboBox<>();
+    String groupChosen;
+    List<String> groupsChosen;
     String loggedInUser;
     GroupRepoInt groupData;
     ProfileRepoInt profileData;
@@ -51,12 +53,18 @@ public class GroupScreen extends JFrame implements ActionListener {
         this.loggedInUser = username;
         this.groupData = groupDatabase;
         this.profileData = profileDatabase;
+        this.groupsChosen = new ArrayList<>();
 
         JLabel title = new JLabel("Groups Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JPanel buttons = new JPanel();
         JTextField groupArea = new JTextField("Your current groups:");
+
+        JPanel main = new JPanel();
+        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
+        main.add(title);
+        main.add(groupArea);
 
         try {
             GetGroupsPresenter presenter = new GetGroupsPresenter();
@@ -67,18 +75,17 @@ public class GroupScreen extends JFrame implements ActionListener {
             this.userGroups = response.getGroups();
             List<String> groupNames = response.getGroupNames();
 
-            // A map of all buttons being created. The key is the button label and the value is a list containing the
-            // group's name and id
-            this.allGroupButtons = new HashMap<>();
-            for (String name: groupNames){
-                String buttonText = name + " (ID: " + userGroups.get(name) + ")";
-                JButton button = new JButton(buttonText);
-                List<String> nameAndId = new ArrayList<>();
-                nameAndId.add(name);
-                nameAndId.add(userGroups.get(name));
-                allGroupButtons.put(buttonText, nameAndId);
-                buttons.add(button);
-                button.addActionListener(this); }
+            String[] allGroups = new String[groupNames.size()];
+
+            for(int i = 0; i < allGroups.length; i++) {
+                allGroups[i] = groupNames.get(i);
+            }
+            groupList = new JComboBox<>(allGroups);
+            JButton go = new JButton("Go to Group");
+            buttons.add(go);
+            go.addActionListener(this);
+
+            main.add(groupList);
         }
         catch (RuntimeException e) {
             groupArea = new JTextField("You aren't a member of any groups yet! See the buttons below to be" +
@@ -94,11 +101,6 @@ public class GroupScreen extends JFrame implements ActionListener {
         createGroup.addActionListener(this);
         buttons.add(createGroup);
 
-        JPanel main = new JPanel();
-        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
-
-        main.add(title);
-        main.add(groupArea);
         main.add(buttons);
         this.setContentPane(main);
 
@@ -108,7 +110,26 @@ public class GroupScreen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent evt){
         System.out.println("Click " + evt.getActionCommand());
-        if (evt.getActionCommand().equals("Request a Random Group")){
+        if(evt.getSource() == groupList) {
+            groupChosen = (String)groupList.getSelectedItem();}
+        if (evt.getActionCommand().equals("Go to Group")) {
+            groupChosen = (String) groupList.getSelectedItem();
+            GroupLoggedInScreen groupLoggedInScreen = new GroupLoggedInScreen(userGroups.get(groupChosen), loggedInUser,
+                    groupChosen);
+
+            JFrame groupApplication = new JFrame("Group: " + groupChosen);
+            groupApplication.setSize(200, 200);
+            groupApplication.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            CardLayout cardLayout = new CardLayout();
+            JPanel screens = new JPanel(cardLayout);
+            groupApplication.add(screens);
+
+            screens.add(groupLoggedInScreen);
+            cardLayout.show(screens, "group");
+            groupApplication.pack();
+            groupApplication.setVisible(true);
+        }
+        else if (evt.getActionCommand().equals("Request a Random Group")){
             // Random Group Creation Window Creation
             JFrame groupCreationApplication = new JFrame("Random Group Creation");
             CardLayout groupCreationCardLayout = new CardLayout();
@@ -181,11 +202,24 @@ public class GroupScreen extends JFrame implements ActionListener {
             generalGroupApplication.pack();
             generalGroupApplication.setVisible(true);
         }
-        for (String label : allGroupButtons.keySet()){
+        }
+
+        /*for (String label : allGroupButtons.keySet()){
             if (evt.getActionCommand().equals(label)) {
                 List<String> nameAndId = new ArrayList<>(this.allGroupButtons.get(label));
-                GroupLoggedInScreen groupLoggedInScreen = new GroupLoggedInScreen(nameAndId.get(1), loggedInUser);
-            }
+                GroupLoggedInScreen groupLoggedInScreen = new GroupLoggedInScreen(nameAndId.get(1), loggedInUser,
+                        nameAndId.get(0));
+
+                JFrame groupApplication = new JFrame("Group: " + nameAndId.get(0));
+                groupApplication.setSize(200, 200);
+                groupApplication.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                CardLayout cardLayout = new CardLayout();
+                JPanel screens = new JPanel(cardLayout);
+                groupApplication.add(screens);
+
+                screens.add(groupLoggedInScreen);
+                cardLayout.show(screens, "group");
+                groupApplication.pack();
+                groupApplication.setVisible(true);
+            }*/
         }
-    }
-}
