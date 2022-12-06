@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Profile {
+public class Profile{
     private final String userName;
     private String profileName;
     private LocalDate dob;
@@ -13,7 +13,7 @@ public class Profile {
     private List<String> interests;
     private List<String> groups;
     private List<String> friends;
-    private List<String> blockedUsers;
+    String blockedUsers;
 
     public Profile(String userName,
                    String profileName,
@@ -24,7 +24,7 @@ public class Profile {
                    List<String> interests,
                    List<String> groups,
                    List<String> friends,
-                   List<String> blockedUsers) {
+                   String blockedUsers) {
 
         this.userName = userName;
         this.profileName = profileName;
@@ -128,17 +128,17 @@ public class Profile {
         this.friends.remove(friend);
     }
 
-    public List<String> getBlockedUsers() {
+    public String getBlockedUsers() {
         return this.blockedUsers;
     }
-    public void setBlockedUsers(ArrayList<String> blockedUser) {
+    public void setBlockedUsers(String blockedUser) {
         this.blockedUsers = blockedUser;
     }
-    public void addBlockedUser(String blockedUser) {
-        this.blockedUsers.add(blockedUser);
-    }
-    public void removeBlockedUser(String blockedUser) {
-        this.blockedUsers.remove(blockedUser);
-    }
+//    public void addBlockedUser(String blockedUser) {
+//        this.blockedUsers.add(blockedUser);
+//    }
+//    public void removeBlockedUser(String blockedUser) {
+//        this.blockedUsers.remove(blockedUser);
+//    }
 
 }

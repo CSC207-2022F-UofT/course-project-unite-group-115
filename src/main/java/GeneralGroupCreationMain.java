@@ -61,7 +61,7 @@ public class GeneralGroupCreationMain {
         friendList.add("C");
         List<String> emptyList = new ArrayList<>();
         Profile testProfile = ProfileFactory.create("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, emptyList, emptyList, friendList, emptyList);
+                "", emptyList, emptyList, emptyList, emptyList, friendList, "");
 
         GetFriendsOutputBoundary friendsOutputBoundary = new GetFriendsPresenter();
         GetFriendsInteractor friendsInteractor = new GetFriendsInteractor(friendsOutputBoundary);

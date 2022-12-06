@@ -4,6 +4,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+
 public class ProfileManagerDataAccess implements ProfileRepoInt {
     private final File csvFile;
 
@@ -37,9 +38,7 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
                 String userName = String.valueOf(col[headers.get("userName")]);
 
                 String profileName = String.valueOf(col[headers.get("profileName")]);
-
                 LocalDate dob = LocalDate.parse(col[headers.get("dob")]);
-
                 String description = String.valueOf(col[headers.get("description")]);
 
                 String socialLinks = String.valueOf(col[headers.get("socialLinks")]);
@@ -68,18 +67,18 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
                     friendsList = new ArrayList<>();}
 
                 String blockedUsers = String.valueOf(col[headers.get("blockedUsers")]);
-                List<String> blockedUsersList = Arrays.asList(blockedUsers.split(";"));
-                if (blockedUsers.equals("")){
-                    blockedUsersList = new ArrayList<>();}
+//                List<String> blockedUsersList = Arrays.asList(blockedUsers.split(";"));
+//                if (blockedUsers.equals("")){
+//                    blockedUsersList = new ArrayList<>();}
 
                 String creationTimeText = String.valueOf(col[headers.get("creationTime")]);
                 LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
 
                 ProfileRepoRequestModel user = new ProfileRepoRequestModel(
-                        userName, profileName, dob, description, socialLinksList, sensitiveWordsList, interestsList,
-                        groupsList, friendsList, blockedUsersList , ldt);
+                        userName, profileName, dob, description, socialLinksList, sensitiveWordsList, interestsList, groupsList, friendsList, blockedUsers , ldt);
                 accounts.put(userName, user);
             }
+
             reader.close();
         }
     }
@@ -112,7 +111,7 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
                         String.join(";", profile.getInterests()),
                         String.join(";", profile.getGroups()),
                         String.join(";", profile.getFriends()),
-                        String.join(";", profile.getBlockedUsers()),
+                        profile.getBlockedUsers(),
                         profile.getCreationTime());
                 writer.write(line);
                 writer.newLine();
@@ -124,7 +123,49 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
             throw new RuntimeException(e);
         }
     }
-    @Override
+
+    public void addSocialLinkToProfile(String userName, String socialLink) {
+        List<String> socialLinks = new ArrayList<>(accounts.get(userName).getSocialLinks());
+        socialLinks.add(socialLink);
+        accounts.get(userName).setSocialLinks(socialLinks);
+        this.save();
+    }
+
+    public void removeSocialLinkFromProfile(String userName, String socialLink) {
+        List<String> socialLinks = new ArrayList<>(accounts.get(userName).getSocialLinks());
+        socialLinks.remove(socialLink);
+        accounts.get(userName).setSocialLinks(socialLinks);
+        this.save();
+    }
+
+    public void addSensitiveWordsToProfile(String userName, String sensitiveWord) {
+        List<String> sensitiveWords = new ArrayList<>(accounts.get(userName).getSensitiveWords());
+        sensitiveWords.add(sensitiveWord);
+        accounts.get(userName).setSensitiveWords(sensitiveWords);
+        this.save();
+    }
+
+    public void removeSensitiveWordsFromProfile(String userName, String sensitiveWord) {
+        List<String> sensitiveWords = new ArrayList<>(accounts.get(userName).getSensitiveWords());
+        sensitiveWords.remove(sensitiveWord);
+        accounts.get(userName).setSensitiveWords(sensitiveWords);
+        this.save();
+    }
+
+    public void addInterestToProfile(String userName, String interest) {
+        List<String> interests = new ArrayList<>(accounts.get(userName).getInterests());
+        interests.add(interest);
+        accounts.get(userName).setInterests(interests);
+        this.save();
+    }
+
+    public void removeInterestFromProfile(String userName, String interest) {
+        List<String> interests = new ArrayList<>(accounts.get(userName).getInterests());
+        interests.remove(interest);
+        accounts.get(userName).setInterests(interests);
+        this.save();
+    }
+
     public void addGroupToProfile(String userName, String groupId) {
         List<String> groups = new ArrayList<>(accounts.get(userName).getGroups());
         groups.add(groupId);
@@ -132,15 +173,56 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
         this.save();
     }
 
-    @Override
+    public void removeGroupFromProfile(String userName, String groupId) {
+        List<String> groups = new ArrayList<>(accounts.get(userName).getGroups());
+        groups.remove(groupId);
+        accounts.get(userName).setGroups(groups);
+        this.save();
+    }
+
+    public void addFriendToProfile(String userName, String friend) {
+        List<String> friends = new ArrayList<>(accounts.get(userName).getFriends());
+        friends.add(friend);
+        accounts.get(userName).setFriends(friends);
+        this.save();
+    }
+
+    public void removeFriendFromProfile(String userName, String friend) {
+        List<String> friends = new ArrayList<>(accounts.get(userName).getFriends());
+        friends.remove(friend);
+        accounts.get(userName).setFriends(friends);
+        this.save();
+    }
+
+    public void addBlockedUserToProfile(String userName, String blockedUser) {
+        String blockList = accounts.get(userName).getBlockedUsers();
+        blockList = blockList.replace("[","").replace("]","");
+        String newBlocked ="[";
+        if(blockList ==""){
+            blockList = newBlocked +blockedUser+"]";
+        }else{
+            blockList = newBlocked +blockList +";"+blockedUser+"]";
+        }
+        accounts.get(userName).setBlockedUsers(blockList);
+
+        this.save();
+    }
+
+//    public void removeBlockedUserFromProfile(String userName, String blockedUser) {
+//        List<String> blockedUsers = new ArrayList<>(accounts.get(userName).getBlockedUsers());
+//        blockedUsers.remove(blockedUser);
+//        accounts.get(userName).setBlockedUsers(blockedUsers);
+//        this.save();
+//    }
+
     public List<String> getInterests(String userName) {
         return accounts.get(userName).getInterests();
     }
 
-    @Override
     public List<String> getGroups(String userName) {
         return accounts.get(userName).getGroups();
     }
+
 
     /**
      * Return whether a user exists with username identifier.
@@ -151,4 +233,5 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
     public boolean existsByName(String identifier) {
         return accounts.containsKey(identifier);
     }
+
 }

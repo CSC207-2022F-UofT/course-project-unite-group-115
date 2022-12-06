@@ -1,13 +1,11 @@
-package database_classes;
+package profile_manager.application_business_rules;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileRepoRequestModel {
-
-    private final String userName;
+public class ProfileManagerRequestModel {
+    private String userName;
     private String profileName;
     private LocalDate dob;
     private String description;
@@ -18,19 +16,16 @@ public class ProfileRepoRequestModel {
     private List<String> friends;
     private String blockedUsers;
 
-    private final LocalDateTime creationTime;
-
-    public ProfileRepoRequestModel(String userName,
-                                   String profileName,
-                                   LocalDate dob,
-                                   String description,
-                                   List<String> socialLinks,
-                                   List<String> sensitiveWords,
-                                   List<String> interests,
-                                   List<String> groups,
-                                   List<String> friends,
-                                   String blockedUsers,
-                                   LocalDateTime creationTime) {
+    public ProfileManagerRequestModel(String userName,
+                                      String profileName,
+                                      LocalDate dob,
+                                      String description,
+                                      List<String> socialLinks,
+                                      List<String> sensitiveWords,
+                                      List<String> interests,
+                                      List<String> groups,
+                                      List<String> friends,
+                                      String blockedUsers) {
 
         this.userName = userName;
         this.profileName = profileName;
@@ -42,8 +37,6 @@ public class ProfileRepoRequestModel {
         this.groups = groups;
         this.friends = friends;
         this.blockedUsers = blockedUsers;
-
-        this.creationTime = creationTime;
     }
 
     public String getUserName() {
@@ -74,7 +67,7 @@ public class ProfileRepoRequestModel {
     public List<String> getSocialLinks() {
         return this.socialLinks;
     }
-    public void setSocialLinks(List<String> socialLinks) {
+    public void setSocialLinks(ArrayList<String> socialLinks) {
         this.socialLinks = socialLinks;
     }
     public void addSocialLinks(String socialLink) {
@@ -87,7 +80,7 @@ public class ProfileRepoRequestModel {
     public List<String> getSensitiveWords() {
         return this.sensitiveWords;
     }
-    public void setSensitiveWords(List<String> sensitiveWords) {
+    public void setSensitiveWords(ArrayList<String> sensitiveWords) {
         this.sensitiveWords = sensitiveWords;
     }
     public void addSensitiveWords(String sensitiveWord) {
@@ -100,7 +93,7 @@ public class ProfileRepoRequestModel {
     public List<String> getInterests() {
         return this.interests;
     }
-    public void setInterests(List<String> interests) {
+    public void setInterests(ArrayList<String> interests) {
         this.interests = interests;
     }
     public void addInterests(String interest) {
@@ -113,7 +106,7 @@ public class ProfileRepoRequestModel {
     public List<String> getGroups() {
         return this.groups;
     }
-    public void setGroups(List<String> groups) {
+    public void setGroups(ArrayList<String> groups) {
         this.groups = groups;
     }
     public void addGroup(String group) {
@@ -126,7 +119,7 @@ public class ProfileRepoRequestModel {
     public List<String> getFriends() {
         return this.friends;
     }
-    public void setFriends(List<String> friends) {
+    public void setFriends(ArrayList<String> friends) {
         this.friends = friends;
     }
     public void addFriend(String friend) {
@@ -148,9 +141,5 @@ public class ProfileRepoRequestModel {
 //    public void removeBlockedUser(String blockedUser) {
 //        this.blockedUsers.remove(blockedUser);
 //    }
-
-    public LocalDateTime getCreationTime() {
-        return creationTime;
-    }
 
 }
