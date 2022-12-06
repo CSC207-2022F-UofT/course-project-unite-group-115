@@ -1,13 +1,8 @@
-package frameworks_and_drivers;
-import Interface.UserReporterController;
+package Reporter_frameworks_and_drivers;
+import Reporter_Interface.UserReporterController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -89,6 +84,4 @@ public class User_Report_Screen extends JPanel implements ActionListener{
             application2.setVisible(true);
         }
     }
-
-
 }

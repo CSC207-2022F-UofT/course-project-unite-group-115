@@ -1,4 +1,4 @@
-package frameworks_and_drivers;
+package Reporter_frameworks_and_drivers;
 import javax.swing.*;
 
 public class LabelTextPanel extends JPanel{

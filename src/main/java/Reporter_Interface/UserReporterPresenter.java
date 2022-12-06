@@ -1,8 +1,8 @@
-package Interface;
+package Reporter_Interface;
 
 import Reporter_Database.OutputBoundary;
 import Reporter_Database.UserMessageResponseModel;
-import frameworks_and_drivers.Failed;
+import Reporter_frameworks_and_drivers.Failed;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

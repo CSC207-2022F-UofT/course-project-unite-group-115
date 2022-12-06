@@ -1,4 +1,4 @@
-package frameworks_and_drivers;
+package Reporter_frameworks_and_drivers;
 
 
 import javax.swing.*;
@@ -29,7 +29,7 @@ public class LoggedinScreen extends JFrame implements ActionListener {
         buttons.add(friends);
         buttons.add(groups);
         buttons.add(report);
-//        buttons.add(changePassword);
+
 
         logOut.addActionListener(this);
         profile.addActionListener(this);
@@ -37,7 +37,6 @@ public class LoggedinScreen extends JFrame implements ActionListener {
         friends.addActionListener(this);
         groups.addActionListener(this);
         report.addActionListener(this);
-//        changePassword.addActionListener(this);
 
         JPanel main = new JPanel();
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
@@ -65,7 +64,4 @@ public class LoggedinScreen extends JFrame implements ActionListener {
             application4.setVisible(true);
         }
     }
-
-
-
 }

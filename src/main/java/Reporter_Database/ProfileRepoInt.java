@@ -12,7 +12,4 @@ public interface ProfileRepoInt {
     void addBlockedUserToProfile(String userName, String blockedUser);
 
     String getBlockedUser(String username);
-    //void removeBlockedUserFromProfile(String userName, String blockedUser);
-
-
 }

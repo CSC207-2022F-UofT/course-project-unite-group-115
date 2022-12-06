@@ -22,5 +22,4 @@ public class AddBlockedUserRequestModel {
     public String getBlockedName() {
         return blockedName;
     }
-
 }

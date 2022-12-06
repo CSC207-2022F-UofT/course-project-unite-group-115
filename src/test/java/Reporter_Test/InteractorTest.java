@@ -1,8 +1,8 @@
 package Reporter_Test;
 
 import Reporter_Database.*;
-import Interface.UserReporterPresenter;
-import entities.UserFactory;
+import Reporter_Interface.UserReporterPresenter;
+import Reporter_entities.UserFactory;
 import get_user_sensitiveWordList.application_business_rules.GetUserInteractor;
 import get_user_sensitiveWordList.application_business_rules.GetUserListRequestModel;
 import get_user_sensitiveWordList.application_business_rules.GetUserListResponseModel;
@@ -79,39 +79,37 @@ public class InteractorTest {
         GroupRepoInt Database = new InMemoryReporterData();
 
         Database.adduserModel(new RepoMessageModel(messageId, userId, message,
-                reportUserId,LocalDateTime.now()));
+                reportUserId, LocalDateTime.now()));
 
-    GroupRepoInt user;
-    user = new UserDataAccess("java.report.csv");
+        GroupRepoInt user;
+        user = new UserDataAccess("java.report.csv");
 
 
-    UserReporterPresenter presenter = new UserReporterPresenter() {
-        @Override
-        public UserMessageResponseModel prepareSuccessView(UserMessageResponseModel response) {
-            assertEquals(messageId, response.getReport());
-            assertNotNull(response.getTime());
-            return null;
-        }
+        UserReporterPresenter presenter = new UserReporterPresenter() {
+            @Override
+            public UserMessageResponseModel prepareSuccessView(UserMessageResponseModel response) {
+                assertEquals(messageId, response.getReport());
+                assertNotNull(response.getTime());
+                return null;
+            }
 
-        @Override
-        public UserMessageResponseModel prepareFailView(String error) {
-            fail("Message content can not be empty.");
-            return null;
-        }
-    };
+            @Override
+            public UserMessageResponseModel prepareFailView(String error) {
+                fail("Message content can not be empty.");
+                return null;
+            }
+        };
 
-    UserFactory Factory = new UserFactory();
-    InputBoundary interactor = new UserReporterInteractor(
-            user, presenter, Factory);
+        UserFactory Factory = new UserFactory();
+        InputBoundary interactor = new UserReporterInteractor(
+                user, presenter, Factory);
 
-    // 2) Input data — we can make this up for the test. Normally it would
-    // be created by the Controller.
-    UserMessageModel inputData = new UserMessageModel(
-            messageId,userId,message,reportUserId);
+        // 2) Input data — we can make this up for the test. Normally it would
+        // be created by the Controller.
+        UserMessageModel inputData = new UserMessageModel(
+                messageId, userId, message, reportUserId);
 
-    // 3) Run the use case
+        // 3) Run the use case
         interactor.create(inputData);
-
-
-}
+    }
 }

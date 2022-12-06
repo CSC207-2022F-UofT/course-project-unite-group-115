@@ -26,8 +26,8 @@ public class GetUserInteractor implements GetUserSensitiveListInputBoundary{
         if (PROFILE_REPO_ACCESS.existsByName(requestModel.getUsername())) {
             List<String> SensList = PROFILE_REPO_ACCESS.getSensitiveWords(requestModel.getUsername());
             return new GetUserListResponseModel(SensList);
-    }else {
+        } else {
             throw new GetSenListFailure("User not found.");
         }
-
-}}
+    }
+}

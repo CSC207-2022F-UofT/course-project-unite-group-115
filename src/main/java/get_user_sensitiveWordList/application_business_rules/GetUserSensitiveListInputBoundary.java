@@ -9,11 +9,8 @@ public interface GetUserSensitiveListInputBoundary {
      * Get a user's list.
      *
      * @param requestModel A data structure containing user's name
-     * @return Returns a data structure containing the user's interests.
+     * @return Returns a data structure containing the user's WordList.
      */
     GetUserListResponseModel getUserSensWordList(GetUserListRequestModel requestModel);
-
-
-
 
 }

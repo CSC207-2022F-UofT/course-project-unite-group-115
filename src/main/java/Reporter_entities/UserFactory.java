@@ -1,4 +1,4 @@
-package entities;
+package Reporter_entities;
 
 public class UserFactory {
     public Blocker create(String messageId, String userId, String message,String reportUserId) {

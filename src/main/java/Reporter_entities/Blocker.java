@@ -1,4 +1,4 @@
-package entities;
+package Reporter_entities;
 
 public class Blocker {
     private String messageId;

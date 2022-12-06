@@ -26,5 +26,4 @@ public class AddBlockedUserResponseModel {
     public void setBlockedList(String list) {
         this.blockedList = list;
     }
-
 }

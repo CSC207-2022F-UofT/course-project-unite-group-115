@@ -1,4 +1,4 @@
-package entities;
+package Reporter_entities;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -10,10 +10,6 @@ public class GetUserListRequestModel {
     public GetUserListRequestModel(String username){
         this.username = username;
     }
-
-    /**
-     * Return the name of the user whose interests have been requested.
-     */
     public String getUsername() {
         return username;
     }

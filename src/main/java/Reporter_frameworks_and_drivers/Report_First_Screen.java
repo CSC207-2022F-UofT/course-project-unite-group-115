@@ -1,13 +1,13 @@
-package frameworks_and_drivers;
+package Reporter_frameworks_and_drivers;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
 import Reporter_Database.*;
-import Interface.UserReporterController;
-import Interface.UserReporterPresenter;
-import entities.UserFactory;
+import Reporter_Interface.UserReporterController;
+import Reporter_Interface.UserReporterPresenter;
+import Reporter_entities.UserFactory;
 
 public class Report_First_Screen extends JFrame implements ActionListener {
     public Report_First_Screen() {
@@ -64,7 +64,6 @@ public class Report_First_Screen extends JFrame implements ActionListener {
                     interactor
             );
 
-//             Build the GUI, plugging in the parts
 
             User_Report_Screen reportScreen = new User_Report_Screen(userReporterController);
             screens.add(reportScreen, "welcome");
@@ -80,9 +79,4 @@ public class Report_First_Screen extends JFrame implements ActionListener {
             application2.setVisible(true);
         }
     }
-
-//         Create the parts to plug into the Use Case+Entities engine
-    ///Users/aurora/IdeaProjects/untitled folder/src/main/java/main_Databases/java.report.csv"
-
-
-        }
+}

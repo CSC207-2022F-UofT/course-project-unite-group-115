@@ -18,18 +18,12 @@ public class GetUserListResponseModel {
         this.failMessage = errorMessage;
     }
 
-
-
     /**
-     * Return the user's interests.
+     * Return the user's SensitiveWordList.
      */
     public List<String> getSensList() {
         return SensList;
     }
-
-    /**
-     * Change the stored interests to <interests>.
-     */
     public void setSensList(List<String> list) {
         this.SensList = list;
     }
@@ -37,7 +31,4 @@ public class GetUserListResponseModel {
     public String getFailMessage() {
         return failMessage;
     }
-
-
-
 }

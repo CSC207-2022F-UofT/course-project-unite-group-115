@@ -1,7 +1,7 @@
 package Reporter_Database;
-import Interface.UserReporterPresenter;
-import entities.Blocker;
-import entities.UserFactory;
+import Reporter_Interface.UserReporterPresenter;
+import Reporter_entities.Blocker;
+import Reporter_entities.UserFactory;
 
 import java.time.LocalDateTime;
 

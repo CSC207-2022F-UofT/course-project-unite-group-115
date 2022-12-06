@@ -1,4 +1,4 @@
-package Interface;
+package Reporter_Interface;
 
 import Reporter_Database.UserMessageModel;
 import Reporter_Database.InputBoundary;

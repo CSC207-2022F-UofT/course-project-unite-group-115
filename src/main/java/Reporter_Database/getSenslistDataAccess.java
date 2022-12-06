@@ -66,8 +66,5 @@ public class getSenslistDataAccess {
         BlockedController blockedController =
                 new BlockedController(blockedUserInteractor);
         blockedController.AddBlockedUser(name,blockeduser);
-
-
     }
-
 }
