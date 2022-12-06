@@ -1,6 +1,4 @@
-package profile_manager.application_business_rules;
-
-import profile_manager.frameworks_and_drivers.LoginScreen;
+package database_classes;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,7 +16,7 @@ public class ProfileRepoRequestModel {
     private List<String> interests;
     private List<String> groups;
     private List<String> friends;
-    private List<String> blockedUsers;
+    private String blockedUsers;
 
     private final LocalDateTime creationTime;
 
@@ -31,7 +29,7 @@ public class ProfileRepoRequestModel {
                                    List<String> interests,
                                    List<String> groups,
                                    List<String> friends,
-                                   List<String> blockedUsers,
+                                   String blockedUsers,
                                    LocalDateTime creationTime) {
 
         this.userName = userName;
@@ -138,18 +136,18 @@ public class ProfileRepoRequestModel {
         this.friends.remove(friend);
     }
 
-    public List<String> getBlockedUsers() {
+    public String getBlockedUsers() {
         return this.blockedUsers;
     }
-    public void setBlockedUsers(List<String> blockedUser) {
+    public void setBlockedUsers(String blockedUser) {
         this.blockedUsers = blockedUser;
     }
-    public void addBlockedUser(String blockedUser) {
-        this.blockedUsers.add(blockedUser);
-    }
-    public void removeBlockedUser(String blockedUser) {
-        this.blockedUsers.remove(blockedUser);
-    }
+//    public void addBlockedUser(String blockedUser) {
+//        this.blockedUsers.add(blockedUser);
+//    }
+//    public void removeBlockedUser(String blockedUser) {
+//        this.blockedUsers.remove(blockedUser);
+//    }
 
     public LocalDateTime getCreationTime() {
         return creationTime;

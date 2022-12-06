@@ -1,7 +1,5 @@
 package profile_manager.application_business_rules;
 
-import profile_manager.frameworks_and_drivers.LoginScreen;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +14,7 @@ public class ProfileManagerRequestModel {
     private List<String> interests;
     private List<String> groups;
     private List<String> friends;
-    private List<String> blockedUsers;
+    private String blockedUsers;
 
     public ProfileManagerRequestModel(String userName,
                                       String profileName,
@@ -27,7 +25,7 @@ public class ProfileManagerRequestModel {
                                       List<String> interests,
                                       List<String> groups,
                                       List<String> friends,
-                                      List<String> blockedUsers) {
+                                      String blockedUsers) {
 
         this.userName = userName;
         this.profileName = profileName;
@@ -131,17 +129,17 @@ public class ProfileManagerRequestModel {
         this.friends.remove(friend);
     }
 
-    public List<String> getBlockedUsers() {
+    public String getBlockedUsers() {
         return this.blockedUsers;
     }
-    public void setBlockedUsers(ArrayList<String> blockedUser) {
+    public void setBlockedUsers(String blockedUser) {
         this.blockedUsers = blockedUser;
     }
-    public void addBlockedUser(String blockedUser) {
-        this.blockedUsers.add(blockedUser);
-    }
-    public void removeBlockedUser(String blockedUser) {
-        this.blockedUsers.remove(blockedUser);
-    }
+//    public void addBlockedUser(String blockedUser) {
+//        this.blockedUsers.add(blockedUser);
+//    }
+//    public void removeBlockedUser(String blockedUser) {
+//        this.blockedUsers.remove(blockedUser);
+//    }
 
 }

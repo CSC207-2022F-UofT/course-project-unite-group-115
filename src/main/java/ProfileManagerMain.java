@@ -1,7 +1,7 @@
-import profile_manager.frameworks_and_drivers.*;
+import screens.*;
 import javax.swing.*;
 
-public class Main {
+public class ProfileManagerMain {
     public static void main(String[] args) {
 
         JFrame application2 = new LoginScreen();

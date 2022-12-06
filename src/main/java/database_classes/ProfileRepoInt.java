@@ -1,4 +1,6 @@
-package profile_manager.application_business_rules;
+package database_classes;
+
+import java.util.List;
 
 public interface ProfileRepoInt {
     boolean existsByName(String identifier);
@@ -16,6 +18,10 @@ public interface ProfileRepoInt {
     void addFriendToProfile(String userName, String friend);
     void removeFriendFromProfile(String userName, String friend);
     void addBlockedUserToProfile(String userName, String blockedUser);
-    void removeBlockedUserFromProfile(String userName, String blockedUser);
+//    void removeBlockedUserFromProfile(String userName, String blockedUser);
+
+    List<String> getInterests(String userName);
+
+    List<String> getGroups(String userName);
 
 }

@@ -27,7 +27,7 @@ public class ProfileManagerController {
                                               List<String> interests,
                                               List<String> groups,
                                               List<String> friends,
-                                              List<String> blockedUsers) {
+                                              String blockedUsers) {
 
         ProfileManagerRequestModel requestModel = new ProfileManagerRequestModel(
                 userName, profileName, dob, description, socialLinks, sensitiveWords, interests, groups, friends, blockedUsers);

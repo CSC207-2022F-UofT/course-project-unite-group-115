@@ -1,4 +1,4 @@
-package profile_manager.frameworks_and_drivers;
+package profile_manager.interface_adapters;
 
 public class ProfileCreationFailed extends RuntimeException {
     public ProfileCreationFailed(String error) {

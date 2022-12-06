@@ -2,7 +2,6 @@ package profile_manager.interface_adapters;
 
 import profile_manager.application_business_rules.ProfileManagerOutputBoundary;
 import profile_manager.application_business_rules.ProfileManagerResponseModel;
-import profile_manager.frameworks_and_drivers.ProfileCreationFailed;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

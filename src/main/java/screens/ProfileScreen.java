@@ -1,4 +1,4 @@
-package profile_manager.frameworks_and_drivers;
+package screens;
 
 import profile_manager.interface_adapters.ProfileManagerController;
 
@@ -116,7 +116,8 @@ public class ProfileScreen extends JFrame implements ActionListener {
                         Arrays.asList(interests.getText().split(";")),
                         Arrays.asList(groups.getText().split(";")),
                         Arrays.asList(friends.getText().split(";")),
-                        Arrays.asList(blockedUsers.getText().split(";")));
+                        blockedUsers.getText());
+//                        Arrays.asList(blockedUsers.getText().split(";")));
                 JOptionPane.showMessageDialog(this, String.format("Updated Profile of User: %s", loginUserName));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());

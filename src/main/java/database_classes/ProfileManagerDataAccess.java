@@ -1,11 +1,9 @@
-package profile_manager.frameworks_and_drivers;
+package database_classes;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
-import profile_manager.application_business_rules.ProfileRepoInt;
-import profile_manager.application_business_rules.ProfileRepoRequestModel;
 
 public class ProfileManagerDataAccess implements ProfileRepoInt {
     private final File csvFile;
@@ -45,27 +43,39 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
 
                 String socialLinks = String.valueOf(col[headers.get("socialLinks")]);
                 List<String> socialLinksList = Arrays.asList(socialLinks.split(";"));
+                if (socialLinks.equals("")){
+                    socialLinksList = new ArrayList<>();}
 
                 String sensitiveWords = String.valueOf(col[headers.get("sensitiveWords")]);
                 List<String> sensitiveWordsList = Arrays.asList(sensitiveWords.split(";"));
+                if (sensitiveWords.equals("")){
+                    sensitiveWordsList = new ArrayList<>();}
 
                 String interests = String.valueOf(col[headers.get("interests")]);
                 List<String> interestsList = Arrays.asList(interests.split(";"));
+                if (interests.equals("")){
+                    interestsList = new ArrayList<>();}
 
                 String groups = String.valueOf(col[headers.get("groups")]);
                 List<String> groupsList = Arrays.asList(groups.split(";"));
+                if (groups.equals("")){
+                    groupsList = new ArrayList<>();}
 
                 String friends = String.valueOf(col[headers.get("friends")]);
                 List<String> friendsList = Arrays.asList(friends.split(";"));
+                if (friends.equals("")){
+                    friendsList = new ArrayList<>();}
 
                 String blockedUsers = String.valueOf(col[headers.get("blockedUsers")]);
-                List<String> blockedUsersList = Arrays.asList(blockedUsers.split(";"));
+//                List<String> blockedUsersList = Arrays.asList(blockedUsers.split(";"));
+//                if (blockedUsers.equals("")){
+//                    blockedUsersList = new ArrayList<>();}
 
                 String creationTimeText = String.valueOf(col[headers.get("creationTime")]);
                 LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
 
                 ProfileRepoRequestModel user = new ProfileRepoRequestModel(
-                        userName, profileName, dob, description, socialLinksList, sensitiveWordsList, interestsList, groupsList, friendsList, blockedUsersList , ldt);
+                        userName, profileName, dob, description, socialLinksList, sensitiveWordsList, interestsList, groupsList, friendsList, blockedUsers , ldt);
                 accounts.put(userName, user);
             }
 
@@ -96,12 +106,12 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
                         profile.getProfileName(),
                         profile.getDob(),
                         profile.getDescription(),
-                        profile.getSocialLinks(),
-                        profile.getSensitiveWords(),
-                        profile.getInterests(),
-                        profile.getGroups(),
-                        profile.getFriends(),
-                        profile.getBlockedUsers(),
+                        String.join(";", profile.getSocialLinks()),
+                        String.join(";", profile.getSensitiveWords()),
+                        String.join(";", profile.getInterests()),
+                        String.join(";", profile.getGroups()),
+                        String.join(";", profile.getFriends()),
+                        String.join(";", profile.getBlockedUsers()),
                         profile.getCreationTime());
                 writer.write(line);
                 writer.newLine();
@@ -185,17 +195,32 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
     }
 
     public void addBlockedUserToProfile(String userName, String blockedUser) {
-        List<String> blockedUsers = new ArrayList<>(accounts.get(userName).getBlockedUsers());
-        blockedUsers.add(blockedUser);
-        accounts.get(userName).setBlockedUsers(blockedUsers);
+        String blockList = accounts.get(userName).getBlockedUsers();
+        blockList = blockList.replace("[","").replace("]","");
+        String newBlocked ="[";
+        if(blockList ==""){
+            blockList = newBlocked +blockedUser+"]";
+        }else{
+            blockList = newBlocked +blockList +";"+blockedUser+"]";
+        }
+        accounts.get(userName).setBlockedUsers(blockList);
+
         this.save();
     }
 
-    public void removeBlockedUserFromProfile(String userName, String blockedUser) {
-        List<String> blockedUsers = new ArrayList<>(accounts.get(userName).getBlockedUsers());
-        blockedUsers.remove(blockedUser);
-        accounts.get(userName).setBlockedUsers(blockedUsers);
-        this.save();
+//    public void removeBlockedUserFromProfile(String userName, String blockedUser) {
+//        List<String> blockedUsers = new ArrayList<>(accounts.get(userName).getBlockedUsers());
+//        blockedUsers.remove(blockedUser);
+//        accounts.get(userName).setBlockedUsers(blockedUsers);
+//        this.save();
+//    }
+
+    public List<String> getInterests(String userName) {
+        return accounts.get(userName).getInterests();
+    }
+
+    public List<String> getGroups(String userName) {
+        return accounts.get(userName).getGroups();
     }
 
 

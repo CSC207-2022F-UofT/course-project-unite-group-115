@@ -1,5 +1,7 @@
 package profile_manager.application_business_rules;
 
+import database_classes.ProfileRepoInt;
+import database_classes.ProfileRepoRequestModel;
 import entities.Profile;
 import entities.ProfileFactory;
 
