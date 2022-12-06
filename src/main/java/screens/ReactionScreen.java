@@ -86,16 +86,16 @@ public class ReactionScreen extends JFrame implements ActionListener {
             try {
                 ReactionResponseModel i = reactionController.addReaction(reactions[selectedReaction], ID.getText());
                 JOptionPane.showMessageDialog(this,
-                        String.format("%s added", reactions[selectedReaction]));
+                        String.format("%s added", i.getReaction()));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
         } else if (evt.getActionCommand().equals("Remove Reaction")){
             System.out.println(reactions[selectedReaction] + ID.getText());
             try {
-                reactionController.removeReaction(reactions[selectedReaction], ID.getText());
+                ReactionResponseModel i = reactionController.removeReaction(reactions[selectedReaction], ID.getText());
                 JOptionPane.showMessageDialog(this,
-                        String.format("%s removed", reactions[selectedReaction]));
+                        String.format("%s removed", i.getReaction()));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
