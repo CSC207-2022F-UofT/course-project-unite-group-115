@@ -68,8 +68,7 @@ public class RequestRandomGroupUI extends JPanel implements ActionListener {
                 JOptionPane.showMessageDialog(this, message);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage() + " To create a random" +
-                        " group based on your interests click the 'Create Random Group' button in the previous " +
-                        "window!");
+                        " group based on your interests click the 'Create Random Group' button to create your own!");
         }
         } else if (evt.getActionCommand().equals("Create Random Group")) {
             createRanGroupScreen.setVisible(true);

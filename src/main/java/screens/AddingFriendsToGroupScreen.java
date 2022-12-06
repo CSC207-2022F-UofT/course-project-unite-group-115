@@ -1,5 +1,6 @@
 package screens;
 
+import database_classes.ProfileRepoInt;
 import entities.Profile;
 import get_friends.get_friends.interface_adapters.GetFriendsController;
 import get_friends.get_friends.use_case.GetFriendsDsResponseModel;
@@ -13,16 +14,20 @@ import java.util.List;
 public class AddingFriendsToGroupScreen extends JPanel implements ActionListener {
 
     JComboBox<String> cmbFriendList = new JComboBox<>();
-    Profile creatorProfile;
+    ProfileRepoInt profileDatabase;
+    String loggedInUser;
     List<String> friendsChosen;
     GetFriendsController getFriendsController;
     String friendChosen;
-    public AddingFriendsToGroupScreen(GetFriendsController controller, List<String> friendsChosen, Profile creatorProfile) {
+    public AddingFriendsToGroupScreen(GetFriendsController controller, List<String> friendsChosen,
+                                      ProfileRepoInt profileDatabse, String username) {
         this.getFriendsController = controller;
         this.friendsChosen = friendsChosen;
-        this.creatorProfile = creatorProfile;
+        this.profileDatabase = profileDatabse;
+        this.loggedInUser = username;
 
-        GetFriendsDsResponseModel response = getFriendsController.getFriendsList(creatorProfile);
+
+        GetFriendsDsResponseModel response = getFriendsController.getFriendsList(loggedInUser);
         List<String> friendsList = new ArrayList<>(response.getFriendList());
 
         JLabel title = new JLabel("Friend's list", SwingConstants.CENTER);

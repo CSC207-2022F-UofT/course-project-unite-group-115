@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InMemoryProfileData implements ProfileRepoInt{
+public class InMemoryProfileData implements ProfileRepoInt {
     private final Map<String, ProfileRepoRequestModel> accounts = new HashMap<>();
 
 
@@ -35,5 +35,10 @@ public class InMemoryProfileData implements ProfileRepoInt{
     @Override
     public List<String> getGroups(String userName) {
         return accounts.get(userName).getGroups();
+    }
+
+    @Override
+    public List<String> getFriends(String userName) {
+        return accounts.get(userName).getFriends();
     }
 }

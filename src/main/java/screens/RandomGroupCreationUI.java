@@ -22,7 +22,9 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
 
     /**
      * Creates the window that enables the creation of a new random group.
-     * @param controller the object that controls the creation of a new group
+     * @param groupCreateController the object that controls the creation of a new group
+     * @param interestsController the object that controls the retrieval of a user's interests
+     * @param loggedInUsersName the name of the user currently logged in
      */
     public RandomGroupCreationUI(RanGroupCreateControl groupCreateController, GetUserInterestsController
             interestsController, String loggedInUsersName) {

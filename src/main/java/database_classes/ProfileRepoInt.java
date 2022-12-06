@@ -12,4 +12,6 @@ public interface ProfileRepoInt {
     List<String> getInterests(String userName);
 
     List<String> getGroups(String userName);
+
+    List<String> getFriends(String userName);
 }

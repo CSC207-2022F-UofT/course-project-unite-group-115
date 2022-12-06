@@ -1,11 +1,12 @@
 package database_classes;
 
+import general_group.use_case.GeneralGroupRepoInt;
 import random_grouper_create.application_business_rules.RanGroupCreateDataAccessInt;
 import random_grouper_request_group.application_business_rules.ReqRanGroupDataAccessInt;
 
 import java.util.List;
 
-public interface GroupRepoInt extends RanGroupCreateDataAccessInt, ReqRanGroupDataAccessInt {
+public interface GroupRepoInt extends RanGroupCreateDataAccessInt, ReqRanGroupDataAccessInt, GeneralGroupRepoInt {
     /**
      * Remove the group with ID, groupID, from the GroupDatabase file.
      *

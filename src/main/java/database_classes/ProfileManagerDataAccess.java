@@ -142,6 +142,11 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
         return accounts.get(userName).getGroups();
     }
 
+    @Override
+    public List<String> getFriends(String userName) {
+        return accounts.get(userName).getFriends();
+    }
+
     /**
      * Return whether a user exists with username identifier.
      * @param identifier the username to check.

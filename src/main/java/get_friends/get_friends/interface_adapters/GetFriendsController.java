@@ -13,11 +13,11 @@ public class GetFriendsController {
 
     /**
      * Uses userProfile to retrieve the friend's list
-     * @param userProfile Profile of the user
+     * @param username The name of the user
      * @return List of friends
      */
-    public GetFriendsDsResponseModel getFriendsList(Profile userProfile) {
-        GetFriendsDsRequestModel requestModel = new GetFriendsDsRequestModel(userProfile);
+    public GetFriendsDsResponseModel getFriendsList(String username) {
+        GetFriendsDsRequestModel requestModel = new GetFriendsDsRequestModel(username);
 
         return userInput.getFriendsList(requestModel);
     }

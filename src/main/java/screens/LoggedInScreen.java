@@ -57,6 +57,7 @@ public class LoggedInScreen extends JFrame implements ActionListener {
         JPanel buttons = new JPanel();
         buttons.add(logOut);
         buttons.add(profile);
+        // To Do: can remove this button - this is part of the groups screen now
         buttons.add(chats);
         buttons.add(friends);
         buttons.add(groups);
@@ -96,6 +97,8 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             application3.setVisible(true);
         }
         else if (evt.getActionCommand().equals("Groups")){
+            // ToDo: need logged in user's username
+            String loggedInUser = "ashley";
             GroupDataAccess groupData;
             try {
                 groupData = new GroupDataAccess("./src/main/java/databases/groups.csv");
@@ -109,54 +112,9 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             } catch (IOException e) {
                 throw new RuntimeException("Could not create file.");
             }
-
-            // Random Group Creation Window Creation
-            JFrame groupCreationApplication = new JFrame("Random Group Creation");
-            CardLayout groupCreationCardLayout = new CardLayout();
-            JPanel groupCreationScreens = new JPanel(groupCreationCardLayout);
-            groupCreationApplication.add(groupCreationScreens);
-
-            // Parts for Random Group Creation Use Case
-            RanGroupCreateOutputBoundary ranGroupCreateOutputBoundary = new RanGroupCreatePresenter();
-            RandomGroupFactory ranGroupFactory = new RandomGroupFactory();
-            RanGroupCreateInputBoundary groupCreateInteractor = new RanGroupCreateInteractor(groupData,
-                    ranGroupCreateOutputBoundary, ranGroupFactory, profileData);
-            RanGroupCreateControl groupCreateController = new RanGroupCreateControl(groupCreateInteractor);
-
-            GetUserInterestsOutputBoundary getUserInterestsOutputBoundary = new GetUserInterestsPresenter();
-            GetUserInterestsInteractor getUserInterestsInteractor = new
-                    GetUserInterestsInteractor(getUserInterestsOutputBoundary, profileData);
-            GetUserInterestsController getUserInterestsController =
-                    new GetUserInterestsController(getUserInterestsInteractor);
-
-            // Create Random Group Creation Screen
-            // ToDo: need the logged in User's name
-            String loggedInUser = "Tejas";
-            RandomGroupCreationUI creationScreen = new RandomGroupCreationUI(groupCreateController,
-                    getUserInterestsController, loggedInUser);
-            groupCreationScreens.add(creationScreen, "welcome");
-            groupCreationCardLayout.show(groupCreationScreens, "create");
-            groupCreationApplication.pack();
-
-            // Create Request Random Group Window
-            JFrame requestGroupApplication = new JFrame("Request Random Group");
-            CardLayout requestGroupCardLayout = new CardLayout();
-            JPanel requestGroupScreens = new JPanel(requestGroupCardLayout);
-            requestGroupApplication.add(requestGroupScreens);
-
-            // Create parts for Request Random Group Use Case
-            ReqRanGroupOutputBoundary reqRanGroupOutputBoundary = new ReqRanGroupPresenter();
-            ReqRanGroupInputBoundary reqRanGroupInteractor = new ReqRanGroupInteractor(groupData,
-                    reqRanGroupOutputBoundary, profileData);
-            ReqRanGroupController reqRanGroupController = new ReqRanGroupController(reqRanGroupInteractor);
-
-            // Create and Display Request Random Group Screen
-            RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController, groupCreationApplication,
-                    loggedInUser);
-            requestGroupScreens.add(reqGroupScreen, "welcome");
-            requestGroupCardLayout.show(requestGroupScreens, "request");
-            requestGroupApplication.pack();
-            requestGroupApplication.setVisible(true);
+            JFrame application4 = new GroupScreen(loggedInUser, groupData, profileData);
+            application4.pack();
+            application4.setVisible(true);
         }
         }
     }
