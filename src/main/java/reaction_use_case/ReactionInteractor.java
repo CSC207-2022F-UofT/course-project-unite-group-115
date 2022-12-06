@@ -1,6 +1,6 @@
 package reaction_use_case;
 
-import databases.MessageRepoInt;
+import database_classes.MessageRepoInt;
 
 /**
  * The ReactionInteractor implements interface ReactionInputBoundary that

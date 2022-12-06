@@ -1,8 +1,8 @@
 package reaction_use_case;
 
-import databases.MessageDsRequestModel;
-import databases.MessageMemory;
-import databases.MessageRepoInt;
+import database_classes.MessageMemory;
+import database_classes.MessageRepoInt;
+import database_classes.MessageRepoRequestModel;
 import org.junit.Test;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class ReactionInteractorTest {
         // Test reactions by adding a message manually
         List<String> emptyList = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
-        MessageDsRequestModel request = new MessageDsRequestModel("hello","Michael","14",
+        MessageRepoRequestModel request = new MessageRepoRequestModel("hello","Michael","14",
                 "123", emptyList, now);
         messageRepoInt.save(request);
 
@@ -79,7 +79,7 @@ public class ReactionInteractorTest {
         List<String> list = new ArrayList<>();
         list.add("heart");
         LocalDateTime now = LocalDateTime.now();
-        MessageDsRequestModel request = new MessageDsRequestModel("hello","Michael","14",
+        MessageRepoRequestModel request = new MessageRepoRequestModel("hello","Michael","14",
                 "123", list, now);
         messageRepoInt.save(request);
 
@@ -125,7 +125,7 @@ public class ReactionInteractorTest {
         // Test reactions by adding a message manually
         List<String> list = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
-        MessageDsRequestModel request = new MessageDsRequestModel("hello","Michael","14",
+        MessageRepoRequestModel request = new MessageRepoRequestModel("hello","Michael","14",
                 "123", list, now);
         messageRepoInt.save(request);
 
@@ -173,7 +173,7 @@ public class ReactionInteractorTest {
         List<String> list = new ArrayList<>();
         list.add("heart");
         LocalDateTime now = LocalDateTime.now();
-        MessageDsRequestModel request = new MessageDsRequestModel("hello","Michael","14",
+        MessageRepoRequestModel request = new MessageRepoRequestModel("hello","Michael","14",
                 "123", list, now);
         messageRepoInt.save(request);
 
@@ -222,7 +222,7 @@ public class ReactionInteractorTest {
         // List must be empty
         List<String> emptyList = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
-        MessageDsRequestModel request = new MessageDsRequestModel("hello","Michael","14",
+        MessageRepoRequestModel request = new MessageRepoRequestModel("hello","Michael","14",
                 "123", emptyList, now);
         messageRepoInt.save(request);
 
@@ -269,7 +269,7 @@ public class ReactionInteractorTest {
         List<String> list = new ArrayList<>();
         list.add("heart");
         LocalDateTime now = LocalDateTime.now();
-        MessageDsRequestModel request = new MessageDsRequestModel("hello","Michael","14",
+        MessageRepoRequestModel request = new MessageRepoRequestModel("hello","Michael","14",
                 "123", list, now);
         messageRepoInt.save(request);
 

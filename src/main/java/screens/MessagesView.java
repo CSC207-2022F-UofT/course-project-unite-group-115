@@ -1,7 +1,7 @@
 package screens;
 
-import databases.MessageFile;
-import databases.MessageRepoInt;
+import database_classes.MessageDataAccess;
+import database_classes.MessageRepoInt;
 import interface_adapters.ReactionController;
 import interface_adapters.ReactionPresenter;
 import reaction_use_case.ReactionInputBoundary;
@@ -26,7 +26,7 @@ public class MessagesView extends JFrame {
         // Set up use case files
         MessageRepoInt message;
         try {
-            message = new MessageFile("./messages.csv");
+            message = new MessageDataAccess("./messages.csv");
         } catch (IOException e){
             throw new RuntimeException("Could not create file");
         }

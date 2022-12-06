@@ -6,11 +6,11 @@ import java.util.*;
 
 public class MessageDataAccess implements MessageRepoInt {
 
-    private File csvFile;
+    private final File csvFile;
 
-    private Map<String, Integer> headers = new LinkedHashMap<>();
+    private final Map<String, Integer> headers = new LinkedHashMap<>();
 
-    private Map<String, MessageRepoRequestModel> messages = new HashMap<>();
+    private final Map<String, MessageRepoRequestModel> messages = new HashMap<>();
 
 
     public MessageDataAccess(String csvPath) throws IOException {
@@ -39,11 +39,14 @@ public class MessageDataAccess implements MessageRepoInt {
                 String messageID = String.valueOf(col[headers.get("messageID")]);
 
                 String reaction = String.valueOf(col[headers.get("reaction")]);
-                List<String> reactions = Arrays.asList(reaction.split(";"));
+
+                reaction = reaction.substring(1, reaction.length() - 1);
+                List<String> reactions = new ArrayList<>(Arrays.asList(reaction.split(" ")));
 
                 String creationTimeText = String.valueOf(col[headers.get("creation_time")]);
                 LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
-                MessageRepoRequestModel message = new MessageRepoRequestModel(content, sender, groupID, messageID, reactions, ldt);
+                MessageRepoRequestModel message = new MessageRepoRequestModel(content, sender, groupID,
+                        messageID, reactions, ldt);
                 messages.put(messageID, message);
             }
 
@@ -110,7 +113,7 @@ public class MessageDataAccess implements MessageRepoInt {
 
     @Override
     public String getGroupMessageInfo(String GroupID) {
-        List<String> allMessages = new ArrayList<String>();
+        List<String> allMessages = new ArrayList<>();
         for (String key : messages.keySet()) {
             if (Objects.equals(messages.get(key).getGroupID(), GroupID)) {
                 MessageRepoRequestModel model = messages.get(key);
@@ -133,6 +136,24 @@ public class MessageDataAccess implements MessageRepoInt {
         }
 
         return false;
+    }
+
+    public boolean messageNotExist(String messageID){
+        return !messages.containsKey(messageID);
+    }
+
+    public void addReaction(String reaction, String messageID){
+        messages.get(messageID).addReaction(reaction);
+        this.save();
+    }
+
+    public void removeReaction(String reaction, String messageID){
+        messages.get(messageID).removeReaction(reaction);
+        this.save();
+    }
+
+    public boolean reactionExists(String reaction, String messageID){
+        return messages.get(messageID).checkReactionExists(reaction);
     }
 }
 

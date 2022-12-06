@@ -18,4 +18,12 @@ public interface MessageRepoInt{
 
     boolean doesGroupExist(String GroupID);
 
+    boolean messageNotExist(String messageID);
+
+    void addReaction(String reaction, String messageID);
+
+    void removeReaction(String reaction, String messageID);
+
+    boolean reactionExists(String reaction, String messageID);
+
 }
