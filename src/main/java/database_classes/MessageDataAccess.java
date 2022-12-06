@@ -115,8 +115,8 @@ public class MessageDataAccess implements MessageRepoInt {
         for (String key : messages.keySet()) {
             if (Objects.equals(messages.get(key).getGroupID(), GroupID)) {
                 MessageRepoRequestModel model = messages.get(key);
-                String messageFormat = model.getSender() + ": " + model.getContent() + " (" +
-                        model.getMessageID() + ")" + "Reactions: " + model.getReaction() + "\n";
+                String messageFormat = model.getSender() + ": " + model.getContent() + " (Message ID:" +
+                        model.getMessageID() + ")" + " Reactions: " + model.getReaction() + "\n";
                 allMessages.add(messageFormat);
             }
         }
