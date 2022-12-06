@@ -18,6 +18,7 @@ public interface ProfileRepoInt {
     void addFriendToProfile(String userName, String friend);
     void removeFriendFromProfile(String userName, String friend);
     void addBlockedUserToProfile(String userName, String blockedUser);
+    //
 //    void removeBlockedUserFromProfile(String userName, String blockedUser);
 
     List<String> getInterests(String userName);
