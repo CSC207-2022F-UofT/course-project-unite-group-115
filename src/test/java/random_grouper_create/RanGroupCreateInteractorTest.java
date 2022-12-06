@@ -1,6 +1,10 @@
 package random_grouper_create;
-import database_classes.*;
+import database_classes.InMemoryGroupData;
+import database_classes.InMemoryProfileData;
+import database_classes.ProfileRepoInt;
+import database_classes.ProfileRepoRequestModel;
 import entities.RandomGroupFactory;
+import database_classes.GroupRepoInt;
 import org.junit.Before;
 import org.junit.Test;
 import random_grouper_create.application_business_rules.*;

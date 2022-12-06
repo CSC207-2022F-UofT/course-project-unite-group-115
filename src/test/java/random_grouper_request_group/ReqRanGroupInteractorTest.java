@@ -3,10 +3,7 @@ package random_grouper_request_group;
 import database_classes.*;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
-import random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
-import random_grouper_request_group.application_business_rules.ReqRanGroupRequestModel;
-import random_grouper_request_group.application_business_rules.ReqRanGroupResponseModel;
+import random_grouper_request_group.application_business_rules.*;
 import random_grouper_request_group.interface_adapters.GroupAdditionFailure;
 import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
@@ -89,7 +86,7 @@ public class ReqRanGroupInteractorTest {
             }
         };
 
-        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor((ReqRanGroupDataAccessInt) groupDatabase, presenter, profileDatabase);
 
         ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
 
@@ -141,7 +138,7 @@ public class ReqRanGroupInteractorTest {
             }
         };
 
-        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor((ReqRanGroupDataAccessInt) groupDatabase, presenter, profileDatabase);
 
         ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
 
@@ -193,7 +190,7 @@ public class ReqRanGroupInteractorTest {
             }
         };
 
-        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor((ReqRanGroupDataAccessInt) groupDatabase, presenter, profileDatabase);
 
         ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
 
@@ -247,7 +244,7 @@ public class ReqRanGroupInteractorTest {
             }
         };
 
-        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor((ReqRanGroupDataAccessInt) groupDatabase, presenter, profileDatabase);
 
         ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
 
@@ -268,7 +265,7 @@ public class ReqRanGroupInteractorTest {
 
         // This creates an anonymous implementing class for the Output Boundary.
         ReqRanGroupPresenter presenter = new ReqRanGroupPresenter();
-        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor((ReqRanGroupDataAccessInt) groupDatabase, presenter, profileDatabase);
         ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
 
         try {
@@ -323,7 +320,7 @@ public class ReqRanGroupInteractorTest {
             }
         };
 
-        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor((ReqRanGroupDataAccessInt) groupDatabase, presenter, profileDatabase);
 
         ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
 
@@ -344,7 +341,7 @@ public class ReqRanGroupInteractorTest {
 
         // This creates an anonymous implementing class for the Output Boundary.
         ReqRanGroupPresenter presenter = new ReqRanGroupPresenter();
-        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor((ReqRanGroupDataAccessInt) groupDatabase, presenter, profileDatabase);
         ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
 
         try {
@@ -400,7 +397,7 @@ public class ReqRanGroupInteractorTest {
             }
         };
 
-        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor((ReqRanGroupDataAccessInt) groupDatabase, presenter, profileDatabase);
 
         ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
 
@@ -421,7 +418,7 @@ public class ReqRanGroupInteractorTest {
 
         // This creates an anonymous implementing class for the Output Boundary.
         ReqRanGroupPresenter presenter = new ReqRanGroupPresenter();
-        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor(groupDatabase, presenter, profileDatabase);
+        ReqRanGroupInputBoundary interactor = new ReqRanGroupInteractor((ReqRanGroupDataAccessInt) groupDatabase, presenter, profileDatabase);
         ReqRanGroupRequestModel inputData = new ReqRanGroupRequestModel("Danielle");
 
         try {

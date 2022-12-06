@@ -22,5 +22,5 @@ public interface GroupFactory {
      * @param id the group id
      * @return Returns a new group object
      */
-    Group recreateExisitingGroup(String name, List<String> interests, List<String> members, String id);
+    Group recreateExistingGroup(String name, List<String> interests, List<String> members, String id);
 }
