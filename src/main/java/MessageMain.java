@@ -1,10 +1,8 @@
-package main;
-
 import screens.GroupLoggedInScreen;
 
 import javax.swing.*;
 
-public class Main {
+public class MessageMain {
     public static void main(String[] args) {
         String groupName = "Group ID";
         String loginUserName = "DefaultUser";
@@ -15,4 +13,3 @@ public class Main {
 
     }
 }
-

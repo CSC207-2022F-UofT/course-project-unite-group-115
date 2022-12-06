@@ -79,7 +79,7 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
             //plug in message entity
             MessageRepoInt message;
             try {
-                message = new MessageDataAccess("./src/main/java/database_classes/messages.csv");
+                message = new MessageDataAccess("./src/main/java/databases/messages.csv");
             } catch (IOException e) {
                 throw new RuntimeException("Could not create file.");
             }
@@ -97,7 +97,7 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
         } else if (evt.getActionCommand().equals("view")) {
             MessageRepoInt message;
             try {
-                message = new MessageDataAccess("./src/main/java/database_classes/messages.csv");
+                message = new MessageDataAccess("./src/main/java/databases/messages.csv");
             } catch (IOException e) {
                 throw new RuntimeException("Could not create file");
             }
