@@ -95,7 +95,7 @@ public class GetUserInterestsInteractorTest {
 
         try {
             interactor.getUserInterests(inputData);
-            fail("Exception not thrown due to only matching group being full.");
+            fail("Exception not thrown due to user not existing.");
         } catch (GetUserInterestsFailure e) {
         }
     }
