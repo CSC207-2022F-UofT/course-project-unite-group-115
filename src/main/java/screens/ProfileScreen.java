@@ -126,7 +126,7 @@ public class ProfileScreen extends JFrame implements ActionListener {
             JComponent component = (JComponent) evt.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
-            JFrame application2 = new LoggedInScreen(loginUserName);
+            JFrame application2 = new ProfileManagerLoggedInScreen(loginUserName);
             application2.pack();
             application2.setVisible(true);
         }
