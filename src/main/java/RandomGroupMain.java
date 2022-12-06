@@ -1,0 +1,31 @@
+import database_classes.GroupDataAccess;
+import database_classes.GroupRepoInt;
+import database_classes.ProfileManagerDataAccess;
+import database_classes.ProfileRepoInt;
+import entities.RandomGroupFactory;
+import random_grouper_create.application_business_rules.RanGroupCreateInputBoundary;
+import random_grouper_create.application_business_rules.RanGroupCreateInteractor;
+import random_grouper_create.application_business_rules.RanGroupCreateOutputBoundary;
+
+import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsInteractor;
+import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsOutputBoundary;
+import screens.RandomGroupCreationUI;
+import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsController;
+import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsPresenter;
+import random_grouper_create.interface_adapters.RanGroupCreateControl;
+import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
+import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
+import random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
+import random_grouper_request_group.application_business_rules.ReqRanGroupOutputBoundary;
+import screens.RequestRandomGroupUI;
+import random_grouper_request_group.interface_adapters.ReqRanGroupController;
+import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+
+public class RandomGroupMain {
+    public static void main(String[] args){
+    }
+}
