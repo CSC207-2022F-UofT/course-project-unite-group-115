@@ -104,12 +104,16 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
             ViewMessagePresenter presenter = new ViewMessagePresenter();
             ViewMessageInputBoundary interactor = new ViewMessageInteractor(message, presenter);
             ViewMessageController ViewMessageController = new ViewMessageController(interactor);//may not needed
-            ViewMessageController.create(GroupID);
 
-            String messages = " " + String.format(ViewMessageController.create(GroupID).getPresented());
-            messages = messages.replace("[","").replace("]","");
-            messages = messages.replace(","," "); //this is an interesting feature called comma killer
-            JOptionPane.showMessageDialog(this, messages);
+            try {
+                ViewMessageController.create(GroupID, loginUserName);
+                String messages = " " + String.format(ViewMessageController.create(GroupID,loginUserName).getPresented());
+                messages = messages.replace("[","").replace("]","");
+                messages = messages.replace(","," "); //this is an interesting feature called comma killer
+                JOptionPane.showMessageDialog(this, messages);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
 
 
         } else if (evt.getActionCommand().equals("back")) {

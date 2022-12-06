@@ -15,4 +15,7 @@ public interface MessageRepoInt{
 
     String getGroupMessageInfo(String GroupID);
 
+
+    boolean doesGroupExist(String GroupID);
+
 }

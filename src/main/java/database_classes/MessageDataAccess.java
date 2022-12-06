@@ -13,7 +13,6 @@ public class MessageDataAccess implements MessageRepoInt {
     private Map<String, MessageRepoRequestModel> messages = new HashMap<>();
 
 
-
     public MessageDataAccess(String csvPath) throws IOException {
         csvFile = new File(csvPath);
 
@@ -115,14 +114,27 @@ public class MessageDataAccess implements MessageRepoInt {
         for (String key : messages.keySet()) {
             if (Objects.equals(messages.get(key).getGroupID(), GroupID)) {
                 MessageRepoRequestModel model = messages.get(key);
-                String messageFormat = model.getSender() + ": " + model.getContent() + " (Message ID:" +
-                        model.getMessageID() + ")" + " Reactions: " + model.getReaction() + "\n";
+                String messageFormat = model.getSender() + ": " + model.getContent() +
+                        " Reactions: " + model.getReaction() + " (Message ID:" + model.getMessageID() + ")" + "\n";
                 allMessages.add(messageFormat);
             }
         }
         return allMessages.toString();
     }
 
+    @Override
+    public boolean doesGroupExist(String GroupID) {
+        for (String key : messages.keySet()) {
+            MessageRepoRequestModel model = messages.get(key);
+            String id = model.getGroupID();
+            if (id.equals(GroupID)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
+
 
 

@@ -10,8 +10,6 @@ public class ViewMessagePresenter implements ViewMessageOutputboundary {
         return response;
     }
 
-    public ViewMessageResponseModel prepareFailView(String error) {
-        return null;
-    }
+    public ViewMessageResponseModel prepareFailView(String error) {throw new ViewMessageFailure(error);}
 
 }

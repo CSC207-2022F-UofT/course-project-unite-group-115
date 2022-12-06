@@ -9,8 +9,8 @@ import message_send.interface_adaptor.MessagePresenter;
 import java.time.LocalDateTime;
 
 public class MessageInteractor implements MessageInputBoundary {
-    final database_classes.MessageRepoInt MessageRepoInt;
-    final message_send.interface_adaptor.MessagePresenter MessagePresenter;
+    final MessageRepoInt MessageRepoInt;
+    final MessagePresenter MessagePresenter;
     final MessageFactory messageFactory;
 
     public MessageInteractor(MessageRepoInt MessageRepoInt, MessagePresenter MessagePresenter,
@@ -29,7 +29,7 @@ public class MessageInteractor implements MessageInputBoundary {
         if (!message.contentIsValid()) {
             return MessagePresenter.prepareFailView("Message content can not be empty or only one letter.");
         }
-        //todo: case 2: Message in the block list
+        //todo: case 2: user in the block list
 
         LocalDateTime now = LocalDateTime.now();
 
@@ -40,7 +40,6 @@ public class MessageInteractor implements MessageInputBoundary {
         MessageResponseModel Messageresponsemodel = new MessageResponseModel(message.getSender(),now.toString());
         return MessagePresenter.prepareSuccessView(Messageresponsemodel);
 
-        //todo: prepare fail review.
     }
 
 }
