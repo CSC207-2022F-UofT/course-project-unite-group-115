@@ -3,8 +3,6 @@ package screens;
 import database_classes.MessageDataAccess;
 import database_classes.MessageRepoInt;
 import entities.MessageFactory;
-import interface_adapters.ReactionController;
-import interface_adapters.ReactionPresenter;
 import message_view.interface_adaptor.ViewMessageController;
 import message_view.interface_adaptor.ViewMessagePresenter;
 import message_send.application_business_rule.MessageInputBoundary;
@@ -13,8 +11,6 @@ import message_send.interface_adaptor.MessageController;
 import message_send.interface_adaptor.MessagePresenter;
 import message_view.application_business_rule.ViewMessageInputBoundary;
 import message_view.application_business_rule.ViewMessageInteractor;
-import reaction_use_case.ReactionInputBoundary;
-import reaction_use_case.ReactionInteractor;
 
 import javax.swing.*;
 import java.awt.*;

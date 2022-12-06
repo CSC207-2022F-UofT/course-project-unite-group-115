@@ -1,4 +1,4 @@
-package reaction_use_case;
+package reaction_use_case.application_business_rules;
 
 /**
  * ReactionResponseModel is a data structure passed from the interactor to the presenter.

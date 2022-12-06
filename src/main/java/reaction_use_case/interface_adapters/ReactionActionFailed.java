@@ -1,4 +1,4 @@
-package interface_adapters;
+package reaction_use_case.interface_adapters;
 
 /**
  * ReactionActionFailed is an error type which holds a string specifying

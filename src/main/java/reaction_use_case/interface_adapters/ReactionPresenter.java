@@ -1,7 +1,7 @@
-package interface_adapters;
+package reaction_use_case.interface_adapters;
 
-import reaction_use_case.ReactionOutputBoundary;
-import reaction_use_case.ReactionResponseModel;
+import reaction_use_case.application_business_rules.ReactionOutputBoundary;
+import reaction_use_case.application_business_rules.ReactionResponseModel;
 
 /**
  * The ReactionPresenter implements interface ReactionOutputBoundary that

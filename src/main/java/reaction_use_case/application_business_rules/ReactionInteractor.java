@@ -1,4 +1,4 @@
-package reaction_use_case;
+package reaction_use_case.application_business_rules;
 
 import database_classes.MessageRepoInt;
 

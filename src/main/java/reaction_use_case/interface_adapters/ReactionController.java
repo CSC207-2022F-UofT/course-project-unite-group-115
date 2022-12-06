@@ -1,8 +1,8 @@
-package interface_adapters;
+package reaction_use_case.interface_adapters;
 
-import reaction_use_case.ReactionInputBoundary;
-import reaction_use_case.ReactionRequestModel;
-import reaction_use_case.ReactionResponseModel;
+import reaction_use_case.application_business_rules.ReactionInputBoundary;
+import reaction_use_case.application_business_rules.ReactionRequestModel;
+import reaction_use_case.application_business_rules.ReactionResponseModel;
 
 /**
  * The ReactionController is called by the UI and is responsible for calling

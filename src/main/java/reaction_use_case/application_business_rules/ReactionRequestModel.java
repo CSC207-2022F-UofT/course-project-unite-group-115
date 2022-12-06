@@ -1,4 +1,4 @@
-package reaction_use_case;
+package reaction_use_case.application_business_rules;
 
 /**
  * ReactionRequestModel is a data structure passed from the controller to the interactor.

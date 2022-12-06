@@ -1,14 +1,12 @@
 package screens;
 
-import database_classes.MessageDataAccess;
 import database_classes.MessageRepoInt;
-import interface_adapters.ReactionController;
-import interface_adapters.ReactionPresenter;
-import reaction_use_case.ReactionInputBoundary;
-import reaction_use_case.ReactionInteractor;
+import reaction_use_case.interface_adapters.ReactionController;
+import reaction_use_case.interface_adapters.ReactionPresenter;
+import reaction_use_case.application_business_rules.ReactionInputBoundary;
+import reaction_use_case.application_business_rules.ReactionInteractor;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 /**
  * UI class which contains the frame that the messages will be displayed on.
