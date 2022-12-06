@@ -67,8 +67,7 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
         System.out.println("Click " + evt.getActionCommand());
         if (evt.getActionCommand().equals("send")) {
             JComponent component = (JComponent) evt.getSource();
-            Window win = SwingUtilities.getWindowAncestor(component);
-            win.dispose();
+
 
             // open the group window
             JFrame application = new JFrame("Group Name");  // TODO: CHANGE TO group name INPUT

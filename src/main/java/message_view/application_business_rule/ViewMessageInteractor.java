@@ -29,7 +29,7 @@ public class ViewMessageInteractor implements ViewMessageInputBoundary{
 
         //case 1: no message in the group
         if (!MessageRepoInt.doesGroupExist(groupID)) {
-            throw new ViewMessageFailure("No one has sent a message in the group, send your first message!");
+            throw new ViewMessageFailure("No one has sent a message in the group yet, sending your first message!");
         }
 
 

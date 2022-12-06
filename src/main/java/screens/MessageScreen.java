@@ -23,15 +23,13 @@ public class MessageScreen extends JFrame implements ActionListener {
         LabelTextPanel2 content = new LabelTextPanel2(new JLabel("content"), messagecontent);
 
         JButton send = new JButton("Send");
-        JButton back = new JButton("back");
         JPanel buttons = new JPanel();
         buttons.add(send);
-        buttons.add(back);
+
 
         send.addActionListener(this);
         JPanel main = new JPanel();
         main.add(send);
-        main.add(back);
         main.add(content);
         this.setContentPane(main);
         this.pack();
@@ -48,13 +46,6 @@ public class MessageScreen extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
 
-        }else if (evt.getActionCommand().equals("back")) {
-            JComponent component = (JComponent) evt.getSource();
-            Window win = SwingUtilities.getWindowAncestor(component);
-            win.dispose();
-            JFrame applicationback2 = new GroupLoggedInScreen(groupName,loginUserName);
-            applicationback2.pack();
-            applicationback2.setVisible(true);
         }
 
     }
