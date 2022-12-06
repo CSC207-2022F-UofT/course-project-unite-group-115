@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-// Frameworks/Drivers layer
 
 public class RegisterScreen extends JPanel implements ActionListener {
     /**
@@ -30,7 +29,8 @@ public class RegisterScreen extends JPanel implements ActionListener {
     UserRegisterController userRegisterController;
 
     /**
-     * A window with a title and a JButton.
+     * Creates the window that enables the creation of a new user.
+     * @param controller the object that controls the creation of a new user.
      */
     public RegisterScreen(UserRegisterController controller) {
 

@@ -11,6 +11,11 @@ public class UserDataAccess implements UserRepoInt {
     private final Map<String, Integer> headers = new LinkedHashMap<>();
 
     private final Map<String, UserRepoRequestModel> accounts = new HashMap<>();
+
+    /**
+     * Read the csv file.
+     * @param csvFilePath the path to the csv file
+     */
     public UserDataAccess(String csvFilePath) throws IOException {
         csvFile = new File(csvFilePath);
 
@@ -51,6 +56,9 @@ public class UserDataAccess implements UserRepoInt {
         this.save();
     }
 
+    /**
+     * Write to the csv file.
+     */
     private void save() {
         BufferedWriter writer;
         try {

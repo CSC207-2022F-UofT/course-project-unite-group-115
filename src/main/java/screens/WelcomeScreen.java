@@ -13,12 +13,10 @@ import database_classes.UserRepoInt;
 import user_register.application_business_rules.UserRegisterInteractor;
 import entities.*;
 
-// Frameworks/Drivers layer
-
 public class WelcomeScreen extends JFrame implements ActionListener {
 
     /**
-     * A window with a title and a JButton.
+     * A window with buttons to navigate to sign up or to login.
      */
     public WelcomeScreen() {
 
