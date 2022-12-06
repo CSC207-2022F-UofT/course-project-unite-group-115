@@ -25,7 +25,7 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
     public GroupLoggedInScreen(String groupId, String loginUserName) {
         this.GroupID = groupId;
         this.loginUserName = loginUserName;
-
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JLabel title = new JLabel(groupId);
 
@@ -65,6 +65,14 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
+
+        // Plug in message entity
+        MessageRepoInt message;
+        try {
+            message = new MessageDataAccess("./src/main/java/databases/messages.csv");
+        } catch (IOException e) {
+            throw new RuntimeException("Could not create file.");
+        }
         if (evt.getActionCommand().equals("send")) {
             JComponent component = (JComponent) evt.getSource();
 
@@ -75,13 +83,6 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
             JPanel screens = new JPanel(cardLayout);
             application.add(screens);
 
-            //plug in message entity
-            MessageRepoInt message;
-            try {
-                message = new MessageDataAccess("./src/main/java/databases/messages.csv");
-            } catch (IOException e) {
-                throw new RuntimeException("Could not create file.");
-            }
             MessagePresenter presenter = new MessagePresenter();
             MessageFactory messageFactory = new MessageFactory();
             MessageInputBoundary interactor = new MessageInteractor(
@@ -94,22 +95,19 @@ public class GroupLoggedInScreen extends JFrame implements ActionListener {
             applicationMessage.setVisible(true);
 
         } else if (evt.getActionCommand().equals("view")) {
-            MessageRepoInt message;
-            try {
-                message = new MessageDataAccess("./src/main/java/databases/messages.csv");
-            } catch (IOException e) {
-                throw new RuntimeException("Could not create file");
-            }
             ViewMessagePresenter presenter = new ViewMessagePresenter();
             ViewMessageInputBoundary interactor = new ViewMessageInteractor(message, presenter);
-            ViewMessageController ViewMessageController = new ViewMessageController(interactor);//may not needed
+            ViewMessageController viewMessageController = new ViewMessageController(interactor);//may not needed
 
             try {
-                ViewMessageController.create(GroupID, loginUserName);
+                viewMessageController.create(GroupID, loginUserName);
                 String messages = " " + String.format(ViewMessageController.create(GroupID,loginUserName).getPresented());
                 messages = messages.replace("[","").replace("]","");
                 messages = messages.replace(","," "); //this is an interesting feature called comma killer
-                JOptionPane.showMessageDialog(this, messages);
+
+                JFrame messageView = new MessagesView(message, messages, GroupID, loginUserName);
+                messageView.pack();
+                messageView.setVisible(true);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
