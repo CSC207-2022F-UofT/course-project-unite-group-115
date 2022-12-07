@@ -2,6 +2,7 @@ package database_classes;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 
 public class MessageRepoRequestModel {
@@ -11,7 +12,7 @@ public class MessageRepoRequestModel {
     private final String groupID;
 
     private final String messageID;
-    private List<String> reaction;
+    private final List<String> reaction;
     private final LocalDateTime creationTime;
 
 
@@ -20,7 +21,7 @@ public class MessageRepoRequestModel {
         this.sender = sender;
         this.groupID = groupID;
         this.messageID = messageID;
-        this.reaction = reaction;;
+        this.reaction = reaction;
         this.creationTime = creationTime;
     }
 
@@ -46,6 +47,31 @@ public class MessageRepoRequestModel {
         return creationTime;
     }
 
-    public List<String> getReaction(){return reaction;}
+    public String getReaction(){
+        String reactionString = this.reaction.toString();
+        reactionString = reactionString.replace(",", "");
+        return reactionString;
+    }
+    public void addReaction(String reaction){
+        this.reaction.add(reaction);
+    }
+
+    public void removeReaction(String reaction){
+        for (int i = 0; i < this.reaction.size();i++) {
+            if (Objects.equals(this.reaction.get(i), reaction)){
+                this.reaction.remove(i);
+                break;
+            }
+        }
+    }
+
+    public boolean checkReactionExists(String reaction){
+        for (String s : this.reaction) {
+            if (Objects.equals(s, reaction)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
