@@ -76,8 +76,9 @@ public class RegisterScreen extends JPanel implements ActionListener {
                 userRegisterController.create(username.getText(),
                         String.valueOf(password.getPassword()),
                         String.valueOf(repeatPassword.getPassword()));
-                JOptionPane.showMessageDialog(this, String.format("%s created. Make sure to first set up " +
-                        "your profile before continuing with the software.", username.getText()));
+                JOptionPane.showMessageDialog(this, String.format("%s created. Once you log in, make sure " +
+                        "to set up " +
+                        "your profile first before continuing with the software.", username.getText()));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }

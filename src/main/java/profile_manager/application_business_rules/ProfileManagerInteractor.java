@@ -7,6 +7,7 @@ import entities.ProfileFactory;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import profile_manager.interface_adapters.ProfileManagerPresenter;
@@ -29,18 +30,28 @@ public class ProfileManagerInteractor implements ProfileManagerInputBoundary {
     @Override
     public ProfileManagerResponseModel create(ProfileManagerRequestModel requestModel) {
 
+        String username = requestModel.getUserName();
+        List<String> groups = new ArrayList<>();
+        List<String> friends = new ArrayList<>();
+        String blockedUsers = "";
 
+        if (profileRepoInt.existsByName(username)){
+            groups = profileRepoInt.getGroups(username);
+            friends = profileRepoInt.getFriends(username);
+            // ToDo: not sure how to set this
+            blockedUsers = "";
+        }
         Profile profile = ProfileFactory.create(
-                requestModel.getUserName(),
+                username,
                 requestModel.getProfileName(),
                 requestModel.getDob(),
                 requestModel.getDescription(),
                 requestModel.getSocialLinks(),
                 requestModel.getSensitiveWords(),
                 requestModel.getInterests(),
-                requestModel.getGroups(),
-                requestModel.getFriends(),
-                requestModel.getBlockedUsers()
+                groups,
+                friends,
+                blockedUsers
         );
 
         LocalDateTime now = LocalDateTime.now();

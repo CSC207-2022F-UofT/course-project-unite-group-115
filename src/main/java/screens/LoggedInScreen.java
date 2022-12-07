@@ -4,7 +4,12 @@ import database_classes.GroupDataAccess;
 import database_classes.GroupRepoInt;
 import database_classes.ProfileManagerDataAccess;
 import database_classes.ProfileRepoInt;
+import entities.ProfileFactory;
 import entities.RandomGroupFactory;
+import profile_manager.application_business_rules.ProfileManagerInputBoundary;
+import profile_manager.application_business_rules.ProfileManagerInteractor;
+import profile_manager.interface_adapters.ProfileManagerController;
+import profile_manager.interface_adapters.ProfileManagerPresenter;
 import random_grouper_create.application_business_rules.RanGroupCreateInputBoundary;
 import random_grouper_create.application_business_rules.RanGroupCreateInteractor;
 import random_grouper_create.application_business_rules.RanGroupCreateOutputBoundary;
@@ -33,18 +38,18 @@ public class LoggedInScreen extends JFrame implements ActionListener {
     /**
      * The username chosen by the user
      */
-    JTextField username = new JTextField(15);
+    String username;
     /**
      * A window with a title and a JButton.
      */
-    public LoggedInScreen() {
+    public LoggedInScreen(String username) {
+        this.username = username;
 
         JLabel title = new JLabel("Logged-in Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton logOut = new JButton("Log out");
         JButton profile = new JButton("Profile");
-        JButton chats = new JButton("Chats");
         JButton friends = new JButton("Friends");
         JButton groups = new JButton("Groups");
         JButton report = new JButton("Report");
@@ -57,16 +62,12 @@ public class LoggedInScreen extends JFrame implements ActionListener {
         JPanel buttons = new JPanel();
         buttons.add(logOut);
         buttons.add(profile);
-        // To Do: can remove this button - this is part of the groups screen now
-        buttons.add(chats);
         buttons.add(friends);
         buttons.add(groups);
         buttons.add(report);
 //        buttons.add(changePassword);
 
         logOut.addActionListener(this);
-        profile.addActionListener(this);
-        chats.addActionListener(this);
         friends.addActionListener(this);
         groups.addActionListener(this);
         report.addActionListener(this);
@@ -96,9 +97,35 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             application3.pack();
             application3.setVisible(true);
         }
+        else if (evt.getActionCommand().equals("Profile")){
+            Component component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+
+            JFrame application = new JFrame("Edit Profile");
+            CardLayout cardLayout = new CardLayout();
+            JPanel screens = new JPanel(cardLayout);
+            application.add(screens);
+
+            // Create the parts to plug into the Use Case+Entities engine
+            ProfileRepoInt user;
+            try {
+                user = new ProfileManagerDataAccess("./src/main/java/databases/profiles.csv");
+            } catch (IOException e) {
+                throw new RuntimeException("Could not create file.");
+            }
+            ProfileManagerPresenter presenter = new ProfileManagerPresenter();
+            ProfileFactory userFactory = new ProfileFactory();
+            ProfileManagerInputBoundary interactor = new ProfileManagerInteractor(
+                    user, presenter, userFactory);
+            ProfileManagerController ProfileManagerController = new ProfileManagerController(
+                    interactor
+            );
+            JFrame applicationProfile = new ProfileScreen(ProfileManagerController, username);
+            applicationProfile.pack();
+            applicationProfile.setVisible(true);
+        }
         else if (evt.getActionCommand().equals("Groups")){
-            // ToDo: need logged in user's username
-            String loggedInUser = "ashley";
             GroupDataAccess groupData;
             try {
                 groupData = new GroupDataAccess("./src/main/java/databases/groups.csv");
@@ -112,7 +139,7 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             } catch (IOException e) {
                 throw new RuntimeException("Could not create file.");
             }
-            JFrame application4 = new GroupScreen(loggedInUser, groupData, profileData);
+            JFrame application4 = new GroupScreen(username, groupData, profileData);
             application4.pack();
             application4.setVisible(true);
         }

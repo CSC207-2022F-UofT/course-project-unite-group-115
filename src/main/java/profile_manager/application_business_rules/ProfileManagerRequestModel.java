@@ -12,9 +12,6 @@ public class ProfileManagerRequestModel {
     private List<String> socialLinks;
     private List<String> sensitiveWords;
     private List<String> interests;
-    private List<String> groups;
-    private List<String> friends;
-    private String blockedUsers;
 
     public ProfileManagerRequestModel(String userName,
                                       String profileName,
@@ -22,10 +19,7 @@ public class ProfileManagerRequestModel {
                                       String description,
                                       List<String> socialLinks,
                                       List<String> sensitiveWords,
-                                      List<String> interests,
-                                      List<String> groups,
-                                      List<String> friends,
-                                      String blockedUsers) {
+                                      List<String> interests) {
 
         this.userName = userName;
         this.profileName = profileName;
@@ -34,9 +28,6 @@ public class ProfileManagerRequestModel {
         this.socialLinks = socialLinks;
         this.sensitiveWords = sensitiveWords;
         this.interests = interests;
-        this.groups = groups;
-        this.friends = friends;
-        this.blockedUsers = blockedUsers;
     }
 
     public String getUserName() {
@@ -102,44 +93,5 @@ public class ProfileManagerRequestModel {
     public void removeInterests(String interest) {
         this.interests.remove(interest);
     }
-
-    public List<String> getGroups() {
-        return this.groups;
-    }
-    public void setGroups(ArrayList<String> groups) {
-        this.groups = groups;
-    }
-    public void addGroup(String group) {
-        this.groups.add(group);
-    }
-    public void removeGroup(String group) {
-        this.groups.remove(group);
-    }
-
-    public List<String> getFriends() {
-        return this.friends;
-    }
-    public void setFriends(ArrayList<String> friends) {
-        this.friends = friends;
-    }
-    public void addFriend(String friend) {
-        this.friends.add(friend);
-    }
-    public void removeFriend(String friend) {
-        this.friends.remove(friend);
-    }
-
-    public String getBlockedUsers() {
-        return this.blockedUsers;
-    }
-    public void setBlockedUsers(String blockedUser) {
-        this.blockedUsers = blockedUser;
-    }
-//    public void addBlockedUser(String blockedUser) {
-//        this.blockedUsers.add(blockedUser);
-//    }
-//    public void removeBlockedUser(String blockedUser) {
-//        this.blockedUsers.remove(blockedUser);
-//    }
 
 }

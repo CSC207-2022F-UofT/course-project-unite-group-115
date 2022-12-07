@@ -88,7 +88,7 @@ public class GroupScreen extends JFrame implements ActionListener {
             main.add(groupList);
         }
         catch (RuntimeException e) {
-            groupArea = new JTextField("You aren't a member of any groups yet! See the buttons below to be" +
+            groupArea.setText("You aren't a member of any groups yet! See the buttons below to be" +
                     " added to a random group based on your interests, or create your own group to chat with your " +
                     "existing friends.");
         }

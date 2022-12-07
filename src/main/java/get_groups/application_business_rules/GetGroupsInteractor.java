@@ -30,6 +30,9 @@ public class GetGroupsInteractor implements GetGroupsInputBoundary {
     public GetGroupsResponseModel getUsersGroups(GetGroupsRequestModel requestModel) {
             if (PROFILE_REPO_ACCESS.existsByName(requestModel.getUsername())) {
                 List<String> groupIDs = PROFILE_REPO_ACCESS.getGroups(requestModel.getUsername());
+                if (groupIDs.isEmpty()){
+                    throw new GetGroupsFailure("User is not apart of any groups");
+                }
                 Map<String, String> groups = new HashMap<>();
                 for (String id : groupIDs){
                     String groupName = (String) GROUP_REPO_ACCESS.getGroupInfo(id).get("group name");

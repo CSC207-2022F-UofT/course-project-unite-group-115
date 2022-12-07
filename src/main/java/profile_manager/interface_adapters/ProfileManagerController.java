@@ -24,13 +24,10 @@ public class ProfileManagerController {
                                               String description,
                                               List<String> socialLinks,
                                               List<String> sensitiveWords,
-                                              List<String> interests,
-                                              List<String> groups,
-                                              List<String> friends,
-                                              String blockedUsers) {
+                                              List<String> interests) {
 
         ProfileManagerRequestModel requestModel = new ProfileManagerRequestModel(
-                userName, profileName, dob, description, socialLinks, sensitiveWords, interests, groups, friends, blockedUsers);
+                userName, profileName, dob, description, socialLinks, sensitiveWords, interests);
 
         return userInput.create(requestModel);
     }

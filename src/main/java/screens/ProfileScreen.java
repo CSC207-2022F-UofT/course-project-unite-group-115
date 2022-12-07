@@ -20,9 +20,9 @@ public class ProfileScreen extends JFrame implements ActionListener {
     JTextField socialLinks = new JTextField(15);
     JTextField sensitiveWords = new JTextField(15);
     JTextField interests = new JTextField(15);
-    JTextField groups = new JTextField(15);
-    JTextField friends = new JTextField(15);
-    JTextField blockedUsers = new JTextField(15);
+
+    // ToDo: remove?
+//    JTextField blockedUsers = new JTextField(15);
     ProfileManagerController profileManagerController;
     String loginUserName;
 
@@ -40,27 +40,26 @@ public class ProfileScreen extends JFrame implements ActionListener {
 
         JLabel title = new JLabel("Profile Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+        JTextField instructions = new JTextField("Below please enter the information you would like stored in your " +
+                "profile. Please note that any existing information will be overwritten.");
+        instructions.setEnabled(false);
         LabelTextPanel userNameInfo = new LabelTextPanel(
                 new JLabel("UserName"), userName);
         LabelTextPanel profileNameInfo = new LabelTextPanel(
-                new JLabel("ProfileName"), profileName);
+                new JLabel("Profile Name"), profileName);
         LabelTextPanel dobInfo = new LabelTextPanel(
-                new JLabel("DOB"), dob);
+                new JLabel("Date of Birth (format: YYYY-MM-DD)"), dob);
         LabelTextPanel descriptionInfo = new LabelTextPanel(
                 new JLabel("Description"), description);
         LabelTextPanel socialLinksInfo = new LabelTextPanel(
-                new JLabel("SocialLinks"), socialLinks);
+                new JLabel("Social Links (separate links using a ;)"), socialLinks);
         LabelTextPanel sensitiveWordsInfo = new LabelTextPanel(
-                new JLabel("SensitiveWords"), sensitiveWords);
+                new JLabel("Sensitive Words (separate words using a ;)"), sensitiveWords);
         LabelTextPanel interestsInfo = new LabelTextPanel(
-                new JLabel("Interests"), interests);
-        LabelTextPanel groupsInfo = new LabelTextPanel(
-                new JLabel("Groups"), groups);
-        LabelTextPanel friendsInfo = new LabelTextPanel(
-                new JLabel("Friends"), friends);
-        LabelTextPanel blockedUsersInfo = new LabelTextPanel(
-                new JLabel("BlockedUsers"), blockedUsers);
+                new JLabel("Interests (separate interests using a ;)"), interests);
+        // ToDo: remove?
+       /* LabelTextPanel blockedUsersInfo = new LabelTextPanel(
+                new JLabel("Blocked Users"), blockedUsers);*/
 
 
         JButton update = new JButton("Update");
@@ -78,7 +77,7 @@ public class ProfileScreen extends JFrame implements ActionListener {
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
 
         main.add(title);
-
+        main.add(instructions);
         main.add(userNameInfo);
         main.add(profileNameInfo);
         main.add(dobInfo);
@@ -86,9 +85,6 @@ public class ProfileScreen extends JFrame implements ActionListener {
         main.add(socialLinksInfo);
         main.add(sensitiveWordsInfo);
         main.add(interestsInfo);
-        main.add(groupsInfo);
-        main.add(friendsInfo);
-        main.add(blockedUsersInfo);
 
         main.add(buttons);
 
@@ -113,10 +109,7 @@ public class ProfileScreen extends JFrame implements ActionListener {
                         description.getText(),
                         Arrays.asList(socialLinks.getText().split(";")),
                         Arrays.asList(sensitiveWords.getText().split(";")),
-                        Arrays.asList(interests.getText().split(";")),
-                        Arrays.asList(groups.getText().split(";")),
-                        Arrays.asList(friends.getText().split(";")),
-                        blockedUsers.getText());
+                        Arrays.asList(interests.getText().split(";")));
 //                        Arrays.asList(blockedUsers.getText().split(";")));
                 JOptionPane.showMessageDialog(this, String.format("Updated Profile of User: %s", loginUserName));
             } catch (Exception e) {
@@ -126,7 +119,7 @@ public class ProfileScreen extends JFrame implements ActionListener {
             JComponent component = (JComponent) evt.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
-            JFrame application2 = new ProfileManagerLoggedInScreen(loginUserName);
+            JFrame application2 = new LoggedInScreen(loginUserName);
             application2.pack();
             application2.setVisible(true);
         }
