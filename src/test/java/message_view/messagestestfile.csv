@@ -1,0 +1,3 @@
+content,sender,groupID,messageID,reaction,creation_time
+hello,paul,group1,1,[],2022-12-05T19:24:56.983917
+hello,paul,group2,2,[],2022-12-05T19:24:56.983917
