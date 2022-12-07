@@ -8,11 +8,11 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-import Reporter_Database.*;
+import entities.getListAndAddUser;
 import org.junit.Before;
 import org.junit.Test;
 public class blockUserTest {
-    getSenslistDataAccess a;
+    getListAndAddUser a;
     String blockList;
     String fakeList;
     String name = "tejasraghuvanshi";
@@ -20,8 +20,8 @@ public class blockUserTest {
     @Before
     public void setUp() {//Before the test start,the blocklist in the profile must be empty
         String name = "tejasraghuvanshi";
-        a = new getSenslistDataAccess(name);
-        blockList = "[Ellen;Helen]";
+        a = new getListAndAddUser(name);
+        blockList = "Ellen;Helen";
         fakeList = "[]";
     }
 
@@ -30,7 +30,7 @@ public class blockUserTest {
     public void TestblockUserwithNoBlockedUser() {//when the blocklist in the profile is empty
         assertEquals("waha*****waha", a.blockUser("wahabetawaha", "Ellen"));
         assertEquals("waha*****waha", a.blockUser("wahabetawaha", "Helen"));
-        String csv = "profiles.csv";
+        String csv = "./src/main/java/databases/profiles.csv";
         BufferedReader br = null;
         String line ;
         String username = "";
