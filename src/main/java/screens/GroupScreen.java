@@ -194,7 +194,6 @@ public class GroupScreen extends JFrame implements ActionListener {
             GetFriendsInteractor friendsInteractor = new GetFriendsInteractor(friendsOutputBoundary, profileData);
             GetFriendsController friendsController = new GetFriendsController(friendsInteractor);
 
-            //In the final version, the test profile must be the group creator's profile
             GeneralGroupCreationScreen generalGroupCreationScreen = new GeneralGroupCreationScreen(genGroupController,
                     friendsController, loggedInUser, profileData);
             screens.add(generalGroupCreationScreen, "Welcome!");
@@ -203,23 +202,4 @@ public class GroupScreen extends JFrame implements ActionListener {
             generalGroupApplication.setVisible(true);
         }
         }
-
-        /*for (String label : allGroupButtons.keySet()){
-            if (evt.getActionCommand().equals(label)) {
-                List<String> nameAndId = new ArrayList<>(this.allGroupButtons.get(label));
-                GroupLoggedInScreen groupLoggedInScreen = new GroupLoggedInScreen(nameAndId.get(1), loggedInUser,
-                        nameAndId.get(0));
-
-                JFrame groupApplication = new JFrame("Group: " + nameAndId.get(0));
-                groupApplication.setSize(200, 200);
-                groupApplication.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                CardLayout cardLayout = new CardLayout();
-                JPanel screens = new JPanel(cardLayout);
-                groupApplication.add(screens);
-
-                screens.add(groupLoggedInScreen);
-                cardLayout.show(screens, "group");
-                groupApplication.pack();
-                groupApplication.setVisible(true);
-            }*/
         }
