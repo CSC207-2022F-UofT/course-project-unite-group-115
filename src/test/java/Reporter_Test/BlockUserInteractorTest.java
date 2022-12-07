@@ -8,8 +8,8 @@ import Block_User_Application.interface_adapters.UserReporterPresenter;
 import add_blocked_Users.application_business_rules.*;
 import database_classes.*;
 import entities.BlockerFactory;
-import get_user_sensitiveWordList.application_business_rules.GetUserListRequestModel;
-import get_user_sensitiveWordList.application_business_rules.GetUserListResponseModel;
+import get_user_sensitiveWordList.application_business_rules.GetUserSensListRequestModel;
+import get_user_sensitiveWordList.application_business_rules.GetUserSensListResponseModel;
 import get_user_sensitiveWordList.application_business_rules.GetUserSensWordListInteractor;
 import get_user_sensitiveWordList.interface_adapters.GetUserSenListPresenter;
 import org.junit.Before;
@@ -59,21 +59,21 @@ public class BlockUserInteractorTest {
 
         GetUserSenListPresenter presenter = new GetUserSenListPresenter() {
             @Override
-            public GetUserListResponseModel prepareSuccessView(GetUserListResponseModel responseModel) {
+            public GetUserSensListResponseModel prepareSuccessView(GetUserSensListResponseModel responseModel) {
                 assertEquals(wordList, responseModel.getSensList());
                 return null;
 
             }
 
             @Override
-            public GetUserListResponseModel prepareFailView(String error) {
+            public GetUserSensListResponseModel prepareFailView(String error) {
                 fail("Use case failure is unexpected.");
                 return null;
             }
         };
         GetUserSensWordListInteractor interactor = new GetUserSensWordListInteractor(presenter, profileDatabase);
 
-        GetUserListRequestModel inputData = new GetUserListRequestModel("Aurora");
+        GetUserSensListRequestModel inputData = new GetUserSensListRequestModel("Aurora");
 
         interactor.getUserSensWordList(inputData);
 

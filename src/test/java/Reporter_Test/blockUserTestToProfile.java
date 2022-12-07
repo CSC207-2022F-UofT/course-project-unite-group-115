@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import entities.getListAndAddUser;
 import org.junit.Before;
 import org.junit.Test;
-public class blockUserTest {
+public class blockUserTestToProfile {
     getListAndAddUser a;
     String blockList;
     String fakeList;

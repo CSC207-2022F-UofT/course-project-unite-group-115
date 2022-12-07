@@ -10,7 +10,6 @@ import Block_User_Application.application_business_rules.UserReporterInteractor;
 import Block_User_Application.interface_adapters.UserReporterController;
 import Block_User_Application.interface_adapters.UserReporterPresenter;
 import entities.BlockerFactory;
-import screens.LoggedInScreen;
 import database_classes.UserreporterDataAccess;
 
 public class ReportFirstScreen extends JFrame implements ActionListener {
@@ -74,13 +73,13 @@ public class ReportFirstScreen extends JFrame implements ActionListener {
             cardLayout.show(screens, "register");
             application.pack();
             application.setVisible(true);
-        }else if (evt.getActionCommand().equals("Back")) {
+        }/*else if (evt.getActionCommand().equals("Back")) {
             JComponent component = (JComponent) evt.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
             JFrame application2 = new LoggedInScreen();
             application2.pack();
             application2.setVisible(true);
-        }
+        }*/
     }
 }

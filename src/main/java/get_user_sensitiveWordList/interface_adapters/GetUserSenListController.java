@@ -1,7 +1,7 @@
 package get_user_sensitiveWordList.interface_adapters;
 
-import get_user_sensitiveWordList.application_business_rules.GetUserListRequestModel;
-import get_user_sensitiveWordList.application_business_rules.GetUserListResponseModel;
+import get_user_sensitiveWordList.application_business_rules.GetUserSensListRequestModel;
+import get_user_sensitiveWordList.application_business_rules.GetUserSensListResponseModel;
 import get_user_sensitiveWordList.application_business_rules.GetUserSensitiveListInputBoundary;
 
 public class GetUserSenListController {
@@ -11,8 +11,8 @@ public class GetUserSenListController {
         this.USER_INPUT = userInput;
     }
 
-    public GetUserListResponseModel getUserSensWordList(String username){
-        GetUserListRequestModel requestModel = new GetUserListRequestModel(username);
+    public GetUserSensListResponseModel getUserSensWordList(String username){
+        GetUserSensListRequestModel requestModel = new GetUserSensListRequestModel(username);
         return USER_INPUT.getUserSensWordList(requestModel);
 
     }

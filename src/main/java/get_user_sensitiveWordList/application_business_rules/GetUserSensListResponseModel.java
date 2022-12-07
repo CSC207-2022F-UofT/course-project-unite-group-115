@@ -3,18 +3,18 @@ package get_user_sensitiveWordList.application_business_rules;
 
 import java.util.List;
 
-public class GetUserListResponseModel {
+public class GetUserSensListResponseModel {
     private List<String> SensList;
     private String failMessage;
 
 
 
-    public GetUserListResponseModel(List<String> list){
+    public GetUserSensListResponseModel(List<String> list){
         this.SensList = list;
 
 
     }
-    public GetUserListResponseModel(String errorMessage) {
+    public GetUserSensListResponseModel(String errorMessage) {
         this.failMessage = errorMessage;
     }
 

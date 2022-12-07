@@ -1,7 +1,5 @@
 package get_user_sensitiveWordList.application_business_rules;
 
-import add_blocked_Users.application_business_rules.AddBlockedUserRequestModel;
-
 public interface GetUserSensitiveListInputBoundary {
 
 
@@ -11,6 +9,6 @@ public interface GetUserSensitiveListInputBoundary {
      * @param requestModel A data structure containing user's name
      * @return Returns a data structure containing the user's WordList.
      */
-    GetUserListResponseModel getUserSensWordList(GetUserListRequestModel requestModel);
+    GetUserSensListResponseModel getUserSensWordList(GetUserSensListRequestModel requestModel);
 
 }

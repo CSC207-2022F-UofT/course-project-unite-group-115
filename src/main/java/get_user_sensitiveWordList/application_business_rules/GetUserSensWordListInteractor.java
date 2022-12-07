@@ -1,7 +1,7 @@
 package get_user_sensitiveWordList.application_business_rules;
 
 import database_classes.ProfileRepoInt;
-import get_user_sensitiveWordList.interface_adapters.GetSenListFailure;
+import get_user_sensitiveWordList.interface_adapters.GetUserSenListFailure;
 
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class GetUserSensWordListInteractor implements GetUserSensitiveListInputB
      * @return Returns a data structure containing the user's sensitiveWord List.
      */
     @Override
-    public GetUserListResponseModel getUserSensWordList(GetUserListRequestModel requestModel) {
+    public GetUserSensListResponseModel getUserSensWordList(GetUserSensListRequestModel requestModel) {
         if (PROFILE_REPO_ACCESS.existsByName(requestModel.getUsername())) {
             List<String> SensList = PROFILE_REPO_ACCESS.getSensitiveWords(requestModel.getUsername());
-            return new GetUserListResponseModel(SensList);
+            return new GetUserSensListResponseModel(SensList);
         } else {
-            throw new GetSenListFailure("User not found.");
+            throw new GetUserSenListFailure("User not found.");
         }
     }
 }
