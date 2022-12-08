@@ -20,7 +20,7 @@ public class MessageScreen extends JFrame implements ActionListener {
         this.groupName = groupName;
         this.loginUserName = loginUserName;
 
-        LabelTextPanel2 content = new LabelTextPanel2(new JLabel("content"), messagecontent);
+        LabelTextPanel content = new LabelTextPanel(new JLabel("content"), messagecontent);
 
         JButton send = new JButton("Send");
         JPanel buttons = new JPanel();

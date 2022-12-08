@@ -1,7 +1,7 @@
-package Block_User_Application.interface_adapters;
+package block_user_application.interface_adapters;
 
-import Block_User_Application.application_business_rules.UserReporterOutputBoundary;
-import Block_User_Application.application_business_rules.UserReporterResponseModel;
+import block_user_application.application_business_rules.UserReporterOutputBoundary;
+import block_user_application.application_business_rules.UserReporterResponseModel;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

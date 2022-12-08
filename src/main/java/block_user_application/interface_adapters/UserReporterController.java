@@ -1,8 +1,8 @@
-package Block_User_Application.interface_adapters;
+package block_user_application.interface_adapters;
 
-import Block_User_Application.application_business_rules.UserReporterRequestModel;
-import Block_User_Application.application_business_rules.UserReporterInputBoundary;
-import Block_User_Application.application_business_rules.UserReporterResponseModel;
+import block_user_application.application_business_rules.UserReporterRequestModel;
+import block_user_application.application_business_rules.UserReporterInputBoundary;
+import block_user_application.application_business_rules.UserReporterResponseModel;
 
 public class UserReporterController {
     final UserReporterInputBoundary userInput;

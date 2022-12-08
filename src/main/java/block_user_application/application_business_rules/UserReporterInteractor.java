@@ -1,5 +1,5 @@
-package Block_User_Application.application_business_rules;
-import Block_User_Application.interface_adapters.UserReporterPresenter;
+package block_user_application.application_business_rules;
+import block_user_application.interface_adapters.UserReporterPresenter;
 import database_classes.UserReporterInt;
 import database_classes.UserReporterRepoRequestModel;
 import entities.Blocker;

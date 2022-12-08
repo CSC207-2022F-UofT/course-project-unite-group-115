@@ -1,4 +1,4 @@
-package Block_User_Application.application_business_rules;
+package block_user_application.application_business_rules;
 
 public class UserReporterResponseModel {
     String report;

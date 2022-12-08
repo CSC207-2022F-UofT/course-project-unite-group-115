@@ -144,5 +144,11 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             application4.pack();
             application4.setVisible(true);
         }
+        else if (evt.getActionCommand().equals("Report")) {
+            JFrame application2 = new ReportFirstScreen();
+            application2.pack();
+            application2.setVisible(true);
         }
+        }
+
     }

@@ -5,10 +5,10 @@ import java.awt.event.*;
 import java.io.IOException;
 
 import database_classes.UserReporterInt;
-import Block_User_Application.application_business_rules.UserReporterInputBoundary;
-import Block_User_Application.application_business_rules.UserReporterInteractor;
-import Block_User_Application.interface_adapters.UserReporterController;
-import Block_User_Application.interface_adapters.UserReporterPresenter;
+import block_user_application.application_business_rules.UserReporterInputBoundary;
+import block_user_application.application_business_rules.UserReporterInteractor;
+import block_user_application.interface_adapters.UserReporterController;
+import block_user_application.interface_adapters.UserReporterPresenter;
 import entities.BlockerFactory;
 import database_classes.UserreporterDataAccess;
 

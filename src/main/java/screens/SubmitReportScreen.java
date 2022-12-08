@@ -1,5 +1,5 @@
 package screens;
-import Block_User_Application.interface_adapters.UserReporterController;
+import block_user_application.interface_adapters.UserReporterController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,13 +29,13 @@ public class SubmitReportScreen extends JPanel implements ActionListener{
 
 
 
-        LabelTextPanelforReporter messageIDInfo = new LabelTextPanelforReporter(
+        LabelTextPanel messageIDInfo = new LabelTextPanel(
                 new JLabel("Message ID"), messageID);
-        LabelTextPanelforReporter reportedUsernameInfo = new LabelTextPanelforReporter(
+        LabelTextPanel reportedUsernameInfo = new LabelTextPanel(
                 new JLabel("Reported Username"), reportedUsername);
-        LabelTextPanelforReporter usernameInfo = new LabelTextPanelforReporter(
+        LabelTextPanel usernameInfo = new LabelTextPanel(
                 new JLabel("Your Username"), yourUsername);
-        LabelTextPanelforReporter messageInfo = new LabelTextPanelforReporter(
+        LabelTextPanel messageInfo = new LabelTextPanel(
                 new JLabel("Reported Message"), message);
 
 
