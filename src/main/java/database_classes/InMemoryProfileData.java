@@ -111,4 +111,14 @@ public class InMemoryProfileData implements ProfileRepoInt{
     public List<String> getGroups(String userName) {
         return accounts.get(userName).getGroups();
     }
+
+    @Override
+    public List<String> getSensitiveWords(String userName) {
+
+        return accounts.get(userName).getSensitiveWords();
+    }
+    @Override
+    public String getBlockedUser(String userName) {
+        return accounts.get(userName).getBlockedUsers();
+    }
 }

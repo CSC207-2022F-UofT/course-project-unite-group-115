@@ -20,6 +20,8 @@ public interface ProfileRepoInt {
     void addBlockedUserToProfile(String userName, String blockedUser);
     //
 //    void removeBlockedUserFromProfile(String userName, String blockedUser);
+    String getBlockedUser(String userName);
+    List<String> getSensitiveWords(String userName);
 
     List<String> getInterests(String userName);
 
