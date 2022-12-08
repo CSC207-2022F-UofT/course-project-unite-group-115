@@ -31,31 +31,14 @@ public class MessagesView extends JFrame {
         this.groupID = groupID;
         this.username = username;
 
-        // Set up use case files
-//        MessageRepoInt message;
-//        try {
-//            message = new MessageDataAccess("./messages.csv");
-//        } catch (IOException e){
-//            throw new RuntimeException("Could not create file");
-//        }
         ReactionPresenter presenter = new ReactionPresenter();
         ReactionInputBoundary interactor = new ReactionInteractor(messageRepoInt, presenter);
         ReactionController controller = new ReactionController(interactor);
-
-//         Test reactions by adding a message manually
-//        List<String> emptyList = new ArrayList<>();
-//        LocalDateTime now = LocalDateTime.now();
-//        MessageDsRequestModel request = new MessageDsRequestModel("hey","Michael","475",
-//                "3", emptyList, now);
-//        message.save(request);
-
-
 
         MessageDisplayScreen messageScreenButtons = new MessageDisplayScreen(messageRepoInt, controller,
                 messages, groupID, username);
         this.add(messageScreenButtons, BorderLayout.CENTER);
         this.pack();
-//        cardLayout.show(screens, "messages");
         this.setVisible(true);
     }
 

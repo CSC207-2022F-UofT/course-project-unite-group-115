@@ -4,6 +4,12 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
+/**
+ * Reads and saves to the database file. Contains hashmap to keep track
+ * and alter information.
+ * @author  Yi Huang
+ * @author Hansel Jia
+ */
 public class MessageDataAccess implements MessageRepoInt {
 
     private final File csvFile;
@@ -12,7 +18,12 @@ public class MessageDataAccess implements MessageRepoInt {
 
     private final Map<String, MessageRepoRequestModel> messages = new HashMap<>();
 
-
+    /**
+     * Read and rewrite the file, saving all information to the
+     * messages hashmap.
+     * @param csvPath the database file location
+     * @throws IOException database cannot be found
+     */
     public MessageDataAccess(String csvPath) throws IOException {
         csvFile = new File(csvPath);
 
@@ -86,12 +97,22 @@ public class MessageDataAccess implements MessageRepoInt {
         }
     }
 
+    /**
+     * Delete message from the hashmap and rewrite changes
+     * to the database
+     * @param message_id the message to delete
+     */
     @Override
     public void deleteMessage(String message_id) {
         messages.remove(message_id);
         this.save();
     }
 
+    /**
+     * Returns all information associated with the messageID
+     * @param MessageID the message to get info from
+     * @return map of all the information
+     */
     @Override
     public Map<String, Object> getMessageInfo(String MessageID) {
         MessageRepoRequestModel requestModel = messages.get(MessageID);
@@ -104,13 +125,24 @@ public class MessageDataAccess implements MessageRepoInt {
         return result;
     }
 
+    /**
+     * Edit the content of a message and rewrite changes
+     * to the database (use case for edit message not implemented,
+     * a future improvement for our project)
+     * @param ID message to be edited
+     * @param content new content of the message
+     */
     @Override
     public void editMessage(String ID, String content) {
         messages.get(ID).setContent(content);
         this.save();
     }
 
-
+    /**
+     * Get all messages in a presentable format for the UI to alter and display
+     * @param GroupID the group whose messages is to be viewed
+     * @return all the messages for that group
+     */
     @Override
     public String getGroupMessageInfo(String GroupID) {
         List<String> allMessages = new ArrayList<>();
@@ -125,6 +157,11 @@ public class MessageDataAccess implements MessageRepoInt {
         return allMessages.toString();
     }
 
+    /**
+     * Checking if a group exists
+     * @param GroupID ID associated with group
+     * @return boolean whether exists or not
+     */
     @Override
     public boolean doesGroupExist(String GroupID) {
         for (String key : messages.keySet()) {
@@ -138,20 +175,41 @@ public class MessageDataAccess implements MessageRepoInt {
         return false;
     }
 
+    /**
+     * Checking if a message exists
+     * @param messageID ID of the message to be checked
+     * @return boolean whether message exists in database
+     */
     public boolean messageNotExist(String messageID){
         return !messages.containsKey(messageID);
     }
 
+    /**
+     * Add a reaction to a message
+     * @param reaction reaction to be added
+     * @param messageID message the reaction is added to
+     */
     public void addReaction(String reaction, String messageID){
         messages.get(messageID).addReaction(reaction);
         this.save();
     }
 
+    /**
+     * Remove a reaction from a message
+     * @param reaction reaction to be removed
+     * @param messageID message the reaction is removed from
+     */
     public void removeReaction(String reaction, String messageID){
         messages.get(messageID).removeReaction(reaction);
         this.save();
     }
 
+    /**
+     * Check whether a reaction already exists on a message
+     * @param reaction reaction to check
+     * @param messageID message with the reactions being checked
+     * @return boolean whether reaction already exists
+     */
     public boolean reactionExists(String reaction, String messageID){
         return messages.get(messageID).checkReactionExists(reaction);
     }

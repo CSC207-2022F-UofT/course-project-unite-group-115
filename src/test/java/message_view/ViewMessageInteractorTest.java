@@ -1,31 +1,27 @@
 package message_view;
 
-
-import database_classes.MessageMemoryTest;
+import database_classes.MessageMemory;
 import database_classes.MessageRepoInt;
 import database_classes.MessageRepoRequestModel;
-
-
-import org.junit.jupiter.api.Test;
 import message_view.application_business_rule.ViewMessageInputBoundary;
 import message_view.application_business_rule.ViewMessageInteractor;
 import message_view.application_business_rule.ViewMessageRequestModel;
 import message_view.application_business_rule.ViewMessageResponseModel;
 import message_view.interface_adaptor.ViewMessagePresenter;
-
+import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
-class ViewMessageInteractorTest {
+public class ViewMessageInteractorTest {
 
 
     @Test
-    void create() {
-        MessageRepoInt message = new MessageMemoryTest();
+    public void create() {
+        MessageRepoInt message = new MessageMemory();
 
 
         ViewMessagePresenter presenter = new ViewMessagePresenter() {
@@ -64,9 +60,9 @@ class ViewMessageInteractorTest {
 
 
     @Test
-    void createFail()  {
+    public void createFail()  {
         MessageRepoInt message;
-        message = new MessageMemoryTest();
+        message = new MessageMemory();
 
         ViewMessagePresenter presenter = new ViewMessagePresenter() {
 

@@ -2,7 +2,11 @@ package database_classes;
 
 import java.util.Map;
 
-//DsGateway
+/**
+ * Interface implemented by data access classes
+ * @author  Yi Huang
+ * @author Hansel Jia
+ */
 public interface MessageRepoInt{
 
     void save(MessageRepoRequestModel requestModel);
