@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class LoggedInScreen extends JFrame implements ActionListener {
+public class FriendsLoggedInScreen extends JFrame implements ActionListener {
     /**
      * The username chosen by the user
      */
@@ -22,7 +22,7 @@ public class LoggedInScreen extends JFrame implements ActionListener {
     /**
      * A window with a title and a JButton.
      */
-    public LoggedInScreen() {
+    public FriendsLoggedInScreen() {
 
         JLabel title = new JLabel("Logged-in Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);

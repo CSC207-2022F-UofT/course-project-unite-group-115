@@ -210,7 +210,7 @@ public class flScreen extends JFrame implements ActionListener {
             JComponent component = (JComponent) e.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
-            JFrame application2 = new LoggedInScreen();
+            JFrame application2 = new FriendsLoggedInScreen();
             application2.pack();
             application2.setVisible(true);
         } else if (e.getActionCommand().equals("Send Message")) {
