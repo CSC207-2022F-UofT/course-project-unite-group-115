@@ -7,6 +7,7 @@ import use_cases.message_view.application_business_rule.ViewMessageInputBoundary
 import use_cases.message_view.application_business_rule.ViewMessageInteractor;
 import use_cases.message_view.application_business_rule.ViewMessageRequestModel;
 import use_cases.message_view.application_business_rule.ViewMessageResponseModel;
+import use_cases.message_view.interface_adaptor.ViewMessageFailure;
 import use_cases.message_view.interface_adaptor.ViewMessagePresenter;
 import org.junit.Test;
 
@@ -63,33 +64,15 @@ public class ViewMessageInteractorTest {
     public void createFail()  {
         MessageRepoInt message;
         message = new MessageMemory();
-
-        ViewMessagePresenter presenter = new ViewMessagePresenter() {
-
-            @Override
-            public ViewMessageResponseModel prepareSuccessView(ViewMessageResponseModel response) {
-                // 4) Check that the Output Data and associated changes
-
-                fail("View Message test case fail");
-                return null;
-
-            }
-            @Override
-            public ViewMessageResponseModel prepareFailView(String error) {
-                assertEquals("No one has sent a message in the group yet, sending your first message!", error);
-                return null;
-            }
-
-        };
-
-        ViewMessageInputBoundary interactor = new ViewMessageInteractor(
-                message, presenter);
-
-
+        ViewMessagePresenter presenter = new ViewMessagePresenter();
+        ViewMessageInputBoundary interactor = new ViewMessageInteractor(message, presenter);
         ViewMessageRequestModel inputData2 = new ViewMessageRequestModel("group1", "paul");
 
-        interactor.create(inputData2);
-
+        try {
+            interactor.create(inputData2);
+            fail("View Message test case fail");
+        } catch (ViewMessageFailure e) {
+        }
     }
 
 }
