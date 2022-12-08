@@ -22,6 +22,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 
         JLabel title = new JLabel("Welcome Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         JButton logIn = new JButton("Log in");
         JButton signUp = new JButton("Sign up");
