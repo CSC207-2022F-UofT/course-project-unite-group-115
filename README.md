@@ -1,13 +1,3 @@
-
-# Feature 1 : User Registration, Login and Logout
-
-https://user-images.githubusercontent.com/91515318/203126974-ac368e38-eb24-46af-977c-b093c60880fa.mp4
-
-# Feature 2 : Profile Manager
-
-https://user-images.githubusercontent.com/109460762/203146271-3faea3c1-a008-472f-a685-3b2246131b4f.mp4
-
-
 # Project Template
 
 This is a template repository for CSC 207 projects. 
