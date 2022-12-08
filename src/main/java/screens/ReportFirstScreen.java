@@ -13,8 +13,9 @@ import entities.BlockerFactory;
 import database_classes.UserreporterDataAccess;
 
 public class ReportFirstScreen extends JFrame implements ActionListener {
-    public ReportFirstScreen() {
-
+    String loggedInUser;
+    public ReportFirstScreen(String loggedInUser) {
+        this.loggedInUser = loggedInUser;
         JLabel title = new JLabel("Report System");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -68,18 +69,18 @@ public class ReportFirstScreen extends JFrame implements ActionListener {
             );
 
 
-            SubmitReportScreen reportScreen = new SubmitReportScreen(userReporterController);
+            SubmitReportScreen reportScreen = new SubmitReportScreen(userReporterController, loggedInUser);
             screens.add(reportScreen, "welcome");
             cardLayout.show(screens, "register");
             application.pack();
             application.setVisible(true);
-        }/*else if (evt.getActionCommand().equals("Back")) {
+        }else if (evt.getActionCommand().equals("Back")) {
             JComponent component = (JComponent) evt.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
-            JFrame application2 = new LoggedInScreen();
+            JFrame application2 = new LoggedInScreen(loggedInUser);
             application2.pack();
             application2.setVisible(true);
-        }*/
+        }
     }
 }

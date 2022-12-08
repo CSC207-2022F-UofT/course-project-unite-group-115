@@ -149,7 +149,7 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             application4.setVisible(true);
         }
         else if (evt.getActionCommand().equals("Report")) {
-            JFrame application2 = new ReportFirstScreen();
+            JFrame application2 = new ReportFirstScreen(username);
             application2.pack();
             application2.setVisible(true);
         }

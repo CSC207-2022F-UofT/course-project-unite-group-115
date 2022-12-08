@@ -16,13 +16,15 @@ public class SubmitReportScreen extends JPanel implements ActionListener{
     JTextField message = new JTextField(15);
     JTextField messageID = new JTextField(15);
     UserReporterController userReporterController;
+    String loggedInUser;
 
 
     /**
      * A window with a title and a JButton.
      */
-    public SubmitReportScreen(UserReporterController Controller) {
+    public SubmitReportScreen(UserReporterController Controller, String loggedInUser) {
         this.userReporterController = Controller;
+        this.loggedInUser = loggedInUser;
 
         JLabel title = new JLabel("User Report Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -79,7 +81,7 @@ public class SubmitReportScreen extends JPanel implements ActionListener{
             JComponent component = (JComponent) evt.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
-            JFrame application2 = new ReportFirstScreen();
+            JFrame application2 = new ReportFirstScreen(loggedInUser);
             application2.pack();
             application2.setVisible(true);
         }
