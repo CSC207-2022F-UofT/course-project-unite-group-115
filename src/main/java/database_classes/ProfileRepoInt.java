@@ -15,7 +15,7 @@ public interface ProfileRepoInt {
     void removeInterestFromProfile(String userName, String interest);
     void addGroupToProfile(String userName, String groupId);
     void removeGroupFromProfile(String userName, String groupId);
-    void addFriendToProfile(String userName, String friend);
+    void addFriendsToProfile(String userName, String friend);
     void removeFriendFromProfile(String userName, String friend);
     void addBlockedUserToProfile(String userName, String blockedUser);
     //
@@ -26,5 +26,9 @@ public interface ProfileRepoInt {
     List<String> getInterests(String userName);
 
     List<String> getGroups(String userName);
+    List<String> getFriends(String owner);
 
+    void deleteFriendsToProfile(String owner, String friend);
+
+    List<String> ViewFriendsToProfile(String username);
 }
