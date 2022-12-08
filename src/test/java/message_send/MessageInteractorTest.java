@@ -1,25 +1,24 @@
 package message_send;
 
-import database_classes.MessageMemoryTest;
+import database_classes.MessageMemory;
 import database_classes.MessageRepoInt;
 import entities.MessageFactory;
-import org.junit.jupiter.api.Test;
 import message_send.application_business_rule.MessageInputBoundary;
 import message_send.application_business_rule.MessageInteractor;
 import message_send.application_business_rule.MessageRequestModel;
 import message_send.application_business_rule.MessageResponseModel;
 import message_send.interface_adaptor.MessagePresenter;
-
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
-class MessageInteractorTest {
+public class MessageInteractorTest {
 
     @Test
     public void create() {
 
-        MessageRepoInt message;
-        message = new MessageMemoryTest();
+        MessageRepoInt message = new MessageMemory();
 
 
         MessagePresenter presenter = new MessagePresenter() {
@@ -57,7 +56,7 @@ class MessageInteractorTest {
     @Test
     public void createfail() {
 
-        MessageRepoInt message = new MessageMemoryTest();
+        MessageRepoInt message = new MessageMemory();
 
         MessagePresenter presenter = new MessagePresenter() {
 
