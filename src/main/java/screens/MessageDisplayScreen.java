@@ -2,11 +2,11 @@ package screens;
 
 import database_classes.MessageDataAccess;
 import database_classes.MessageRepoInt;
-import reaction_use_case.interface_adapters.ReactionController;
-import message_view.application_business_rule.ViewMessageInputBoundary;
-import message_view.application_business_rule.ViewMessageInteractor;
-import message_view.interface_adaptor.ViewMessageController;
-import message_view.interface_adaptor.ViewMessagePresenter;
+import use_cases.reaction_use_case.interface_adapters.ReactionController;
+import use_cases.message_view.application_business_rule.ViewMessageInputBoundary;
+import use_cases.message_view.application_business_rule.ViewMessageInteractor;
+import use_cases.message_view.interface_adaptor.ViewMessageController;
+import use_cases.message_view.interface_adaptor.ViewMessagePresenter;
 
 import javax.swing.*;
 import java.awt.*;

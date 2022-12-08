@@ -1,10 +1,9 @@
 package screens;
 
 import database_classes.ProfileRepoInt;
-import general_group.interface_adapters.GeneralGroupCreateController;
-import general_group.use_case.GeneralGroupCreateDsResponseModel;
-import entities.Profile;
-import get_friends.get_friends.interface_adapters.GetFriendsController;
+import use_cases.general_group.interface_adapters.GeneralGroupCreateController;
+import use_cases.general_group.use_case.GeneralGroupCreateDsResponseModel;
+import use_cases.get_friends.interface_adapters.GetFriendsController;
 
 import javax.swing.*;
 import java.awt.*;

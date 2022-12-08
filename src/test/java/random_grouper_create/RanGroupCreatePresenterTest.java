@@ -2,8 +2,8 @@ package random_grouper_create;
 
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
-import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
+import use_cases.random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
+import use_cases.random_grouper_create.interface_adapters.RanGroupCreatePresenter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

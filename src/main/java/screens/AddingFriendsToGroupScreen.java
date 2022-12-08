@@ -1,9 +1,8 @@
 package screens;
 
 import database_classes.ProfileRepoInt;
-import entities.Profile;
-import get_friends.get_friends.interface_adapters.GetFriendsController;
-import get_friends.get_friends.use_case.GetFriendsDsResponseModel;
+import use_cases.get_friends.interface_adapters.GetFriendsController;
+import use_cases.get_friends.use_case.GetFriendsDsResponseModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

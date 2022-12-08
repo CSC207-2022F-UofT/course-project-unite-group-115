@@ -1,11 +1,9 @@
 package get_groups;
 
-import get_groups.application_business_rules.GetGroupsResponseModel;
-import get_groups.interface_adapters.GetGroupsPresenter;
+import use_cases.get_groups.application_business_rules.GetGroupsResponseModel;
+import use_cases.get_groups.interface_adapters.GetGroupsPresenter;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_request_group.application_business_rules.ReqRanGroupResponseModel;
-import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

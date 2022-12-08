@@ -1,6 +1,6 @@
 package screens;
 
-import user_register.interface_adapters.UserRegisterController;
+import use_cases.user_register.interface_adapters.UserRegisterController;
 
 import javax.swing.*;
 import java.awt.*;

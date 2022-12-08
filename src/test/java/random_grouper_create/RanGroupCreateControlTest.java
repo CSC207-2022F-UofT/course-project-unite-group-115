@@ -4,11 +4,11 @@ import database_classes.*;
 import entities.RandomGroupFactory;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_create.application_business_rules.RanGroupCreateInputBoundary;
-import random_grouper_create.application_business_rules.RanGroupCreateInteractor;
-import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
-import random_grouper_create.interface_adapters.RanGroupCreateControl;
-import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
+import use_cases.random_grouper_create.application_business_rules.RanGroupCreateInputBoundary;
+import use_cases.random_grouper_create.application_business_rules.RanGroupCreateInteractor;
+import use_cases.random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
+import use_cases.random_grouper_create.interface_adapters.RanGroupCreateControl;
+import use_cases.random_grouper_create.interface_adapters.RanGroupCreatePresenter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

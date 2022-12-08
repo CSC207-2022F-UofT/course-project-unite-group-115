@@ -1,6 +1,6 @@
 package database_classes;
 
-import friend_manager.application_business_rules.flManDataAccessInt;
+import use_cases.friend_manager.application_business_rules.flManDataAccessInt;
 
 public interface FriendManagerRepoInt extends flManDataAccessInt {
     void addFriend(FriendManagerRepoRequestModel requestModel);

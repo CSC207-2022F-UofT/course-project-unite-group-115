@@ -1,10 +1,10 @@
 package screens;
 
 import database_classes.MessageRepoInt;
-import reaction_use_case.interface_adapters.ReactionController;
-import reaction_use_case.interface_adapters.ReactionPresenter;
-import reaction_use_case.application_business_rules.ReactionInputBoundary;
-import reaction_use_case.application_business_rules.ReactionInteractor;
+import use_cases.reaction_use_case.interface_adapters.ReactionController;
+import use_cases.reaction_use_case.interface_adapters.ReactionPresenter;
+import use_cases.reaction_use_case.application_business_rules.ReactionInputBoundary;
+import use_cases.reaction_use_case.application_business_rules.ReactionInteractor;
 import javax.swing.*;
 import java.awt.*;
 

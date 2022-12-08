@@ -4,7 +4,7 @@ import database_classes.MessageMemory;
 import database_classes.MessageRepoInt;
 import database_classes.MessageRepoRequestModel;
 import org.junit.Test;
-import reaction_use_case.application_business_rules.*;
+import use_cases.reaction_use_case.application_business_rules.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

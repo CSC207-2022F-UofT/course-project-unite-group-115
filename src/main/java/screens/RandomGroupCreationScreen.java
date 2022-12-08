@@ -1,8 +1,8 @@
 package screens;
 
-import random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
-import get_user_interests.interface_adapters.GetUserInterestsController;
-import random_grouper_create.interface_adapters.RanGroupCreateControl;
+import use_cases.random_grouper_create.application_business_rules.RanGroupCreateResponseModel;
+import use_cases.get_user_interests.interface_adapters.GetUserInterestsController;
+import use_cases.random_grouper_create.interface_adapters.RanGroupCreateControl;
 
 import javax.swing.*;
 import java.awt.*;

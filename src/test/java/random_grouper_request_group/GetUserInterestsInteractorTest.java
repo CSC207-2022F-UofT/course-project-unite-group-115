@@ -5,11 +5,11 @@ import database_classes.ProfileRepoInt;
 import database_classes.ProfileRepoRequestModel;
 import org.junit.Before;
 import org.junit.Test;
-import get_user_interests.application_business_rules.GetUserInterestsInteractor;
-import get_user_interests.application_business_rules.GetUserInterestsRequestModel;
-import get_user_interests.application_business_rules.GetUserInterestsResponseModel;
-import get_user_interests.interface_adapters.GetUserInterestsFailure;
-import get_user_interests.interface_adapters.GetUserInterestsPresenter;
+import use_cases.get_user_interests.application_business_rules.GetUserInterestsInteractor;
+import use_cases.get_user_interests.application_business_rules.GetUserInterestsRequestModel;
+import use_cases.get_user_interests.application_business_rules.GetUserInterestsResponseModel;
+import use_cases.get_user_interests.interface_adapters.GetUserInterestsFailure;
+import use_cases.get_user_interests.interface_adapters.GetUserInterestsPresenter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

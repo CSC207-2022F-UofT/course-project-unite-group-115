@@ -1,9 +1,8 @@
 package screens;
 
-import message_send.interface_adaptor.MessageController;
+import use_cases.message_send.interface_adaptor.MessageController;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 
 import java.awt.event.ActionEvent;

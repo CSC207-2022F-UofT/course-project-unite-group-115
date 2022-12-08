@@ -1,9 +1,9 @@
 package general_group_create;
 
-import general_group.interface_adapters.GeneralGroupCreatePresenter;
-import general_group.use_case.*;
+import use_cases.general_group.interface_adapters.GeneralGroupCreatePresenter;
 import org.junit.Before;
 import org.junit.Test;
+import use_cases.general_group.use_case.GeneralGroupCreateDsResponseModel;
 
 
 import java.time.LocalDateTime;

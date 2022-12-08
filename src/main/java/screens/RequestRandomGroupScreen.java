@@ -1,7 +1,7 @@
 package screens;
 
-import random_grouper_request_group.interface_adapters.ReqRanGroupController;
-import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
+import use_cases.random_grouper_request_group.interface_adapters.ReqRanGroupController;
+import use_cases.random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
 import javax.swing.*;
 import java.awt.*;

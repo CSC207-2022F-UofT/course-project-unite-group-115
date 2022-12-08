@@ -3,9 +3,9 @@ package random_grouper_request_group;
 import database_classes.*;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_request_group.application_business_rules.*;
-import random_grouper_request_group.interface_adapters.GroupAdditionFailure;
-import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
+import use_cases.random_grouper_request_group.application_business_rules.*;
+import use_cases.random_grouper_request_group.interface_adapters.GroupAdditionFailure;
+import use_cases.random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

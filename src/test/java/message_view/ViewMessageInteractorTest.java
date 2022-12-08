@@ -3,11 +3,11 @@ package message_view;
 import database_classes.MessageMemory;
 import database_classes.MessageRepoInt;
 import database_classes.MessageRepoRequestModel;
-import message_view.application_business_rule.ViewMessageInputBoundary;
-import message_view.application_business_rule.ViewMessageInteractor;
-import message_view.application_business_rule.ViewMessageRequestModel;
-import message_view.application_business_rule.ViewMessageResponseModel;
-import message_view.interface_adaptor.ViewMessagePresenter;
+import use_cases.message_view.application_business_rule.ViewMessageInputBoundary;
+import use_cases.message_view.application_business_rule.ViewMessageInteractor;
+import use_cases.message_view.application_business_rule.ViewMessageRequestModel;
+import use_cases.message_view.application_business_rule.ViewMessageResponseModel;
+import use_cases.message_view.interface_adaptor.ViewMessagePresenter;
 import org.junit.Test;
 
 import java.time.LocalDateTime;

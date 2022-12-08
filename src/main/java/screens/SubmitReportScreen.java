@@ -1,5 +1,5 @@
 package screens;
-import block_user_application.interface_adapters.UserReporterController;
+import use_cases.block_user_application.interface_adapters.UserReporterController;
 
 import javax.swing.*;
 import java.awt.*;

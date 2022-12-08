@@ -1,17 +1,17 @@
 package block_user;
 
-import add_blocked_users.application_business_rules.*;
-import block_user_application.application_business_rules.UserReporterInputBoundary;
-import block_user_application.application_business_rules.UserReporterInteractor;
-import block_user_application.application_business_rules.UserReporterRequestModel;
-import block_user_application.application_business_rules.UserReporterResponseModel;
-import block_user_application.interface_adapters.UserReporterPresenter;
+import use_cases.add_blocked_users.application_business_rules.*;
+import use_cases.block_user_application.application_business_rules.UserReporterInputBoundary;
+import use_cases.block_user_application.application_business_rules.UserReporterInteractor;
+import use_cases.block_user_application.application_business_rules.UserReporterRequestModel;
+import use_cases.block_user_application.application_business_rules.UserReporterResponseModel;
+import use_cases.block_user_application.interface_adapters.UserReporterPresenter;
 import database_classes.*;
 import entities.BlockerFactory;
-import get_user_sensitiveWordList.application_business_rules.GetUserSensListRequestModel;
-import get_user_sensitiveWordList.application_business_rules.GetUserSensListResponseModel;
-import get_user_sensitiveWordList.application_business_rules.GetUserSensWordListInteractor;
-import get_user_sensitiveWordList.interface_adapters.GetUserSenListPresenter;
+import use_cases.get_user_sensitiveWordList.application_business_rules.GetUserSensListRequestModel;
+import use_cases.get_user_sensitiveWordList.application_business_rules.GetUserSensListResponseModel;
+import use_cases.get_user_sensitiveWordList.application_business_rules.GetUserSensWordListInteractor;
+import use_cases.get_user_sensitiveWordList.interface_adapters.GetUserSenListPresenter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -111,7 +111,7 @@ public class BlockUserInteractorTest {
         UserReporterInputBoundary interactor = new UserReporterInteractor(
                 user, presenter, Factory);
 
-        // 2) Input data — we can make this up for the test. Normally it would
+        // 2) Input data we can make this up for the test. Normally it would
         // be created by the Controller.
         UserReporterRequestModel inputData = new UserReporterRequestModel(
                 messageId, userId, message, reportUserId);

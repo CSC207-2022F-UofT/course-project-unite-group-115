@@ -1,18 +1,17 @@
 package screens;
 
-import add_friend.application_business_rules.AddFriendResponseModel;
+import use_cases.add_friend.application_business_rules.AddFriendResponseModel;
 import database_classes.ProfileManagerDataAccess;
 import database_classes.ProfileRepoInt;
-import add_friend.application_business_rules.AddFriendInteractor;
-import add_friend.application_business_rules.AddFriendOutputBoundary;
-import add_friend.interface_adapter.AddFriendController;
-import add_friend.interface_adapter.AddFriendPresenter;
-import delete_friend.application_business_rules.DeleteFriendInteractor;
-import delete_friend.application_business_rules.DeleteFriendOutputBoundary;
-import delete_friend.application_business_rules.DeleteFriendResponseModel;
-import delete_friend.interface_adapter.DeleteFriendController;
-import delete_friend.interface_adapter.DeleteFriendPresenter;
-import friend_manager.interface_adapters.flManController;
+import use_cases.add_friend.application_business_rules.AddFriendInteractor;
+import use_cases.add_friend.application_business_rules.AddFriendOutputBoundary;
+import use_cases.add_friend.interface_adapter.AddFriendController;
+import use_cases.add_friend.interface_adapter.AddFriendPresenter;
+import use_cases.delete_friend.application_business_rules.DeleteFriendInteractor;
+import use_cases.delete_friend.application_business_rules.DeleteFriendOutputBoundary;
+import use_cases.delete_friend.application_business_rules.DeleteFriendResponseModel;
+import use_cases.delete_friend.interface_adapter.DeleteFriendController;
+import use_cases.delete_friend.interface_adapter.DeleteFriendPresenter;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

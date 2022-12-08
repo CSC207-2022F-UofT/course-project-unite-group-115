@@ -1,16 +1,16 @@
 package get_groups;
 
 import database_classes.*;
-import get_groups.application_business_rules.GetGroupsInteractor;
-import get_groups.application_business_rules.GetGroupsRequestModel;
-import get_groups.application_business_rules.GetGroupsResponseModel;
-import get_groups.interface_adapters.GetGroupsPresenter;
+import use_cases.get_groups.application_business_rules.GetGroupsInteractor;
+import use_cases.get_groups.application_business_rules.GetGroupsRequestModel;
+import use_cases.get_groups.application_business_rules.GetGroupsResponseModel;
+import use_cases.get_groups.interface_adapters.GetGroupsPresenter;
 import org.junit.Before;
 import org.junit.Test;
-import get_user_interests.application_business_rules.GetUserInterestsInteractor;
-import get_user_interests.application_business_rules.GetUserInterestsRequestModel;
-import get_user_interests.interface_adapters.GetUserInterestsFailure;
-import get_user_interests.interface_adapters.GetUserInterestsPresenter;
+import use_cases.get_user_interests.application_business_rules.GetUserInterestsInteractor;
+import use_cases.get_user_interests.application_business_rules.GetUserInterestsRequestModel;
+import use_cases.get_user_interests.interface_adapters.GetUserInterestsFailure;
+import use_cases.get_user_interests.interface_adapters.GetUserInterestsPresenter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

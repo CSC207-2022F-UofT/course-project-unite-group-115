@@ -3,11 +3,11 @@ package random_grouper_request_group;
 import database_classes.*;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
-import random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
-import random_grouper_request_group.application_business_rules.ReqRanGroupResponseModel;
-import random_grouper_request_group.interface_adapters.ReqRanGroupController;
-import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
+import use_cases.random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
+import use_cases.random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
+import use_cases.random_grouper_request_group.application_business_rules.ReqRanGroupResponseModel;
+import use_cases.random_grouper_request_group.interface_adapters.ReqRanGroupController;
+import use_cases.random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
