@@ -237,4 +237,15 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
     public boolean existsByName(String identifier) {
         return accounts.containsKey(identifier);
     }
+
+    public String getBlockedUser(String userName) {
+        return accounts.get(userName).getBlockedUsers();
+    }
+
+    @Override
+    public List<String> getSensitiveWords(String userName) {
+
+        return accounts.get(userName).getSensitiveWords();
+    }
+
 }
