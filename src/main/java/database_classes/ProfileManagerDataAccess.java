@@ -188,7 +188,7 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
         this.save();
     }
 
-    public void addFriendToProfile(String userName, String friend) {
+    public void addFriendsToProfile(String userName, String friend) {
         List<String> friends = new ArrayList<>(accounts.get(userName).getFriends());
         friends.add(friend);
         accounts.get(userName).setFriends(friends);
@@ -252,6 +252,12 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
     public List<String> getSensitiveWords(String userName) {
 
         return accounts.get(userName).getSensitiveWords();
+    }
+
+
+    @Override
+    public List<String> ViewFriendsToProfile(String owner) {
+        return accounts.get(owner).getFriends();
     }
 
 }
