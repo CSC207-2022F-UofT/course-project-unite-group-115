@@ -82,7 +82,7 @@ class ViewMessageInteractorTest {
         try {
             interactor.create(inputData2);
             fail("No one has sent a message in the group yet, sending your first message!");
-        } catch (ViewMessageFailure e) {
+        } catch (ViewMessageFailure ignored) {
         }
     }
 }

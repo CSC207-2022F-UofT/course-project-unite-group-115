@@ -11,7 +11,6 @@ import message_send.application_business_rule.MessageRequestModel;
 import message_send.application_business_rule.MessageResponseModel;
 import message_send.interface_adaptor.MessagePresenter;
 
-import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -74,7 +73,7 @@ class MessageInteractorTest {
         try {
             interactor.create(inputData);
             fail("Message content can not be empty.");
-        } catch (MessageCreationFailed e) {
+        } catch (MessageCreationFailed ignored) {
         }
 
 
