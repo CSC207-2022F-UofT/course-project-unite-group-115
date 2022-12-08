@@ -12,6 +12,7 @@ dependencies {
 }
 
 test {
+    //
     useJUnit()
     testLogging {
         events "passed", "skipped", "failed"
