@@ -1,4 +1,4 @@
-package flManager.interface_adapters;
+package friend_manager.interface_adapters;
 
 public class flCreationFailed extends RuntimeException  {
     public flCreationFailed(String error) {

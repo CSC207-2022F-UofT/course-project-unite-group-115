@@ -1,6 +1,6 @@
 package block_user;
 
-import add_blocked_Users.application_business_rules.*;
+import add_blocked_users.application_business_rules.*;
 import block_user_application.application_business_rules.UserReporterInputBoundary;
 import block_user_application.application_business_rules.UserReporterInteractor;
 import block_user_application.application_business_rules.UserReporterRequestModel;

@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InMemoryFriendsData implements flManRepoInt{
-    final private Map<String, flManRepoRequestModel> friends = new HashMap<>();
+public class InMemoryFriendsData implements FriendManagerRepoInt {
+    final private Map<String, FriendManagerRepoRequestModel> friends = new HashMap<>();
 
     /**
      * Add friends from requestModel into the flManDatabase file.
@@ -14,7 +14,7 @@ public class InMemoryFriendsData implements flManRepoInt{
      * @param requestModel information about friend list to save
      */
     @Override
-    public void addFriend(flManRepoRequestModel requestModel) {
+    public void addFriend(FriendManagerRepoRequestModel requestModel) {
         friends.put(requestModel.getOwner(), requestModel);
     }
 
@@ -67,7 +67,7 @@ public class InMemoryFriendsData implements flManRepoInt{
     @Override
     public List<String> getFriends(String owner) {
         List<String> fl = new ArrayList<>();
-        for (flManRepoRequestModel requestModel : friends.values()) {
+        for (FriendManagerRepoRequestModel requestModel : friends.values()) {
             fl.add(requestModel.getOwner());
         }
         return fl;

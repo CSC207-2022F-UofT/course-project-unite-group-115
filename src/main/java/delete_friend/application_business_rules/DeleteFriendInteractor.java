@@ -27,8 +27,8 @@ public class DeleteFriendInteractor implements DeleteFriendInputBoundary{
             else if (!currentFriends.contains(friend)){
                 throw new DeleteFriendFailure(friend + " is not your friend");
             }
-            profileData.deleteFriendsToProfile(username, friend);
-            profileData.deleteFriendsToProfile(friend, username);
+            profileData.removeFriendFromProfile(username, friend);
+            profileData.removeFriendFromProfile(friend, username);
         } else {
             throw new DeleteFriendFailure("Logged in user does not have a profile.");
         }

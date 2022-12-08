@@ -1,9 +1,9 @@
 package entities;
 
-import add_blocked_Users.Interface_adapters.AddBlockedUserController;
-import add_blocked_Users.Interface_adapters.AddBlockedUserPresenter;
-import add_blocked_Users.application_business_rules.AddBlockedUserOutputBoundary;
-import add_blocked_Users.application_business_rules.AddBlockedUserInteractor;
+import add_blocked_users.Interface_adapters.AddBlockedUserController;
+import add_blocked_users.Interface_adapters.AddBlockedUserPresenter;
+import add_blocked_users.application_business_rules.AddBlockedUserInteractor;
+import add_blocked_users.application_business_rules.AddBlockedUserOutputBoundary;
 import database_classes.ProfileManagerDataAccess;
 import database_classes.ProfileRepoInt;
 import get_user_sensitiveWordList.application_business_rules.GetUserSensWordListInteractor;
@@ -14,11 +14,11 @@ import get_user_sensitiveWordList.interface_adapters.GetUserSenListPresenter;
 import java.io.IOException;
 import java.util.List;
 
-public class getListAndAddUser {
+public class GetListAndAddUser {
     String name;
 
 
-    public getListAndAddUser(String name){
+    public GetListAndAddUser(String name){
         this.name = name;
 
     }

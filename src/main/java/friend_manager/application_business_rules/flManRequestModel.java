@@ -1,4 +1,4 @@
-package flManager.application_business_rules;
+package friend_manager.application_business_rules;
 
 import java.util.List;
 

@@ -30,8 +30,8 @@ public class AddFriendInteractor implements AddFriendInputBoundary {
             else if (currentFriends.contains(friend)){
                 throw new AddFriendFailure("You are already friends with " + friend);
             }
-            profileData.addFriendsToProfile(username, friend);
-            profileData.addFriendsToProfile(friend, username);
+            profileData.addFriendToProfile(username, friend);
+            profileData.addFriendToProfile(friend, username);
         } else {
             throw new AddFriendFailure("Logged in user does not have a profile.");
         }

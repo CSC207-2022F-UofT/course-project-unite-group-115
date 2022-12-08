@@ -1,7 +1,7 @@
-package add_blocked_Users.application_business_rules;
+package add_blocked_users.application_business_rules;
 
 import database_classes.ProfileRepoInt;
-import add_blocked_Users.Interface_adapters.AddBlockedUserFailure;
+import add_blocked_users.Interface_adapters.AddBlockedUserFailure;
 
 public class AddBlockedUserInteractor implements AddblockedUserInputBoundary{
     final AddBlockedUserOutputBoundary GET_List_OUTPUT_BOUNDARY;

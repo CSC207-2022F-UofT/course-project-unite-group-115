@@ -1,15 +1,15 @@
-package flManager.application_business_rules;
+package friend_manager.application_business_rules;
 
 import entities.FriendList;
-import flManager.interface_adapters.flManPresenter;
+import friend_manager.interface_adapters.flManPresenter;
 import database_classes.ProfileRepoInt;
-import database_classes.flManRepoRequestModel;
+import database_classes.FriendManagerRepoRequestModel;
 import entities.FriendListFactory;
 
 
 public class flManUseCaseInteractor  implements flManInputBoundary {
 
-    final flManager.interface_adapters.flManPresenter flManPresenter;
+    final friend_manager.interface_adapters.flManPresenter flManPresenter;
     final FriendListFactory flFactory;
     final ProfileRepoInt PROFILE_REPO_ACCESS;
 
@@ -25,7 +25,7 @@ public class flManUseCaseInteractor  implements flManInputBoundary {
         FriendList friendList = FriendListFactory.create(
                 requestModel.getOwner(), requestModel.getFriends());
 
-        flManRepoRequestModel repoReqMod = new flManRepoRequestModel(
+        FriendManagerRepoRequestModel repoReqMod = new FriendManagerRepoRequestModel(
                 friendList.getOwner(), friendList.getFriends());
 
 //        flManRepoInt.save(repoReqMod);

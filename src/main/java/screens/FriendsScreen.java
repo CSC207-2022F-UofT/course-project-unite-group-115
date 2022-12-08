@@ -1,5 +1,6 @@
 package screens;
 
+import add_friend.application_business_rules.AddFriendResponseModel;
 import database_classes.ProfileManagerDataAccess;
 import database_classes.ProfileRepoInt;
 import add_friend.application_business_rules.AddFriendInteractor;
@@ -8,9 +9,10 @@ import add_friend.interface_adapter.AddFriendController;
 import add_friend.interface_adapter.AddFriendPresenter;
 import delete_friend.application_business_rules.DeleteFriendInteractor;
 import delete_friend.application_business_rules.DeleteFriendOutputBoundary;
+import delete_friend.application_business_rules.DeleteFriendResponseModel;
 import delete_friend.interface_adapter.DeleteFriendController;
 import delete_friend.interface_adapter.DeleteFriendPresenter;
-import flManager.interface_adapters.flManController;
+import friend_manager.interface_adapters.flManController;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -23,9 +25,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
-public class flScreen extends JFrame implements ActionListener {
-    // ToDo: make loggedInUser an argument
-    private String loggedInUser = "aa";
+public class FriendsScreen extends JFrame implements ActionListener {
+    private String loggedInUser;
     private JPanel contentPane;
     private JTextField textField;
     private JTextField textField_1;
@@ -34,7 +35,8 @@ public class flScreen extends JFrame implements ActionListener {
     JTextField owner = new JTextField(15);
     JTextField userName = new JTextField(15);
 
-    public flScreen(flManController controller){
+    public FriendsScreen(String loggedInUser){
+        this.loggedInUser = loggedInUser;
         JLabel title = new JLabel("Friend List");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -96,7 +98,7 @@ public class flScreen extends JFrame implements ActionListener {
 
                     List<String> fl = null;
 
-                    BufferedReader reader = new BufferedReader(new FileReader("profiles.csv"));
+                    BufferedReader reader = new BufferedReader(new FileReader("./src/main/java/databases/profiles.csv"));
                     reader.readLine(); // skip header
                     String row;
 
@@ -113,9 +115,9 @@ public class flScreen extends JFrame implements ActionListener {
                                 ownerName = textField.getText();
                                 fl = Arrays.asList(String.valueOf(col[headers.get("friends")]).split(";"));
 
-                                if (Objects.equals(fl.toString(), "[]")) {
+                                if (Objects.equals(fl.toString(), "")) {
                                     JOptionPane.showMessageDialog(contentPane,
-                                            (Object) "There is no user to display so far!\n", "Play",
+                                            (Object) "There are no friends to display so far!\n", "Play",
                                             JOptionPane.INFORMATION_MESSAGE);
                                     System.out.println("no user displayed");
                                     // display notice
@@ -154,12 +156,13 @@ public class flScreen extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 try {
 //                    textArea.setText(null);
-                    ProfileRepoInt profileData = new ProfileManagerDataAccess("profiles.csv");
+                    ProfileRepoInt profileData = new ProfileManagerDataAccess("./src/main/java/databases/profiles.csv");
                     DeleteFriendOutputBoundary presenter = new DeleteFriendPresenter();
                     DeleteFriendInteractor interactor = new DeleteFriendInteractor(profileData, presenter);
                     DeleteFriendController controller = new DeleteFriendController(interactor);
                     String friendUserName = textField_1.getText();
-                    controller.deleteFriend(loggedInUser, friendUserName);
+                    DeleteFriendResponseModel responseModel = presenter.prepareSuccessView(controller.deleteFriend(loggedInUser, friendUserName));
+                    JOptionPane.showMessageDialog(contentPane, responseModel.getMessage());
                 } catch (Exception e2) {
                     JOptionPane.showMessageDialog(contentPane, e2.getMessage());
                 }
@@ -175,15 +178,13 @@ public class flScreen extends JFrame implements ActionListener {
         addbtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProfileRepoInt profileData = new ProfileManagerDataAccess("profiles.csv");
+                    ProfileRepoInt profileData = new ProfileManagerDataAccess("./src/main/java/databases/profiles.csv");
                     AddFriendOutputBoundary presenter = new AddFriendPresenter();
                     AddFriendInteractor interactor = new AddFriendInteractor(profileData, presenter);
                     AddFriendController controller = new AddFriendController(interactor);
                     String friendUserName = textField_1.getText();
-                    controller.addFriend(loggedInUser, friendUserName);
-                    textArea.append("\t The user: " + userName + " was added! " + "\n");
-                    // add new user and display
-                    textArea.setText(null);
+                    AddFriendResponseModel response = presenter.prepareSuccessView(controller.addFriend(loggedInUser, friendUserName));
+                    JOptionPane.showMessageDialog(contentPane, response.getMessage());
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(contentPane, ex.getMessage());
                 }
@@ -210,7 +211,7 @@ public class flScreen extends JFrame implements ActionListener {
             JComponent component = (JComponent) e.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
-            JFrame application2 = new FriendsLoggedInScreen();
+            JFrame application2 = new LoggedInScreen(loggedInUser);
             application2.pack();
             application2.setVisible(true);
         } else if (e.getActionCommand().equals("Send Message")) {

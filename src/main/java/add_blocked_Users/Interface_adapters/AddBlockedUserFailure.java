@@ -1,4 +1,4 @@
-package add_blocked_Users.Interface_adapters;
+package add_blocked_users.Interface_adapters;
 
 public class AddBlockedUserFailure extends RuntimeException {
     public AddBlockedUserFailure(String errorMessage) {

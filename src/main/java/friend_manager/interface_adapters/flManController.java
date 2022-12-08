@@ -1,8 +1,8 @@
-package flManager.interface_adapters;
+package friend_manager.interface_adapters;
 
-import flManager.application_business_rules.flManInputBoundary;
-import flManager.application_business_rules.flManRequestModel;
-import flManager.application_business_rules.flManResponseModel;
+import friend_manager.application_business_rules.flManInputBoundary;
+import friend_manager.application_business_rules.flManRequestModel;
+import friend_manager.application_business_rules.flManResponseModel;
 
 import java.util.List;
 

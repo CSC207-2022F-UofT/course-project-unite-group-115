@@ -1,4 +1,4 @@
-package add_blocked_Users.application_business_rules;
+package add_blocked_users.application_business_rules;
 
 public interface AddBlockedUserOutputBoundary {
     AddBlockedUserResponseModel prepareSuccessView(AddBlockedUserResponseModel response);

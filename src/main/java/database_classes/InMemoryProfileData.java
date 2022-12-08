@@ -75,7 +75,7 @@ public class InMemoryProfileData implements ProfileRepoInt {
 
     }
 
-    public void addFriendsToProfile(String userName, String friend) {
+    public void addFriendToProfile(String userName, String friend) {
         List<String> friends = new ArrayList<>(accounts.get(userName).getFriends());
         friends.add(friend);
         accounts.get(userName).setFriends(friends);
@@ -101,17 +101,6 @@ public class InMemoryProfileData implements ProfileRepoInt {
         accounts.get(userName).setBlockedUsers(blockList);
 
 
-    }
-
-    public List<String> getFriends(String owner) {
-        return accounts.get(owner).getFriends();
-    }
-
-    @Override
-    public void deleteFriendsToProfile(String owner, String friend) {
-        List<String> friends = new ArrayList<>(accounts.get(owner).getFriends());
-        friends.remove(friend);
-        accounts.get(owner).setFriends(friends);
     }
 
     @Override

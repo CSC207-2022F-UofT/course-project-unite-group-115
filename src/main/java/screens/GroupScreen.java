@@ -149,7 +149,7 @@ public class GroupScreen extends JFrame implements ActionListener {
                     new GetUserInterestsController(getUserInterestsInteractor);
 
             // Create Random Group Creation Screen
-            RandomGroupCreationUI creationScreen = new RandomGroupCreationUI(groupCreateController,
+            RandomGroupCreationScreen creationScreen = new RandomGroupCreationScreen(groupCreateController,
                     getUserInterestsController, loggedInUser);
             groupCreationScreens.add(creationScreen, "welcome");
             groupCreationCardLayout.show(groupCreationScreens, "create");
@@ -168,7 +168,7 @@ public class GroupScreen extends JFrame implements ActionListener {
             ReqRanGroupController reqRanGroupController = new ReqRanGroupController(reqRanGroupInteractor);
 
             // Create and Display Request Random Group Screen
-            RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController, groupCreationApplication,
+            RequestRandomGroupScreen reqGroupScreen = new RequestRandomGroupScreen(reqRanGroupController, groupCreationApplication,
                     loggedInUser);
             requestGroupScreens.add(reqGroupScreen, "welcome");
             requestGroupCardLayout.show(requestGroupScreens, "request");

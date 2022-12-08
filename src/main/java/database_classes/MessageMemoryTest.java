@@ -63,7 +63,18 @@ public class MessageMemoryTest implements MessageRepoInt{
      * @param identifier the message's ID
      * @return whether the reaction exists
      */
+    @Override
+    public boolean reactionExists(String reaction, String identifier) {
+        return messages.get(identifier).checkReactionExists(reaction);
+    }
 
+    public void addReaction(String reaction, String messageID){
+        messages.get(messageID).addReaction(reaction);
+    }
+
+    public void removeReaction(String reaction, String messageID){
+        messages.get(messageID).removeReaction(reaction);
+    }
 
     /**
      * @param requestModel the data to save

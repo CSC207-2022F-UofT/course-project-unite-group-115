@@ -10,7 +10,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RandomGroupCreationUI extends JPanel implements ItemListener, ActionListener {
+public class RandomGroupCreationScreen extends JPanel implements ItemListener, ActionListener {
     JTextField groupName = new JTextField(15);
     List userInterestList;
     JTextArea selectedInterests;
@@ -26,7 +26,7 @@ public class RandomGroupCreationUI extends JPanel implements ItemListener, Actio
      * @param interestsController the object that controls the retrieval of a user's interests
      * @param loggedInUsersName the name of the user currently logged in
      */
-    public RandomGroupCreationUI(RanGroupCreateControl groupCreateController, GetUserInterestsController
+    public RandomGroupCreationScreen(RanGroupCreateControl groupCreateController, GetUserInterestsController
             interestsController, String loggedInUsersName) {
         this.groupCreateControl = groupCreateController;
         this.getUserInterestsController = interestsController;

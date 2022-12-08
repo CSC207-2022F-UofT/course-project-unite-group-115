@@ -1,7 +1,7 @@
-package add_blocked_Users.Interface_adapters;
+package add_blocked_users.Interface_adapters;
 
-import add_blocked_Users.application_business_rules.AddBlockedUserOutputBoundary;
-import add_blocked_Users.application_business_rules.AddBlockedUserResponseModel;
+import add_blocked_users.application_business_rules.AddBlockedUserOutputBoundary;
+import add_blocked_users.application_business_rules.AddBlockedUserResponseModel;
 
 public class AddBlockedUserPresenter implements AddBlockedUserOutputBoundary {
     @Override

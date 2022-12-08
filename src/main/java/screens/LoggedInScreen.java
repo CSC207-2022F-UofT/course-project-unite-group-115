@@ -3,7 +3,12 @@ package screens;
 import database_classes.GroupDataAccess;
 import database_classes.ProfileManagerDataAccess;
 import database_classes.ProfileRepoInt;
+import entities.FriendListFactory;
 import entities.ProfileFactory;
+import friend_manager.application_business_rules.flManInputBoundary;
+import friend_manager.application_business_rules.flManUseCaseInteractor;
+import friend_manager.interface_adapters.flManController;
+import friend_manager.interface_adapters.flManPresenter;
 import profile_manager.application_business_rules.ProfileManagerInputBoundary;
 import profile_manager.application_business_rules.ProfileManagerInteractor;
 import profile_manager.interface_adapters.ProfileManagerController;
@@ -108,6 +113,27 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             JFrame applicationProfile = new ProfileScreen(ProfileManagerController, username);
             applicationProfile.pack();
             applicationProfile.setVisible(true);
+        }
+        else if (evt.getActionCommand().equals("Friends")){
+            ProfileRepoInt profileData;
+            try {
+                profileData = new ProfileManagerDataAccess("./src/main/java/databases/profiles.csv");
+            } catch (IOException e) {
+                throw new RuntimeException("Could not create file.");
+            }
+
+            // friend list screen Creation
+            JFrame friLstApplication = new JFrame("Friend List Screen");
+            CardLayout friLstCardLayout = new CardLayout();
+            JPanel friLstScreens = new JPanel(friLstCardLayout);
+            friLstApplication.add(friLstScreens);
+
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+            JFrame application = new FriendsScreen(username);
+            application.pack();
+            application.setVisible(true);
         }
         else if (evt.getActionCommand().equals("Groups")){
             GroupDataAccess groupData;

@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RequestRandomGroupUI extends JPanel implements ActionListener {
+public class RequestRandomGroupScreen extends JPanel implements ActionListener {
     ReqRanGroupController reqRanGroupController;
     JFrame createRanGroupScreen;
 
@@ -22,7 +22,7 @@ public class RequestRandomGroupUI extends JPanel implements ActionListener {
      * with them
      * @param controller the object that controls the attempt to add a User to a random group
      */
-    public RequestRandomGroupUI(ReqRanGroupController controller, JFrame createRanGroupScreen, String loggedInUserName) {
+    public RequestRandomGroupScreen(ReqRanGroupController controller, JFrame createRanGroupScreen, String loggedInUserName) {
         this.reqRanGroupController = controller;
         this.createRanGroupScreen = createRanGroupScreen;
         this.loggedInUserName = loggedInUserName;

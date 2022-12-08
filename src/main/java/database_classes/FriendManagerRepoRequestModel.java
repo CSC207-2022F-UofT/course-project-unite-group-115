@@ -2,11 +2,11 @@ package database_classes;
 
 import java.util.List;
 
-public class flManRepoRequestModel {
+public class FriendManagerRepoRequestModel {
     private String owner;
     private List<String> friends;
 
-    public flManRepoRequestModel(String owner, List<String> friends){
+    public FriendManagerRepoRequestModel(String owner, List<String> friends){
         this.owner = owner;
         this.friends = friends;
     }
