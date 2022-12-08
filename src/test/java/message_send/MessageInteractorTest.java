@@ -1,8 +1,11 @@
 package message_send;
 
 import database_classes.MessageDataAccess;
+import database_classes.MessageMemory;
 import database_classes.MessageRepoInt;
+import entities.Message;
 import entities.MessageFactory;
+import message_send.interface_adaptor.MessageCreationFailed;
 import org.junit.jupiter.api.Test;
 import message_send.application_business_rule.MessageInputBoundary;
 import message_send.application_business_rule.MessageInteractor;
@@ -12,33 +15,17 @@ import message_send.interface_adaptor.MessagePresenter;
 
 import java.io.IOException;
 
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MessageInteractorTest {
 
     @Test
     public void create() throws IOException {
-        // To test the use case:
-        // 1) Create a MessageInteractor and prerequisite objects
-        //    (arguments for the MessageInteractor constructor parameters)
-        // 2) create the Input Data
-        // 3) Call the use case Message Input Boundary method to run the use case
-        // 4) Check that the Output Data passed to the Presenter is correct
-        // 5) Check that the expected changes to the data layer are there.
-
-        // 1) MessageInteractor and prerequisite objects
-        // We're going to need a place to save and look up information. We could
-        // use FileMessage, but because unit tests are supposed to be independent
-        // that would make us also reset the file when we are done.
-        // Instead, we're going to "mock" that info using a short-lived solution
-        // that just keeps the info in a dictionary, and it won't be persistent.
-        // (Separately, elsewhere, we will need to test the FileMessage works
-        // properly.)
 
         MessageRepoInt message;
-        message = new MessageDataAccess("./src/main/java/databases/messagestestfile.csv");
+        message = new MessageMemory();
 
-        // This creates an anonymous implementing class for the Output Boundary.
         MessagePresenter presenter = new MessagePresenter() {
             @Override
             public MessageResponseModel prepareSuccessView(MessageResponseModel response) {
@@ -70,4 +57,34 @@ class MessageInteractorTest {
 
 
     }
+
+    @Test
+    public void createfail() throws IOException {
+
+        MessageRepoInt message;
+        message = new MessageMemory();
+
+        MessagePresenter presenter = new MessagePresenter();
+
+        MessageFactory MessageFactory = new MessageFactory();
+        MessageInputBoundary interactor = new MessageInteractor(
+                message, presenter, MessageFactory);
+
+        MessageRequestModel inputData = new MessageRequestModel(
+                "", "pwd1234", "pwd12345");
+
+        try {
+            interactor.create(inputData);
+            fail("Message content can not be empty.");
+        } catch (MessageCreationFailed e) {
+        }
+
+
+    }
+
+
+
+
+
+
 }
