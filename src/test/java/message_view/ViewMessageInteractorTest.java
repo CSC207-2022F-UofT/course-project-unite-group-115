@@ -1,17 +1,11 @@
 package message_view;
 
-import database_classes.MessageDataAccess;
+
 import database_classes.MessageMemory;
 import database_classes.MessageRepoInt;
 import database_classes.MessageRepoRequestModel;
-import entities.MessageFactory;
-import message_send.application_business_rule.MessageInputBoundary;
-import message_send.application_business_rule.MessageInteractor;
-import message_send.application_business_rule.MessageRequestModel;
-import message_send.interface_adaptor.MessageCreationFailed;
-import message_send.interface_adaptor.MessagePresenter;
 import message_view.interface_adaptor.ViewMessageFailure;
-import org.junit.Before;
+
 import org.junit.jupiter.api.Test;
 import message_view.application_business_rule.ViewMessageInputBoundary;
 import message_view.application_business_rule.ViewMessageInteractor;
@@ -19,7 +13,7 @@ import message_view.application_business_rule.ViewMessageRequestModel;
 import message_view.application_business_rule.ViewMessageResponseModel;
 import message_view.interface_adaptor.ViewMessagePresenter;
 
-import java.io.IOException;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +24,7 @@ class ViewMessageInteractorTest {
 
 
     @Test
-    void create() throws IOException {
+    void create() {
         MessageRepoInt message;
         message = new MessageMemory();
 
@@ -72,16 +66,11 @@ class ViewMessageInteractorTest {
 
 
     @Test
-    void createFail() throws IOException {
+    void createFail()  {
         MessageRepoInt message;
         message = new MessageMemory();
 
         ViewMessagePresenter presenter = new ViewMessagePresenter();
-        List<String> emptyList = new ArrayList<>();
-        LocalDateTime now = LocalDateTime.now();
-//        MessageRepoRequestModel inputData = new MessageRepoRequestModel(
-//                "hello", "paul", "group1", "1", emptyList, now);
-//        message.save(inputData);
 
         ViewMessageInputBoundary interactor = new ViewMessageInteractor(
                 message, presenter);
@@ -91,7 +80,7 @@ class ViewMessageInteractorTest {
 
 
         try {
-            interactor.create(inputData2);;
+            interactor.create(inputData2);
             fail("No one has sent a message in the group yet, sending your first message!");
         } catch (ViewMessageFailure e) {
         }

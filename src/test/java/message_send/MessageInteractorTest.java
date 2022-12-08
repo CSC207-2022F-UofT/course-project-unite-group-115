@@ -1,9 +1,7 @@
 package message_send;
 
-import database_classes.MessageDataAccess;
 import database_classes.MessageMemory;
 import database_classes.MessageRepoInt;
-import entities.Message;
 import entities.MessageFactory;
 import message_send.interface_adaptor.MessageCreationFailed;
 import org.junit.jupiter.api.Test;
@@ -20,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MessageInteractorTest {
 
     @Test
-    public void create() throws IOException {
+    public void create() {
 
         MessageRepoInt message;
         message = new MessageMemory();
@@ -59,7 +57,7 @@ class MessageInteractorTest {
     }
 
     @Test
-    public void createfail() throws IOException {
+    public void createfail() {
 
         MessageRepoInt message;
         message = new MessageMemory();
