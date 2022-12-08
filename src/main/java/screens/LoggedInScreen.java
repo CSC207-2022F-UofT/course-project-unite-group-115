@@ -68,6 +68,7 @@ public class LoggedInScreen extends JFrame implements ActionListener {
 //        buttons.add(changePassword);
 
         logOut.addActionListener(this);
+        profile.addActionListener(this);
         friends.addActionListener(this);
         groups.addActionListener(this);
         report.addActionListener(this);

@@ -26,8 +26,7 @@ public class GroupLoggedInScreen extends JPanel implements ActionListener {
     public GroupLoggedInScreen(String groupId, String loginUserName, String groupName) {
         this.GroupID = groupId;
         this.loginUserName = loginUserName;
-        //ToDo: this line does not work for me
-       /* this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
+//       this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.groupName = groupName;
 
 

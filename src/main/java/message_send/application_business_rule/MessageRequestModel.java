@@ -15,7 +15,6 @@ public class MessageRequestModel {
     }
 
 
-    //TODO: remove unused functions.
     String getContent(){
         return content;
     }
