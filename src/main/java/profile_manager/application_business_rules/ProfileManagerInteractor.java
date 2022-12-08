@@ -38,7 +38,7 @@ public class ProfileManagerInteractor implements ProfileManagerInputBoundary {
         if (profileRepoInt.existsByName(username)){
             groups = profileRepoInt.getGroups(username);
             friends = profileRepoInt.getFriends(username);
-            // ToDo: not sure how to set this
+            // ToDo: future - integrate with reporter use case
             blockedUsers = "";
         }
         Profile profile = ProfileFactory.create(

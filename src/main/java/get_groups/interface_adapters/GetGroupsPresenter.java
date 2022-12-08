@@ -2,7 +2,7 @@ package get_groups.interface_adapters;
 
 import get_groups.application_business_rules.GetGroupsOutputBoundary;
 import get_groups.application_business_rules.GetGroupsResponseModel;
-import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsFailure;
+import get_user_interests.interface_adapters.GetUserInterestsFailure;
 
 import java.util.ArrayList;
 import java.util.Collections;

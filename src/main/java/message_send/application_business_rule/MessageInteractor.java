@@ -29,7 +29,7 @@ public class MessageInteractor implements MessageInputBoundary {
         if (!message.contentIsValid()) {
             return MessagePresenter.prepareFailView("Message content can not be empty or only one letter.");
         }
-        //todo: case 2: user in the block list
+        //ToDo: future - case 2: user in the block list
 
         LocalDateTime now = LocalDateTime.now();
 

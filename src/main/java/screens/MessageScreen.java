@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 
 public class MessageScreen extends JFrame implements ActionListener {
     JTextField messagecontent = new JTextField(30);
-    String groupName;  //TODO: reach group ID and Messagename by connect to the group class
+    String groupName;
     String loginUserName;
     MessageController messageController;
 

@@ -21,8 +21,6 @@ public class ProfileScreen extends JFrame implements ActionListener {
     JTextField sensitiveWords = new JTextField(15);
     JTextField interests = new JTextField(15);
 
-    // ToDo: remove?
-//    JTextField blockedUsers = new JTextField(15);
     ProfileManagerController profileManagerController;
     String loginUserName;
 
@@ -57,10 +55,6 @@ public class ProfileScreen extends JFrame implements ActionListener {
                 new JLabel("Sensitive Words (separate words using a ;)"), sensitiveWords);
         LabelTextPanel interestsInfo = new LabelTextPanel(
                 new JLabel("Interests (separate interests using a ;)"), interests);
-        // ToDo: remove?
-       /* LabelTextPanel blockedUsersInfo = new LabelTextPanel(
-                new JLabel("Blocked Users"), blockedUsers);*/
-
 
         JButton update = new JButton("Update");
         JButton cancel = new JButton("Cancel");

@@ -14,7 +14,7 @@ public class MessagePresenter implements MessageOutputBoundary {
         return message;
     }
 
-    //TODO: add fail review, i.e. sender is in the banned list
+    //ToDo: future - add fail review, i.e. sender is in the banned list
     public MessageResponseModel prepareFailView(String error){
         throw new MessageCreationFailed(error);
     }

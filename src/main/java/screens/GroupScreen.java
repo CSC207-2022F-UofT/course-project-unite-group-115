@@ -24,10 +24,10 @@ import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
 import random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
 import random_grouper_request_group.application_business_rules.ReqRanGroupOutputBoundary;
-import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsInteractor;
-import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsOutputBoundary;
-import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsController;
-import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsPresenter;
+import get_user_interests.application_business_rules.GetUserInterestsInteractor;
+import get_user_interests.application_business_rules.GetUserInterestsOutputBoundary;
+import get_user_interests.interface_adapters.GetUserInterestsController;
+import get_user_interests.interface_adapters.GetUserInterestsPresenter;
 import random_grouper_request_group.interface_adapters.ReqRanGroupController;
 import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
@@ -36,7 +36,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

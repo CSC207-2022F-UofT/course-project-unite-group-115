@@ -7,10 +7,10 @@ import get_groups.application_business_rules.GetGroupsResponseModel;
 import get_groups.interface_adapters.GetGroupsPresenter;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsInteractor;
-import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsRequestModel;
-import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsFailure;
-import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsPresenter;
+import get_user_interests.application_business_rules.GetUserInterestsInteractor;
+import get_user_interests.application_business_rules.GetUserInterestsRequestModel;
+import get_user_interests.interface_adapters.GetUserInterestsFailure;
+import get_user_interests.interface_adapters.GetUserInterestsPresenter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
