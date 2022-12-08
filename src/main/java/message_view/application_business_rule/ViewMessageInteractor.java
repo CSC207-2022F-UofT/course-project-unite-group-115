@@ -1,12 +1,10 @@
 package message_view.application_business_rule;
 
-import database_classes.MessageRepoInt;
-import message_view.interface_adaptor.ViewMessageFailure;
 import message_view.interface_adaptor.ViewMessagePresenter;
 
 public class ViewMessageInteractor implements ViewMessageInputBoundary{
     //TODO: Final variables are all capital
-    final database_classes.MessageRepoInt MessageRepoInt;;
+    final database_classes.MessageRepoInt MessageRepoInt;
     final ViewMessagePresenter ViewMessagePresenter;
     //final ViewMessageOutputboundary ViewMessageOutputboundary;
 
@@ -29,7 +27,7 @@ public class ViewMessageInteractor implements ViewMessageInputBoundary{
 
         //case 1: no message in the group
         if (!MessageRepoInt.doesGroupExist(groupID)) {
-            throw new ViewMessageFailure("No one has sent a message in the group yet, sending your first message!");
+            return ViewMessagePresenter.prepareFailView("No one has sent a message in the group yet, sending your first message!");
         }
 
 

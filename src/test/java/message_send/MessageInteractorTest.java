@@ -3,7 +3,6 @@ package message_send;
 import database_classes.MessageMemory;
 import database_classes.MessageRepoInt;
 import entities.MessageFactory;
-import message_send.interface_adaptor.MessageCreationFailed;
 import org.junit.jupiter.api.Test;
 import message_send.application_business_rule.MessageInputBoundary;
 import message_send.application_business_rule.MessageInteractor;
@@ -47,11 +46,45 @@ class MessageInteractorTest {
         // 2) Input data — we can make this up for the test. Normally it would
         // be created by the Controller.
         MessageRequestModel inputData = new MessageRequestModel(
-                "paul", "pwd1234", "pwd12345");
+                "paul", "pwd1234", "1");
 
         // 3) Run the use case
         interactor.create(inputData);
 
+
+    }
+
+    @Test
+    public void createfail() {
+
+        MessageRepoInt message = new MessageMemory();
+
+        MessagePresenter presenter = new MessagePresenter() {
+
+            @Override
+            public MessageResponseModel prepareSuccessView(MessageResponseModel response) {
+                // 4) Check that the Output Data and associated changes
+
+                fail("use case failed unexpected");
+                return null;
+
+            }
+
+            @Override
+            public MessageResponseModel prepareFailView(String error) {
+                assertEquals("Message content can not be empty or only one letter.", error);
+                return null;
+            }
+        };
+
+        MessageFactory MessageFactory = new MessageFactory();
+        MessageInputBoundary interactor = new MessageInteractor(
+                message, presenter, MessageFactory);
+
+        MessageRequestModel inputData = new MessageRequestModel(
+                "", "paul", "pwd12345");
+
+        interactor.create(inputData);
 
     }
 
