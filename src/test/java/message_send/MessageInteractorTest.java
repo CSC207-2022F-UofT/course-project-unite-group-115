@@ -1,6 +1,6 @@
 package message_send;
 
-import database_classes.MessageMemory;
+import database_classes.MessageMemoryTest;
 import database_classes.MessageRepoInt;
 import entities.MessageFactory;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ class MessageInteractorTest {
     public void create() {
 
         MessageRepoInt message;
-        message = new MessageMemory();
+        message = new MessageMemoryTest();
 
 
         MessagePresenter presenter = new MessagePresenter() {
@@ -57,7 +57,7 @@ class MessageInteractorTest {
     @Test
     public void createfail() {
 
-        MessageRepoInt message = new MessageMemory();
+        MessageRepoInt message = new MessageMemoryTest();
 
         MessagePresenter presenter = new MessagePresenter() {
 

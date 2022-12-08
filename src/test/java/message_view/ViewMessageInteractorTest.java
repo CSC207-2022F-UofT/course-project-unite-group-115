@@ -1,7 +1,7 @@
 package message_view;
 
 
-import database_classes.MessageMemory;
+import database_classes.MessageMemoryTest;
 import database_classes.MessageRepoInt;
 import database_classes.MessageRepoRequestModel;
 
@@ -25,7 +25,7 @@ class ViewMessageInteractorTest {
 
     @Test
     void create() {
-        MessageRepoInt message = new MessageMemory();
+        MessageRepoInt message = new MessageMemoryTest();
 
 
         ViewMessagePresenter presenter = new ViewMessagePresenter() {
@@ -66,7 +66,7 @@ class ViewMessageInteractorTest {
     @Test
     void createFail()  {
         MessageRepoInt message;
-        message = new MessageMemory();
+        message = new MessageMemoryTest();
 
         ViewMessagePresenter presenter = new ViewMessagePresenter() {
 
