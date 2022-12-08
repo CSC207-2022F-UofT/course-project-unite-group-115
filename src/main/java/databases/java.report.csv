@@ -1,2 +1,2 @@
-ReportUserId,ReportedUserId,Message,CreationTime,MessageId,Reflection by Admin
+MessageId,ReportedUserId,Message,ReportUserId,CreationTime,Reflection by Admin
 1,Ellen,ellen is big,Aurora,2022-12-07T16:52:03.110435
