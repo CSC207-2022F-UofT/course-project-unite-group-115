@@ -75,7 +75,7 @@ public class InMemoryProfileData implements ProfileRepoInt {
 
     }
 
-    public void addFriendToProfile(String userName, String friend) {
+    public void addFriendsToProfile(String userName, String friend) {
         List<String> friends = new ArrayList<>(accounts.get(userName).getFriends());
         friends.add(friend);
         accounts.get(userName).setFriends(friends);
@@ -102,15 +102,25 @@ public class InMemoryProfileData implements ProfileRepoInt {
 
 
     }
-    @Override
-    public List<String> getInterests(String userName) {
-        return accounts.get(userName).getInterests();
+
+    public List<String> getFriends(String owner) {
+        return accounts.get(owner).getFriends();
     }
 
     @Override
-    public List<String> getGroups(String userName) {
-        return accounts.get(userName).getGroups();
+    public void deleteFriendsToProfile(String owner, String friend) {
+        List<String> friends = new ArrayList<>(accounts.get(owner).getFriends());
+        friends.remove(friend);
+        accounts.get(owner).setFriends(friends);
     }
+
+    @Override
+    public List<String> ViewFriendsToProfile(String owner) {
+        List<String> friends = new ArrayList<>(accounts.get(owner).getFriends());
+        accounts.get(owner).setFriends(friends);
+        return friends;
+    }
+
 
     @Override
     public List<String> getFriends(String userName) {
@@ -122,6 +132,17 @@ public class InMemoryProfileData implements ProfileRepoInt {
 
         return accounts.get(userName).getSensitiveWords();
     }
+
+    @Override
+    public List<String> getInterests(String userName) {
+        return accounts.get(userName).getInterests();
+    }
+
+    @Override
+    public List<String> getGroups(String userName) {
+        return accounts.get(userName).getGroups();
+    }
+
     @Override
     public String getBlockedUser(String userName) {
         return accounts.get(userName).getBlockedUsers();

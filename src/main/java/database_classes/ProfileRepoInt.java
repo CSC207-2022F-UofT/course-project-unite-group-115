@@ -28,4 +28,6 @@ public interface ProfileRepoInt {
     List<String> getGroups(String userName);
 
     List<String> getFriends(String userName);
+
+    List<String> ViewFriendsToProfile(String username);
 }

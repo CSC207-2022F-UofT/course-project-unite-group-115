@@ -165,6 +165,13 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
         accounts.get(userName).setInterests(interests);
         this.save();
     }
+    
+    public void deleteFriendsToProfile(String owner, String friend) {
+        List<String> friends = new ArrayList<>(accounts.get(owner).getFriends());
+        friends.remove(friend);
+        accounts.get(owner).setFriends(friends);
+        this.save();
+    }
 
     public void addGroupToProfile(String userName, String groupId) {
         List<String> groups = new ArrayList<>(accounts.get(userName).getGroups());
@@ -246,6 +253,10 @@ public class ProfileManagerDataAccess implements ProfileRepoInt {
     public List<String> getSensitiveWords(String userName) {
 
         return accounts.get(userName).getSensitiveWords();
+    }
+
+    public List<String> ViewFriendsToProfile(String owner) {
+        return accounts.get(owner).getFriends();
     }
 
 }
