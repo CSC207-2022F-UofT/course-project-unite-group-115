@@ -111,7 +111,7 @@ public class BlockUserInteractorTest {
         UserReporterInputBoundary interactor = new UserReporterInteractor(
                 user, presenter, Factory);
 
-        // 2) Input data — we can make this up for the test. Normally it would
+        // 2) Input data: we can make this up for the test. Normally it would
         // be created by the Controller.
         UserReporterRequestModel inputData = new UserReporterRequestModel(
                 messageId, userId, message, reportUserId);
