@@ -1,11 +1,18 @@
 package screens;
+import flManager.interface_adapters.flManPresenter;
+import database_classes.ProfileManagerDataAccess;
+import database_classes.ProfileRepoInt;
+import database_classes.flManRepoInt;
+import entities.FriendListFactory;
+import flManager.application_business_rules.flManInputBoundary;
+import flManager.application_business_rules.flManUseCaseInteractor;
+import flManager.interface_adapters.flManController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-// Frameworks/Drivers layer
+import java.io.IOException;
 
 public class LoggedInScreen extends JFrame implements ActionListener {
     /**
@@ -25,12 +32,6 @@ public class LoggedInScreen extends JFrame implements ActionListener {
         JButton chats = new JButton("Chats");
         JButton friends = new JButton("Friends");
         JButton groups = new JButton("Groups");
-        JButton report = new JButton("Report");
-//        JButton changePassword = new JButton("Change password");
-//
-//        LabelTextPanel usernameInfo = new LabelTextPanel(
-//                new JLabel("Username"), username);
-//        username.setEditable(false);
 
         JPanel buttons = new JPanel();
         buttons.add(logOut);
@@ -38,7 +39,6 @@ public class LoggedInScreen extends JFrame implements ActionListener {
         buttons.add(chats);
         buttons.add(friends);
         buttons.add(groups);
-        buttons.add(report);
 //        buttons.add(changePassword);
 
         logOut.addActionListener(this);
@@ -46,8 +46,6 @@ public class LoggedInScreen extends JFrame implements ActionListener {
         chats.addActionListener(this);
         friends.addActionListener(this);
         groups.addActionListener(this);
-        report.addActionListener(this);
-//        changePassword.addActionListener(this);
 
         JPanel main = new JPanel();
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
@@ -65,13 +63,38 @@ public class LoggedInScreen extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
-        if (evt.getActionCommand().equals("Log out")) {
+
+        if (evt.getActionCommand().equals("Friends")) {
+            ProfileRepoInt profileData;
+            flManRepoInt flManRepoInt;
+            try {
+                profileData = new ProfileManagerDataAccess("./profiles.csv");
+            } catch (IOException e) {
+                throw new RuntimeException("Could not create file.");
+            }
+
+            // friend list screen Creation
+            JFrame friLstApplication = new JFrame("Friend List Screen");
+            CardLayout friLstCardLayout = new CardLayout();
+            JPanel friLstScreens = new JPanel(friLstCardLayout);
+            friLstApplication.add(friLstScreens);
+
+            // Parts for friend list Use Case
+            flManPresenter flManPresenter = new flManPresenter();
+            FriendListFactory flFactory = new FriendListFactory();
+
+            flManInputBoundary flInteractor = new flManUseCaseInteractor(flManPresenter,
+                    flFactory, profileData);
+            flManController controller = new flManController(flInteractor);
+
+
             JComponent component = (JComponent) evt.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
-            JFrame application3 = new LoginScreen();
-            application3.pack();
-            application3.setVisible(true);
+            JFrame application = new flScreen(controller);
+            application.pack();
+            application.setVisible(true);
         }
     }
+
 }
