@@ -2,6 +2,12 @@ package database_classes;
 
 import java.util.*;
 
+/**
+ * Serves the same purpose as MessageDataAccess but everything is stored
+ * in memory for testing purposes.
+ * @author  Yi Huang
+ * @author Hansel Jia
+ */
 public class MessageMemory implements MessageRepoInt{
     final private Map<String, MessageRepoRequestModel> messages = new HashMap<>();
 

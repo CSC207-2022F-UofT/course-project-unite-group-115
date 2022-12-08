@@ -17,6 +17,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
+/**
+ * UI class that shows up after user enters the group and can interact
+ * with the messaging system. Here the user can send and view messages.
+ * @author  Yi Huang
+ */
 public class GroupLoggedInScreen extends JPanel implements ActionListener {
 
     String GroupID;
@@ -59,6 +64,14 @@ public class GroupLoggedInScreen extends JPanel implements ActionListener {
         this.add(buttons);
     }
 
+    /**
+     * Specify what actions to take upon press of each button.
+     * "send" to open up a new window where the user can write what
+     * message they want to send.
+     * "view" to open up a new window where the user can see all messages
+     * sent in the group and react to them.
+     * @param evt The action event.
+     */
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
 

@@ -3,7 +3,7 @@ package user_register;
 import database_classes.InMemoryUser;
 import database_classes.UserRepoInt;
 import entities.UserFactory;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import user_register.application_business_rules.UserRegisterInputBoundary;
 import user_register.application_business_rules.UserRegisterInteractor;
 import user_register.application_business_rules.UserRegisterRequestModel;
@@ -13,7 +13,7 @@ import user_register.interface_adapters.UserRegisterPresenter;
 import static org.junit.jupiter.api.Assertions.*;
 public class UserRegisterInteractorTest {
     @Test
-    void create() {
+    public void create() {
         // To test the use case:
         // 1) Create a UserRegisterInteractor and prerequisite objects
         //    (arguments for the UserRegisterInteractor constructor parameters)
