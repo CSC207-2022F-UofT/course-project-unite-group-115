@@ -15,7 +15,6 @@ import message_send.interface_adaptor.MessagePresenter;
 
 import java.io.IOException;
 
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MessageInteractorTest {
@@ -25,6 +24,7 @@ class MessageInteractorTest {
 
         MessageRepoInt message;
         message = new MessageMemory();
+
 
         MessagePresenter presenter = new MessagePresenter() {
             @Override

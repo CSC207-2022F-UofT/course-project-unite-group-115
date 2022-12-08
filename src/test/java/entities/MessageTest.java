@@ -9,6 +9,7 @@ class MessageTest {
     void whenContentIsValid_thenIsTrue() {
         Message message = new Message("Baeldung", "sender", "GroupID");
         assertTrue(message.contentIsValid());
+
     }
 
     @Test

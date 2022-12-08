@@ -24,7 +24,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewMessageInteractorTest {
@@ -34,6 +33,7 @@ class ViewMessageInteractorTest {
     void create() throws IOException {
         MessageRepoInt message;
         message = new MessageMemory();
+
 
         ViewMessagePresenter presenter = new ViewMessagePresenter() {
 
