@@ -41,7 +41,7 @@ public class FriendsScreen extends JFrame implements ActionListener {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setBounds(260, 70, 500, 600);
+        setBounds(260, 70, 450, 600);
         contentPane = new JPanel();
 
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

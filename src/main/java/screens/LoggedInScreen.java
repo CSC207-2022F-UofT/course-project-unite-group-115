@@ -127,7 +127,6 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
             JFrame application = new FriendsScreen(username);
-            application.pack();
             application.setVisible(true);
         }
         else if (evt.getActionCommand().equals("Groups")){
