@@ -55,31 +55,6 @@ class MessageInteractorTest {
 
     }
 
-    @Test
-    public void createfail() {
-
-        MessageRepoInt message;
-        message = new MessageMemory();
-
-        MessagePresenter presenter = new MessagePresenter();
-
-        MessageFactory MessageFactory = new MessageFactory();
-        MessageInputBoundary interactor = new MessageInteractor(
-                message, presenter, MessageFactory);
-
-        MessageRequestModel inputData = new MessageRequestModel(
-                "", "pwd1234", "pwd12345");
-
-        try {
-            interactor.create(inputData);
-            fail("Message content can not be empty.");
-        } catch (MessageCreationFailed ignored) {
-        }
-
-
-    }
-
-
 
 
 

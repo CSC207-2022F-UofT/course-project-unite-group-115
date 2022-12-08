@@ -63,26 +63,4 @@ class ViewMessageInteractorTest {
 
         interactor.create(inputData2);
     }
-
-
-    @Test
-    void createFail()  {
-        MessageRepoInt message;
-        message = new MessageMemory();
-
-        ViewMessagePresenter presenter = new ViewMessagePresenter();
-
-        ViewMessageInputBoundary interactor = new ViewMessageInteractor(
-                message, presenter);
-
-
-        ViewMessageRequestModel inputData2 = new ViewMessageRequestModel("group1", "paul");
-
-
-        try {
-            interactor.create(inputData2);
-            fail("No one has sent a message in the group yet, sending your first message!");
-        } catch (ViewMessageFailure ignored) {
-        }
-    }
 }
