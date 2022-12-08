@@ -1,5 +1,5 @@
 package screens;
-import Block_User_Application.interface_adapters.UserReporterController;
+import use_cases.block_user_application.interface_adapters.UserReporterController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,26 +16,28 @@ public class SubmitReportScreen extends JPanel implements ActionListener{
     JTextField message = new JTextField(15);
     JTextField messageID = new JTextField(15);
     UserReporterController userReporterController;
+    String loggedInUser;
 
 
     /**
      * A window with a title and a JButton.
      */
-    public SubmitReportScreen(UserReporterController Controller) {
+    public SubmitReportScreen(UserReporterController Controller, String loggedInUser) {
         this.userReporterController = Controller;
+        this.loggedInUser = loggedInUser;
 
         JLabel title = new JLabel("User Report Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
 
-        LabelTextPanelforReporter messageIDInfo = new LabelTextPanelforReporter(
+        LabelTextPanel messageIDInfo = new LabelTextPanel(
                 new JLabel("Message ID"), messageID);
-        LabelTextPanelforReporter reportedUsernameInfo = new LabelTextPanelforReporter(
+        LabelTextPanel reportedUsernameInfo = new LabelTextPanel(
                 new JLabel("Reported Username"), reportedUsername);
-        LabelTextPanelforReporter usernameInfo = new LabelTextPanelforReporter(
+        LabelTextPanel usernameInfo = new LabelTextPanel(
                 new JLabel("Your Username"), yourUsername);
-        LabelTextPanelforReporter messageInfo = new LabelTextPanelforReporter(
+        LabelTextPanel messageInfo = new LabelTextPanel(
                 new JLabel("Reported Message"), message);
 
 
@@ -79,7 +81,7 @@ public class SubmitReportScreen extends JPanel implements ActionListener{
             JComponent component = (JComponent) evt.getSource();
             Window win = SwingUtilities.getWindowAncestor(component);
             win.dispose();
-            JFrame application2 = new ReportFirstScreen();
+            JFrame application2 = new ReportFirstScreen(loggedInUser);
             application2.pack();
             application2.setVisible(true);
         }

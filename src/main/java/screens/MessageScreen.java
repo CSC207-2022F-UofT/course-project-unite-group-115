@@ -1,9 +1,8 @@
 package screens;
 
-import message_send.interface_adaptor.MessageController;
+import use_cases.message_send.interface_adaptor.MessageController;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 
 import java.awt.event.ActionEvent;
@@ -11,7 +10,7 @@ import java.awt.event.ActionEvent;
 
 public class MessageScreen extends JFrame implements ActionListener {
     JTextField messagecontent = new JTextField(30);
-    String groupName;  //TODO: reach group ID and Messagename by connect to the group class
+    String groupName;
     String loginUserName;
     MessageController messageController;
 
@@ -20,7 +19,7 @@ public class MessageScreen extends JFrame implements ActionListener {
         this.groupName = groupName;
         this.loginUserName = loginUserName;
 
-        LabelTextPanel2 content = new LabelTextPanel2(new JLabel("content"), messagecontent);
+        LabelTextPanel content = new LabelTextPanel(new JLabel("content"), messagecontent);
 
         JButton send = new JButton("Send");
         JPanel buttons = new JPanel();

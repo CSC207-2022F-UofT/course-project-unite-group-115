@@ -5,11 +5,11 @@ import database_classes.ProfileRepoInt;
 import database_classes.ProfileRepoRequestModel;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsInteractor;
-import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsRequestModel;
-import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsResponseModel;
-import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsFailure;
-import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsPresenter;
+import use_cases.get_user_interests.application_business_rules.GetUserInterestsInteractor;
+import use_cases.get_user_interests.application_business_rules.GetUserInterestsRequestModel;
+import use_cases.get_user_interests.application_business_rules.GetUserInterestsResponseModel;
+import use_cases.get_user_interests.interface_adapters.GetUserInterestsFailure;
+import use_cases.get_user_interests.interface_adapters.GetUserInterestsPresenter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -95,7 +95,7 @@ public class GetUserInterestsInteractorTest {
 
         try {
             interactor.getUserInterests(inputData);
-            fail("Exception not thrown due to only matching group being full.");
+            fail("Exception not thrown due to user not existing.");
         } catch (GetUserInterestsFailure e) {
         }
     }

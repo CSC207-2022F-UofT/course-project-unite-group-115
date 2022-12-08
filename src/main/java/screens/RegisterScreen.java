@@ -1,6 +1,6 @@
 package screens;
 
-import user_register.interface_adapters.UserRegisterController;
+import use_cases.user_register.interface_adapters.UserRegisterController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -76,7 +76,9 @@ public class RegisterScreen extends JPanel implements ActionListener {
                 userRegisterController.create(username.getText(),
                         String.valueOf(password.getPassword()),
                         String.valueOf(repeatPassword.getPassword()));
-                JOptionPane.showMessageDialog(this, String.format("%s created.", username.getText()));
+                JOptionPane.showMessageDialog(this, String.format("%s created. Once you log in, make sure " +
+                        "to set up " +
+                        "your profile first before continuing with the software.", username.getText()));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }

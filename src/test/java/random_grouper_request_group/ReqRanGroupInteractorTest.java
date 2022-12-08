@@ -3,9 +3,9 @@ package random_grouper_request_group;
 import database_classes.*;
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_request_group.application_business_rules.*;
-import random_grouper_request_group.interface_adapters.GroupAdditionFailure;
-import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
+import use_cases.random_grouper_request_group.application_business_rules.*;
+import use_cases.random_grouper_request_group.interface_adapters.GroupAdditionFailure;
+import use_cases.random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -282,7 +282,7 @@ public class ReqRanGroupInteractorTest {
         List<String> emptyList = new ArrayList<>();
         List<String> userGroups = new ArrayList<>();
         profileDatabase.save(new ProfileRepoRequestModel("Danielle", "Dani", LocalDate.now(),
-                "", emptyList, emptyList, interests, userGroups, emptyList,"", LocalDateTime.now()));
+                "", emptyList, emptyList, interests, userGroups, emptyList, "", LocalDateTime.now()));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO", "test", interests2, members, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("NO2", "full", interests, membersFull, true));
         groupDatabase.addGroup(new GroupRepoRequestModel("YES", "added", interests3, members, true));

@@ -1,9 +1,9 @@
 package screens;
 
-import general_group.interface_adapters.GeneralGroupCreateController;
-import general_group.use_case.GeneralGroupCreateDsResponseModel;
-import entities.Profile;
-import get_friends.get_friends.interface_adapters.GetFriendsController;
+import database_classes.ProfileRepoInt;
+import use_cases.general_group.interface_adapters.GeneralGroupCreateController;
+import use_cases.general_group.use_case.GeneralGroupCreateDsResponseModel;
+import use_cases.get_friends.interface_adapters.GetFriendsController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,15 +17,18 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
     JTextField groupName = new JTextField(20);
     JButton getFriends = new JButton("Choose friends");
     List<String> friendsChosen = new ArrayList<>();
-    Profile creatorProfile;
+    ProfileRepoInt profileDatabase;
     GeneralGroupCreateController genGroupCreateController;
     GetFriendsController getFriendsController;
+    String loggedInUser;
 
     public GeneralGroupCreationScreen(GeneralGroupCreateController genGroupCreateController,
-                                      GetFriendsController friendsController, Profile creatorProfile) {
+                                      GetFriendsController friendsController, String username,
+                                      ProfileRepoInt profileDatabase) {
         this.genGroupCreateController = genGroupCreateController;
         this.getFriendsController = friendsController;
-        this.creatorProfile = creatorProfile;
+        this.profileDatabase = profileDatabase;
+        this.loggedInUser = username;
 
 
         JLabel title = new JLabel("Custom group", SwingConstants.CENTER);
@@ -65,7 +68,7 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
         else if (evt.getActionCommand().equals("Create group")) {
             try {
                 GeneralGroupCreateDsResponseModel response = genGroupCreateController.create(groupName.getText(),
-                        friendsChosen, creatorProfile.getUserName());
+                        friendsChosen, loggedInUser);
                 JOptionPane.showMessageDialog(this, String.format("%s created at %s",
                         groupName.getText(), response.getCreationTime()));
 
@@ -82,8 +85,8 @@ public class GeneralGroupCreationScreen extends JPanel implements ActionListener
             JPanel screens = new JPanel(cardLayout);
             friendsApp.add(screens, BorderLayout.CENTER);
 
-            AddingFriendsToGroupScreen addingFriendsToGroupScreen = new AddingFriendsToGroupScreen(getFriendsController, friendsChosen,
-                    creatorProfile);
+            AddingFriendsToGroupScreen addingFriendsToGroupScreen = new AddingFriendsToGroupScreen(getFriendsController,
+                    friendsChosen, profileDatabase, loggedInUser);
 
             screens.add(addingFriendsToGroupScreen, "Welcome!");
             cardLayout.show(screens, "create");

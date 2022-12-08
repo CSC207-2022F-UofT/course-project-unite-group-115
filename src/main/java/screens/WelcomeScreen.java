@@ -6,11 +6,11 @@ import java.awt.event.*;
 import java.io.IOException;
 
 import database_classes.UserDataAccess;
-import user_register.application_business_rules.UserRegisterInputBoundary;
-import user_register.interface_adapters.UserRegisterController;
-import user_register.interface_adapters.UserRegisterPresenter;
+import use_cases.user_register.application_business_rules.UserRegisterInputBoundary;
+import use_cases.user_register.interface_adapters.UserRegisterController;
+import use_cases.user_register.interface_adapters.UserRegisterPresenter;
 import database_classes.UserRepoInt;
-import user_register.application_business_rules.UserRegisterInteractor;
+import use_cases.user_register.application_business_rules.UserRegisterInteractor;
 import entities.*;
 
 public class WelcomeScreen extends JFrame implements ActionListener {

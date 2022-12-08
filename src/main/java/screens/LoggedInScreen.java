@@ -1,25 +1,13 @@
 package screens;
 
 import database_classes.GroupDataAccess;
-import database_classes.GroupRepoInt;
 import database_classes.ProfileManagerDataAccess;
 import database_classes.ProfileRepoInt;
-import entities.RandomGroupFactory;
-import random_grouper_create.application_business_rules.RanGroupCreateInputBoundary;
-import random_grouper_create.application_business_rules.RanGroupCreateInteractor;
-import random_grouper_create.application_business_rules.RanGroupCreateOutputBoundary;
-import random_grouper_create.interface_adapters.RanGroupCreateControl;
-import random_grouper_create.interface_adapters.RanGroupCreatePresenter;
-import random_grouper_request_group.application_business_rules.ReqRanGroupDataAccessInt;
-import random_grouper_request_group.application_business_rules.ReqRanGroupInputBoundary;
-import random_grouper_request_group.application_business_rules.ReqRanGroupInteractor;
-import random_grouper_request_group.application_business_rules.ReqRanGroupOutputBoundary;
-import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsInteractor;
-import random_grouper_request_group.get_user_interests.application_business_rules.GetUserInterestsOutputBoundary;
-import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsController;
-import random_grouper_request_group.get_user_interests.interface_adapters.GetUserInterestsPresenter;
-import random_grouper_request_group.interface_adapters.ReqRanGroupController;
-import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
+import entities.ProfileFactory;
+import use_cases.profile_manager.application_business_rules.ProfileManagerInputBoundary;
+import use_cases.profile_manager.application_business_rules.ProfileManagerInteractor;
+import use_cases.profile_manager.interface_adapters.ProfileManagerController;
+import use_cases.profile_manager.interface_adapters.ProfileManagerPresenter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,18 +21,18 @@ public class LoggedInScreen extends JFrame implements ActionListener {
     /**
      * The username chosen by the user
      */
-    JTextField username = new JTextField(15);
+    String username;
     /**
      * A window with a title and a JButton.
      */
-    public LoggedInScreen() {
+    public LoggedInScreen(String username) {
+        this.username = username;
 
         JLabel title = new JLabel("Logged-in Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton logOut = new JButton("Log out");
         JButton profile = new JButton("Profile");
-        JButton chats = new JButton("Chats");
         JButton friends = new JButton("Friends");
         JButton groups = new JButton("Groups");
         JButton report = new JButton("Report");
@@ -57,7 +45,6 @@ public class LoggedInScreen extends JFrame implements ActionListener {
         JPanel buttons = new JPanel();
         buttons.add(logOut);
         buttons.add(profile);
-        buttons.add(chats);
         buttons.add(friends);
         buttons.add(groups);
         buttons.add(report);
@@ -65,7 +52,6 @@ public class LoggedInScreen extends JFrame implements ActionListener {
 
         logOut.addActionListener(this);
         profile.addActionListener(this);
-        chats.addActionListener(this);
         friends.addActionListener(this);
         groups.addActionListener(this);
         report.addActionListener(this);
@@ -95,8 +81,57 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             application3.pack();
             application3.setVisible(true);
         }
+        else if (evt.getActionCommand().equals("Profile")){
+            Component component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+
+            JFrame application = new JFrame("Edit Profile");
+            CardLayout cardLayout = new CardLayout();
+            JPanel screens = new JPanel(cardLayout);
+            application.add(screens);
+
+            // Create the parts to plug into the Use Case+Entities engine
+            ProfileRepoInt user;
+            try {
+                user = new ProfileManagerDataAccess("./src/main/java/databases/profiles.csv");
+            } catch (IOException e) {
+                throw new RuntimeException("Could not create file.");
+            }
+            ProfileManagerPresenter presenter = new ProfileManagerPresenter();
+            ProfileFactory userFactory = new ProfileFactory();
+            ProfileManagerInputBoundary interactor = new ProfileManagerInteractor(
+                    user, presenter, userFactory);
+            ProfileManagerController ProfileManagerController = new ProfileManagerController(
+                    interactor
+            );
+            JFrame applicationProfile = new ProfileScreen(ProfileManagerController, username);
+            applicationProfile.pack();
+            applicationProfile.setVisible(true);
+        }
+        else if (evt.getActionCommand().equals("Friends")){
+            ProfileRepoInt profileData;
+            try {
+                profileData = new ProfileManagerDataAccess("./src/main/java/databases/profiles.csv");
+            } catch (IOException e) {
+                throw new RuntimeException("Could not create file.");
+            }
+
+            // friend list screen Creation
+            JFrame friLstApplication = new JFrame("Friend List Screen");
+            CardLayout friLstCardLayout = new CardLayout();
+            JPanel friLstScreens = new JPanel(friLstCardLayout);
+            friLstApplication.add(friLstScreens);
+
+            JComponent component = (JComponent) evt.getSource();
+            Window win = SwingUtilities.getWindowAncestor(component);
+            win.dispose();
+            JFrame application = new FriendsScreen(username);
+            application.pack();
+            application.setVisible(true);
+        }
         else if (evt.getActionCommand().equals("Groups")){
-            GroupRepoInt groupData;
+            GroupDataAccess groupData;
             try {
                 groupData = new GroupDataAccess("./src/main/java/databases/groups.csv");
             }
@@ -109,54 +144,15 @@ public class LoggedInScreen extends JFrame implements ActionListener {
             } catch (IOException e) {
                 throw new RuntimeException("Could not create file.");
             }
-
-            // Random Group Creation Window Creation
-            JFrame groupCreationApplication = new JFrame("Random Group Creation");
-            CardLayout groupCreationCardLayout = new CardLayout();
-            JPanel groupCreationScreens = new JPanel(groupCreationCardLayout);
-            groupCreationApplication.add(groupCreationScreens);
-
-            // Parts for Random Group Creation Use Case
-            RanGroupCreateOutputBoundary ranGroupCreateOutputBoundary = new RanGroupCreatePresenter();
-            RandomGroupFactory ranGroupFactory = new RandomGroupFactory();
-            RanGroupCreateInputBoundary groupCreateInteractor = new RanGroupCreateInteractor(groupData,
-                    ranGroupCreateOutputBoundary, ranGroupFactory, profileData);
-            RanGroupCreateControl groupCreateController = new RanGroupCreateControl(groupCreateInteractor);
-
-            GetUserInterestsOutputBoundary getUserInterestsOutputBoundary = new GetUserInterestsPresenter();
-            GetUserInterestsInteractor getUserInterestsInteractor = new
-                    GetUserInterestsInteractor(getUserInterestsOutputBoundary, profileData);
-            GetUserInterestsController getUserInterestsController =
-                    new GetUserInterestsController(getUserInterestsInteractor);
-
-            // Create Random Group Creation Screen
-            // ToDo: need the logged in User's name
-            String loggedInUser = "Tejas";
-            RandomGroupCreationUI creationScreen = new RandomGroupCreationUI(groupCreateController,
-                    getUserInterestsController, loggedInUser);
-            groupCreationScreens.add(creationScreen, "welcome");
-            groupCreationCardLayout.show(groupCreationScreens, "create");
-            groupCreationApplication.pack();
-
-            // Create Request Random Group Window
-            JFrame requestGroupApplication = new JFrame("Request Random Group");
-            CardLayout requestGroupCardLayout = new CardLayout();
-            JPanel requestGroupScreens = new JPanel(requestGroupCardLayout);
-            requestGroupApplication.add(requestGroupScreens);
-
-            // Create parts for Request Random Group Use Case
-            ReqRanGroupOutputBoundary reqRanGroupOutputBoundary = new ReqRanGroupPresenter();
-            ReqRanGroupInputBoundary reqRanGroupInteractor = new ReqRanGroupInteractor(groupData,
-                    reqRanGroupOutputBoundary, profileData);
-            ReqRanGroupController reqRanGroupController = new ReqRanGroupController(reqRanGroupInteractor);
-
-            // Create and Display Request Random Group Screen
-            RequestRandomGroupUI reqGroupScreen = new RequestRandomGroupUI(reqRanGroupController, groupCreationApplication,
-                    loggedInUser);
-            requestGroupScreens.add(reqGroupScreen, "welcome");
-            requestGroupCardLayout.show(requestGroupScreens, "request");
-            requestGroupApplication.pack();
-            requestGroupApplication.setVisible(true);
+            JFrame application4 = new GroupScreen(username, groupData, profileData);
+            application4.pack();
+            application4.setVisible(true);
+        }
+        else if (evt.getActionCommand().equals("Report")) {
+            JFrame application2 = new ReportFirstScreen(username);
+            application2.pack();
+            application2.setVisible(true);
         }
         }
+
     }

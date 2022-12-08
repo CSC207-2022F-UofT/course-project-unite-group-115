@@ -1,7 +1,7 @@
 package screens;
 
-import reaction_use_case.interface_adapters.ReactionController;
-import reaction_use_case.application_business_rules.ReactionResponseModel;
+import use_cases.reaction_use_case.interface_adapters.ReactionController;
+import use_cases.reaction_use_case.application_business_rules.ReactionResponseModel;
 
 import javax.swing.*;
 import java.awt.*;

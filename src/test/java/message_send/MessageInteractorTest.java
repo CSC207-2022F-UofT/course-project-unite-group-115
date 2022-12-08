@@ -3,11 +3,11 @@ package message_send;
 import database_classes.MessageMemory;
 import database_classes.MessageRepoInt;
 import entities.MessageFactory;
-import message_send.application_business_rule.MessageInputBoundary;
-import message_send.application_business_rule.MessageInteractor;
-import message_send.application_business_rule.MessageRequestModel;
-import message_send.application_business_rule.MessageResponseModel;
-import message_send.interface_adaptor.MessagePresenter;
+import use_cases.message_send.application_business_rule.MessageInputBoundary;
+import use_cases.message_send.application_business_rule.MessageInteractor;
+import use_cases.message_send.application_business_rule.MessageRequestModel;
+import use_cases.message_send.application_business_rule.MessageResponseModel;
+import use_cases.message_send.interface_adaptor.MessagePresenter;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,7 +42,7 @@ public class MessageInteractorTest {
         MessageInputBoundary interactor = new MessageInteractor(
                 message, presenter, MessageFactory);
 
-        // 2) Input data — we can make this up for the test. Normally it would
+        // 2) Input data we can make this up for the test. Normally it would
         // be created by the Controller.
         MessageRequestModel inputData = new MessageRequestModel(
                 "paul", "pwd1234", "1");

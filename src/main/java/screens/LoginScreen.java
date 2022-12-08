@@ -92,7 +92,7 @@ public class LoginScreen extends JFrame implements ActionListener {
                         JComponent component = (JComponent) evt.getSource();
                         Window win = SwingUtilities.getWindowAncestor(component);
                         win.dispose();
-                        JFrame application4 = new LoggedInScreen();
+                        JFrame application4 = new LoggedInScreen(userName);
                         application4.pack();
                         application4.setVisible(true);
                         JOptionPane.showMessageDialog(this, String.format("%s Logged In.", username.getText()));

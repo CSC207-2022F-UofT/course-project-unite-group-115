@@ -4,11 +4,11 @@ import database_classes.InMemoryUser;
 import database_classes.UserRepoInt;
 import entities.UserFactory;
 import org.junit.Test;
-import user_register.application_business_rules.UserRegisterInputBoundary;
-import user_register.application_business_rules.UserRegisterInteractor;
-import user_register.application_business_rules.UserRegisterRequestModel;
-import user_register.application_business_rules.UserRegisterResponseModel;
-import user_register.interface_adapters.UserRegisterPresenter;
+import use_cases.user_register.application_business_rules.UserRegisterInputBoundary;
+import use_cases.user_register.application_business_rules.UserRegisterInteractor;
+import use_cases.user_register.application_business_rules.UserRegisterRequestModel;
+import use_cases.user_register.application_business_rules.UserRegisterResponseModel;
+import use_cases.user_register.interface_adapters.UserRegisterPresenter;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class UserRegisterInteractorTest {
@@ -55,7 +55,7 @@ public class UserRegisterInteractorTest {
         UserRegisterInputBoundary interactor = new UserRegisterInteractor(
                 userRepository, presenter, userFactory);
 
-        // 2) Input data — we can make this up for the test. Normally it would
+        // 2) Input data we can make this up for the test. Normally it would
         // be created by the Controller.
         UserRegisterRequestModel inputData = new UserRegisterRequestModel(
                 "paul", "pwd1234", "pwd1234");

@@ -1,1 +1,8 @@
 group name,group ID,members,interests,is random group?
+1,b6d80475-6349-4c00-a941-46a0bb797f5b,ashley,qwerty,true
+Ocean,fe7ac9ca-b22d-478a-994f-b1692732eeca,ashley,blue;whales,true
+a,2cd63aaf-f608-4b9c-a275-62375bf09f26,ashley,,true
+cs,aaaa33ba-c28f-45cb-94af-facc749bee93,ash,computer science,true
+cs kids,76a715a0-23b3-4ff7-9d90-21979f42ec77,bob;ash,computer science,true
+test,d55c54e5-172a-4d62-ae3e-d864a5b2a1f2,ashley,dog,true
+ashleys group,d85f7634-4e99-47ad-b415-63a8161a51b3,ashley;bob,,false

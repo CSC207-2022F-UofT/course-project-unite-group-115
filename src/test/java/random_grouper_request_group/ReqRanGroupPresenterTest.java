@@ -2,8 +2,8 @@ package random_grouper_request_group;
 
 import org.junit.Before;
 import org.junit.Test;
-import random_grouper_request_group.application_business_rules.ReqRanGroupResponseModel;
-import random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
+import use_cases.random_grouper_request_group.application_business_rules.ReqRanGroupResponseModel;
+import use_cases.random_grouper_request_group.interface_adapters.ReqRanGroupPresenter;
 import java.util.ArrayList;
 import java.util.List;
 

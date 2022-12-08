@@ -5,11 +5,11 @@ import database_classes.InMemoryProfileData;
 import database_classes.ProfileRepoInt;
 import database_classes.ProfileRepoRequestModel;
 import entities.GeneralGroupFactory;
-import general_group.interface_adapters.GenGroupCreationFailed;
-import general_group.interface_adapters.GeneralGroupCreatePresenter;
-import general_group.use_case.*;
+import use_cases.general_group.interface_adapters.GenGroupCreationFailed;
+import use_cases.general_group.interface_adapters.GeneralGroupCreatePresenter;
 import org.junit.Before;
 import org.junit.Test;
+import use_cases.general_group.use_case.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
