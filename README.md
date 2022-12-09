@@ -1,39 +1,56 @@
-# Project Template
+# Unite #
+A social media application where users can connect with friends and discover new people based on common interests.
 
-This is a template repository for CSC 207 projects. 
-This repository contains starter code for a gradle project.
-It also contains workflow documents that give instructions on how to manage your Github repository and how to use Github Projects for efficient collaboration.
 
-## Checklist For Your Project
-- [ ] Verify the correct settings for your project repository
-- [ ] Set up Github Projects
-- [ ] Create the implementation plan using issues and Github Projects
-- [ ] Create deveopment branches for your features
-- [ ] Use pull requests to merge finished features into Main branch
-- [ ] Conduct code reviews
+## Features: ##
+1) User Registraion and Login
+* Create user account by providing username and password credentials.
+* The password must adhere to length restriction and username must not already exist or be null.
+* The user can login to an existing user account though the Login UI.
+* After login they can access the app features like making a profile, joining groups, sending friend requests etc.
 
-**If your team has trouble with any of these steps, please ask on Piazza. For example, with how GitHub Classroom works, your team *may* not have permissions to do some of the first few steps, in which case we'll post alternative instructions as needed.**
+2) Profile Management
+* Create/Update user’s profile. 
+* Text Fields to enter details such as profilename, date of birth, description, interests etc
+* Option to edit values in these fields and update profile data in database with the click of update button
 
-## Workflow Documents
+3) Friend Search and Manager
+* By typing an exist user name, view this user’s friend list
+* When you already logged in the system, you can add or delete friend
+* You can only add the friend that exists in the database(i.e: has profile). 
+* You can only delete the friend that is already in your friend list
 
-* Github Workflow: Please refer to the workflow that was introduced in the first lab. You should follow this when working on your code. The following document provides additional details too.
+4) Random Groups
+* Be added into a group based on your declared interests
+* “Random” groups are created by other users, who assign specific interests to the group
+* When you request to be added into a “random” group, you’ll be added into a group that shares the most interests in common with you
 
-* [Project Planning and Development Guide](project_plan_dev.md): This document helps you to understand how to create and maintain a project plan for your class project. **This document helps you to complete the Implementation Plan Milestone.**
+5) General Groups
+* Groups created by users adding their friends
+* Not based on common interests
+* No random factor
 
-## Gradle Project
-Import this project into your Intellij editor. It should automatically recognise this as a gradle repository.
-The starter code was built using SDK version 11.0.1. Ensure that you are using this version for this project. (You can, of course, change the SDK version as per your requirement if your team has all agreed to use a different version)
+6) Messaging
+* Each user can choose a group they joint, and sending message within the group. 
+* After sending the first message, users can view all the message that has been within the group and react to it.
 
-You have been provided with two starter files for demonstration: HelloWorld and HelloWorldTest.
+7) Message Reactions
+* Reactions can be added or removed from a message by the user.
+* The user can choose between a heart, smile emoji, or cry emoji.
+* When the user views the message, the reactions associated with the message will also be displayed.
 
-You will find HelloWorld in `src/Main/java/tutorial` directory. Right click on the HelloWorld file and click on `Run HelloWorld.Main()`.
-This should run the program and print on your console.
+8) User Reporter
+* Check if a message contains a list of sensitive word submitted by the user in the profile.
+* Replace sensitive words in the message with "*'.
+* Add user who send “bad words” to the block user list of receiver in the Profile.
+* User can submit reports on message and user.
 
-You will find HelloWorldTest in `src/test/java/tutorial` directory. Right click on the HelloWorldTest file and click on `Run HelloWorldTest`.
-All tests should pass. Your team can remove this sample of how testing works once you start adding your project code to the repo.
-
-Moving forward, we expect you to maintain this project structure. You *should* use Gradle as the build environment, but it is fine if your team prefers to use something else -- just remove the gradle files and push your preferred project setup. Assuming you stick with Gradle, your source code should go into `src/Main/java` (you can keep creating more subdirectories as per your project requirement). Every source class can auto-generate a test file for you. For example, open HelloWorld.java file and click on the `HelloWorld` variable as shown in the image below. You should see an option `Generate` and on clicking this your should see an option `Test`. Clicking on this will generate a JUnit test file for `HelloWorld` class. This was used to generate the `HelloWorldTest`.
-
-![image](https://user-images.githubusercontent.com/5333020/196066655-d3c97bf4-fdbd-46b0-b6ae-aeb8dbcf351d.png)
-
-You can create another simple class and try generating a test for this class.
+## Team Members: ##
+1) Kushagra
+2) Tejas
+3) Jasmine
+4) Ashley
+5) Amir
+6) Ellen
+7) Hansel
+8) Aurora
