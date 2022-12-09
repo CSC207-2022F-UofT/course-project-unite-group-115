@@ -46,10 +46,10 @@ A social media application where users can connect with friends and discover new
 * User can submit reports on message and user.
 
 ## How to Run Software ##
-In IntelliJ get a new project from version control using this URL: https://github.com/CSC207-2022F-UofT/course-project-unite-group-115.git 
-Go to src -> main -> java -> Main.java
-Run the Main.java file
-Explore!
+* In IntelliJ get a new project from version control using this URL: https://github.com/CSC207-2022F-UofT/course-project-unite-group-115.git 
+* Go to src -> main -> java -> Main.java
+* Run the Main.java file
+* Explore!
 
 
 ## Team Members: ##
